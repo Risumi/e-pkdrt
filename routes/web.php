@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@view')->name('home');
+Route::get('/kasus','KasusController@view')->name('kasus');
+Route::get('/kasus/new','KasusController@viewtambah')->name('kasusBaru');
+Route::get('/kasus/korban/new','KasusController@viewtambahkorban')->name('korbanBaru');
+Route::get('/kasus/pelaku/new','KasusController@viewtambahpelaku')->name('pelakuBaru');
