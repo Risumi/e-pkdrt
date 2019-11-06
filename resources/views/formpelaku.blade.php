@@ -3,6 +3,7 @@
 <body>
 
     <div class="container">
+    <br>
         <div class="card card-default">
             <div class="card-header">Pelaku</div>
             <div class="card-body">
@@ -131,6 +132,7 @@
                 </form>
             </div>
         </div>
+        <br>
     </div>
 </body>
 

@@ -3,6 +3,7 @@
 <body>
 
     <div class="container">
+    <br>
         <div class="card card-default">
             <div class="card-header">Korban</div>
             <div class="card-body">
@@ -224,6 +225,7 @@
                 </form>
             </div>
         </div>
+        <br>
     </div>
 </body>
 

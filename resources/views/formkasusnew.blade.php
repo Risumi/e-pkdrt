@@ -27,54 +27,23 @@
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="inputKonselor">
                         </div>
-                    </div>
+                    </div>                    
                     <div class="form-group row">
                         <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi Kasus</label>
                         <div class="col-sm-5">
                             <textarea type="text" class="form-control" id="inputDeskripsi" rows="5"></textarea>
                         </div>
-                    </div>
+                    </div>                                    
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-5">
-                            <a href="#" class="btn btn-primary">Update Data</a>
+                            <a href="#" class="btn btn-primary">Tambah Data</a>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
-        <br>
-        <div class="card card-default">
-            <div class="card text-white bg-primary mb-3">
-                <div class="card-header">Data Korban</div>
-            </div>
-            <div class="card-body">
-                <div class="col-sm">
-                    <a href="{{route('pelayananBaru')}}" class="btn btn-info">Layanan</a>
-                    <a href="{{route('rujukanBaru')}}" class="btn btn-secondary">Rujukan</a>
-                </div>
-                <br>
-                <div class="col-sm">
-                    <a href="{{route('korbanBaru')}}" class="btn btn-primary">Tambah Data</a>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="card card-default">
-            <div class="card text-white bg-danger mb-3">
-                <div class="card-header">Data Pelaku</div>
-            </div>
-            <div class="card-body">
-                <div class="col-sm">
-                    <a href="{{route('penangananBaru')}}" class="btn btn-dark">Penanganan</a>
-                </div>
-                <br>
-                <div class="col-sm">
-                    <a href="{{route('pelakuBaru')}}" class="btn btn-secondary">Tambah Data</a>
-                </div>
-            </div>
-        </div>
+        <br>        
     </div>
 </body>
-
 </html>

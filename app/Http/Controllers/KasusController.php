@@ -12,6 +12,10 @@ class KasusController extends Controller
     }
     public function viewtambah()
     {   
+        return view('formkasusnew');
+    }
+    public function viewedit()
+    {   
         return view('formkasus');
     }
     public function viewtambahkorban()
@@ -22,4 +26,17 @@ class KasusController extends Controller
     {   
         return view('formpelaku');
     }
+    public function viewtambahpelayanan()
+    {   
+        return view('formpelayanan');
+    }
+    public function viewtambahrujukan()
+    {   
+        return view('formrujukan');
+    }
+    public function viewtambahpenanganan()
+    {   
+        return view('formpenanganan');
+    }
+    
 }
