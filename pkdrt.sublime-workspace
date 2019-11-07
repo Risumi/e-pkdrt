@@ -1,0 +1,967 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tra",
+				"transaction_id"
+			],
+			[
+				"wh",
+				"where"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"qu",
+				"query"
+			],
+			[
+				"sq",
+				"sqlCek"
+			],
+			[
+				"tr",
+				"transaction_id"
+			],
+			[
+				"t",
+				"transaction"
+			],
+			[
+				"els",
+				"else"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"id_",
+				"id_item"
+			],
+			[
+				"id",
+				"id_store"
+			],
+			[
+				"pa",
+				"padding\tproperty"
+			],
+			[
+				"des",
+				"deskripsi-destinasi"
+			],
+			[
+				"visi",
+				"visibility"
+			],
+			[
+				"op",
+				"option-destinasi"
+			],
+			[
+				"fi",
+				"figcaption\tTag"
+			],
+			[
+				"col",
+				"col-xs-12"
+			],
+			[
+				"co",
+				"col-sm-4"
+			],
+			[
+				"mar",
+				"margin-bottom\tproperty"
+			],
+			[
+				"fon",
+				"font-style\tproperty"
+			],
+			[
+				"nama",
+				"nama_manajer"
+			],
+			[
+				"p",
+				"pengguna"
+			],
+			[
+				"ord",
+				"orderBy"
+			],
+			[
+				"pri",
+				"print_r"
+			],
+			[
+				"stat",
+				"status"
+			],
+			[
+				"s",
+				"style\tAttr"
+			],
+			[
+				"st",
+				"style\tTag"
+			],
+			[
+				"repo",
+				"reportNoModul"
+			],
+			[
+				"M_",
+				"M_tugas"
+			],
+			[
+				"rep",
+				"reportWithModul"
+			],
+			[
+				"th",
+				"th\tTag"
+			],
+			[
+				"ri",
+				"riwayat_proyekku"
+			],
+			[
+				"re",
+				"required\tAttr"
+			],
+			[
+				"for",
+				"form-move-to-id-tugas"
+			],
+			[
+				"pos",
+				"posisi_awal"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"al",
+				"alert-info"
+			],
+			[
+				"border-co",
+				"border-color\tproperty"
+			],
+			[
+				"all",
+				"allSprint"
+			],
+			[
+				"id_p",
+				"id_proyek"
+			],
+			[
+				"pro",
+				"proyek"
+			],
+			[
+				"mod",
+				"modul"
+			],
+			[
+				"fo",
+				"form\tTag"
+			],
+			[
+				"pad",
+				"padding-bottom\tproperty"
+			],
+			[
+				"tgl",
+				"tgl_selesai"
+			],
+			[
+				"req",
+				"req-"
+			],
+			[
+				"in",
+				"input\tTag"
+			],
+			[
+				"nam",
+				"nama_tugas"
+			],
+			[
+				"sess",
+				"session_start"
+			],
+			[
+				"get",
+				"getDataToEdit"
+			],
+			[
+				"tug",
+				"tugas_selesai"
+			],
+			[
+				"tu",
+				"tugas_selesai"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"M",
+				"M_tugas"
+			],
+			[
+				"tg",
+				"tgl_mulai"
+			],
+			[
+				"go",
+				"goClaimMe"
+			],
+			[
+				"form-",
+				"form-control"
+			],
+			[
+				"modal",
+				"modalEditModul"
+			],
+			[
+				"ba",
+				"back"
+			],
+			[
+				"sta",
+				"status"
+			],
+			[
+				"sp",
+				"sprint_exists"
+			],
+			[
+				"D",
+				"Doing"
+			],
+			[
+				"do",
+				"doing"
+			],
+			[
+				"to",
+				"todo"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"mo",
+				"modalSelesaiSprint"
+			],
+			[
+				"M_p",
+				"M_proyek"
+			],
+			[
+				"ema",
+				"email_pekerja"
+			],
+			[
+				"sorta",
+				"sortable-todo"
+			],
+			[
+				"so",
+				"sortable-done"
+			],
+			[
+				"sortable-",
+				"sortable-inprogress"
+			],
+			[
+				"connect",
+				"connectedSortable"
+			],
+			[
+				"se",
+				"seret-backlog"
+			],
+			[
+				"el",
+				"else"
+			],
+			[
+				"ac",
+				"action\tAttr"
+			],
+			[
+				"pu",
+				"pull-right"
+			],
+			[
+				"pul",
+				"pull-left"
+			],
+			[
+				"vi",
+				"view"
+			],
+			[
+				"fa",
+				"fa-fw"
+			],
+			[
+				"i",
+				"i\tTag"
+			],
+			[
+				"li",
+				"li\tTag"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"bo",
+				"board"
+			],
+			[
+				"new",
+				"newIssueSprint"
+			],
+			[
+				"n",
+				"newIssueSprint"
+			],
+			[
+				"c",
+				"col-lg-7"
+			],
+			[
+				"margin-",
+				"margin-top\tproperty"
+			],
+			[
+				"ms",
+				"msg_content_right"
+			],
+			[
+				"msg_content_",
+				"msg_content_left"
+			],
+			[
+				"te",
+				"textarea\tTag"
+			],
+			[
+				"g",
+				"goClaimRizky"
+			],
+			[
+				"a",
+				"alphas"
+			],
+			[
+				"onc",
+				"onclick\tAttr"
+			],
+			[
+				"is",
+				"isi2"
+			],
+			[
+				"file_",
+				"file_get_contents"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"me",
+				"merah"
+			],
+			[
+				"ke",
+				"kebawah"
+			],
+			[
+				"use",
+				"user"
+			],
+			[
+				"ret",
+				"return"
+			],
+			[
+				"arr",
+				"array"
+			],
+			[
+				"test",
+				"testInsert"
+			],
+			[
+				"mon",
+				"monthThisWeekAM"
+			],
+			[
+				"wee",
+				"weekOfLastWeekAM"
+			],
+			[
+				"hi",
+				"hidden"
+			],
+			[
+				"aja",
+				"ajaxLoader"
+			],
+			[
+				"lo",
+				"loader"
+			],
+			[
+				"awa",
+				"awal_"
+			],
+			[
+				"PER",
+				"PERFORMANCE_INDICATOR"
+			],
+			[
+				"fh",
+				"fh"
+			],
+			[
+				"ta",
+				"tablesWoHead"
+			],
+			[
+				"tab",
+				"tablesWoHead"
+			],
+			[
+				"arra",
+				"array"
+			],
+			[
+				"ra",
+				"rank"
+			],
+			[
+				"ma",
+				"max"
+			],
+			[
+				"su",
+				"success"
+			],
+			[
+				"strto",
+				"strtoupper"
+			],
+			[
+				"text",
+				"text-decoration\tproperty"
+			],
+			[
+				"PA",
+				"PARAMETER_PENILAIAN"
+			],
+			[
+				"bac",
+				"background-color\tproperty"
+			],
+			[
+				"para",
+				"parameter"
+			],
+			[
+				"onmous",
+				"onmouseleave\tAttr"
+			],
+			[
+				"ban",
+				"BANTEN"
+			],
+			[
+				"wi",
+				"width\tproperty"
+			],
+			[
+				"marg",
+				"margin\tproperty"
+			],
+			[
+				"cel",
+				"cellpadding\tAttr"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
+				"selec",
+				"selected"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "routes/web.php",
+			"settings":
+			{
+				"buffer_size": 1838,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "@include('header')\n\n<body>\n\n    <div class=\"container\">\n        <br>\n        <div class=\"card card-default\">\n            <div class=\"card text-white bg-warning mb-3\">\n                <div class=\"card-header\">Data Kasus</div>\n            </div>\n            <div class=\"card-body\">\n                <form action=\"{{ url('/kasus/new') }}\" method=\"post\">\n                    {{ $csrv }}\n                    <div class=\"form-group row\">\n                        <label for=\"inputRegistrasi\" class=\"col-sm-2 col-form-label\">No. Registrasi</label>\n                        <div class=\"col-sm-5\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputRegistrasi\" name=\"no-registrasi\">\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label for=\"inputTglRegist\" class=\"col-sm-2 col-form-label\">Hari/Tanggal</label>\n                        <div class=\"col-sm-5\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputTglRegist\" name=\"hari\">\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label for=\"inputKonselor\" class=\"col-sm-2 col-form-label\">Konselor</label>\n                        <div class=\"col-sm-5\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputKonselor\" name=\"konselor\">\n                        </div>\n                    </div>                    \n                    <div class=\"form-group row\">\n                        <label for=\"inputDeskripsi\" class=\"col-sm-2 col-form-label\">Deskripsi Kasus</label>\n                        <div class=\"col-sm-5\">\n                            <textarea type=\"text\" class=\"form-control\" id=\"inputDeskripsi\" rows=\"5\" name=\"deskripsi\"></textarea>\n                        </div>\n                    </div>                                    \n                    <div class=\"form-group row\">\n                        <label class=\"col-sm-2 col-form-label\"></label>\n                        <div class=\"col-sm-5\">\n                            <button class=\"btn btn-primary\">Tambah Data</button>\n                        </div>\n                    </div>\n                </form>\n            </div>\n        </div>\n        <br>        \n    </div>\n</body>\n</html>\n",
+			"file": "resources/views/formkasusnew.blade.php",
+			"file_size": 2382,
+			"file_write_time": 132175947057071385,
+			"settings":
+			{
+				"buffer_size": 2333,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/KasusController.php",
+			"settings":
+			{
+				"buffer_size": 1122,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"package control",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 341.0,
+		"history":
+		[
+			"php artisan serve",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"php artisan serve"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/E/Andri Wijaya/htdocs/e-pkdrt",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Console",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/config",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/database",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/database/factories",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/database/migrations",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/public",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/routes"
+	],
+	"file_history":
+	[
+		"/E/Andri Wijaya/htdocs/e-pkdrt/.env",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formpelaku.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/header.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkorban.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkasus.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/Controller.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/home.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/HomeController.php",
+		"/E/Andri Wijaya/htdocs/skripsi/app/Models/M_pengguna.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/config/app.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/config/database.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/env",
+		"/C/Users/Wijaya Kusuma/Downloads/app.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/vendor/hamcrest/hamcrest-php/.coveralls.yml",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/orderActivity.php",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/notificationHandler.php",
+		"/E/AndroidStudioProjects/unicorn-before-list_after_transac/app/build.gradle",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/simpanTransaksi.php",
+		"/C/Users/Wijaya Kusuma/Music/FormpembayaranActivity.java",
+		"/C/Users/Wijaya Kusuma/Music/FormorderActivity.java",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-3/itemDetail.php",
+		"/E/Andri Wijaya/htdocs/pinjem/borrow.php",
+		"/E/Andri Wijaya/htdocs/pinjem/transaction/borrow.php",
+		"/E/AndroidStudioProjects/backup/unicorn/settings.gradle",
+		"/C/Users/Wijaya Kusuma/Downloads/build.gradle",
+		"/E/AndroidStudioProjects/unicorn/app/build.gradle",
+		"/E/Andri Wijaya/htdocs/pinjem/transaction/store/order.php",
+		"/E/Andri Wijaya/htdocs/pinjem/api.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/routes/web.php",
+		"/E/Andri Wijaya/htdocs/pinjem/notificationHandler.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/MidtransAPI.php",
+		"/E/AndroidStudioProjects/Pinjem.in/app/src/main/java/telkom/pinjemin/view/home/HomeAdapter.java",
+		"/E/Andri Wijaya/htdocs/pinjem/item/readPaging.php",
+		"/E/Andri Wijaya/htdocs/pinjem/transaction/struk.jpg",
+		"/E/Andri Wijaya/htdocs/pinjem/transaction/store/statusOrder.php",
+		"/E/Andri Wijaya/htdocs/pinjem/store/addStore.php",
+		"/E/Andri Wijaya/htdocs/pinjem/user/editUser.php",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/xy2.php",
+		"/E/Andri Wijaya/htdocs/pinjem/user/register.php",
+		"/E/Andri Wijaya/htdocs/pkm/app/User.php",
+		"/E/Andri Wijaya/htdocs/pkm/index.php",
+		"/E/Andri Wijaya/htdocs/claimML/index.html",
+		"/E/Andri Wijaya/htdocs/claimML/a.html",
+		"/E/Andri Wijaya/htdocs/pkm/routes/web.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Pesanan.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Notifications/PesananBaru.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Http/Controllers/PenawaranController.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/config/services.php",
+		"/E/Andri Wijaya/htdocs/pkm/resources/views/index.blade.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Penawaran.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/_env.example",
+		"/E/Andri Wijaya/htdocs/konfeksi/config/app.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Http/Controllers/PesananController.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Http/Controllers/PesanController.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Http/Controllers/KonfeksiController.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/AfterShipAPI.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Events/PesanTerkirim.php",
+		"/E/Andri Wijaya/htdocs/skripsi/index.php",
+		"/E/Andri Wijaya/htdocs/skripsi/public/.htaccess",
+		"/E/Andri Wijaya/htdocs/skripsi/public/index.php",
+		"/E/Andri Wijaya/htdocs/skripsi/app/Providers/AppServiceProvider.php",
+		"/E/Andri Wijaya/htdocs/pkm/pkm.sublime-project",
+		"/E/Andri Wijaya/htdocs/pkm/resources/views/welcome.blade.php",
+		"/E/Andri Wijaya/htdocs/pkm/config/view.php",
+		"/E/Andri Wijaya/htdocs/pkm/resources/views/relation.blade.php",
+		"/E/Andri Wijaya/htdocs/pkm/app/Phone.php",
+		"/E/Andri Wijaya/htdocs/pkm/resources/views/home.blade.php",
+		"/E/Andri Wijaya/htdocs/pkm/.env",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Notifications/PenawaranBaru.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Notifications/ProgresPesanan.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Konfeksi.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Http/Controllers/HomeController.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Http/Controllers/Controller.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Http/Controllers/ArtikelController.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/database/migrations/2019_05_22_182034_create_pesans_table.php",
+		"/E/Andri Wijaya/htdocs/pkm/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Pesan.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Model.php",
+		"/E/Andri Wijaya/htdocs/konfeksi/app/Artikel.php",
+		"/E/Andri Wijaya/htdocs/jps_test/app/Models/M_komentar.php",
+		"/E/Andri Wijaya/htdocs/jps_test/app/Models/M_admin.php",
+		"/E/Andri Wijaya/htdocs/pkm/database/migrations/2014_10_12_100000_create_password_resets_table.php",
+		"/E/Andri Wijaya/htdocs/skripsi/resources/views/riwayat-aktivitas.blade.php",
+		"/E/Andri Wijaya/htdocs/skripsi/resources/views/project-setting.blade.php",
+		"/E/Andri Wijaya/htdocs/skripsi/resources/views/all-sprint.blade.php",
+		"/E/Andri Wijaya/htdocs/pkm1/db.php",
+		"/E/Andri Wijaya/htdocs/skripsi/.env",
+		"/E/Andri Wijaya/htdocs/skripsi/config/database.php",
+		"/E/Andri Wijaya/htdocs/skripsi/scrum.sql",
+		"/E/Andri Wijaya/htdocs/skripsi/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
+		"/E/Andri Wijaya/htdocs/skripsi/.editorconfig",
+		"/E/Andri Wijaya/htdocs/skripsi/config/filesystems.php",
+		"/E/Andri Wijaya/htdocs/skripsi/config/hashing.php",
+		"/E/Andri Wijaya/htdocs/skripsi/config/logging.php",
+		"/E/Andri Wijaya/htdocs/skripsi/config/mail.php",
+		"/E/Andri Wijaya/htdocs/skripsi/config/queue.php",
+		"/E/Andri Wijaya/htdocs/skripsi/config/services.php",
+		"/E/Andri Wijaya/htdocs/skripsi/config/session.php",
+		"/E/Andri Wijaya/htdocs/skripsi/config/view.php",
+		"/E/Andri Wijaya/htdocs/skripsi/config/auth.php",
+		"/E/Andri Wijaya/htdocs/skripsi/config/cache.php",
+		"/E/Andri Wijaya/htdocs/pkm/config/database.php",
+		"/E/Andri Wijaya/htdocs/skripsi/.env.example",
+		"/E/Andri Wijaya/htdocs/skripsi/config/app.php",
+		"/E/Andri Wijaya/htdocs/pkm1/multi-color/peta-wisata.html",
+		"/E/Andri Wijaya/htdocs/pkm1/multi-color/index.html",
+		"/E/Andri Wijaya/htdocs/skripsi/routes/web.php",
+		"/E/Andri Wijaya/htdocs/skripsi/database/migrations/2014_10_12_100000_create_password_resets_table.php",
+		"/E/Andri Wijaya/htdocs/skripsi/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/E/Andri Wijaya/htdocs/skripsi/app/Models/M_proyek.php",
+		"/E/Andri Wijaya/htdocs/skripsi/resources/views/register.blade.php",
+		"/E/Andri Wijaya/htdocs/skripsi/resources/views/login.blade.php",
+		"/E/Andri Wijaya/htdocs/skripsi/routes/.env",
+		"/E/Andri Wijaya/htdocs/skripsi/resources/views/semua-project.blade.php",
+		"/C/Users/Wijaya Kusuma/Downloads/Mice.html",
+		"/E/Andri Wijaya/htdocs/pkm1/multi-color/css/style-button.css",
+		"/E/Andri Wijaya/htdocs/skripsi/resources/views/layouts/app.blade.php",
+		"/E/Andri Wijaya/htdocs/skripsi/resources/views/Master/sidebar.blade.php",
+		"/E/Andri Wijaya/htdocs/pkm1/multi-color/source/tags/index.html",
+		"/E/Andri Wijaya/htdocs/pkm1/multi-color/source/tags/css/styles.css",
+		"/E/Andri Wijaya/htdocs/pkm/public/css/bootstrap.css",
+		"/E/Andri Wijaya/htdocs/skripsi/vendor/laravel/framework/src/Illuminate/Foundation/Exceptions/views/404.blade.php",
+		"/E/Andri Wijaya/htdocs/skripsi/app/Http/Controllers/HomeController.php",
+		"/E/Andri Wijaya/htdocs/skripsi/app/Http/Middleware/CheckDB.php",
+		"/E/Andri Wijaya/htdocs/skripsi/app/Console/Kernel.php",
+		"/E/Andri Wijaya/htdocs/skripsi/app/Http/Controllers/PenggunaController.php",
+		"/E/Andri Wijaya/htdocs/skripsi/app/User.php",
+		"/E/Andri Wijaya/htdocs/skripsi/resources/views/backlogREAL.blade.php"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"true"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "routes/web.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1838,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								638,
+								638
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 28.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "resources/views/formkasusnew.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2333,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								374,
+								374
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 55.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/KasusController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1122,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								314,
+								314
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "pkdrt.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pkm",
+				"pkm.sublime-project"
+			],
+			[
+				"404",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\views\\404.blade.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"E:\\Andri Wijaya\\htdocs\\skripsi\\skripsi.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 191.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
