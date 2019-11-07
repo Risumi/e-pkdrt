@@ -10,7 +10,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm">
-                        <a href="{{route('kasusEdit', ['id' => 1])}}" class="btn btn-info">Kasus 1</a>
+                        <a href="{{route('kasusEdit', ['idKasus' => 1])}}" class="btn btn-info">Kasus 1</a>
                     </div>
                 </div>
                 <br>
@@ -24,5 +24,4 @@
         </div>
     </div>
 </body>
-
 </html>

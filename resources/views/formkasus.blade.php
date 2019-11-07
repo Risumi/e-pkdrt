@@ -1,7 +1,6 @@
 @include('header')
 
 <body>
-
     <div class="container">
         <br>
         <div class="card card-default">
@@ -50,12 +49,13 @@
             </div>
             <div class="card-body">
                 <div class="col-sm">
-                    <a href="{{route('pelayananBaru')}}" class="btn btn-info">Layanan</a>
-                    <a href="{{route('rujukanBaru')}}" class="btn btn-secondary">Rujukan</a>
+                    <a href="{{route('korbanEdit',['idKasus' => $idKasus,'idKorban' => 1])}}" class="btn btn-dark">Korban 1</a>
+                    <a href="{{route('pelayananBaru',['idKasus' => $idKasus,'idKorban' => 1])}}" class="btn btn-info">Layanan</a>
+                    <a href="{{route('rujukanBaru',['idKasus' => $idKasus,'idKorban' => 1])}}" class="btn btn-secondary">Rujukan</a>
                 </div>
                 <br>
                 <div class="col-sm">
-                    <a href="{{route('korbanBaru')}}" class="btn btn-primary">Tambah Data</a>
+                    <a href="{{route('korbanBaru',['idKasus' => $idKasus])}}" class="btn btn-primary">Tambah Data</a>
                 </div>
             </div>
         </div>
@@ -66,11 +66,12 @@
             </div>
             <div class="card-body">
                 <div class="col-sm">
-                    <a href="{{route('penangananBaru')}}" class="btn btn-dark">Penanganan</a>
+                    <a href="{{route('pelakuEdit',['idKasus' => $idKasus,'idPelaku' => 1])}}" class="btn btn-info">Pelaku 1</a>
+                    <a href="{{route('penangananBaru',['idKasus' => $idKasus,'idPelaku' => 1])}}" class="btn btn-light">Penanganan</a>
                 </div>
                 <br>
                 <div class="col-sm">
-                    <a href="{{route('pelakuBaru')}}" class="btn btn-secondary">Tambah Data</a>
+                    <a href="{{route('pelakuBaru',['idKasus' => $idKasus])}}" class="btn btn-secondary">Tambah Data</a>
                 </div>
             </div>
         </div>

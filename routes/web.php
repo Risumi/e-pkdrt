@@ -12,11 +12,25 @@
 */
 
 Route::get('/','HomeController@view')->name('home');
-Route::get('/kasus','KasusController@view')->name('kasus');
-Route::get('/kasus/new','KasusController@viewtambah')->name('kasusBaru');
-Route::get('/kasus/{id}','KasusController@viewedit')->name('kasusEdit');
-Route::get('/kasus/korban/new','KasusController@viewtambahkorban')->name('korbanBaru');
-Route::get('/kasus/pelaku/new','KasusController@viewtambahpelaku')->name('pelakuBaru');
-Route::get('/kasus/korban/pelayanan/new','KasusController@viewtambahpelayanan')->name('pelayananBaru');
-Route::get('/kasus/korban/rujukan/new','KasusController@viewtambahrujukan')->name('rujukanBaru');
-Route::get('/kasus/pelaku/penanganan/new','KasusController@viewtambahpenanganan')->name('penangananBaru');
+Route::group(['prefix' => 'kasus'], function () {
+    Route::get('','KasusController@view')->name('kasus');
+    Route::get('new','KasusController@viewtambah')->name('kasusBaru');
+    Route::group(['prefix' => '{idKasus}'], function () {
+        Route::get('','KasusController@viewedit')->name('kasusEdit');     
+        Route::group(['prefix' => 'korban'], function () {
+            Route::get('new','KasusController@viewtambahkorban')->name('korbanBaru');
+            Route::group(['prefix' => '{idKorban}'], function () {
+                Route::get('','KasusController@vieweditkorban')->name('korbanEdit');
+                Route::get('pelayanan/new','KasusController@viewtambahpelayanan')->name('pelayananBaru');
+                Route::get('rujukan/new','KasusController@viewtambahrujukan')->name('rujukanBaru');
+            });
+        });    
+        Route::group(['prefix' => 'pelaku'], function () {
+            Route::get('new','KasusController@viewtambahpelaku')->name('pelakuBaru');
+            Route::group(['prefix' => '{idPelaku}'], function () {
+                Route::get('','KasusController@vieweditpelaku')->name('pelakuEdit');                
+                Route::get('penanganan/new','KasusController@viewtambahpenanganan')->name('penangananBaru');                
+            });            
+        });    
+    });
+});
