@@ -13,7 +13,7 @@
                     <div class="form-group row">
                         <label for="inputInstansi" class="col-sm-2 col-form-label">Instansi</label>
                         <div class="col-sm-5">
-                            <select class="custom-select" id="inputInstansi">
+                            <select class="custom-select" id="inputInstansi" name="inputInstansi">
                                 <option value="Bapas">Bapas</option>
                                 <option value="Dinas Kesehatan">Dinas Kesehatan</option>
                                 <option value="UPPA Polresta">UPPA Polresta</option>
@@ -28,19 +28,19 @@
                     <div class="form-group row">
                         <label for="inputPelayanan" class="col-sm-2 col-form-label">Pelayanan yang Diberikan</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputPelayanan">
+                            <input type="text" class="form-control" id="inputPelayanan" name="inputPelayanan">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputDetail" class="col-sm-2 col-form-label">Detail Pelayanan</label>
                         <div class="col-sm-5">
-                            <textarea type="text" class="form-control" id="inputDetail" rows="3"></textarea>
+                            <textarea type="text" class="form-control" id="inputDetail" name="inputDetail" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi Pelayanan</label>
                         <div class="col-sm-5">
-                            <textarea type="text" class="form-control" id="inputDeskripsi" rows="3"></textarea>
+                            <textarea type="text" class="form-control" id="inputDeskripsi" name="inputDeskripsi" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">

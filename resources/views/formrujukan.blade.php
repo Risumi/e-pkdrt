@@ -13,19 +13,19 @@
                     <div class="form-group row">
                         <label for="inputTglRujukan" class="col-sm-2 col-form-label">Tanggal Rujukan</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputTglRujukan">
+                            <input type="text" class="form-control" id="inputTglRujukan" name="inputTglRujukan">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputKota" class="col-sm-2 col-form-label">Kota/Kab, Provinsi</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputKota">
+                            <input type="text" class="form-control" id="inputKota" name="inputKota">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputInstansi" class="col-sm-2 col-form-label">Instansi</label>
                         <div class="col-sm-5">
-                            <select class="custom-select" id="inputInstansi">
+                            <select class="custom-select" id="inputInstansi" name="inputInstansi">
                                 <option value="Bapas">Bapas</option>
                                 <option value="Dinas Kesehatan">Dinas Kesehatan</option>
                                 <option value="UPPA Polresta">UPPA Polresta</option>
@@ -40,7 +40,7 @@
                     <div class="form-group row">
                         <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
                         <div class="col-sm-5">
-                            <textarea type="text" class="form-control" id="inputDeskripsi" rows="5"></textarea>
+                            <textarea type="text" class="form-control" id="inputDeskripsi" name="inputDeskripsi" rows="5"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -54,5 +54,4 @@
         </div>
     </div>
 </body>
-
 </html>

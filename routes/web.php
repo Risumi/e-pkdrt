@@ -44,6 +44,7 @@ Route::group(['prefix' => 'kasus'], function () {
 
                 Route::group(['prefix' => '{idKorban}'], function () {
                     Route::get('','KasusController@vieweditkorban')->name('korbanEdit');
+                    Route::post('','KasusController@editkorban');
                     Route::get('pelayanan/new','KasusController@viewtambahpelayanan')->name('pelayananBaru');
                     Route::get('rujukan/new','KasusController@viewtambahrujukan')->name('rujukanBaru');
                 });

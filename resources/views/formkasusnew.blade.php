@@ -43,7 +43,7 @@
                                 <span style="color: red">{{ $errors->first('konselor') }}</span>
                             @endif
                         </div>
-                    </div>                    
+                    </div>
                     <div class="form-group row">
                         <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi Kasus</label>
                         <div class="col-sm-5">
@@ -52,7 +52,7 @@
                                 <span style="color: red">{{ $errors->first('deskripsi') }}</span>
                             @endif
                         </div>
-                    </div>                                    
+                    </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-5">
@@ -62,7 +62,8 @@
                 </form>
             </div>
         </div>
-        <br>        
+        <br>
     </div>
 </body>
+
 </html>

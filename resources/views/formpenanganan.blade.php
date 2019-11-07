@@ -13,7 +13,7 @@
                     <div class="form-group row">
                         <label for="inputInstansi" class="col-sm-2 col-form-label">Instansi</label>
                         <div class="col-sm-5">
-                            <select class="custom-select" id="inputInstansi">
+                            <select class="custom-select" id="inputInstansi" name="inputInstansi">
                                 <option value="Bapas">Bapas</option>
                                 <option value="Dinas Kesehatan">Dinas Kesehatan</option>
                                 <option value="UPPA Polresta">UPPA Polresta</option>
@@ -28,7 +28,7 @@
                     <div class="form-group row">
                         <label for="inputJenis" class="col-sm-2 col-form-label">Instansi</label>
                         <div class="col-sm-5">
-                            <select class="custom-select" id="inputJenis">                                
+                            <select class="custom-select" id="inputJenis" name="inputJenis">                                
                                 <option value="Pemeriksaan">Pemeriksaan</option>
                                 <option value="Penyelidikan">Penyelidikan</option>
                                 <option value="Penyidikan">Penyidikan</option>
@@ -49,7 +49,7 @@
                     <div class="form-group row">
                         <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi Proses</label>
                         <div class="col-sm-5">
-                            <textarea type="text" class="form-control" id="inputDeskripsi" rows="5"></textarea>
+                            <textarea type="text" class="form-control" id="inputDeskripsi" name="inputDeskripsi" rows="5"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">

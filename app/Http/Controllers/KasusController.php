@@ -105,9 +105,51 @@ class KasusController extends Controller
         return redirect()->back()->with('notification', 'Korban berhasil ditambahkan');
     }
 
-    public function vieweditkorban($idKorban)
+    public function vieweditkorban($idKorban,$idKasus)
     {   
-        return view('formkorban');
+        $korban = M_korban::where('id_korban', $idKorban)->where('fk_id_kasus', $idKasus)->first();        
+        // dd($korban);
+        return view('formkorbanedit', ['idKasus' => $idKasus,'idKorban'=>$idKorban],compact('korban'));
+    }
+    public function editkorban($idKasus,$idKorban, Request $req)
+    {   
+        $this->validate($req, [
+            'nama'          => 'required',
+            'jenis_kelamin' => 'required',
+            'usia'          => 'required',
+            'ttl'           => 'required',
+            'alamat'        => 'required',
+            'telepon'       => 'required',
+            'pendidikan'    => 'required',
+            'agama'         => 'required',
+            'pekerjaan'     => 'required',
+            'status'        => 'required',
+            'difabel'       => 'required',
+            'kdrt'          => 'required',
+            'tindak_kekerasan' => 'required',
+            'trafficking'   => 'required'
+        ]);
+
+        $tindak_kekerasan = implode(",",  $req->tindak_kekerasan);
+        $trafficking = implode(",",  $req->trafficking);
+        
+        M_korban::where('id_korban', $idKorban)->where('fk_id_kasus', $idKasus)->update([
+            'nama'          => $req->nama,
+            'jenis_kelamin' => $req->jenis_kelamin,
+            'usia'          => $req->usia,
+            'ttl'           => $req->ttl,
+            'alamat'        => $req->alamat,
+            'telepon'       => $req->telepon,
+            'pendidikan'    => $req->pendidikan,
+            'agama'         => $req->agama,
+            'pekerjaan'     => $req->pekerjaan,
+            'status'        => $req->status,
+            'difabel'       => $req->difabel,
+            'kdrt'          => $req->kdrt,
+            'tindak_kekerasan' => $tindak_kekerasan,
+            'kategori_trafficking'   => $trafficking
+        ]);        
+        return redirect()->back()->with('notification', 'Korban berhasil diperbaruhi');
     }
     public function viewtambahpelaku()
     {   

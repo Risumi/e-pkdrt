@@ -11,7 +11,7 @@
                     <div class="form-group row">
                         <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputNama">
+                            <input type="text" class="form-control" id="inputNama" name="inputNama">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -32,31 +32,31 @@
                     <div class="form-group row">
                         <label for="inputUsia" class="col-sm-2 col-form-label">Usia</label>
                         <div class="col-sm-2">
-                            <input type="number" class="form-control" id="inputUsia">
+                            <input type="number" class="form-control" id="inputUsia" name="inputUsia">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputTTL" class="col-sm-2 col-form-label">Tempat Tanggal Lahir</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputTTL">
+                            <input type="text" class="form-control" id="inputTTL" name="inputTTL">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputAlamat" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-5">
-                            <textarea type="text" class="form-control" id="inputAlamat" rows="3"></textarea>
+                            <textarea type="text" class="form-control" id="inputAlamat" name="inputAlamat" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputNO" class="col-sm-2 col-form-label">No. Telp/HP</label>
                         <div class="col-sm-5">
-                            <input type="tel" class="form-control" id="inputNO">
+                            <input type="tel" class="form-control" id="inputNO" name="inputNO">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPendidikan" class="col-sm-2 col-form-label">Pendidikan</label>
                         <div class="input-group col-sm-5">
-                            <select class="custom-select" id="inputPendidikan">
+                            <select class="custom-select" id="inputPendidikan" name="inputPendidikan">
                                 <option value="TK">TK</option>
                                 <option value="SD">SD</option>
                                 <option value="SMP">SMP</option>
@@ -68,7 +68,7 @@
                     <div class="form-group row">
                         <label for="inputAgama" class="col-sm-2 col-form-label">Agama</label>
                         <div class="input-group col-sm-5">
-                            <select class="custom-select" id="inputAgama">
+                            <select class="custom-select" id="inputAgama" name="inputAgama">
                                 <option value="Islam">Islam</option>
                                 <option value="Kristen">Kristen</option>
                                 <option value="Katolik">Katolik</option>
@@ -81,7 +81,7 @@
                     <div class="form-group row">
                         <label for="inputPekerjaan" class="col-sm-2 col-form-label">Pekerjaan</label>
                         <div class="input-group col-sm-5">
-                            <select class="custom-select" id="inputPekerjaan">
+                            <select class="custom-select" id="inputPekerjaan" name="inputPekerjaan">
                                 <option value="Pedagang/Tani/Nelayan">Pedagang/Tani/Nelayan</option>
                                 <option value="Swasta/Buruh">Swasta/Buruh</option>
                                 <option value="PNS/TNI/Polri">PNS/TNI/Polri</option>
@@ -94,7 +94,7 @@
                     <div class="form-group row">
                         <label for="inputStatus" class="col-sm-2 col-form-label">Status</label>
                         <div class="col-sm-5">
-                            <select class="custom-select" id="inputStatus">
+                            <select class="custom-select" id="inputStatus" name="inputStatus">
                                 <option value="Belum Menikah">Belum Menikah</option>
                                 <option value="Menikah">Menikah</option>
                                 <option value="Duda/Janda">Duda/Janda</option>
@@ -120,7 +120,7 @@
                     <div class="form-group row">
                         <label for="inputHubungan" class="col-sm-2 col-form-label">Hubungan Dengan Korban</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputHubungan">
+                            <input type="text" class="form-control" id="inputHubungan" name="inputHubungan">
                         </div>
                     </div>
                     <div class="form-group row">
