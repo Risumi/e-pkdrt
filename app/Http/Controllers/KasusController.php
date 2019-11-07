@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\M_kasus;
+use App\Models\M_korban;
 
 class KasusController extends Controller
 {
@@ -38,7 +39,7 @@ class KasusController extends Controller
             'no_registrasi'   => 'required',
             'hari'   => 'required',
             'konselor'   => 'required',
-            'deskripsi'   => 'required',
+            'deskripsi'   => 'required'
         ]);
 
         M_kasus::where('id_kasus', $req->id_kasus)->update([
@@ -52,13 +53,58 @@ class KasusController extends Controller
 
     public function viewedit($idKasus) {   
         $kasus = M_kasus::where('id_kasus', $idKasus)->get();
-        return view('formkasus', compact('kasus'));
-        // return view('formkasus', ['idKasus' => $idKasus]);
+
+        $korban = M_korban::where([
+            'fk_id_kasus'   => $idKasus
+        ])->get();
+        return view('formkasus', compact('kasus', 'korban'));
     }
-    public function viewtambahkorban()
-    {   
-        return view('formkorban');
+
+    public function viewtambahkorban($idKasus) {
+        return view('formkorban', compact('idKasus'));
     }
+
+    public function tambahKorban($idKasus, Request $req){
+        $this->validate($req, [
+            'nama'          => 'required',
+            'jenis_kelamin' => 'required',
+            'usia'          => 'required',
+            'ttl'           => 'required',
+            'alamat'        => 'required',
+            'telepon'       => 'required',
+            'pendidikan'    => 'required',
+            'agama'         => 'required',
+            'pekerjaan'     => 'required',
+            'status'        => 'required',
+            'difabel'       => 'required',
+            'kdrt'          => 'required',
+            'tindak_kekerasan' => 'required',
+            'trafficking'   => 'required'
+        ]);
+
+        $tindak_kekerasan = implode(",",  $req->tindak_kekerasan);
+        $trafficking = implode(",",  $req->trafficking);
+
+        M_korban::create([
+            'nama'          => $req->nama,
+            'jenis_kelamin' => $req->jenis_kelamin,
+            'usia'          => $req->usia,
+            'ttl'           => $req->ttl,
+            'alamat'        => $req->alamat,
+            'telepon'       => $req->telepon,
+            'pendidikan'    => $req->pendidikan,
+            'agama'         => $req->agama,
+            'pekerjaan'     => $req->pekerjaan,
+            'status'        => $req->status,
+            'difabel'       => $req->difabel,
+            'kdrt'          => $req->kdrt,
+            'tindak_kekerasan' => $tindak_kekerasan,
+            'kategori_trafficking'   => $trafficking,
+            'fk_id_kasus'   => $idKasus
+        ]);
+        return redirect()->back()->with('notification', 'Korban berhasil ditambahkan');
+    }
+
     public function vieweditkorban($idKorban)
     {   
         return view('formkorban');

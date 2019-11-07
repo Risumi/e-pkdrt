@@ -71,6 +71,29 @@
                 <div class="card-header">Data Korban</div>
             </div>
             <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>Usia</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($korban as $data)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $data->nama }}</td>
+                                <td>{{ $data->alamat }}</td>
+                                <td>{{ $data->usia }}</td>
+                                <td><a href="#">EDIT</a></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
                 <div class="col-sm">
                     <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$kasus->id_kasus") }}' class="btn btn-dark">Korban 1</a>
                     <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$kasus->id_kasus/pelayanan/new") }}' class="btn btn-info">Layanan</a>

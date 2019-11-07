@@ -13,6 +13,22 @@
 
 Route::get('/','HomeController@view')->name('home');
 
+
+// Route::get('kasus','KasusController@view')->name('kasus');
+// Route::get('kasus/new','KasusController@viewtambah');
+// Route::post('kasus/new','KasusController@tambahKasus');
+
+// Route::get('kasus/edit/{idKasus}','KasusController@viewedit');
+// Route::post('kasus/edit/{idKasus}','KasusController@editKasus');
+
+// Route::get('kasus/edit/{idKasus}/korban/new','KasusController@viewtambahkorban');
+// Route::post('kasus/edit/{idKasus}/korban/new','KasusController@tambahKorban');
+
+// Route::get('kasus/edit/{idKasus}/korban/{idKorban}','KasusController@vieweditkorban');
+// Route::get('kasus/edit/{idKasus}/korban/{idKorban}/pelayanan/new','KasusController@viewtambahpelayanan');
+// Route::get('kasus/edit/{idKasus}/korban/{idKorban}/rujukan/new','KasusController@viewtambahrujukan');
+
+//  MASTER PIECE
 Route::group(['prefix' => 'kasus'], function () {
     Route::get('','KasusController@view')->name('kasus');
     Route::get('new','KasusController@viewtambah')->name('kasusBaru');
@@ -23,7 +39,9 @@ Route::group(['prefix' => 'kasus'], function () {
             Route::get('','KasusController@viewedit')->name('kasusEdit');     
             Route::post('','KasusController@editKasus');
             Route::group(['prefix' => 'korban'], function () {
-                Route::get('new','KasusController@viewtambahkorban')->name('korbanBaru');
+                Route::get('new','KasusController@viewtambahkorban');
+                Route::post('new','KasusController@tambahKorban');
+
                 Route::group(['prefix' => '{idKorban}'], function () {
                     Route::get('','KasusController@vieweditkorban')->name('korbanEdit');
                     Route::get('pelayanan/new','KasusController@viewtambahpelayanan')->name('pelayananBaru');
@@ -40,6 +58,7 @@ Route::group(['prefix' => 'kasus'], function () {
         });
     });
 });
+
 
 // korban/1
 // korban/1/pelayanan/new

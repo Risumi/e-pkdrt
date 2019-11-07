@@ -36,12 +36,6 @@
                 </table>
                 <div class="row">
                     <div class="col-sm">
-                        <a href="{{route('kasusEdit', ['idKasus' => 1])}}" class="btn btn-info">Kasus 1</a>
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col-sm">
                         <a href="{{route('kasusBaru')}}" class="btn btn-primary">Tambah Data</a>
                         <a href="#" class="btn btn-secondary">Cari Data</a>
                     </div>
