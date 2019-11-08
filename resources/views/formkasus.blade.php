@@ -225,7 +225,7 @@
                 <div class="col-sm">
                     <!-- <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/new") }}' class="btn btn-secondary">Tambah
                         Data</a> -->
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#btnModalTambahPelaku" id="btnModalTambahPelaku">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalTambahPelaku" id="btnModalTambahPelaku">
                       Tambah Data
                     </button>    
                 </div>
@@ -233,7 +233,7 @@
         </div>
     </div>
 @include('modal.modalTambahKorban')
-@include('modal.modalTambahKorban')
+@include('modal.modalTambahPelaku')
 <script type="text/javascript">
     if ({{ $errors->count() }} > 0){
         $('#btnModalTambahKorban').click();
