@@ -5,15 +5,22 @@
     <div class="container">
         <br>
         <div class="card card-default">
+            @if(session('notification'))
+                <div class="alert alert-success alert-dismisable">
+                    <a href="#" aria-label="close" class="close" data-dismiss="alert">&times;</a>
+                    <strong>{{ session('notification') }}</strong>
+                </div>     
+            @endif
             <div class="card text-white bg-warning mb-3">
                 <div class="card-header">Penanganan</div>
             </div>
             <div class="card-body">
-                <form>
+                <form action='{{ url("kasus/edit/$idKasus/pelaku/$idPelaku/penanganan/new") }}' method="post">
+                    @csrf
                     <div class="form-group row">
                         <label for="inputInstansi" class="col-sm-2 col-form-label">Instansi</label>
                         <div class="col-sm-5">
-                            <select class="custom-select" id="inputInstansi" name="inputInstansi">
+                            <select class="custom-select" id="inputInstansi" name="instansi">
                                 <option value="Bapas">Bapas</option>
                                 <option value="Dinas Kesehatan">Dinas Kesehatan</option>
                                 <option value="UPPA Polresta">UPPA Polresta</option>
@@ -26,9 +33,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputJenis" class="col-sm-2 col-form-label">Instansi</label>
+                        <label for="inputJenis" class="col-sm-2 col-form-label">Jenis Proses</label>
                         <div class="col-sm-5">
-                            <select class="custom-select" id="inputJenis" name="inputJenis">                                
+                            <select class="custom-select" id="inputJenis" name="jenis_proses">                                
                                 <option value="Pemeriksaan">Pemeriksaan</option>
                                 <option value="Penyelidikan">Penyelidikan</option>
                                 <option value="Penyidikan">Penyidikan</option>
@@ -49,13 +56,13 @@
                     <div class="form-group row">
                         <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi Proses</label>
                         <div class="col-sm-5">
-                            <textarea type="text" class="form-control" id="inputDeskripsi" name="inputDeskripsi" rows="5"></textarea>
+                            <textarea type="text" class="form-control" id="inputDeskripsi" name="deskripsi_proses" rows="5"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-5">
-                            <a href="#" class="btn btn-primary">Update Data</a>
+                            <button type="submit" class="btn btn-primary">Tambah Penanganan</button>
                         </div>
                     </div>
                 </form>

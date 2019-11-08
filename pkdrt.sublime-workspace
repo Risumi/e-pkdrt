@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"tr",
+				"trafficking"
+			],
+			[
 				"tra",
 				"transaction_id"
 			],
@@ -22,10 +26,6 @@
 			[
 				"sq",
 				"sqlCek"
-			],
-			[
-				"tr",
-				"transaction_id"
 			],
 			[
 				"t",
@@ -523,19 +523,7 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 1838,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "@include('header')\n\n<body>\n\n    <div class=\"container\">\n        <br>\n        <div class=\"card card-default\">\n            <div class=\"card text-white bg-warning mb-3\">\n                <div class=\"card-header\">Data Kasus</div>\n            </div>\n            <div class=\"card-body\">\n                <form action=\"{{ url('/kasus/new') }}\" method=\"post\">\n                    {{ $csrv }}\n                    <div class=\"form-group row\">\n                        <label for=\"inputRegistrasi\" class=\"col-sm-2 col-form-label\">No. Registrasi</label>\n                        <div class=\"col-sm-5\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputRegistrasi\" name=\"no-registrasi\">\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label for=\"inputTglRegist\" class=\"col-sm-2 col-form-label\">Hari/Tanggal</label>\n                        <div class=\"col-sm-5\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputTglRegist\" name=\"hari\">\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label for=\"inputKonselor\" class=\"col-sm-2 col-form-label\">Konselor</label>\n                        <div class=\"col-sm-5\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputKonselor\" name=\"konselor\">\n                        </div>\n                    </div>                    \n                    <div class=\"form-group row\">\n                        <label for=\"inputDeskripsi\" class=\"col-sm-2 col-form-label\">Deskripsi Kasus</label>\n                        <div class=\"col-sm-5\">\n                            <textarea type=\"text\" class=\"form-control\" id=\"inputDeskripsi\" rows=\"5\" name=\"deskripsi\"></textarea>\n                        </div>\n                    </div>                                    \n                    <div class=\"form-group row\">\n                        <label class=\"col-sm-2 col-form-label\"></label>\n                        <div class=\"col-sm-5\">\n                            <button class=\"btn btn-primary\">Tambah Data</button>\n                        </div>\n                    </div>\n                </form>\n            </div>\n        </div>\n        <br>        \n    </div>\n</body>\n</html>\n",
-			"file": "resources/views/formkasusnew.blade.php",
-			"file_size": 2382,
-			"file_write_time": 132175947057071385,
-			"settings":
-			{
-				"buffer_size": 2333,
+				"buffer_size": 3001,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -544,7 +532,51 @@
 			"file": "app/Http/Controllers/KasusController.php",
 			"settings":
 			{
-				"buffer_size": 1122,
+				"buffer_size": 4212,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/formkasus.blade.php",
+			"settings":
+			{
+				"buffer_size": 6372,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Models/M_korban.php",
+			"settings":
+			{
+				"buffer_size": 530,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/kasus.blade.php",
+			"settings":
+			{
+				"buffer_size": 1742,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/formkasusnew.blade.php",
+			"settings":
+			{
+				"buffer_size": 3523,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Models/M_kasus.php",
+			"settings":
+			{
+				"buffer_size": 395,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -600,6 +632,7 @@
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Providers",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/config",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/database",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/database/factories",
@@ -611,17 +644,19 @@
 	],
 	"file_history":
 	[
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkorban.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_korban.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkasusnew.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/config/app.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/.env",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/config/database.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formpelaku.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/header.blade.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkorban.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkasus.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/Controller.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/home.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/HomeController.php",
 		"/E/Andri Wijaya/htdocs/skripsi/app/Models/M_pengguna.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/config/app.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/config/database.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/env",
 		"/C/Users/Wijaya Kusuma/Downloads/app.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/vendor/hamcrest/hamcrest-php/.coveralls.yml",
@@ -736,13 +771,11 @@
 		"/E/Andri Wijaya/htdocs/skripsi/app/Http/Controllers/HomeController.php",
 		"/E/Andri Wijaya/htdocs/skripsi/app/Http/Middleware/CheckDB.php",
 		"/E/Andri Wijaya/htdocs/skripsi/app/Console/Kernel.php",
-		"/E/Andri Wijaya/htdocs/skripsi/app/Http/Controllers/PenggunaController.php",
-		"/E/Andri Wijaya/htdocs/skripsi/app/User.php",
-		"/E/Andri Wijaya/htdocs/skripsi/resources/views/backlogREAL.blade.php"
+		"/E/Andri Wijaya/htdocs/skripsi/app/Http/Controllers/PenggunaController.php"
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -756,6 +789,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pendidikan",
+			"tindak_kekerasan",
+			"></",
+			">\n",
+			",\n",
 			"true"
 		],
 		"highlight": true,
@@ -764,6 +802,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"tindak_kekerasan[]"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -783,15 +822,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1838,
+						"buffer_size": 3001,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								638,
-								638
+								1917,
+								1917
 							]
 						],
 						"settings":
@@ -801,27 +840,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 28.0,
+						"translation.y": 328.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "resources/views/formkasusnew.blade.php",
+					"file": "app/Http/Controllers/KasusController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2333,
+						"buffer_size": 4212,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								374,
-								374
+								1832,
+								1832
 							]
 						],
 						"settings":
@@ -831,7 +870,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 55.0,
+						"translation.y": 466.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -839,19 +878,19 @@
 				},
 				{
 					"buffer": 2,
-					"file": "app/Http/Controllers/KasusController.php",
+					"file": "resources/views/formkasus.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1122,
+						"buffer_size": 6372,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								314,
-								314
+								4343,
+								4343
 							]
 						],
 						"settings":
@@ -861,10 +900,130 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 42.0,
+						"translation.y": 971.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/Models/M_korban.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 530,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								370,
+								370
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "resources/views/kasus.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1742,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								816,
+								847
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "resources/views/formkasusnew.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3523,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/Models/M_kasus.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 395,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								395
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -909,7 +1068,7 @@
 	"project": "pkdrt.sublime-project",
 	"replace":
 	{
-		"height": 42.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":

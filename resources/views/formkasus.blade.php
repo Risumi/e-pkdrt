@@ -16,7 +16,7 @@
                 <div class="card-header">Data Kasus</div>
             </div>
             @php
-            $kasus = $kasus[0];
+                $kasus = $kasus[0];
             @endphp
             <div class="card-body">
                 <form action='{{ url("/kasus/edit/$kasus->id_kasus") }}' method="post">
@@ -84,25 +84,47 @@
                             <th>Nama</th>
                             <th>Alamat</th>
                             <th>Usia</th>
+                            <th>Jenis kelamin</th>
+                            <th>Tindak Kekerasan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($korban as $data)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$kasus->id_kasus") }}'
-                                    >{{ $data->nama }}</a>
-                            <td>{{ $data->alamat }}</td>
-                            <td>{{ $data->usia }}</td>
-                            <td>
-                                <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$kasus->id_kasus/pelayanan/new") }}'
-                                    class="btn btn-info">Layanan</a>
-                                <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$kasus->id_kasus/rujukan/new") }}'
-                                    class="btn btn-secondary">Rujukan</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban") }}'
+                                        >{{ $data->nama }}</a>
+                                <td>{{ $data->alamat }}</td>
+                                <td>{{ $data->usia }}</td>
+                                <td>{{ $data->jenis_kelamin }}</td>
+                                <td>{{ $data->tindak_kekerasan }}</td>
+                                <td>
+                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban/pelayanan/new") }}'
+                                        class="btn btn-info btn-sm">Layanan</a>
+                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban/rujukan/new") }}'
+                                        class="btn btn-secondary btn-sm">Rujukan</a>
+                                </td>
+                            </tr>
+                            <tr style="font-weight: bold">
+                                <td></td>
+                                <td>Instansi</td>
+                                <td>Pelayanan</td>
+                                <td>Detail Pelayanan</td>
+                                <td>Deskripsi Pelayanan</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Instansi</td>
+                                <td>Pelayanan</td>
+                                <td>Detail Pelayanan</td>
+                                <td>Deskripsi Pelayanan</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>                
@@ -119,13 +141,55 @@
                 <div class="card-header">Data Pelaku</div>
             </div>
             <div class="card-body">
-                <div class="col-sm">
-                    <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/$kasus->id_kasus") }}'
-                        class="btn btn-info">Pelaku 1</a>
-                    <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/$kasus->id_kasus/penanganan/new") }}'
-                        class="btn btn-light">Penanganan</a>
-                </div>
-                <br>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama</th>
+                            <th>Alamat</th>
+                            <th>Usia</th>
+                            <th>Jenis kelamin</th>
+                            <th>Hubungan Dengan Korban</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($pelaku as $data)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/$data->id_pelaku") }}'
+                                        >{{ $data->nama }}</a>
+                                <td>{{ $data->alamat }}</td>
+                                <td>{{ $data->usia }}</td>
+                                <td>{{ $data->jenis_kelamin }}</td>
+                                <td>{{ $data->hubungan_dengan_korban }}</td>
+                                <td>
+                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/$data->id_pelaku/penanganan/new") }}'
+                                        class="btn btn-info btn-sm">Penanganan</a>
+                                </td>
+                            </tr>
+                            <tr style="font-weight: bold">
+                                <td></td>
+                                <td>Instansi</td>
+                                <td>Pelayanan</td>
+                                <td>Detail Pelayanan</td>
+                                <td>Deskripsi Pelayanan</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Instansi</td>
+                                <td>Pelayanan</td>
+                                <td>Detail Pelayanan</td>
+                                <td>Deskripsi Pelayanan</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
                 <div class="col-sm">
                     <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/new") }}' class="btn btn-secondary">Tambah
                         Data</a>
