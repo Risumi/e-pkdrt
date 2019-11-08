@@ -64,7 +64,7 @@ class KasusController extends Controller
         $rujukan = M_rujukan::where([
             'fk_id_kasus'   => $idKasus
         ])->get();
-        return view('formkasus', compact('kasus', 'korban', 'pelaku','pelayanan','penanganan','rujukan'));
+        return view('formkasus', compact('idKasus', 'kasus', 'korban', 'pelaku','pelayanan','penanganan','rujukan'));
     }
     public function viewtambahkorban($idKasus) {
         return view('formkorban', compact('idKasus'));

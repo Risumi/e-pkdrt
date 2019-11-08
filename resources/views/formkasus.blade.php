@@ -152,8 +152,11 @@
                 </table>                
                 <br>
                 <div class="col-sm">
-                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/new") }}' class="btn btn-primary">Tambah
-                        Data</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahKorban" id="btnModalTambahKorban">
+                      Tambah Data
+                    </button>
+                    <!-- <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/new") }}' class="btn btn-primary">Tambah
+                        Data</a> -->
                 </div>
             </div>
         </div>
@@ -220,11 +223,21 @@
                     </tbody>
                 </table>
                 <div class="col-sm">
-                    <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/new") }}' class="btn btn-secondary">Tambah
-                        Data</a>
+                    <!-- <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/new") }}' class="btn btn-secondary">Tambah
+                        Data</a> -->
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#btnModalTambahPelaku" id="btnModalTambahPelaku">
+                      Tambah Data
+                    </button>    
                 </div>
             </div>
         </div>
     </div>
+@include('modal.modalTambahKorban')
+@include('modal.modalTambahKorban')
+<script type="text/javascript">
+    if ({{ $errors->count() }} > 0){
+        $('#btnModalTambahKorban').click();
+    }
+</script>
 </body>
 </html>
