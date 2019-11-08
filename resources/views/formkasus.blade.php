@@ -176,6 +176,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                    
                         @foreach($pelaku as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>

@@ -184,47 +184,47 @@
                             Korban</label>
                         <div class="col-sm-5">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Fisik" id="checkKekerasan1" name="tindak_kekerasan[]">
+                                <input class="form-check-input" type="checkbox" value="Fisik" id="checkKekerasan1" name="tindak_kekerasan[]" {{ cekComboBox($kekerasan, 'Fisik') }}>
                                 <label class="form-check-label" for="checkKekerasan1">
                                     Fisik
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Psikis" id="checkKekerasan2" name="tindak_kekerasan[]">
+                                <input class="form-check-input" type="checkbox" value="Psikis" id="checkKekerasan2" name="tindak_kekerasan[]" {{ cekComboBox($kekerasan, 'Psikis') }}>
                                 <label class="form-check-label" for="checkKekerasan2">
                                     Psikis
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Seksual" id="checkKekerasan3" name="tindak_kekerasan[]">
+                                <input class="form-check-input" type="checkbox" value="Seksual" id="checkKekerasan3" name="tindak_kekerasan[]" {{ cekComboBox($kekerasan, 'Seksual') }}>
                                 <label class="form-check-label" for="checkKekerasan3">
                                     Seksual
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Penelantaran"
-                                    id="checkKekerasan4" name="tindak_kekerasan[]">
+                                    id="checkKekerasan4" name="tindak_kekerasan[]" {{ cekComboBox($kekerasan, 'Penelantaran') }}>
                                 <label class="form-check-label" for="checkKekerasan4">
                                     Penelantaran
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Trafficking"
-                                    id="checkKekerasan5" name="tindak_kekerasan[]">
+                                    id="checkKekerasan5" name="tindak_kekerasan[]" {{ cekComboBox($kekerasan, 'Trafficking') }}>
                                 <label class="form-check-label" for="checkKekerasan5">
                                     Trafficking
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Eksploitasi"
-                                    id="checkKekerasan6" name="tindak_kekerasan[]">
+                                    id="checkKekerasan6" name="tindak_kekerasan[]" {{ cekComboBox($kekerasan, 'Eksploitasi') }}>
                                 <label class="form-check-label" for="checkKekerasan6">
                                     Eksploitasi
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Lainnya" id="checkKekerasan7" name="tindak_kekerasan[]">
-                                <label class="form-check-label" for="checkKekerasan7">
+                                <label class="form-check-label" for="checkKekerasan7" {{ cekComboBox($kekerasan, 'Lainnya') }}>
                                     Lainnya
                                 </label>
                             </div>
@@ -233,33 +233,36 @@
                             @endif
                         </div>
                     </div>
+                    @php
+                        $trafficking = explode(",",($korban->kategori_trafficking));                    
+                    @endphp
                     <div class="form-group row">
                         <label for="inputTrafficking" class="col-sm-2 col-form-label">Kategori Trafficking</label>
                         <div class="col-sm-5">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Eksploitasi Seksual"
-                                    id="checkTrafficking1" name="trafficking[]">
+                                    id="checkTrafficking1" name="trafficking[]" {{ cekComboBox($trafficking, 'Eksploitasi Seksual') }}>
                                 <label class="form-check-label" for="checkTrafficking1">
                                     Eksploitasi Seksual
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Perbudakan"
-                                    id="checkTrafficking2" name="trafficking[]">
+                                    id="checkTrafficking2" name="trafficking[]" {{ cekComboBox($trafficking, 'Perbudakan') }}>
                                 <label class="form-check-label" for="checkTrafficking2">
                                     Perbudakan
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Perdagangan Organ Tubuh"
-                                    id="checkTrafficking3" name="trafficking[]">
+                                    id="checkTrafficking3" name="trafficking[]" {{ cekComboBox($trafficking, 'Perdagangan Organ Tubuh') }}>
                                 <label class="form-check-label" for="checkTrafficking3">
                                     Perdagangan Organ Tubuh
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="Perdagangan Narkoba"
-                                    id="checkTrafficking3" name="trafficking[]">
+                                    id="checkTrafficking3" name="trafficking[]" {{ cekComboBox($trafficking, 'Perdagangan Narkoba') }}>
                                 <label class="form-check-label" for="checkTrafficking3">
                                     Perdagangan Narkoba
                                 </label>
@@ -276,6 +279,15 @@
                         </div>
                     </div>
                 </form>
+                <?php
+                    function cekComboBox($array, $value) {
+                        for ($i = 0; $i < count($array); $i++) { 
+                            if($array[$i] == $value)
+                                return "checked";
+                        }
+                        return "";
+                    }
+                ?>
             </div>
         </div>
         <br>
