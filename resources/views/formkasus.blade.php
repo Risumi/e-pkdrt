@@ -107,24 +107,46 @@
                                         class="btn btn-secondary btn-sm">Rujukan</a>
                                 </td>
                             </tr>
-                            <tr style="font-weight: bold">
-                                <td></td>
-                                <td>Instansi</td>
-                                <td>Pelayanan</td>
-                                <td>Detail Pelayanan</td>
-                                <td>Deskripsi Pelayanan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>Instansi</td>
-                                <td>Pelayanan</td>
-                                <td>Detail Pelayanan</td>
-                                <td>Deskripsi Pelayanan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            @foreach($rujukan as $dataRujukan)
+                                @if(count($rujukan)!=0 && $dataRujukan->fk_id_korban == $data->id_korban&&$loop->iteration==1)
+                                <tr style="font-weight: bold">
+                                    <td></td>
+                                    <td>Tanggal Rujukan</td>
+                                    <td>Kota</td>
+                                    <td>Instansi</td>
+                                    <td>Deskripsi Rujukan</td>                                
+                                </tr>
+                                @endif
+                                @if($dataRujukan->fk_id_korban == $data->id_korban)
+                                <tr>                            
+                                    <td></td>
+                                    <td>{{$dataRujukan->tanggal_rujukan}}</td>
+                                    <td>{{$dataRujukan->kota}}</td>
+                                    <td>{{$dataRujukan->instansi}}</td>
+                                    <td>{{$dataRujukan->deskripsi_rujukan}}</td>                                    
+                                </tr>
+                                @endif
+                            @endforeach                                                        
+                            @foreach($pelayanan as $dataPelayanan)
+                                @if(count($pelayanan)!=0 && $dataPelayanan->fk_id_korban == $data->id_korban&&$loop->iteration==1)
+                                <tr style="font-weight: bold">
+                                    <td></td>
+                                    <td>Instansi</td>
+                                    <td>Pelayanan</td>
+                                    <td>Detail Pelayanan</td>
+                                    <td>Deskripsi Pelayanan</td>                                
+                                </tr>
+                                @endif
+                                @if($dataPelayanan->fk_id_korban == $data->id_korban)
+                                <tr>                            
+                                    <td></td>
+                                    <td>{{$dataPelayanan->instansi}}</td>
+                                    <td>{{$dataPelayanan->pelayanan}}</td>
+                                    <td>{{$dataPelayanan->detail_pelayanan}}</td>
+                                    <td>{{$dataPelayanan->deskripsi_pelayanan}}</td>                                    
+                                </tr>
+                                @endif
+                            @endforeach                            
                         @endforeach
                     </tbody>
                 </table>                
@@ -168,25 +190,31 @@
                                     <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/$data->id_pelaku/penanganan/new") }}'
                                         class="btn btn-info btn-sm">Penanganan</a>
                                 </td>
-                            </tr>
-                            <tr style="font-weight: bold">
-                                <td></td>
-                                <td>Instansi</td>
-                                <td>Pelayanan</td>
-                                <td>Detail Pelayanan</td>
-                                <td>Deskripsi Pelayanan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>Instansi</td>
-                                <td>Pelayanan</td>
-                                <td>Detail Pelayanan</td>
-                                <td>Deskripsi Pelayanan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            </tr>                            
+                            @foreach($penanganan as $dataPenanganan)
+                                @if(count($penanganan)!=0 && $dataPenanganan->fk_id_pelaku == $data->id_pelaku&&$loop->iteration==1)
+                                <tr style="font-weight: bold">
+                                    <td></td>
+                                    <td>Instansi</td>
+                                    <td>Proses Penanganan</td>
+                                    <td>Deskripsi Proses</td>
+                                    <!-- <td></td>
+                                    <td></td>
+                                    <td></td> -->
+                                </tr>
+                                @endif
+                                @if($dataPenanganan->fk_id_pelaku == $data->id_pelaku)
+                                <tr>                            
+                                    <td></td>
+                                    <td>{{$dataPenanganan->instansi}}</td>
+                                    <td>{{$dataPenanganan->jenis_proses}}</td>
+                                    <td>{{$dataPenanganan->deskripsi_proses}}</td>
+                                    <!-- <td></td>
+                                    <td></td>
+                                    <td></td> -->
+                                </tr>
+                                @endif
+                            @endforeach
                         @endforeach
                     </tbody>
                 </table>
@@ -198,5 +226,4 @@
         </div>
     </div>
 </body>
-
 </html>

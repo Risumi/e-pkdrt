@@ -66,7 +66,19 @@ class KasusController extends Controller
             'fk_id_kasus'   => $idKasus
         ])->get();
 
-        return view('formkasus', compact('kasus', 'korban', 'pelaku'));
+        $pelayanan = M_pelayanan::where([
+            'fk_id_kasus'   => $idKasus
+        ])->get();
+
+        $penanganan = M_penanganan::where([
+            'fk_id_kasus'   => $idKasus
+        ])->get();
+
+        $rujukan = M_rujukan::where([
+            'fk_id_kasus'   => $idKasus
+        ])->get();
+
+        return view('formkasus', compact('kasus', 'korban', 'pelaku','pelayanan','penanganan','rujukan'));
     }
 
     public function viewtambahkorban($idKasus) {
@@ -253,8 +265,42 @@ class KasusController extends Controller
         return redirect()->back()->with('notification', 'Pelaku berhasil ditambahkan');
     }
 
-    public function vieweditpelaku($idPelaku) {   
-        return view('formpelaku');
+    public function vieweditpelaku($idKasus,$idPelaku) {
+        $pelaku = M_pelaku::where('id_pelaku', $idPelaku)->where('fk_id_kasus', $idKasus)->first();            
+        return view('formpelakuedit',compact('idKasus', 'idPelaku'),compact('pelaku'));
+    }
+
+    public function editpelaku($idKasus,$idPelaku, Request $req) {
+        $this->validate($req, [
+            'nama'          => 'required',
+            'jenis_kelamin' => 'required',
+            'usia'          => 'required',
+            'ttl'           => 'required',
+            'alamat'        => 'required',
+            'telepon'       => 'required',
+            'pendidikan'    => 'required',
+            'agama'         => 'required',
+            'pekerjaan'     => 'required',
+            'status'        => 'required',
+            'difabel'       => 'required',
+            'hubungan_dengan_korban' => 'required'
+        ]);
+
+        M_pelaku::where('id_pelaku', $idPelaku)->where('fk_id_kasus', $idKasus)->update([
+            'nama'          => $req->nama,
+            'jenis_kelamin' => $req->jenis_kelamin,
+            'usia'          => $req->usia,
+            'ttl'           => $req->ttl,
+            'alamat'        => $req->alamat,
+            'telepon'       => $req->telepon,
+            'pendidikan'    => $req->pendidikan,
+            'agama'         => $req->agama,
+            'pekerjaan'     => $req->pekerjaan,
+            'status'        => $req->status,
+            'difabel'       => $req->difabel,
+            'hubungan_dengan_korban' => $req->hubungan_dengan_korban
+        ]);        
+        return redirect()->back()->with('notification', 'Pelaku berhasil diperbaruhi');
     }
 
     public function viewtambahpenanganan($idKasus, $idPelaku) {   

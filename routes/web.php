@@ -41,21 +41,20 @@ Route::group(['prefix' => 'kasus'], function () {
             Route::group(['prefix' => 'korban'], function () {
                 Route::get('new','KasusController@viewtambahkorban');
                 Route::post('new','KasusController@tambahKorban');
-
                 Route::group(['prefix' => '{idKorban}'], function () {
                     Route::get('','KasusController@vieweditkorban')->name('korbanEdit');
                     Route::post('','KasusController@editkorban');
-
                     Route::get('pelayanan/new','KasusController@viewtambahpelayanan');
                     Route::post('pelayanan/new','KasusController@tambahPelayanan');
                     Route::get('rujukan/new','KasusController@viewtambahrujukan');
                     Route::post('rujukan/new','KasusController@tambahRujukan');
                 });
             });    
-            Route::group(['prefix' => 'pelaku'], function () {
+            Route::group(['prefix' => 'pelaku'], function () {                
                 Route::get('new','KasusController@viewtambahpelaku')->name('pelakuBaru');
                 Route::post('new','KasusController@tambahPelaku');
                 Route::group(['prefix' => '{idPelaku}'], function () {
+                    Route::post('','KasusController@editPelaku');
                     Route::get('','KasusController@vieweditpelaku')->name('pelakuEdit');                
                     Route::get('penanganan/new','KasusController@viewtambahpenanganan')->name('penangananBaru');                
                     Route::post('penanganan/new','KasusController@tambahPenanganan');
