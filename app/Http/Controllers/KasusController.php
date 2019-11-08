@@ -71,7 +71,7 @@ class KasusController extends Controller
             'fk_id_kasus'   => $idKasus
         ])->get();
 
-        return view('formkasus', compact('kasus', 'korban', 'pelaku'));
+        return view('formkasus', compact('kasus', 'korban', 'pelaku', 'idKasus'));
     }
 
     public function viewtambahkorban($idKasus) {
