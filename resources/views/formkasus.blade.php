@@ -90,20 +90,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($korban as $data)
+                        <?php 
+                        $indexKorban = 1;
+                        for ($i = 0; $i < count($korban); $i++) {
+                            $id_kasus = $korban[$i]->id_kasus;
+                            $id_korban = $korban[$i]->id_korban;
+                        ?>
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $i }}</td>
                                 <td>
-                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban") }}'
-                                        >{{ $data->nama }}</a>
-                                <td>{{ $data->alamat }}</td>
-                                <td>{{ $data->usia }}</td>
-                                <td>{{ $data->jenis_kelamin }}</td>
-                                <td>{{ $data->tindak_kekerasan }}</td>
+                                    <a href='{{ url("kasus/edit/$id_kasus/korban/$id_korban") }}'
+                                        >{{ $korban[$i]->nama }}</a>
+                                <td>{{ $korban[$i]->alamat }}</td>
+                                <td>{{ $korban[$i]->usia }}</td>
+                                <td>{{ $korban[$i]->jenis_kelamin }}</td>
+                                <td>{{ $korban[$i]->hubungan_dengan_korban }}</td>
                                 <td>
-                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban/pelayanan/new") }}'
+                                    <a href='{{ url("kasus/edit/$id_kasus/korban/$id_korban/pelayanan/new") }}'
                                         class="btn btn-info btn-sm">Layanan</a>
-                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban/rujukan/new") }}'
+                                    <a href='{{ url("kasus/edit/$id_kasus/korban/$id_korban/rujukan/new") }}'
                                         class="btn btn-secondary btn-sm">Rujukan</a>
                                 </td>
                             </tr>
@@ -116,16 +121,31 @@
                                 <td></td>
                                 <td></td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td>Instansi</td>
-                                <td>Pelayanan</td>
-                                <td>Detail Pelayanan</td>
-                                <td>Deskripsi Pelayanan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        @endforeach
+                            <?php 
+                              for ($j = $i; $j < count($korban); $j++) {  
+                                if($korban[$i]->id_korban == $korban[$j]->id_korban){
+                            ?>
+                                <tr>
+                                    <td></td>
+                                    <td>{{ $korban[$j]->instansi }}</td>
+                                    <td>{{ $korban[$j]->pelayanan }}</td>
+                                    <td>{{ $korban[$j]->detail_pelayanan }}</td>
+                                    <td>{{ $korban[$j]->deskripsi_pelayanan }}</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            <?php }  else {
+                                if($j - 1 < 0)
+                                    $i = 0;
+                                else
+                                    $i = $j - 1;
+                                break;
+                            }
+                                if($j == count($korban) - 1)
+                                    $i = $j;
+                               } 
+                            ?>
+                        <?php } ?>
                     </tbody>
                 </table>                
                 <br>
@@ -153,7 +173,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>                        
                         @foreach($pelaku as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>

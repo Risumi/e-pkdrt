@@ -58,9 +58,14 @@ class KasusController extends Controller
     public function viewedit($idKasus) {   
         $kasus = M_kasus::where('id_kasus', $idKasus)->get();
 
-        $korban = M_korban::where([
-            'fk_id_kasus'   => $idKasus
-        ])->get();
+        // $korban = M_korban::where([
+        //     'fk_id_kasus'   => $idKasus
+        // ])->get();
+
+        $korban = M_kasus::where('id_kasus', $idKasus)
+            ->join('korban', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')
+            ->leftjoin('pelayanan', 'korban.id_korban', '=', 'pelayanan.fk_id_korban')
+            ->get();
 
         $pelaku = M_pelaku::where([
             'fk_id_kasus'   => $idKasus
