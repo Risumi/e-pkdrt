@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,30 +9,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/','HomeController@view')->name('home');
-
-
 // Route::get('kasus','KasusController@view')->name('kasus');
 // Route::get('kasus/new','KasusController@viewtambah');
 // Route::post('kasus/new','KasusController@tambahKasus');
-
 // Route::get('kasus/edit/{idKasus}','KasusController@viewedit');
 // Route::post('kasus/edit/{idKasus}','KasusController@editKasus');
-
 // Route::get('kasus/edit/{idKasus}/korban/new','KasusController@viewtambahkorban');
 // Route::post('kasus/edit/{idKasus}/korban/new','KasusController@tambahKorban');
-
 // Route::get('kasus/edit/{idKasus}/korban/{idKorban}','KasusController@vieweditkorban');
 // Route::get('kasus/edit/{idKasus}/korban/{idKorban}/pelayanan/new','KasusController@viewtambahpelayanan');
 // Route::get('kasus/edit/{idKasus}/korban/{idKorban}/rujukan/new','KasusController@viewtambahrujukan');
-
 //  MASTER PIECE
 Route::group(['prefix' => 'kasus'], function () {
     Route::get('','KasusController@view')->name('kasus');
     Route::get('new','KasusController@viewtambah')->name('kasusBaru');
     Route::post('new','KasusController@tambahKasus');
-
     Route::group(['prefix' => 'edit'], function () {
         Route::group(['prefix' => '{idKasus}'], function () {
             Route::get('','KasusController@viewedit')->name('kasusEdit');     
@@ -41,21 +32,20 @@ Route::group(['prefix' => 'kasus'], function () {
             Route::group(['prefix' => 'korban'], function () {
                 Route::get('new','KasusController@viewtambahkorban');
                 Route::post('new','KasusController@tambahKorban');
-
                 Route::group(['prefix' => '{idKorban}'], function () {
                     Route::get('','KasusController@vieweditkorban')->name('korbanEdit');
                     Route::post('','KasusController@editkorban');
-
                     Route::get('pelayanan/new','KasusController@viewtambahpelayanan');
                     Route::post('pelayanan/new','KasusController@tambahPelayanan');
                     Route::get('rujukan/new','KasusController@viewtambahrujukan');
                     Route::post('rujukan/new','KasusController@tambahRujukan');
                 });
             });    
-            Route::group(['prefix' => 'pelaku'], function () {
+            Route::group(['prefix' => 'pelaku'], function () {                
                 Route::get('new','KasusController@viewtambahpelaku')->name('pelakuBaru');
                 Route::post('new','KasusController@tambahPelaku');
                 Route::group(['prefix' => '{idPelaku}'], function () {
+                    Route::post('','KasusController@editPelaku');
                     Route::get('','KasusController@vieweditpelaku')->name('pelakuEdit');                
                     Route::get('penanganan/new','KasusController@viewtambahpenanganan')->name('penangananBaru');                
                     Route::post('penanganan/new','KasusController@tambahPenanganan');
@@ -64,12 +54,9 @@ Route::group(['prefix' => 'kasus'], function () {
         });
     });
 });
-
-
 // korban/1
 // korban/1/pelayanan/new
 // korban/1/rujukan/new
 // korban/new
-
 // pelaku/1
 // pelaku/1/penanganan/new

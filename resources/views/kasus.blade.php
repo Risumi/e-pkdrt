@@ -12,22 +12,22 @@
                     <thead>
                         <tr>
                             <th>No.</th>
+                            <th>Action</th>
                             <th>No. Registrasi</th>
                             <th>Hari, tanggal</th>
                             <th>Konselor</th>
-                            <th>Deskripsi</th>
-                            <th>Action</th>
+                            <th>Deskripsi</th>                            
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($kasus as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td><a href='{{ url("kasus/edit/$data->id_kasus") }}' class='btn btn-info'>EDIT</a>
                                 <td>{{ $data->nomor_registrasi }}</td>
                                 <td>{{ $data->hari }}</td>
                                 <td>{{ $data->konselor }}</td>
-                                <td>{{ $data->deskripsi }}</td>
-                                <td><a href='{{ url("kasus/edit/$data->id_kasus") }}'>EDIT</a>
+                                <td>{{ $data->deskripsi }}</td>                                
                                 </td>
 
                             </tr>

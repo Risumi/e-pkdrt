@@ -27,8 +27,9 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `kasus`
 --
+DROP TABLE IF EXISTS `kasus`;
 
-CREATE TABLE `kasus` (
+CREATE TABLE IF NOT EXISTS `kasus` (
   `id_kasus` int(11) NOT NULL,
   `nomor_registrasi` varchar(100) NOT NULL,
   `hari` varchar(100) NOT NULL,
@@ -48,8 +49,9 @@ INSERT INTO `kasus` (`id_kasus`, `nomor_registrasi`, `hari`, `konselor`, `deskri
 --
 -- Table structure for table `korban`
 --
+DROP TABLE IF EXISTS `korban`;
 
-CREATE TABLE `korban` (
+CREATE TABLE IF NOT EXISTS `korban` (
   `id_korban` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `jenis_kelamin` varchar(20) NOT NULL,
@@ -81,8 +83,9 @@ INSERT INTO `korban` (`id_korban`, `nama`, `jenis_kelamin`, `usia`, `ttl`, `alam
 --
 -- Table structure for table `pelaku`
 --
+DROP TABLE IF EXISTS `pelaku`;
 
-CREATE TABLE `pelaku` (
+CREATE TABLE IF NOT EXISTS`pelaku` (
   `id_pelaku` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `jenis_kelamin` varchar(20) NOT NULL,
@@ -111,8 +114,9 @@ INSERT INTO `pelaku` (`id_pelaku`, `nama`, `jenis_kelamin`, `usia`, `ttl`, `alam
 --
 -- Table structure for table `pelayanan`
 --
+DROP TABLE IF EXISTS `pelayanan`;
 
-CREATE TABLE `pelayanan` (
+CREATE TABLE IF NOT EXISTS`pelayanan` (
   `id_pelayanan` int(11) NOT NULL,
   `instansi` varchar(50) NOT NULL,
   `pelayanan` varchar(255) NOT NULL,
@@ -135,8 +139,9 @@ INSERT INTO `pelayanan` (`id_pelayanan`, `instansi`, `pelayanan`, `detail_pelaya
 --
 -- Table structure for table `penanganan`
 --
+DROP TABLE IF EXISTS `penanganan`;
 
-CREATE TABLE `penanganan` (
+CREATE TABLE IF NOT EXISTS `penanganan` (
   `id_penanganan` int(11) NOT NULL,
   `instansi` varchar(50) NOT NULL,
   `jenis_proses` varchar(50) NOT NULL,
@@ -158,7 +163,9 @@ INSERT INTO `penanganan` (`id_penanganan`, `instansi`, `jenis_proses`, `deskrips
 -- Table structure for table `rujukan`
 --
 
-CREATE TABLE `rujukan` (
+DROP TABLE IF EXISTS `rujukan`;
+
+CREATE TABLE IF NOT EXISTS `rujukan` (
   `id_rujukan` int(11) NOT NULL,
   `tanggal_rujukan` varchar(100) NOT NULL,
   `kota` varchar(50) NOT NULL,

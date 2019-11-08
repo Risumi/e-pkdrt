@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\M_kasus;
 use App\Models\M_korban;
@@ -9,7 +7,6 @@ use App\Models\M_pelayanan;
 use App\Models\M_rujukan;
 use App\Models\M_pelaku;
 use App\Models\M_penanganan;
-
 class KasusController extends Controller
 {
     public function view() {   
@@ -20,7 +17,6 @@ class KasusController extends Controller
     {   
         return view('formkasusnew');
     }
-
     public function tambahKasus(Request $req){
         $this->validate($req, [
             'no_registrasi'   => 'required',
@@ -28,7 +24,6 @@ class KasusController extends Controller
             'konselor'   => 'required',
             'deskripsi'   => 'required',
         ]);
-
         M_kasus::create([
             'nomor_registrasi' => $req->no_registrasi,
             'hari'             => $req->hari,
@@ -37,7 +32,6 @@ class KasusController extends Controller
         ]);
         return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
     }
-
     public function editKasus(Request $req){
         $this->validate($req, [
             'no_registrasi'   => 'required',
@@ -45,7 +39,6 @@ class KasusController extends Controller
             'konselor'   => 'required',
             'deskripsi'   => 'required'
         ]);
-
         M_kasus::where('id_kasus', $req->id_kasus)->update([
             'nomor_registrasi' => $req->no_registrasi,
             'hari'             => $req->hari,
@@ -54,30 +47,28 @@ class KasusController extends Controller
         ]);
         return redirect()->back()->with('notification', 'Kasus berhasil diperbaruhi');
     }
-
     public function viewedit($idKasus) {   
         $kasus = M_kasus::where('id_kasus', $idKasus)->get();
-
-        // $korban = M_korban::where([
-        //     'fk_id_kasus'   => $idKasus
-        // ])->get();
-
-        $korban = M_kasus::where('id_kasus', $idKasus)
-            ->join('korban', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')
-            ->leftjoin('pelayanan', 'korban.id_korban', '=', 'pelayanan.fk_id_korban')
-            ->get();
-
+        $korban = M_korban::where([
+            'fk_id_kasus'   => $idKasus
+        ])->get();
         $pelaku = M_pelaku::where([
             'fk_id_kasus'   => $idKasus
         ])->get();
-
-        return view('formkasus', compact('kasus', 'korban', 'pelaku', 'idKasus'));
+        $pelayanan = M_pelayanan::where([
+            'fk_id_kasus'   => $idKasus
+        ])->get();
+        $penanganan = M_penanganan::where([
+            'fk_id_kasus'   => $idKasus
+        ])->get();
+        $rujukan = M_rujukan::where([
+            'fk_id_kasus'   => $idKasus
+        ])->get();
+        return view('formkasus', compact('kasus', 'korban', 'pelaku','pelayanan','penanganan','rujukan'));
     }
-
     public function viewtambahkorban($idKasus) {
         return view('formkorban', compact('idKasus'));
     }
-
     public function tambahKorban($idKasus, Request $req){
         $this->validate($req, [
             'nama'          => 'required',
@@ -95,10 +86,8 @@ class KasusController extends Controller
             'tindak_kekerasan' => 'required',
             'trafficking'   => 'required'
         ]);
-
         $tindak_kekerasan = implode(",",  $req->tindak_kekerasan);
         $trafficking = implode(",",  $req->trafficking);
-
         M_korban::create([
             'nama'          => $req->nama,
             'jenis_kelamin' => $req->jenis_kelamin,
@@ -118,7 +107,6 @@ class KasusController extends Controller
         ]);
         return redirect()->back()->with('notification', 'Korban berhasil ditambahkan');
     }
-
     public function vieweditkorban($idKorban,$idKasus)
     {   
         $korban = M_korban::where('id_korban', $idKorban)->where('fk_id_kasus', $idKasus)->first();        
@@ -142,7 +130,6 @@ class KasusController extends Controller
             'tindak_kekerasan' => 'required',
             'trafficking'   => 'required'
         ]);
-
         $tindak_kekerasan = implode(",",  $req->tindak_kekerasan);
         $trafficking = implode(",",  $req->trafficking);
         
@@ -164,20 +151,16 @@ class KasusController extends Controller
         ]);        
         return redirect()->back()->with('notification', 'Korban berhasil diperbaruhi');
     }
-
     public function viewtambahpelayanan($idKorban, $idKasus) {
         // $pelayanan = M_pelayanan::where([
         //     'fk_id_kasus' => $idKasus,
         //     'fk_id_korban' => $idKorban
         // ])->get();
-
         // if($pelayanan->count() > 0)
         //     $pelayanan = $pelayanan[0];
         // $total_pelayanan = $pelayanan->count();
-
         return view('formpelayanan', compact('idKorban', 'idKasus'));
     }
-
      public function tambahPelayanan($idKorban, $idKasus, Request $req) {
         $this->validate($req, [
             'instansi'          => 'required',
@@ -185,7 +168,6 @@ class KasusController extends Controller
             'detail_pelayanan'  => 'required',
             'deskripsi_pelayanan' => 'required'
         ]);
-
         M_pelayanan::create([
             'instansi'          => $req->instansi,
             'pelayanan'         => $req->pelayanan,
@@ -196,11 +178,9 @@ class KasusController extends Controller
         ]);
         return redirect()->back()->with('notification', 'Pelayanan berhasil ditambahkan');
     }
-
     public function viewtambahrujukan($idKorban, $idKasus) {
         return view('formrujukan', compact('idKasus', 'idKorban'));
     }
-
     public function tambahRujukan($idKorban, $idKasus, Request $req) {
         $this->validate($req, [
             'tanggal_rujukan'   => 'required',
@@ -208,7 +188,6 @@ class KasusController extends Controller
             'instansi'          => 'required',
             'deskripsi_rujukan' => 'required'
         ]);
-
         M_rujukan::create([
             'tanggal_rujukan'   => $req->tanggal_rujukan,
             'kota'              => $req->kota,
@@ -219,11 +198,9 @@ class KasusController extends Controller
         ]);
         return redirect()->back()->with('notification', 'Rujukan berhasil ditambahkan');
     }
-
     public function viewtambahpelaku($idKasus) {   
         return view('formpelaku', compact('idKasus'));
     }
-
     public function tambahPelaku($idKasus, Request $req) {
          $this->validate($req, [
             'nama'          => 'required',
@@ -239,7 +216,6 @@ class KasusController extends Controller
             'difabel'       => 'required',
             'hubungan_dengan_korban' => 'required'
         ]);
-
         M_pelaku::create([
             'nama'          => $req->nama,
             'jenis_kelamin' => $req->jenis_kelamin,
@@ -257,22 +233,50 @@ class KasusController extends Controller
         ]);
         return redirect()->back()->with('notification', 'Pelaku berhasil ditambahkan');
     }
-
-    public function vieweditpelaku($idPelaku) {   
-        return view('formpelaku');
+    public function vieweditpelaku($idKasus,$idPelaku) {
+        $pelaku = M_pelaku::where('id_pelaku', $idPelaku)->where('fk_id_kasus', $idKasus)->first();            
+        return view('formpelakuedit',compact('idKasus', 'idPelaku'),compact('pelaku'));
     }
-
+    public function editpelaku($idKasus,$idPelaku, Request $req) {
+        $this->validate($req, [
+            'nama'          => 'required',
+            'jenis_kelamin' => 'required',
+            'usia'          => 'required',
+            'ttl'           => 'required',
+            'alamat'        => 'required',
+            'telepon'       => 'required',
+            'pendidikan'    => 'required',
+            'agama'         => 'required',
+            'pekerjaan'     => 'required',
+            'status'        => 'required',
+            'difabel'       => 'required',
+            'hubungan_dengan_korban' => 'required'
+        ]);
+        M_pelaku::where('id_pelaku', $idPelaku)->where('fk_id_kasus', $idKasus)->update([
+            'nama'          => $req->nama,
+            'jenis_kelamin' => $req->jenis_kelamin,
+            'usia'          => $req->usia,
+            'ttl'           => $req->ttl,
+            'alamat'        => $req->alamat,
+            'telepon'       => $req->telepon,
+            'pendidikan'    => $req->pendidikan,
+            'agama'         => $req->agama,
+            'pekerjaan'     => $req->pekerjaan,
+            'status'        => $req->status,
+            'difabel'       => $req->difabel,
+            'hubungan_dengan_korban' => $req->hubungan_dengan_korban
+        ]);        
+        return redirect()->back()->with('notification', 'Pelaku berhasil diperbaruhi');
+    }
     public function viewtambahpenanganan($idKasus, $idPelaku) {   
         return view('formpenanganan', compact('idKasus', 'idPelaku'));
     }
-
     public function tambahPenanganan($idKasus, $idPelaku, Request $req) {   
          $this->validate($req, [
             'instansi'      => 'required',
             'jenis_proses'  => 'required',
             'deskripsi_proses' => 'required'
         ]);
-
         M_penanganan::create([
             'instansi'      => $req->instansi,
             'jenis_proses'  => $req->jenis_proses,

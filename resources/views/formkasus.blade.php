@@ -90,76 +90,74 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                        $indexKorban = 1;
-                        for ($i = 0; $i < count($korban); $i++) {
-                            $id_kasus = $korban[$i]->id_kasus;
-                            $id_korban = $korban[$i]->id_korban;
-                        ?>
+                        @foreach($korban as $data)
                             <tr>
-                                <td>{{ $i }}</td>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    <a href='{{ url("kasus/edit/$id_kasus/korban/$id_korban") }}'
-                                        >{{ $korban[$i]->nama }}</a>
-                                <td>{{ $korban[$i]->alamat }}</td>
-                                <td>{{ $korban[$i]->usia }}</td>
-                                <td>{{ $korban[$i]->jenis_kelamin }}</td>
-                                <td>{{ $korban[$i]->hubungan_dengan_korban }}</td>
+                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban") }}'
+                                        >{{ $data->nama }}</a>
+                                <td>{{ $data->alamat }}</td>
+                                <td>{{ $data->usia }}</td>
+                                <td>{{ $data->jenis_kelamin }}</td>
+                                <td>{{ $data->tindak_kekerasan }}</td>
                                 <td>
-                                    <a href='{{ url("kasus/edit/$id_kasus/korban/$id_korban/pelayanan/new") }}'
+                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban/pelayanan/new") }}'
                                         class="btn btn-info btn-sm">Layanan</a>
-                                    <a href='{{ url("kasus/edit/$id_kasus/korban/$id_korban/rujukan/new") }}'
+                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban/rujukan/new") }}'
                                         class="btn btn-secondary btn-sm">Rujukan</a>
                                 </td>
                             </tr>
-                            <tr style="font-weight: bold">
-                                <td></td>
-                                <td>Instansi</td>
-                                <td>Pelayanan</td>
-                                <td>Detail Pelayanan</td>
-                                <td>Deskripsi Pelayanan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <?php 
-                              for ($j = $i; $j < count($korban); $j++) {  
-                                if($korban[$i]->id_korban == $korban[$j]->id_korban){
-                            ?>
-                                <tr>
+                            @foreach($rujukan as $dataRujukan)
+                                @if(count($rujukan)!=0 && $dataRujukan->fk_id_korban == $data->id_korban&&$loop->iteration==1)
+                                <tr style="font-weight: bold">
                                     <td></td>
-                                    <td>{{ $korban[$j]->instansi }}</td>
-                                    <td>{{ $korban[$j]->pelayanan }}</td>
-                                    <td>{{ $korban[$j]->detail_pelayanan }}</td>
-                                    <td>{{ $korban[$j]->deskripsi_pelayanan }}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>Tanggal Rujukan</td>
+                                    <td>Kota</td>
+                                    <td>Instansi</td>
+                                    <td>Deskripsi Rujukan</td>                                
                                 </tr>
-                            <?php }  else {
-                                if($j - 1 < 0)
-                                    $i = 0;
-                                else
-                                    $i = $j - 1;
-                                break;
-                            }
-                                if($j == count($korban) - 1)
-                                    $i = $j;
-                               } 
-                            ?>
-                        <?php } ?>
+                                @endif
+                                @if($dataRujukan->fk_id_korban == $data->id_korban)
+                                <tr>                            
+                                    <td></td>
+                                    <td>{{$dataRujukan->tanggal_rujukan}}</td>
+                                    <td>{{$dataRujukan->kota}}</td>
+                                    <td>{{$dataRujukan->instansi}}</td>
+                                    <td>{{$dataRujukan->deskripsi_rujukan}}</td>                                    
+                                </tr>
+                                @endif
+                            @endforeach                                                        
+                            @foreach($pelayanan as $dataPelayanan)
+                                @if(count($pelayanan)!=0 && $dataPelayanan->fk_id_korban == $data->id_korban&&$loop->iteration==1)
+                                <tr style="font-weight: bold">
+                                    <td></td>
+                                    <td>Instansi</td>
+                                    <td>Pelayanan</td>
+                                    <td>Detail Pelayanan</td>
+                                    <td>Deskripsi Pelayanan</td>                                
+                                </tr>
+                                @endif
+                                @if($dataPelayanan->fk_id_korban == $data->id_korban)
+                                <tr>                            
+                                    <td></td>
+                                    <td>{{$dataPelayanan->instansi}}</td>
+                                    <td>{{$dataPelayanan->pelayanan}}</td>
+                                    <td>{{$dataPelayanan->detail_pelayanan}}</td>
+                                    <td>{{$dataPelayanan->deskripsi_pelayanan}}</td>                                    
+                                </tr>
+                                @endif
+                            @endforeach                            
+                        @endforeach
                     </tbody>
                 </table>                
                 <br>
                 <div class="col-sm">
-                    <!-- <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/new") }}' class="btn btn-primary" disabled>Tambah
-                        Data</a> -->
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahKorban" id="btnModalTambahKorban">
-                      Tambah Data
-                    </button>
+                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/new") }}' class="btn btn-primary">Tambah
+                        Data</a>
                 </div>
             </div>
         </div>
         <br>
-            
         <div class="card card-default">
             <div class="card text-white bg-danger mb-3">
                 <div class="card-header">Data Pelaku</div>
@@ -177,7 +175,8 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>                        
+                    <tbody>
+                    
                         @foreach($pelaku as $data)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -192,44 +191,40 @@
                                     <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/$data->id_pelaku/penanganan/new") }}'
                                         class="btn btn-info btn-sm">Penanganan</a>
                                 </td>
-                            </tr>
-                            <tr style="font-weight: bold">
-                                <td></td>
-                                <td>Instansi</td>
-                                <td>Pelayanan</td>
-                                <td>Detail Pelayanan</td>
-                                <td>Deskripsi Pelayanan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>Instansi</td>
-                                <td>Pelayanan</td>
-                                <td>Detail Pelayanan</td>
-                                <td>Deskripsi Pelayanan</td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            </tr>                            
+                            @foreach($penanganan as $dataPenanganan)
+                                @if(count($penanganan)!=0 && $dataPenanganan->fk_id_pelaku == $data->id_pelaku&&$loop->iteration==1)
+                                <tr style="font-weight: bold">
+                                    <td></td>
+                                    <td>Instansi</td>
+                                    <td>Proses Penanganan</td>
+                                    <td>Deskripsi Proses</td>
+                                    <!-- <td></td>
+                                    <td></td>
+                                    <td></td> -->
+                                </tr>
+                                @endif
+                                @if($dataPenanganan->fk_id_pelaku == $data->id_pelaku)
+                                <tr>                            
+                                    <td></td>
+                                    <td>{{$dataPenanganan->instansi}}</td>
+                                    <td>{{$dataPenanganan->jenis_proses}}</td>
+                                    <td>{{$dataPenanganan->deskripsi_proses}}</td>
+                                    <!-- <td></td>
+                                    <td></td>
+                                    <td></td> -->
+                                </tr>
+                                @endif
+                            @endforeach
                         @endforeach
                     </tbody>
                 </table>
                 <div class="col-sm">
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modalTambahPelaku" id="modalTambahPelaku">
-                      Tambah Data
-                    </button>
-                    <!-- <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/new") }}' class="btn btn-secondary">Tambah
-                        Data</a> -->
+                    <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/new") }}' class="btn btn-secondary">Tambah
+                        Data</a>
                 </div>
             </div>
         </div>
     </div>
-@include('modal.modalTambahKorban')
-@include('modal.modalTambahPelaku')
-<script type="text/javascript">
-    // if ({{ $errors->count() }} > 0){
-    //     $('#btnModalTambahKorban').click();
-    // }
-</script>
 </body>
 </html>
