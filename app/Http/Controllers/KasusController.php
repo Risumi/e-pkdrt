@@ -161,7 +161,7 @@ class KasusController extends Controller
         // $total_pelayanan = $pelayanan->count();
         return view('formpelayanan', compact('idKorban', 'idKasus'));
     }
-     public function tambahPelayanan($idKorban, $idKasus, Request $req) {
+     public function tambahPelayanan($idKasus, $idKorban, Request $req) {
         $this->validate($req, [
             'instansi'          => 'required',
             'pelayanan'         => 'required',
@@ -181,7 +181,7 @@ class KasusController extends Controller
     public function viewtambahrujukan($idKorban, $idKasus) {
         return view('formrujukan', compact('idKasus', 'idKorban'));
     }
-    public function tambahRujukan($idKorban, $idKasus, Request $req) {
+    public function tambahRujukan( $idKasus,$idKorban, Request $req) {
         $this->validate($req, [
             'tanggal_rujukan'   => 'required',
             'kota'              => 'required',
@@ -280,7 +280,7 @@ class KasusController extends Controller
         M_penanganan::create([
             'instansi'      => $req->instansi,
             'jenis_proses'  => $req->jenis_proses,
-            'deskripsi_proses' => $req->instansi,
+            'deskripsi_proses' => $req->deskripsi_proses,
             'fk_id_kasus'   => $idKasus,
             'fk_id_pelaku'  => $idPelaku
         ]);

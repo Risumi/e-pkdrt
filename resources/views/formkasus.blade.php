@@ -94,16 +94,16 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban") }}'
-                                        >{{ $data->nama }}</a>
+                                    <a href='' data-toggle="modal" data-target="#modalEditKorban{{$data->id_korban}}" 
+                                        >{{ $data->nama }}</a>                                        
                                 <td>{{ $data->alamat }}</td>
                                 <td>{{ $data->usia }}</td>
                                 <td>{{ $data->jenis_kelamin }}</td>
                                 <td>{{ $data->tindak_kekerasan }}</td>
                                 <td>
-                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban/pelayanan/new") }}'
+                                    <a href='' data-toggle="modal" data-target="#modalPelayanan{{$data->id_korban}}"
                                         class="btn btn-info btn-sm">Layanan</a>
-                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/korban/$data->id_korban/rujukan/new") }}'
+                                    <a href='' data-toggle="modal" data-target="#modalRujukan{{$data->id_korban}}"
                                         class="btn btn-secondary btn-sm">Rujukan</a>
                                 </td>
                             </tr>
@@ -128,7 +128,7 @@
                                 @endif
                             @endforeach                                                        
                             @foreach($pelayanan as $dataPelayanan)
-                                @if(count($pelayanan)!=0 && $dataPelayanan->fk_id_korban == $data->id_korban&&$loop->iteration==1)
+                                @if(count($pelayanan)!=0 && $dataPelayanan->fk_id_korban == $data->id_korban && $loop->iteration==1)                                
                                 <tr style="font-weight: bold">
                                     <td></td>
                                     <td>Instansi</td>
@@ -146,8 +146,20 @@
                                     <td>{{$dataPelayanan->deskripsi_pelayanan}}</td>                                    
                                 </tr>
                                 @endif
-                            @endforeach                            
-                        @endforeach
+                            @endforeach                   
+                        @include('modal.modalEditKorban')
+                        @include('modal.modalPelayanan')
+                        @include('modal.modalRujukan')
+                        @endforeach                                                                   
+                        <?php
+                            function cekComboBox($array, $value) {
+                                for ($i = 0; $i < count($array); $i++) { 
+                                    if($array[$i] == $value)
+                                        return "checked";
+                                }
+                                return "";
+                            }
+                        ?>
                     </tbody>
                 </table>                
                 <br>
@@ -184,14 +196,14 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
-                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/$data->id_pelaku") }}'
+                                    <a href="" data-toggle="modal" data-target="#modalEditPelaku{{$data->id_pelaku}}"
                                         >{{ $data->nama }}</a>
                                 <td>{{ $data->alamat }}</td>
                                 <td>{{ $data->usia }}</td>
                                 <td>{{ $data->jenis_kelamin }}</td>
                                 <td>{{ $data->hubungan_dengan_korban }}</td>
                                 <td>
-                                    <a href='{{ url("kasus/edit/$kasus->id_kasus/pelaku/$data->id_pelaku/penanganan/new") }}'
+                                    <a href='' data-toggle="modal" data-target="#modalPenanganan{{$data->id_pelaku}}" 
                                         class="btn btn-info btn-sm">Penanganan</a>
                                 </td>
                             </tr>                            
@@ -219,6 +231,8 @@
                                 </tr>
                                 @endif
                             @endforeach
+                            @include('modal.modalEditPelaku')
+                            @include('modal.modalPenanganan')
                         @endforeach
                     </tbody>
                 </table>
