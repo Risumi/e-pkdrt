@@ -41,7 +41,7 @@
                                         <label class="form-check-label" for="RadioJKL">Laki-laki</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="RadioJKLP"
+                                        <input class="form-check-input" type="radio" name="jenis_kelamin" id="RadioJKP"
                                             value="Perempuan"
                                             {{("Perempuan" == $data->jenis_kelamin) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="RadioJKP">Perempuan</label>

@@ -4,7 +4,7 @@
     <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Edit Pelaku</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Tambah Penanganan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -17,7 +17,7 @@
                         <strong>{{ session('notification') }}</strong>
                     </div>
                     @endif
-                    <div class="card-header">Data Pelaku</div>
+                    <div class="card-header">Data Penanganan</div>
                     <div class="card-body">
                         <form action='{{ url("kasus/edit/$idKasus/pelaku/$data->id_pelaku/penanganan/new") }}' method="post">
                             @csrf
@@ -67,7 +67,7 @@
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-5">
-                                    <button type="submit" class="btn btn-primary">Tambah Penanganan</button>
+                                    <button type="submit" class="btn btn-primary">Tambah Data</button>
                                 </div>
                             </div>
                         </form>

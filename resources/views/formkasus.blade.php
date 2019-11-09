@@ -102,9 +102,9 @@
                                 <td>{{ $data->tindak_kekerasan }}</td>
                                 <td>
                                     <a href='' data-toggle="modal" data-target="#modalPelayanan{{$data->id_korban}}"
-                                        class="btn btn-info btn-sm">Layanan</a>
+                                        class="btn btn-info btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                     <a href='' data-toggle="modal" data-target="#modalRujukan{{$data->id_korban}}"
-                                        class="btn btn-secondary btn-sm">Rujukan</a>
+                                        class="btn btn-secondary btn-sm"><i class="fa fa-share-alt" aria-hidden="true"></i></i></a>
                                 </td>
                             </tr>
                             @foreach($rujukan as $dataRujukan)
@@ -128,14 +128,16 @@
                                 @endif
                             @endforeach                                                        
                             @foreach($pelayanan as $dataPelayanan)
-                                @if(count($pelayanan)!=0 && $dataPelayanan->fk_id_korban == $data->id_korban && $loop->iteration==1)                                
-                                <tr style="font-weight: bold">
-                                    <td></td>
-                                    <td>Instansi</td>
-                                    <td>Pelayanan</td>
-                                    <td>Detail Pelayanan</td>
-                                    <td>Deskripsi Pelayanan</td>                                
-                                </tr>
+                                @if(count($pelayanan)!=0 && $dataPelayanan->fk_id_korban == $data->id_korban)
+                                    @if(count($pelayanan)!=0)
+                                        <tr style="font-weight: bold">
+                                            <td></td>
+                                            <td>Instansi</td>
+                                            <td>Pelayanan</td>
+                                            <td>Detail Pelayanan</td>
+                                            <td>Deskripsi Pelayanan</td>                                
+                                        </tr>
+                                    @endif
                                 @endif
                                 @if($dataPelayanan->fk_id_korban == $data->id_korban)
                                 <tr>                            
@@ -204,7 +206,8 @@
                                 <td>{{ $data->hubungan_dengan_korban }}</td>
                                 <td>
                                     <a href='' data-toggle="modal" data-target="#modalPenanganan{{$data->id_pelaku}}" 
-                                        class="btn btn-info btn-sm">Penanganan</a>
+                                        class="btn btn-warning btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>
+</a>
                                 </td>
                             </tr>                            
                             @foreach($penanganan as $dataPenanganan)

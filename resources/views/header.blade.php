@@ -20,6 +20,8 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
         </script>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-md-2">
         <div class="navbar-header">
             <a class="navbar-brand" href="{{route('home')}}">KPPA</a>
@@ -38,7 +40,7 @@
                     <a class="nav-link" href="{{route('kasus')}}">Kasus</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Report</a>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalReport">Report</a>
                 </li>        
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -53,3 +55,4 @@
         </div>
     </nav>
 </head>
+@include('modal.modalReport')

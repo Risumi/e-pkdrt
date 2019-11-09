@@ -1,5 +1,4 @@
-@include('header')
-
+@include('header')    
 <body>
 
     <div class="container">
