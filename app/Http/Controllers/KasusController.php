@@ -7,6 +7,8 @@ use App\Models\M_pelayanan;
 use App\Models\M_rujukan;
 use App\Models\M_pelaku;
 use App\Models\M_penanganan;
+use App\Models\M_village;
+use App\Models\M_district;
 class KasusController extends Controller
 {
     public function view() {   
@@ -15,7 +17,12 @@ class KasusController extends Controller
     }
     public function viewtambah()
     {   
-        return view('formkasusnew');
+        $kecamatan = M_district::where([
+            'regency_id'   =>  3573
+        ])->get();
+        $kecamatan1 = $kecamatan[0]->name;
+        dd($kecamatan1);
+        return view('formkasusnew',compact('kecamatan'));
     }
     public function tambahKasus(Request $req){
         $this->validate($req, [
