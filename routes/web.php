@@ -27,8 +27,9 @@ Route::group(['prefix' => 'kasus'], function () {
     Route::post('new','KasusController@tambahKasus');
     Route::group(['prefix' => 'edit'], function () {
         Route::group(['prefix' => '{idKasus}'], function () {
-            Route::get('','KasusController@viewedit')->name('kasusEdit');     
+            Route::get('','KasusController@viewedit')->name('kasusEdit');                 
             Route::post('','KasusController@editKasus');
+            Route::get('/print','KasusController@printkasus');
             Route::group(['prefix' => 'korban'], function () {
                 Route::get('new','KasusController@viewtambahkorban');
                 Route::post('new','KasusController@tambahKorban');

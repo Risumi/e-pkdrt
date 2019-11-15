@@ -19,9 +19,10 @@ class HomeController extends Controller
     public function view()
     {   
         $kasusKecamatan = M_kasus::select('fk_id_district', DB::raw('count(*) as total'))->groupBy('fk_id_district')
-        ->get();
-        
+        ->get();    
+        $kategoriLok = M_kasus::select('kategori', DB::raw('count(*) as total'))->groupBy('kategori')
+        ->get();    
         // dd($kasusKecamatan);        
-        return view('home',compact('kasusKecamatan'));
+        return view('home',compact('kasusKecamatan','kategoriLok'));
     }
 }

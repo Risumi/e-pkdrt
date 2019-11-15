@@ -1,26 +1,31 @@
-	@include('header')	
-	<?php
-	
- 
-		$dataPoints = array( 
-			array("y" => 3373.64, "label" => "Germany" ),
-			array("y" => 2435.94, "label" => "France" ),
-			array("y" => 1842.55, "label" => "China" ),
-			array("y" => 1828.55, "label" => "Russia" ),
-			array("y" => 1039.99, "label" => "Switzerland" ),
-			array("y" => 765.215, "label" => "Japan" ),
-			array("y" => 612.453, "label" => "Netherlands" )
-		);				
+	@include('header')
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+	    integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
+	<script src="https://code.highcharts.com/highcharts.src.js"></script>
+
+
+	<?php	
 		$dataPoints = array();
-		// dd($kasusKecamatan);
-		foreach ($kasusKecamatan as $data ) {
-			$dot = array("y" => $data->total , "label" => $data->fk_id_district );
-			array_push($dataPoints,$dot);					
+		$arrayKec =array();
+		$arrayKecNilai =array();
+		foreach ($kasusKecamatan as $data ) {				
+			array_push($arrayKec,'"'.$data->fk_id_district.'"');			
+			array_push($arrayKecNilai,$data->total);
+			// $arrayFramework[] = '"'.$data->fk_id_district.'"';
+			// $arrayNilai[] = $data->total;	
+		}		
+		$arrayLok =array();
+		$arrayLokNilai =array();
+		foreach ($kategoriLok as $data ) {				
+			array_push($arrayLok,'"'.$data->kategori.'"');			
+			array_push($arrayLokNilai,$data->total);
+			// $arrayFramework[] = '"'.$data->fk_id_district.'"';
+			// $arrayNilai[] = $data->total;	
 		}
 
- ?>
+	?>
 
-	<body>	
+	<body>
 	    <style>
 	        .kecamatan:hover {
 	            stroke: #002868 !important;
@@ -1882,12 +1887,15 @@
 	                </svg>
 	            </div>
 	        </div>
-			<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+	        <div class="d-flex justify-content-center">
+	            <div align="center" id="jmlKasusKec" style="height: 370px; width: 55%;"></div>
+	        </div>
+			<div class="d-flex justify-content-center">
+	            <div align="center" id="jmlKategoriLok" style="height: 370px; width: 55%;"></div>
+	        </div>	        
 	    </div>
-	    
-	    
-	</body>
 
+	</body>
 	<script type="text/javascript">
 	    $(".kecamatan").hover(function (e) {
 	        $('#info-box').css('display', 'block');
@@ -1902,24 +1910,92 @@
 	        $('#info-box').css('top', e.pageY - $('#info-box').height() - 30);
 	        $('#info-box').css('left', e.pageX - ($('#info-box').width()) / 2);
 	    }).mouseover();
-	    window.onload = function () {
 
-	        var chart = new CanvasJS.Chart("chartContainer", {
-	            animationEnabled: true,
-	            theme: "light2",
+	    $(function () {
+	        var chart = new Highcharts.Chart({
+	            chart: {
+	                renderTo: 'jmlKasusKec',
+	                type: 'column',
+	            },
 	            title: {
-					text: "Jumlah kasus per kecamatan"					
-	            },	            
-	            data: [{
-	                type: "column",
-	                yValueFormatString: "#,##0.## ",
-	                dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	                text: 'Jumlah kasus per kecamatan'
+	            },
+	            xAxis: {
+	                categories: [ <?= join($arrayKec, ','); ?> ],
+	                title: {
+	                    text: null
+	                }
+	            },
+	            yAxis: {
+	                min: 0,
+	                title: {
+	                    text: null,
+	                    align: 'high'
+	                },
+	                labels: {
+	                    overflow: 'justify'
+	                }
+	            },
+	            plotOptions: {
+	                bar: {
+	                    dataLabels: {
+	                        enabled: true
+	                    }
+	                }
+	            },
+
+	            credits: {
+	                enabled: false
+	            },
+	            series: [{
+	                name: 'Jumlah kasus',
+	                data: [ <?= join($arrayKecNilai, ',') ?> ],
 	            }]
 	        });
-	        chart.render();
+	    });
+		$(function () {
+	        var chart = new Highcharts.Chart({
+	            chart: {
+	                renderTo: 'jmlKategoriLok',
+	                type: 'column',
+	            },
+	            title: {
+	                text: 'Jumlah Kasus berdasarkan Tempat Kejadian'
+	            },
+	            xAxis: {
+	                categories: [ <?= join($arrayLokNilai, ','); ?> ],
+	                title: {
+	                    text: null
+	                }
+	            },
+	            yAxis: {
+	                min: 0,
+	                title: {
+	                    text: null,
+	                    align: 'high'
+	                },
+	                labels: {
+	                    overflow: 'justify'
+	                }
+	            },
+	            plotOptions: {
+	                bar: {
+	                    dataLabels: {
+	                        enabled: false
+	                    }
+	                }
+	            },
 
-	    }
-
+	            credits: {
+	                enabled: false
+	            },
+	            series: [{
+	                name: 'Jumlah kasus',
+	                data: [ <?= join($arrayLokNilai, ',') ?> ],
+	            }]
+	        });
+	    });
 	</script>
 	<script src="{{ asset('canvasjs.min.js') }}"></script>
+
 	</html>

@@ -28,7 +28,7 @@
                         @foreach($kasus as $data)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td><a href='' class='btn btn-sm btn-success'><i
+                            <td><a href='{{ url("kasus/$data->id_kasus/print") }}' class='btn btn-sm btn-success'><i
                                         class="fa fa-print" aria-hidden="true"></i></a>
                             <a href='{{ url("kasus/edit/$data->id_kasus") }}' class='btn btn-sm btn-info'><i
                                         class="fa fa-gg" aria-hidden="true"></i></a> 

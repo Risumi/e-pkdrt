@@ -1,35 +1,5 @@
 @include('header')
-<script type="text/javascript">
-    // $(document).ready(function () {
-    //     //untuk memanggil plugin select2        
-    //     $('#inputKecamatan').select2({
-    //         placeholder: 'Pilih Kecamatan',
-    //         language: "id"
-    //     });
-    //     $('#inputKelurahan').select2({
-    //         placeholder: 'Pilih Kelurahan',
-    //         language: "id"
-    //     });    
-    // });
-    $("#inputKecamatan").change(getAjaxKecamatan);
-    function getAjaxKecamatan() 
-    {        
-        var id_district = $("#inputKecamatan").val();
-        console.log(id_district);
-        $.ajax({
-            type: "POST",
-            dataType: "html",
-            url: "data-wilayah.php?jenis=kelurahan",
-            data: "id_district=" + id_district,
-            success: function (msg) {
-                $("select#kelurahan").html(msg);
-                $("img#load3").hide();
-            }
-        });
-    }
-
-</script>
-
+<script src="{{ asset('kecamatan.js') }}"></script>
 <body>
 
     <div class="container">
@@ -58,7 +28,7 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputTglRegist" class="col-sm-2 col-form-label">Hari/Tanggal</label>
+                        <label for="inputTglRegist" class="col-sm-2 col-form-label">Tanggal Pelaporan</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="inputTglRegist" name="hari"
                                 value="{{ old('hari') }}">
@@ -78,12 +48,37 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="inputTglKejadian" class="col-sm-2 col-form-label">Tanggal Kejadian</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="inputTglKejadian" name="kejadian"
+                                value="{{ old('kejadian') }}">
+                            @if ($errors->has('kejadian'))
+                            <span style="color: red">{{ $errors->first('kejadian') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi Kasus</label>
                         <div class="col-sm-5">
                             <textarea type="text" class="form-control" id="inputDeskripsi" rows="5"
                                 name="deskripsi">{{ old('deskripsi') }}</textarea>
                             @if ($errors->has('deskripsi'))
                             <span style="color: red">{{ $errors->first('deskripsi') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputKategori" class="col-sm-2 col-form-label">Kategori Lokasi Kasus</label>
+                        <div class="input-group col-sm-5">
+                            <select class="custom-select" id="inputKategori" name="kategori">
+                                <option value="Rumah Tangga">Rumah Tangga</option>
+                                <option value="Tempat Kerja">Tempat Kerja</option>
+                                <option value="Sekolah">Sekolah</option>
+                                <option value="Fasilitas Umum">Fasilitas Umum</option>                                
+                                <option value="Lainnya">Lainnya</option>
+                            </select>
+                            @if ($errors->has('kategori'))
+                            <span style="color: red">{{ $errors->first('kategori') }}</span>
                             @endif
                         </div>
                     </div>
@@ -114,12 +109,7 @@
                         <label for="inputKelurahan" class="col-sm-2 col-form-label">Kelurahan</label>
                         <div class="input-group col-sm-5">
                             <select class="custom-select" id="inputKelurahan" name="kelurahan">
-                                <option value="Islam">Islam</option>
-                                <option value="Kristen">Kristen</option>
-                                <option value="Katolik">Katolik</option>
-                                <option value="Budha">Budha</option>
-                                <option value="Hindu">Hindu</option>
-                                <option value="Konghucu">Konghucu</option>
+                                <option value=></option>                                
                             </select>
                             @if ($errors->has('kelurahan'))
                             <span style="color: red">{{ $errors->first('kelurahan') }}</span>

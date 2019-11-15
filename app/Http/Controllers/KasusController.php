@@ -20,8 +20,7 @@ class KasusController extends Controller
         $kecamatan = M_district::where([
             'regency_id'   =>  3573
         ])->get();
-        $kecamatan1 = $kecamatan[0]->name;
-        dd($kecamatan1);
+        $kecamatan1 = $kecamatan[0]->name;        
         return view('formkasusnew',compact('kecamatan'));
     }
     public function tambahKasus(Request $req){
@@ -293,4 +292,8 @@ class KasusController extends Controller
         ]);
         return redirect()->back()->with('notification', 'Penanganan berhasil ditambahkan');
     }    
+
+    public function printkasus($idKasus) {   
+        return view('printkasus', compact('idKasus'));
+    }
 }
