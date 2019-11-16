@@ -34,7 +34,7 @@ class KorbanSeeder extends Seeder
                 'id_korban' => $i ,
                 'nama' => $faker->name,
                 'jenis_kelamin' =>  $gender[rand(0,1)], 
-                'usia' =>  rand(8,80),
+                'usia' =>  rand(0,80),
                 'ttl' =>  $faker->city.", ".$faker->dateTimeThisCentury->format('Y-m-d'),
                 'alamat' =>   $faker->address ,
                 'telepon' => $faker->phoneNumber,

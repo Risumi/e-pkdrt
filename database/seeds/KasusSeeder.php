@@ -30,9 +30,9 @@ class KasusSeeder extends Seeder
             DB::table('kasus')->insert([
                 'id_kasus' => $i ,
                 'nomor_registrasi' => $faker->randomNumber($nbDigits = 9, $strict = true).('/MALANG/').$faker->month().('/').$faker->year($max = 'now'),
-                'hari' =>   $faker->dateTime($max = 'now', $timezone = 'Asia/Jakarta')  ,                
+                'hari' =>   $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now', $timezone = 'Asia/Jakarta')  ,                
                 'konselor' =>  $faker->name,
-                'kejadian' =>   $faker->dateTime($max = 'now', $timezone = 'Asia/Jakarta')  ,
+                'kejadian' =>   $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now', $timezone = 'Asia/Jakarta')  ,
                 'kategori' =>   $kategori[$random] ,
                 'deskripsi' => $faker->text,
                 'alamat_tkp' =>$faker->address,
