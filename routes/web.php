@@ -11,6 +11,8 @@
 */
 Route::get('/','HomeController@view')->name('home');
 Route::post('/','HomeController@viewFilter')->name('home');
+Route::post('/report','ReportController@report');
+
 // Route::get('kasus','KasusController@view')->name('kasus');
 // Route::get('kasus/new','KasusController@viewtambah');
 // Route::post('kasus/new','KasusController@tambahKasus');

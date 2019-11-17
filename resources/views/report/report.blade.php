@@ -1,3 +1,4 @@
+@if($jenis_report == 'Ciri Korban & Pelaku')
 <h3>KORBAN</h3>
 <table cellpadding="5" cellspacing="0" border="1">
 	<thead>
@@ -182,7 +183,8 @@
 		</tr>
 	</tbody>
 </table>
-
+@endif
+@if($jenis_report == 'Bentuk Kekerasan, Tempat Kejadian & Pelayanan')
 <h3>REPORT ke 2</h3>
 <table cellpadding="5" cellspacing="0" border="1">
 	<thead>
@@ -255,7 +257,8 @@
 		</tr>
 	</tbody>
 </table>
-
+@endif
+@if($jenis_report == 'Kasus & Korban Anak/Dewasa Terlayani')
 <h3>REPORT ke 3</h3>
 <table cellpadding="5" cellspacing="0" border="1">
 	<thead>
@@ -295,7 +298,8 @@
 		</tr>
 	</tbody>
 </table>
-
+@endif
+@if($jenis_report == 'Kasus & Korban Laki-Laki/Perempuan Terlayani')
 <h3>REPORT ke 4</h3>
 <table cellpadding="5" cellspacing="0" border="1">
 	<thead>
@@ -337,5 +341,6 @@
 		</tr>
 	</tbody>
 </table>
+@endif
 <?php
 // print_r($data);
