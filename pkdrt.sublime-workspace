@@ -4,8 +4,88 @@
 		"selected_items":
 		[
 			[
+				"jenis",
+				"jenis_report"
+			],
+			[
+				"tg",
+				"tgl_selesai"
+			],
+			[
+				"tgl",
+				"tgl_selesai"
+			],
+			[
+				"Laki",
+				"Laki-Laki"
+			],
+			[
+				"getCi",
+				"getCiriKorban"
+			],
+			[
+				"tr",
+				"triwulan1"
+			],
+			[
+				"t",
+				"tgl_triwulan"
+			],
+			[
+				"re",
+				"result"
+			],
+			[
+				"da",
+				"dataJenis4"
+			],
+			[
+				"data",
+				"data-"
+			],
+			[
+				"valuePe",
+				"valuePelayanan"
+			],
+			[
+				"va",
+				"valueKekerasan"
+			],
+			[
 				"for",
 				"for\tfor …"
+			],
+			[
+				"val",
+				"valueKekerasan"
+			],
+			[
+				"key",
+				"keyHubungan"
+			],
+			[
+				"c",
+				"cellspacing\tAttr"
+			],
+			[
+				"th",
+				"th\tTag"
+			],
+			[
+				"v",
+				"valuePendidikan"
+			],
+			[
+				"fo",
+				"for\tfor …"
+			],
+			[
+				"btn",
+				"btnModalTambahKorban"
+			],
+			[
+				"modal",
+				"modalTambahKorban"
 			],
 			[
 				"id_",
@@ -36,16 +116,8 @@
 				"idKasus"
 			],
 			[
-				"btn",
-				"btn-primary"
-			],
-			[
 				"fk_i",
 				"fk_id_korban"
-			],
-			[
-				"tr",
-				"trafficking"
 			],
 			[
 				"tra",
@@ -66,10 +138,6 @@
 			[
 				"sq",
 				"sqlCek"
-			],
-			[
-				"t",
-				"transaction"
 			],
 			[
 				"els",
@@ -156,16 +224,8 @@
 				"reportWithModul"
 			],
 			[
-				"th",
-				"th\tTag"
-			],
-			[
 				"ri",
 				"riwayat_proyekku"
-			],
-			[
-				"re",
-				"required\tAttr"
 			],
 			[
 				"pos",
@@ -196,16 +256,8 @@
 				"modul"
 			],
 			[
-				"fo",
-				"form\tTag"
-			],
-			[
 				"pad",
 				"padding-bottom\tproperty"
-			],
-			[
-				"tgl",
-				"tgl_selesai"
 			],
 			[
 				"req",
@@ -244,20 +296,12 @@
 				"M_tugas"
 			],
 			[
-				"tg",
-				"tgl_mulai"
-			],
-			[
 				"go",
 				"goClaimMe"
 			],
 			[
 				"form-",
 				"form-control"
-			],
-			[
-				"modal",
-				"modalEditModul"
 			],
 			[
 				"ba",
@@ -368,10 +412,6 @@
 				"newIssueSprint"
 			],
 			[
-				"c",
-				"col-lg-7"
-			],
-			[
 				"margin-",
 				"margin-top\tproperty"
 			],
@@ -406,10 +446,6 @@
 			[
 				"file_",
 				"file_get_contents"
-			],
-			[
-				"va",
-				"value"
 			],
 			[
 				"me",
@@ -478,42 +514,6 @@
 			[
 				"arra",
 				"array"
-			],
-			[
-				"ra",
-				"rank"
-			],
-			[
-				"ma",
-				"max"
-			],
-			[
-				"su",
-				"success"
-			],
-			[
-				"strto",
-				"strtoupper"
-			],
-			[
-				"text",
-				"text-decoration\tproperty"
-			],
-			[
-				"PA",
-				"PARAMETER_PENILAIAN"
-			],
-			[
-				"bac",
-				"background-color\tproperty"
-			],
-			[
-				"para",
-				"parameter"
-			],
-			[
-				"onmous",
-				"onmouseleave\tAttr"
 			]
 		]
 	},
@@ -523,7 +523,43 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 3341,
+				"buffer_size": 3595,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/formkasus.blade.php",
+			"settings":
+			{
+				"buffer_size": 13934,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/ReportController.php",
+			"settings":
+			{
+				"buffer_size": 18729,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/report/report.blade.php",
+			"settings":
+			{
+				"buffer_size": 8761,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/modal/modalReport.blade.php",
+			"settings":
+			{
+				"buffer_size": 8985,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -532,7 +568,7 @@
 			"file": "app/Http/Controllers/KasusController.php",
 			"settings":
 			{
-				"buffer_size": 10522,
+				"buffer_size": 12508,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -542,15 +578,6 @@
 			"settings":
 			{
 				"buffer_size": 19783,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/formkasus.blade.php",
-			"settings":
-			{
-				"buffer_size": 10824,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -576,7 +603,7 @@
 			"file": "app/Models/M_penanganan.php",
 			"settings":
 			{
-				"buffer_size": 436,
+				"buffer_size": 452,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -591,14 +618,6 @@
 			}
 		},
 		{
-			"file": "resources/views/formkorban.blade.php",
-			"settings":
-			{
-				"buffer_size": 16924,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "app/Models/M_rujukan.php",
 			"settings":
 			{
@@ -608,20 +627,19 @@
 			}
 		},
 		{
-			"file": "resources/views/formpelayanan.blade.php",
+			"file": "resources/views/kasus.blade.php",
 			"settings":
 			{
-				"buffer_size": 3388,
+				"buffer_size": 2725,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/views/kasus.blade.php",
+			"contents": "\n@include('header')\n\n<body>\n    <div class=\"container\">\n        <br>\n            @if(session('notification'))\n            <div class=\"alert alert-success alert-dismisable\">\n                <a href=\"#\" aria-label=\"close\" class=\"close\" data-dismiss=\"alert\">&times;</a>\n                <strong>{{ session('notification') }}</strong>\n            </div>            \n            <br>            \n            @endif\n        <div class=\"card card-default\">\n            \n            <div class=\"card text-white bg-warning mb-3\">\n                <div class=\"card-header\">Data Kasus</div>\n            </div>\n            @php\n                $kasus = $kasus[0];\n            @endphp\n            <div class=\"card-body\">\n                <form action='{{ url(\"/kasus/edit/$kasus->id_kasus\") }}' method=\"post\">\n                    @csrf\n                    <div class=\"form-group row\">\n                        <label for=\"inputRegistrasi\" class=\"col-sm-2 col-form-label\">No. Registrasi</label>\n                        <div class=\"col-sm-5\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputRegistrasi\" name=\"no_registrasi\"\n                                value=\"{{ $kasus->nomor_registrasi }}\">\n                            @if ($errors->has('no_registrasi'))\n                            <span style=\"color: red\">{{ $errors->first('no_registrasi') }}</span>\n                            @endif\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label for=\"inputTglRegist\" class=\"col-sm-2 col-form-label\">Hari/Tanggal</label>\n                        <div class=\"col-sm-5\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputTglRegist\" name=\"hari\"\n                                value=\"{{ $kasus->hari }}\">\n                            @if ($errors->has('hari'))\n                            <span style=\"color: red\">{{ $errors->first('hari') }}</span>\n                            @endif\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label for=\"inputKonselor\" class=\"col-sm-2 col-form-label\">Konselor</label>\n                        <div class=\"col-sm-5\">\n                            <input type=\"text\" class=\"form-control\" id=\"inputKonselor\" name=\"konselor\"\n                                value=\"{{ $kasus->konselor }}\">\n                            @if ($errors->has('konselor'))\n                            <span style=\"color: red\">{{ $errors->first('konselor') }}</span>\n                            @endif\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label for=\"inputDeskripsi\" class=\"col-sm-2 col-form-label\">Deskripsi Kasus</label>\n                        <div class=\"col-sm-5\">\n                            <textarea type=\"text\" class=\"form-control\" id=\"inputDeskripsi\" rows=\"5\"\n                                name=\"deskripsi\">{{ $kasus->deskripsi }}</textarea>\n                            @if ($errors->has('deskripsi'))\n                            <span style=\"color: red\">{{ $errors->first('deskripsi') }}</span>\n                            @endif\n                        </div>\n                    </div>\n                    <div class=\"form-group row\">\n                        <label class=\"col-sm-2 col-form-label\"></label>\n                        <div class=\"col-sm-5\">\n                            <button class=\"btn btn-primary\" type=\"submit\">Update Data</button>\n                            <input type=\"hidden\" name=\"id_kasus\" value=\"{{ $kasus->id_kasus }}\">\n                        </div>\n                    </div>\n                </form>\n            </div>\n        </div>\n        <br>\n        <div class=\"card card-default\">\n            <div class=\"card text-white bg-primary mb-3\">\n                <div class=\"card-header\">Data Korban</div>\n            </div>\n            <div class=\"card-body\">\n                <table class=\"table table-bordered\">\n                    <thead>\n                        <tr>\n                            <th>No.</th>\n                            <th>Nama</th>\n                            <th>Alamat</th>\n                            <th>Usia</th>\n                            <th>Jenis kelamin</th>\n                            <th>Tindak Kekerasan</th>\n                            <th>Action</th>\n                        </tr>\n                    </thead>\n                    <tbody>\n                        <?php \n                        $indexKorban = 1;\n                        for ($i = 0; $i < count($korban); $i++) {\n                            $id_kasus = $korban[$i]->id_kasus;\n                            $id_korban = $korban[$i]->id_korban;\n                        ?>\n                            <tr>\n                                <td>{{ $i }}</td>\n                                <td>\n                                    <a href='{{ url(\"kasus/edit/$id_kasus/korban/$id_korban\") }}'\n                                        >{{ $korban[$i]->nama }}</a>\n                                <td>{{ $korban[$i]->alamat }}</td>\n                                <td>{{ $korban[$i]->usia }}</td>\n                                <td>{{ $korban[$i]->jenis_kelamin }}</td>\n                                <td>{{ $korban[$i]->hubungan_dengan_korban }}</td>\n                                <td>\n                                    <a href='{{ url(\"kasus/edit/$id_kasus/korban/$id_korban/pelayanan/new\") }}'\n                                        class=\"btn btn-info btn-sm\">Layanan</a>\n                                    <a href='{{ url(\"kasus/edit/$id_kasus/korban/$id_korban/rujukan/new\") }}'\n                                        class=\"btn btn-secondary btn-sm\">Rujukan</a>\n                                </td>\n                            </tr>\n                            <tr style=\"font-weight: bold\">\n                                <td></td>\n                                <td>Instansi</td>\n                                <td>Pelayanan</td>\n                                <td>Detail Pelayanan</td>\n                                <td>Deskripsi Pelayanan</td>\n                                <td></td>\n                                <td></td>\n                            </tr>\n                            <?php \n                              for ($j = $i; $j < count($korban); $j++) {  \n                                if($korban[$i]->id_korban == $korban[$j]->id_korban){\n                            ?>\n                                <tr>\n                                    <td></td>\n                                    <td>{{ $korban[$j]->instansi }}</td>\n                                    <td>{{ $korban[$j]->pelayanan }}</td>\n                                    <td>{{ $korban[$j]->detail_pelayanan }}</td>\n                                    <td>{{ $korban[$j]->deskripsi_pelayanan }}</td>\n                                    <td></td>\n                                    <td></td>\n                                </tr>\n                            <?php }  else {\n                                if($j - 1 < 0)\n                                    $i = 0;\n                                else\n                                    $i = $j - 1;\n                                break;\n                            }\n                                if($j == count($korban) - 1)\n                                    $i = $j;\n                               } \n                            ?>\n                        <?php } ?>\n                    </tbody>\n                </table>                \n                <br>\n                <div class=\"col-sm\">\n                    <!-- <a href='{{ url(\"kasus/edit/$kasus->id_kasus/korban/new\") }}' class=\"btn btn-primary\" disabled>Tambah\n                        Data</a> -->\n                    <button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#modalTambahKorban\" id=\"btnModalTambahKorban\">\n                      Tambah Data\n                    </button>\n                </div>\n            </div>\n        </div>\n        <br>\n            \n        <div class=\"card card-default\">\n            <div class=\"card text-white bg-danger mb-3\">\n                <div class=\"card-header\">Data Pelaku</div>\n            </div>\n            <div class=\"card-body\">\n                <table class=\"table table-bordered\">\n                    <thead>\n                        <tr>\n                            <th>No.</th>\n                            <th>Nama</th>\n                            <th>Alamat</th>\n                            <th>Usia</th>\n                            <th>Jenis kelamin</th>\n                            <th>Hubungan Dengan Korban</th>\n                            <th>Action</th>\n                        </tr>\n                    </thead>\n                    <tbody>                        \n                        @foreach($pelaku as $data)\n                            <tr>\n                                <td>{{ $loop->iteration }}</td>\n                                <td>\n                                    <a href='{{ url(\"kasus/edit/$kasus->id_kasus/pelaku/$data->id_pelaku\") }}'\n                                        >{{ $data->nama }}</a>\n                                <td>{{ $data->alamat }}</td>\n                                <td>{{ $data->usia }}</td>\n                                <td>{{ $data->jenis_kelamin }}</td>\n                                <td>{{ $data->hubungan_dengan_korban }}</td>\n                                <td>\n                                    <a href='{{ url(\"kasus/edit/$kasus->id_kasus/pelaku/$data->id_pelaku/penanganan/new\") }}'\n                                        class=\"btn btn-info btn-sm\">Penanganan</a>\n                                </td>\n                            </tr>\n                            <tr style=\"font-weight: bold\">\n                                <td></td>\n                                <td>Instansi</td>\n                                <td>Pelayanan</td>\n                                <td>Detail Pelayanan</td>\n                                <td>Deskripsi Pelayanan</td>\n                                <td></td>\n                                <td></td>\n                            </tr>\n                            <tr>\n                                <td></td>\n                                <td>Instansi</td>\n                                <td>Pelayanan</td>\n                                <td>Detail Pelayanan</td>\n                                <td>Deskripsi Pelayanan</td>\n                                <td></td>\n                                <td></td>\n                            </tr>\n                        @endforeach\n                    </tbody>\n                </table>\n                <div class=\"col-sm\">\n                    <!-- <a href='{{ url(\"kasus/edit/$kasus->id_kasus/pelaku/new\") }}' class=\"btn btn-secondary\">Tambah\n                        Data</a> -->\n                    <button type=\"button\" class=\"btn btn-secondary\" data-toggle=\"modal\" data-target=\"#btnModalTambahPelaku\" id=\"btnModalTambahPelaku\">\n                      Tambah Data\n                    </button>\n                </div>\n            </div>\n        </div>\n    </div>\n@include('modal.modalTambahKorban')\n@include('modal.modalTambahKorban')\n<script type=\"text/javascript\">\n    if ({{ $errors->count() }} > 0){\n        $('#btnModalTambahKorban').click();\n    }\n</script>\n</body>\n</html>\n\npublic function viewedit($idKasus) {   \n        $kasus = M_kasus::where('id_kasus', $idKasus)->get();\n\n        // $korban = M_korban::where([\n        //     'fk_id_kasus'   => $idKasus\n        // ])->get();\n\n        $korban = M_kasus::where('id_kasus', $idKasus)\n            ->join('korban', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')\n            ->leftjoin('pelayanan', 'korban.id_korban', '=', 'pelayanan.fk_id_korban')\n            ->get();\n\n        $pelaku = M_pelaku::where([\n            'fk_id_kasus'   => $idKasus\n        ])->get();\n\n        return view('formkasus', compact('kasus', 'korban', 'pelaku', 'idK'));\n    }",
 			"settings":
 			{
-				"buffer_size": 1742,
-				"encoding": "UTF-8",
+				"buffer_size": 12117,
 				"line_ending": "Windows"
 			}
 		}
@@ -672,42 +690,57 @@
 	[
 		"/E/Andri Wijaya/htdocs/e-pkdrt",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Console",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/modal",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/report",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/routes"
 	],
 	"file_history":
 	[
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/HomeController.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkasusnew.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkorban.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/header.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/kppa.sql",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/home.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formpelayanan.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/database/seeds/DatabaseSeeder.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/database/seeds/KasusSeeder.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/config/app.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/config/database.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/.env",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/database/seeds/RujukanSeeder.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/database/seeds/PenangananSeeder.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/database/seeds/PelakuSeeder.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/database/seeds/KorbanSeeder.php",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/web.php",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/index.php",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/cekUser.php",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/itemDetail.php",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/notificationHandler.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/modal/modalTambahKorban.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/modal/modalTambahPelaku.blade.php",
+		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/api.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formpelaku.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formpenanganan.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkorbanedit.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_penanganan.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_pelayanan.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_pelaku.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/kppa.sql",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkasusnew.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_kasus.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_korban.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_rujukan.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkorban.blade.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/config/app.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/.env",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/config/database.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/header.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkasus.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/Controller.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/home.blade.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/HomeController.php",
 		"/E/Andri Wijaya/htdocs/skripsi/app/Models/M_pengguna.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/env",
 		"/C/Users/Wijaya Kusuma/Downloads/app.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/vendor/hamcrest/hamcrest-php/.coveralls.yml",
 		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/orderActivity.php",
-		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/notificationHandler.php",
 		"/E/AndroidStudioProjects/unicorn-before-list_after_transac/app/build.gradle",
 		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/simpanTransaksi.php",
 		"/C/Users/Wijaya Kusuma/Music/FormpembayaranActivity.java",
@@ -795,21 +828,7 @@
 		"/E/Andri Wijaya/htdocs/skripsi/config/cache.php",
 		"/E/Andri Wijaya/htdocs/pkm/config/database.php",
 		"/E/Andri Wijaya/htdocs/skripsi/.env.example",
-		"/E/Andri Wijaya/htdocs/skripsi/config/app.php",
-		"/E/Andri Wijaya/htdocs/pkm1/multi-color/peta-wisata.html",
-		"/E/Andri Wijaya/htdocs/pkm1/multi-color/index.html",
-		"/E/Andri Wijaya/htdocs/skripsi/routes/web.php",
-		"/E/Andri Wijaya/htdocs/skripsi/database/migrations/2014_10_12_100000_create_password_resets_table.php",
-		"/E/Andri Wijaya/htdocs/skripsi/database/migrations/2014_10_12_000000_create_users_table.php",
-		"/E/Andri Wijaya/htdocs/skripsi/app/Models/M_proyek.php",
-		"/E/Andri Wijaya/htdocs/skripsi/resources/views/register.blade.php",
-		"/E/Andri Wijaya/htdocs/skripsi/resources/views/login.blade.php",
-		"/E/Andri Wijaya/htdocs/skripsi/routes/.env",
-		"/E/Andri Wijaya/htdocs/skripsi/resources/views/semua-project.blade.php",
-		"/C/Users/Wijaya Kusuma/Downloads/Mice.html",
-		"/E/Andri Wijaya/htdocs/pkm1/multi-color/css/style-button.css",
-		"/E/Andri Wijaya/htdocs/skripsi/resources/views/layouts/app.blade.php",
-		"/E/Andri Wijaya/htdocs/skripsi/resources/views/Master/sidebar.blade.php"
+		"/E/Andri Wijaya/htdocs/skripsi/config/app.php"
 	],
 	"find":
 	{
@@ -827,6 +846,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"dataPelaku",
+			"data",
+			"] = 0;",
+			"allData",
+			" = 0",
+			" else if ($dt->usia <= 5) {",
+			"+=1;",
+			"Kecamatan",
+			"$",
+			"exampleModalCenter",
+			"col-sm-8",
+			"col-sm-5",
 			"csrf",
 			"pelayanan",
 			"pendidikan",
@@ -842,6 +873,15 @@
 		"regex": false,
 		"replace_history":
 		[
+			"dataKekerasan",
+			"dataPelaku",
+			"]++;",
+			"data",
+			"",
+			" else if ($dt->usia >= 6 && $dt->usia <= 12) {",
+			"++;",
+			"col-sm-10",
+			"col-sm-8",
 			"tindak_kekerasan[]"
 		],
 		"reverse": false,
@@ -853,7 +893,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -862,15 +902,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3341,
+						"buffer_size": 3595,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2056,
-								2056
+								550,
+								550
 							]
 						],
 						"settings":
@@ -880,27 +920,116 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 442.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "resources/views/formkasus.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13934,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13934,
+								13934
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 254.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/Http/Controllers/ReportController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18729,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								3738
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1142.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "app/Http/Controllers/KasusController.php",
+					"buffer": 3,
+					"file": "resources/views/report/report.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10522,
+						"buffer_size": 8761,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4168,
-								4168
+								0,
+								277
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "resources/views/modal/modalReport.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8985,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								341
 							]
 						],
 						"settings":
@@ -910,14 +1039,44 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1690.0,
+						"translation.y": 3.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 5,
+					"file": "app/Http/Controllers/KasusController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12508,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								223,
+								66
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 527.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "resources/views/formkorbanedit.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -929,8 +1088,8 @@
 						"selection":
 						[
 							[
-								16989,
-								16989
+								16913,
+								16913
 							]
 						],
 						"settings":
@@ -940,44 +1099,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 3345.0,
+						"translation.y": 864.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "resources/views/formkasus.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10824,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5698,
-								5698
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1054.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
+					"buffer": 7,
 					"semi_transient": false,
 					"settings":
 					{
@@ -1002,11 +1131,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 8,
 					"file": "resources/views/formpenanganan.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1029,19 +1158,19 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 393.0,
+						"translation.y": 85.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 9,
 					"file": "app/Models/M_penanganan.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 436,
+						"buffer_size": 452,
 						"regions":
 						{
 						},
@@ -1062,11 +1191,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 10,
 					"file": "resources/views/formrujukan.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1092,41 +1221,11 @@
 						"translation.y": 281.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "resources/views/formkorban.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16924,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								934,
-								1088
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 915.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
+					"buffer": 11,
 					"file": "app/Models/M_rujukan.php",
 					"semi_transient": false,
 					"settings":
@@ -1152,54 +1251,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
-					"file": "resources/views/formpelayanan.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3388,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1701,
-								1701
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 323.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "resources/views/kasus.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1742,
+						"buffer_size": 2725,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								816,
-								847
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1212,7 +1281,36 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12117,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11010,
+								11204
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2679.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
 					"type": "text"
 				}
 			]
@@ -1257,7 +1355,7 @@
 	"project": "pkdrt.sublime-project",
 	"replace":
 	{
-		"height": 70.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1307,7 +1405,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 191.0,
+	"side_bar_width": 217.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
