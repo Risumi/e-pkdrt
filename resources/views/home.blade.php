@@ -3,10 +3,8 @@
 	    integrity="sha256-Uv9BNBucvCPipKQ2NS9wYpJmi8DTOEfTA/nH2aoJALw=" crossorigin="anonymous"></script>
 	<script src="https://code.highcharts.com/highcharts.src.js"></script>
 	<script src="{{ asset('kecamatan.js') }}"></script>
-	@include('modal.modalFilterTahun')
-	@foreach($kasusKelurahan as $data)
-		@include('modal.modalKecamatan')
-	@endforeach
+	<link rel="stylesheet" href="https://kekerasan.kemenpppa.go.id/assets/template/dist/css/AdminLTE.min.css">
+	
 	<?php	
 		$dataPoints = array();
 		$arrayKec =array();
@@ -61,6 +59,7 @@
 		// dd($hubPelaku);
 		// dd($arrayRentangUsiaNilai);
 	?>
+	
 
 	<body>
 	    <style>
@@ -84,49 +83,118 @@
 	            padding: 5px;
 	            font-family: arial;
 	        }
-
 	    </style>
 	    <div id="info-box"></div>
 		<br>
 	    <div class="container">
-			<div class="d-flex justify-content-center">
+
+		<div class="row">
+			<div class="col-lg-4 col-xs-12">
+				<div class="small-box bg-aqua">
+					<div class="inner">
+						<h3>{{$totKasus}}</h3>
+						<p>Jumlah Kasus</p>
+					</div>
+				<div class="icon">
+					<i class="fa fa-gg"></i>
+				</div>
+					<a href="" class="small-box-footer conbtn fancybox.ajax" data-toggle="modal" data-target="#modalGrafikKasus">Lebih lengkap <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-xs-12">
+				<div class="small-box bg-green">
+					<div class="inner">
+						<h3>{{$totLaki}}</h3>
+						<p>Korban Laki-laki</p>
+					</div>
+					<div class="icon">
+						<i class="fa fa-mars"></i>
+					</div>
+					<a href="" class="small-box-footer conbtn fancybox.ajax" data-toggle="modal" data-target="#modalGrafikLaki">Lebih lengkap <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+				<div class="col-lg-4 col-xs-12">				
+					<div class="small-box bg-yellow">
+						<div class="inner">
+							<h3>{{$totPerempuan}}</h3>
+						<p>Korban Perempuan</p>
+					</div>
+				<div class="icon">
+					<i class="fa fa-venus"></i>
+				</div>
+						<a href="" class="small-box-footer conbtn fancybox.ajax" data-toggle="modal" data-target="#modalGrafikPerempuan">Lebih lengkap <i class="fa fa-arrow-circle-right"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex float-right">
                 <button type="submit" data-toggle="modal" data-target="#modalFilterTahun" class="btn btn-primary">Filter</button>
             </div>
 	        <div class="row">
-	            <div class="col" align="center">
+	            <div class="col" align="center">					
 	                @include('kotaMalang')
 	            </div>
-	        </div>
-	        <div class="d-flex justify-content-center">
-	            <div align="center" id="jmlKasusKec" style="height: 370px; width: 55%;"></div>
-	        </div>
-			<div class="d-flex justify-content-center">
-	            <div align="center" id="pieUmurAnak" style="height: 370px; width: 55%;"></div>
-	        </div>
-			<div class="d-flex justify-content-center">
-	            <div align="center" id="pieUmurPerempuan" style="height: 370px; width: 55%;"></div>
-	        </div>
-	        <div class="d-flex justify-content-center">
-	            <div align="center" id="kssKategoriLok" style="height: 370px; width: 55%;"></div>
-	        </div>
-	        <div class="d-flex justify-content-center">
-	            <div align="center" id="krbnKategoriLok" style="height: 370px; width: 55%;"></div>
-	        </div>
-			<div class="d-flex justify-content-center">
-	            <div align="center" id="jnsLayanan" style="height: 370px; width: 55%;"></div>
-	        </div>
-			<div class="d-flex justify-content-center">
-	            <div align="center" id="rentangUsia" style="height: 370px; width: 55%;"></div>
-	        </div>
-			<div class="d-flex justify-content-center">
-	            <div align="center" id="pendidikan" style="height: 370px; width: 55%;"></div>
-	        </div>
-			<div class="d-flex justify-content-center">
-	            <div align="center" id="jnsKelamin" style="height: 370px; width: 55%;"></div>
-	        </div>
-			<div class="d-flex justify-content-center">
-	            <div align="center" id="hubPelaku" style="height: 370px; width: 55%;"></div>
-	        </div>		
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<div class="d-flex justify-content-center">
+						<div align="center" id="jmlKasusKec" style="height: 400px; width: 100%;"></div>
+					</div>	
+				</div>
+				<div class="col-sm">
+					<div class="d-flex justify-content-center">
+						<div align="center" id="pieUmurAnak" style="height: 400px; width: 100%;"></div>
+					</div>	
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<div class="d-flex justify-content-center">
+	            		<div align="center" id="pieUmurPerempuan" style="height: 400px; width: 100%;"></div>
+	        		</div>
+				</div>
+				<div class="col-sm">
+					<div class="d-flex justify-content-center">
+	            		<div align="center" id="kssKategoriLok" style="height: 400px; width: 100%;"></div>
+	        		</div>
+				</div>
+			</div>				        
+			<div class="row">
+				<div class="col-sm">
+					<div class="d-flex justify-content-center">
+						<div align="center" id="krbnKategoriLok" style="height: 400px; width: 100%;"></div>
+					</div>
+				</div>
+				<div class="col-sm">
+					<div class="d-flex justify-content-center">
+	            		<div align="center" id="jnsLayanan" style="height: 400px; width: 100%;"></div>
+	        		</div>
+				</div>
+			</div>				        
+	        <div class="row">
+				<div class="col-sm">
+					<div class="d-flex justify-content-center">
+	            		<div align="center" id="rentangUsia" style="height: 400px; width: 100%;"></div>
+	        		</div>
+				</div>
+				<div class="col-sm">
+					<div class="d-flex justify-content-center">
+	            		<div align="center" id="pendidikan" style="height: 400px; width: 100%;"></div>
+	        		</div>
+				</div>
+			</div>			
+			<div class="row">
+				<div class="col-sm">
+					<div class="d-flex justify-content-center">
+	            		<div align="center" id="jnsKelamin" style="height: 400px; width: 100%;"></div>
+	        		</div>
+				</div>
+				<div class="col-sm">
+					<div class="d-flex justify-content-center">
+	            		<div align="center" id="hubPelaku" style="height: 400px; width: 100%;"></div>
+	        		</div>		
+				</div>
+			</div>											
+
 	    </div>
 
 	</body>
@@ -281,11 +349,12 @@
 				title: {
 					text: 'Jumlah Kasus berdasarkan Tempat Kejadian'
 				},
+				tooltip:{
+					headerFormat: '',
+				},
 				xAxis: {
-					categories: [<?= join($arrayLok, ','); ?> ],
-					title: {
-						text: null
-					}
+					enabled: false,
+					visible: false	
 				},
 				yAxis: {
 					min: 0,
@@ -298,9 +367,9 @@
 					}
 				},
 				plotOptions: {
-					bar: {
+					column: {
 						dataLabels: {
-							enabled: false
+							enabled: true
 						}
 					}
 				},
@@ -308,10 +377,10 @@
 				credits: {
 					enabled: false
 				},
-				series: [{					
-					name: 'Jumlah Kasus',
-					data: [ <?= join($arrayLokNilai, ',') ?> ],
-				}]
+				series: [<?php foreach ($kategoriLok as $data ) {				
+							echo('{name:').'"'.$data->kategori.'",';
+							echo('data:[').$data->total."]},";							
+					} ?>]
 			});		
 		});		 	        	        	    
 	</script>
@@ -325,11 +394,12 @@
 					title: {
 						text: 'Jumlah Korban berdasarkan Tempat Kejadian'
 					},
+					tooltip:{
+						headerFormat: '',
+					},
 					xAxis: {
-						categories: [ <?= join($arrayLok, ','); ?> ],
-						title: {
-							text: null
-						}
+						enabled: false,
+						visible: false	
 					},
 					yAxis: {
 						min: 0,
@@ -342,9 +412,9 @@
 						}
 					},
 					plotOptions: {
-						bar: {
+						column: {
 							dataLabels: {
-								enabled: false
+								enabled: true
 							}
 						}
 					},
@@ -352,10 +422,10 @@
 					credits: {
 						enabled: false
 					},
-					series: [{
-						name: 'Jumlah Koeban',
-						data: [ <?= join($arrayLokNilai, ',') ?> ],
-					}]
+					series: [<?php foreach ($kategoriLokKrbn as $data ) {				
+							echo('{name:').'"'.$data->kategori.'",';
+							echo('data:[').$data->total."]},";							
+					} ?>]
 				});
 			});        	        	    
 	</script>
@@ -369,11 +439,12 @@
 					title: {
 						text: 'Jenis layanan yang diberikan'
 					},
+					tooltip:{
+						headerFormat: '',
+					},
 					xAxis: {
-						categories: [ <?= join($arrayJnsLynan, ','); ?> ],
-						title: {
-							text: null
-						}
+						enabled: false,
+						visible: false	
 					},
 					yAxis: {
 						min: 0,
@@ -386,9 +457,9 @@
 						}
 					},
 					plotOptions: {
-						bar: {
+						column: {
 							dataLabels: {
-								enabled: false
+								enabled: true
 							}
 						}
 					},
@@ -396,10 +467,10 @@
 					credits: {
 						enabled: false
 					},
-					series: [{
-						name: 'Jumlah kasus',
-						data: [ <?= join($arrayJnsLynanNilai, ',') ?> ],
-					}]
+					series: [<?php foreach ($jenisLayanan as $data ) {				
+							echo('{name:').'"'.$data->pelayanan.'",';
+							echo('data:[').$data->total."]},";							
+					} ?>]
 				});
 			});        	        	    
 	</script>
@@ -413,11 +484,12 @@
 					title: {
 						text: 'Korban berdasarkan usia'
 					},
+					tooltip:{
+						headerFormat: '',
+					},
 					xAxis: {
-						categories: [ <?= join($arrayRentangUsia, ','); ?> ],
-						title: {
-							text: null
-						}
+						enabled: false,
+						visible: false	
 					},
 					yAxis: {
 						min: 0,
@@ -430,20 +502,19 @@
 						}
 					},
 					plotOptions: {
-						bar: {
+						column: {
 							dataLabels: {
-								enabled: false
+								enabled: true
 							}
 						}
 					},
-
 					credits: {
 						enabled: false
 					},
-					series: [{
-						name: 'Jumlah Korban',
-						data: [ <?= join($arrayRentangUsiaNilai, ',') ?> ],
-					}]
+					series: [<?php foreach ($rentangUsia as $data ) {				
+							echo('{name:').'"'.$data->range_umur.'",';
+							echo('data:[').$data->total."]},";							
+					} ?>]
 				});
 			});        	        	    
 	</script>
@@ -455,13 +526,14 @@
 						type: 'column',
 					},
 					title: {
-						text: 'Korban berdasarkan usia'
+						text: 'Korban berdasarkan jenjang pendikan'
+					},
+					tooltip:{
+						headerFormat: '',
 					},
 					xAxis: {
-						categories: [ <?= join($arrayPendidikan, ','); ?> ],
-						title: {
-							text: null
-						}
+						enabled: false,
+						visible: false	
 					},
 					yAxis: {
 						min: 0,
@@ -474,20 +546,19 @@
 						}
 					},
 					plotOptions: {
-						bar: {
+						column: {
 							dataLabels: {
-								enabled: false
+								enabled: true
 							}
 						}
 					},
-
 					credits: {
 						enabled: false
 					},
-					series: [{
-						name: 'Jumlah Korban',
-						data: [ <?= join($arrayPendidikanNilai, ',') ?> ],
-					}]
+					series: [<?php foreach ($pendidikan as $data ) {				
+							echo('{name:').'"'.$data->pendidikan.'",';
+							echo('data:[').$data->total."]},";							
+					} ?>]
 				});
 			});        	        	    
 	</script>
@@ -501,11 +572,12 @@
 					title: {
 						text: 'Pelaku berdasarkan jenis kelamin'
 					},
+					tooltip:{
+						headerFormat: '',
+					},
 					xAxis: {
-						categories: [ <?= join($arrayJnsKelamin, ','); ?> ],
-						title: {
-							text: null
-						}
+						enabled: false,
+						visible: false	
 					},
 					yAxis: {
 						min: 0,
@@ -518,20 +590,19 @@
 						}
 					},
 					plotOptions: {
-						bar: {
+						column: {
 							dataLabels: {
-								enabled: false
+								enabled: true
 							}
 						}
 					},
-
 					credits: {
 						enabled: false
 					},
-					series: [{
-						name: 'Jumlah Pelaku',
-						data: [ <?= join($arrayJnsKelaminNilai, ',') ?> ],
-					}]
+					series: [<?php foreach ($jnsKelamin as $data ) {				
+							echo('{name:').'"'.$data->jenis_kelamin.'",';
+							echo('data:[').$data->total."]},";							
+					} ?>]
 				});
 			});        	        	    
 	</script>
@@ -545,11 +616,12 @@
 					title: {
 						text: 'Pelaku berdasarkan hubungan'
 					},
+					tooltip:{
+						headerFormat: '',
+					},
 					xAxis: {
-						categories: [ <?= join($arrayHubPelaku, ','); ?> ],
-						title: {
-							text: null
-						}
+						enabled: false,
+						visible: false	
 					},
 					yAxis: {
 						min: 0,
@@ -562,21 +634,28 @@
 						}
 					},
 					plotOptions: {
-						bar: {
+						column: {
 							dataLabels: {
-								enabled: false
+								enabled: true
 							}
 						}
 					},
-
 					credits: {
 						enabled: false
 					},
-					series: [{
-						name: 'Jumlah Pelaku',
-						data: [ <?= join($arrayHubPelakuNilai, ',') ?> ],
-					}]
+					series: [<?php foreach ($hubPelaku as $data ) {				
+							echo('{name:').'"'.$data->hubungan_dengan_korban.'",';
+							echo('data:[').$data->total."]},";							
+					} ?>]
 				});
 			});        	        	    
 	</script>
+	@include('modal.modalFilterTahun')
+	@foreach($kasusKelurahan as $data)
+		@include('modal.modalKecamatan')
+	@endforeach
+	@include('modal.modalGrafikKasus')
+	@include('modal.modalGrafikLaki')
+	@include('modal.modalGrafikPerempuan')
 </html>
+

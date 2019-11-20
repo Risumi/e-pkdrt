@@ -34,7 +34,9 @@ class KasusController extends Controller
             'nomor_registrasi' => $req->no_registrasi,
             'hari'             => $req->hari,
             'konselor'         => $req->konselor,
-            'deskripsi'        => $req->deskripsi
+            'deskripsi'        => $req->deskripsi,
+            'kategori'         => $req->kategori,
+            'fk_id_district'   => $req->kecamatan
         ]);
         return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
     }

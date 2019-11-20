@@ -8,7 +8,42 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">            
+            <div class="modal-body">      
+				<div class="row">
+					<div class="col-lg-4 col-xs-12">
+						<div class="small-box bg-aqua">
+							<div class="inner">
+								<h3>{{($data[3])}}</h3>
+								<p>Jumlah Kasus</p>
+							</div>
+						<div class="icon">
+							<i class="fa fa-gg"></i>
+						</div>							
+						</div>
+					</div>
+					<div class="col-lg-4 col-xs-12">
+						<div class="small-box bg-green">
+							<div class="inner">
+								<h3>{{$data[2][0]["total"]}}</h3>
+								<p>Korban Laki-laki</p>
+							</div>
+							<div class="icon">
+								<i class="fa fa-mars"></i>
+							</div>							
+						</div>
+					</div>
+						<div class="col-lg-4 col-xs-12">				
+							<div class="small-box bg-yellow">
+								<div class="inner">
+									<h3>{{$data[2][1]["total"]}}</h3>
+								<p>Korban Perempuan</p>
+							</div>
+						<div class="icon">
+							<i class="fa fa-venus"></i>
+						</div>							
+						</div>
+					</div>
+				</div>      
                 <div class="d-flex justify-content-center">
                     <div align="center" id="jmlKasusKel{{$data[0]}}" style="height: 370px; width: 80%;"></div>
                 </div>                    

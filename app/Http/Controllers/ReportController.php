@@ -40,7 +40,11 @@ class ReportController extends Controller {
             $tgl_mulai = $req->semester_tahun.  $tgl_semester[$semester1]['awal'];
             $tgl_selesai = $req->semester_tahun.  $tgl_semester[$semester2]['akhir'];
         }
-
+$data=null;
+$dataPelaku=null;
+$dataKekerasan=null;
+$dataTerlayani=null;
+$dataJenis4=null;
         if($req->jenis_report == 'Ciri Korban & Pelaku'){
             $data = $this->getCiriKorban($tgl_mulai, $tgl_selesai, $req->jenis_kelamin, $req->status_usia);
             $dataPelaku = $this->getCiriPelaku($tgl_mulai, $tgl_selesai, $req->jenis_kelamin, $req->status_usia);
