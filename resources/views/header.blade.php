@@ -33,14 +33,20 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+@php
+$role = 'admin';
+@endphp
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('home')}}">Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('kasus')}}">Kasus</a>
+                    @if(Auth::guest())
+                        <a class="nav-link" href="{{route('kasusBaru')}}">Lapor</a>
+                    @elseif($role == 'admin')
+                        <a class="nav-link" href="{{route('kasus')}}">Kasus</a>
+                    @endif
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#modalReport">Report</a>

@@ -9,6 +9,7 @@ use App\Models\M_pelaku;
 use App\Models\M_penanganan;
 use App\Models\M_village;
 use App\Models\M_district;
+use Illuminate\Support\Facades\Auth;
 class KasusController extends Controller
 {
     public function view() {   
@@ -17,29 +18,49 @@ class KasusController extends Controller
     }
     public function viewtambah()
     {   
+
         $kecamatan = M_district::where([
             'regency_id'   =>  3573
         ])->get();
         $kecamatan1 = $kecamatan[0]->name;        
-        return view('formkasusnew',compact('kecamatan'));
+
+        if(Auth::guest()){
+            return view('lapor.formlaporkasus',compact('kecamatan'));
+        } else {
+            return view('formkasusnew',compact('kecamatan'));
+        }
     }
     public function tambahKasus(Request $req){
-        $this->validate($req, [
-            'no_registrasi'   => 'required',
-            'hari'   => 'required',
-            'konselor'   => 'required',
-            'deskripsi'   => 'required',
-        ]);
-        M_kasus::create([
-            'nomor_registrasi' => $req->no_registrasi,
-            'hari'             => $req->hari,
-            'konselor'         => $req->konselor,
-            'deskripsi'        => $req->deskripsi,
-            'kategori'         => $req->kategori,
-            'fk_id_district'   => $req->kecamatan
-        ]);
+        if(!Auth::guest()){
+            $this->validate($req, [
+                'no_registrasi'   => 'required',
+                'hari'   => 'required',
+                'konselor'   => 'required',
+                'kejadian'   => 'required',
+                'kategori'   => 'required',
+                'TKP'        => 'required',
+                'kecamatan' => 'required',
+                'kelurahan' => 'required',
+                'deskripsi'   => 'required',
+            ]);
+            M_kasus::create([
+                'nomor_registrasi' => $req->no_registrasi,
+                'hari'             => $req->hari,
+                'konselor'         => $req->konselor,
+                'kejadian'         => $req->kejadian,
+                'kategori'         => $req->kategori,
+                'alamat_tkp'       => $req->TKP,
+                'fk_id_district'       => $req->kecamatan,
+                'fk_id_villages'       => $req->kelurahan,
+                'deskripsi'        => $req->deskripsi
+            ]);
+        } else {
+            $this->pelaporTambahKasus($req);
+        }
+
         return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
     }
+
     public function editKasus(Request $req){
         $this->validate($req, [
             'no_registrasi'   => 'required',
@@ -210,7 +231,7 @@ class KasusController extends Controller
         return view('formpelaku', compact('idKasus'));
     }
     public function tambahPelaku($idKasus, Request $req) {
-         $this->validate($req, [
+        $this->validate($req, [
             'nama'          => 'required',
             'jenis_kelamin' => 'required',
             'usia'          => 'required',
@@ -297,5 +318,99 @@ class KasusController extends Controller
 
     public function printkasus($idKasus) {   
         return view('printkasus', compact('idKasus'));
+    }
+
+    public function pelaporTambahKasus(Request $req){
+        dd($req);
+        $this->validate($req, [
+            'no_registrasi'   => 'required',
+            'hari'   => 'required',
+            'konselor'   => 'required',
+            'kejadian'   => 'required',
+            'kategori'   => 'required',
+            'TKP'        => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'deskripsi'   => 'required',
+        ]);
+        $ks = M_kasus::create([
+            'nomor_registrasi' => $req->no_registrasi,
+            'hari'             => $req->hari,
+            'konselor'         => $req->konselor,
+            'kejadian'         => $req->kejadian,
+            'kategori'         => $req->kategori,
+            'alamat_tkp'       => $req->TKP,
+            'fk_id_district'   => $req->kecamatan,
+            // 'fk_id_villages'   => $req->kelurahan,
+            'fk_id_villages'   => "PURWODADI",
+            'deskripsi'        => $req->deskripsi
+        ]);
+
+        $id_kasus = $ks->id_kasus;
+        $this->validate($req, [
+            'nama_korban'          => 'required',
+            'jenis_kelamin_korban' => 'required',
+            'usia_korban'          => 'required',
+            'ttl_korban'           => 'required',
+            'alamat_korban'        => 'required',
+            'telepon_korban'       => 'required',
+            'pendidikan_korban'    => 'required',
+            'agama_korban'         => 'required',
+            'pekerjaan_korban'     => 'required',
+            'status_korban'        => 'required',
+            'difabel_korban'       => 'required',
+            'kdrt_korban'          => 'required',
+            'tindak_kekerasan_korban' => 'required',
+            'trafficking_korban'   => 'required'
+        ]);
+        $tindak_kekerasan = implode(",",  $req->tindak_kekerasan_korban);
+        $trafficking = implode(",",  $req->trafficking_korban);
+        M_korban::create([
+            'nama'          => $req->nama_korban,
+            'jenis_kelamin' => $req->jenis_kelamin_korban,
+            'usia'          => $req->usia_korban,
+            'ttl'           => $req->ttl_korban,
+            'alamat'        => $req->alamat_korban,
+            'telepon'       => $req->telepon_korban,
+            'pendidikan'    => $req->pendidikan_korban,
+            'agama'         => $req->agama_korban,
+            'pekerjaan'     => $req->pekerjaan_korban,
+            'status'        => $req->status_korban,
+            'difabel'       => $req->difabel_korban,
+            'kdrt'          => $req->kdrt_korban,
+            'tindak_kekerasan' => $tindak_kekerasan_korban,
+            'kategori_trafficking'   => $trafficking_korban,
+            'fk_id_kasus'   => $idKasus
+        ]);
+
+        $this->validate($req, [
+            'nama_pelaku'          => 'required',
+            'jenis_kelamin_pelaku' => 'required',
+            'usia_pelaku'          => 'required',
+            'ttl_pelaku'           => 'required',
+            'alamat_pelaku'        => 'required',
+            'telepon_pelaku'       => 'required',
+            'pendidikan_pelaku'    => 'required',
+            'agama_pelaku'         => 'required',
+            'pekerjaan_pelaku'     => 'required',
+            'status_pelaku'        => 'required',
+            'difabel_pelaku'       => 'required',
+            'hubungan_dengan_korban' => 'required'
+        ]);
+        M_pelaku::create([
+            'nama'          => $req->nama_pelaku,
+            'jenis_kelamin' => $req->jenis_kelamin_pelaku,
+            'usia'          => $req->usia_pelaku,
+            'ttl'           => $req->ttl_pelaku,
+            'alamat'        => $req->alamat_pelaku,
+            'telepon'       => $req->telepon_pelaku,
+            'pendidikan'    => $req->pendidikan_pelaku,
+            'agama'         => $req->agama_pelaku,
+            'pekerjaan'     => $req->pekerjaan_pelaku,
+            'status'        => $req->status_pelaku,
+            'difabel'       => $req->difabel_pelaku,
+            'hubungan_dengan_korban' => $req->hubungan_dengan_korban,
+            'fk_id_kasus'   => $idKasus
+        ]);
     }
 }

@@ -10,8 +10,8 @@
             </div>            
             <br>            
             @endif
+
         <div class="card card-default">
-            
             <div class="card text-white bg-warning mb-3">
                 <div class="card-header">Data Kasus</div>
             </div>
