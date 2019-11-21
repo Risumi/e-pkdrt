@@ -70,7 +70,9 @@
 	            fill: #fffb8d !important;
 	            cursor: pointer;
 	        }
-
+			.container{
+				max-width:95%;
+			}
 	        #info-box {
 	            display: none;
 	            position: absolute;

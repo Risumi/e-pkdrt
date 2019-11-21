@@ -31,7 +31,7 @@
         <div class="form-group row">
             <label for="inputUsia" class="col-sm-2 col-form-label">Usia</label>
             <div class="col-sm-2">
-                <input type="number" class="form-control" id="inputUsia" name="usia_korban">
+                <input type="number" class="form-control" id="inputUsia" name="usia_korban" min="0">
                 @if ($errors->has('usia_korban'))
                     <span style="color: red">{{ $errors->first('usia_korban') }}</span>
                 @endif
@@ -58,7 +58,7 @@
         <div class="form-group row">
             <label for="inputNO" class="col-sm-2 col-form-label">No. Telp/HP</label>
             <div class="col-sm-5">
-                <input type="tel" class="form-control" id="inputNO" name="telepon_korban">
+                <input type="tel" class="form-control" id="inputNO" name="telepon_korban" >
                 @if ($errors->has('telepon_korban'))
                     <span style="color: red">{{ $errors->first('telepon_korban') }}</span>
                 @endif

@@ -7,7 +7,7 @@
             <label for="inputRegistrasi" class="col-sm-2 col-form-label">No. Registrasi</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" id="inputRegistrasi" name="no_registrasi"
-                    value="{{ old('no_registrasi') }}">
+                    value="{{ $noRegist }}" readonly>
                 @if ($errors->has('no_registrasi'))
                 <span style="color: red">{{ $errors->first('no_registrasi') }}</span>
                 @endif
@@ -22,17 +22,7 @@
                 <span style="color: red">{{ $errors->first('hari') }}</span>
                 @endif
             </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputKonselor" class="col-sm-2 col-form-label">Konselor</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" id="inputKonselor" name="konselor"
-                    value="{{ old('konselor') }}">
-                @if ($errors->has('konselor'))
-                <span style="color: red">{{ $errors->first('konselor') }}</span>
-                @endif
-            </div>
-        </div>
+        </div>        
         <div class="form-group row">
             <label for="inputTglKejadian" class="col-sm-2 col-form-label">Tanggal Kejadian</label>
             <div class="col-sm-5">

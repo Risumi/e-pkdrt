@@ -1,3 +1,11 @@
+$.ajaxSetup({
+    beforeSend: function(xhr, type) {
+        if (!type.crossDomain) {
+            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+        }
+    },
+});
+
 $(document).ready(function () {
     //untuk memanggil plugin select2
     $('#provinsi').select2({
@@ -57,20 +65,20 @@ $(document).ready(function () {
 
     //saat pilihan kecamatan di pilih, maka akan mengambil data kelurahan
     //di data-wilayah.php menggunakan ajax
-//     $("#kecamatan").change(getAjaxKecamatan);
+    $("#inputKecamatan").change(getAjaxKecamatan);
 
-//     function getAjaxKecamatan() {
-//         $("img#load3").show();
-//         var id_district = $("#kecamatan").val();
-//         $.ajax({
-//             type: "POST",
-//             dataType: "html",
-//             url: "data-wilayah.php?jenis=kelurahan",
-//             data: "id_district=" + id_district,
-//             success: function (msg) {
-//                 $("select#kelurahan").html(msg);
-//                 $("img#load3").hide();
-//             }
-//         });
-//     }
+    function getAjaxKecamatan() {     
+        var id_district = $("#inputKecamatan").val();
+        $.ajax({
+            type: "POST",
+            dataType: "html",
+            url: new URL ("kelurahan",window.location.origin),
+            data: "id_district=" + id_district,
+            success: function (msg) {
+                $("select#inputKelurahan").html(msg);
+                console.log(msg);
+                console.log(id_district);
+            }
+        });
+    }
 });

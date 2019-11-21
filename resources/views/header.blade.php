@@ -46,9 +46,14 @@
                         <a class="nav-link" href="{{route('kasus')}}">Kasus</a>
                     @endif
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalReport">Report</a>
-                </li>        
+                @guest
+                
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalReport">Report</a>
+                    </li>        
+                @endif
+                
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @guest()

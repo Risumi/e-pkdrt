@@ -1,5 +1,5 @@
 @include('header')
-
+<script src="{{ asset('kecamatan.js') }}"></script>
 <body>
     <div class="container">
         <br>
@@ -21,11 +21,12 @@
             <div class="card-body">
                 <form action='{{ url("/kasus/edit/$kasus->id_kasus") }}' method="post">
                     @csrf
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
                     <div class="form-group row">
                         <label for="inputRegistrasi" class="col-sm-2 col-form-label">No. Registrasi</label>
                         <div class="col-sm-5">
                             <input type="text" class="form-control" id="inputRegistrasi" name="no_registrasi"
-                                value="{{ $kasus->nomor_registrasi }}">
+                                value="{{ $kasus->nomor_registrasi }}" readonly>
                             @if ($errors->has('no_registrasi'))
                             <span style="color: red">{{ $errors->first('no_registrasi') }}</span>
                             @endif
@@ -52,12 +53,71 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="inputTglKejadian" class="col-sm-2 col-form-label">Tanggal Kejadian</label>
+                        <div class="col-sm-5">
+                            <input type="text" class="form-control" id="inputTglKejadian" name="kejadian"
+                                value="{{ $kasus->kejadian }}">
+                            @if ($errors->has('kejadian'))
+                            <span style="color: red">{{ $errors->first('kejadian') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi Kasus</label>
                         <div class="col-sm-5">
                             <textarea type="text" class="form-control" id="inputDeskripsi" rows="5"
                                 name="deskripsi">{{ $kasus->deskripsi }}</textarea>
                             @if ($errors->has('deskripsi'))
                             <span style="color: red">{{ $errors->first('deskripsi') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputKategori" class="col-sm-2 col-form-label">Kategori Lokasi Kasus</label>
+                        <div class="input-group col-sm-5">
+                            <select class="custom-select" id="inputKategori" name="kategori">
+                                <option value="Rumah Tangga" {{("Rumah Tangga" == $kasus->kategori) ? 'selected' : '' }}>Rumah Tangga</option>
+                                <option value="Tempat Kerja" {{("Tempat Kerja" == $kasus->kategori) ? 'selected' : '' }}>Tempat Kerja</option>
+                                <option value="Sekolah" {{("Sekolah" == $kasus->kategori) ? 'selected' : '' }}>Sekolah</option>
+                                <option value="Fasilitas Umum" {{("Fasilitas Umum" == $kasus->kategori) ? 'selected' : '' }}>Fasilitas Umum</option> 
+                                <option value="Lainnya" {{("Lainnya" == $kasus->kategori) ? 'selected' : '' }}>Lainnya</option>
+                            </select>
+                            @if ($errors->has('kategori'))
+                            <span style="color: red">{{ $errors->first('kategori') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputTKP" class="col-sm-2 col-form-label">Alamat TKP</label>
+                        <div class="col-sm-5">
+                            <textarea type="text" class="form-control" id="inputTKP" rows="5"
+                                name="TKP">{{ $kasus->alamat_tkp }}</textarea>
+                            @if ($errors->has('TKP'))
+                            <span style="color: red" >{{ $errors->first('TKP') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputKecamatan" class="col-sm-2 col-form-label">Kecamatan</label>
+                        <div class="input-group col-sm-5">
+                            <select class="custom-select" id="inputKecamatan" name="kecamatan">
+                            @foreach($kecamatan as $data)
+                                <option value="{{$data->name}}" {{($data->name == $kasus->fk_id_district) ? 'selected' : '' }}>{{$data->name}}</option>
+                            @endforeach                                                                
+                            </select>
+                            @if ($errors->has('kecamatan'))
+                            <span style="color: red">{{ $errors->first('kecamatan') }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputKelurahan" class="col-sm-2 col-form-label">Kelurahan</label>
+                        <div class="input-group col-sm-5">
+                            <select class="custom-select" id="inputKelurahan" name="kelurahan">
+                                <option value=></option>                                
+                            </select>
+                            @if ($errors->has('kelurahan'))
+                            <span style="color: red">{{ $errors->first('kelurahan') }}</span>
                             @endif
                         </div>
                     </div>

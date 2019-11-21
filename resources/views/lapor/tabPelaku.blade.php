@@ -32,7 +32,7 @@
             <div class="form-group row">
                 <label for="inputUsia" class="col-sm-2 col-form-label">Usia</label>
                 <div class="col-sm-2">
-                    <input type="number" class="form-control" id="inputUsia" name="usia_pelaku">
+                    <input type="number" class="form-control" id="inputUsia" name="usia_pelaku" min="0">
                     @if ($errors->has('usia_pelaku'))
                         <span style="color: red">{{ $errors->first('usia_pelaku') }}</span>
                     @endif

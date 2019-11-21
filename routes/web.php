@@ -15,7 +15,7 @@ Route::post('/report','ReportController@report');
 Route::get('/login','AuthController@viewLogin');
 Route::post('/login','AuthController@login');
 Route::get('/logout','AuthController@logout');
-
+Route::post('/kelurahan','KasusController@getKelurahan');
 Route::group(['prefix' => 'kasus'], function () {
     Route::get('','KasusController@view')->name('kasus');
     Route::get('new','KasusController@viewtambah')->name('kasusBaru');

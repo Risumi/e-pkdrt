@@ -33,6 +33,7 @@
         </ul>
         <form action="{{ url('/kasus/new') }}" method="post">
         @csrf
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <div class="tab-content" id="pills-tabContent">
             <div class="card card-default tab-pane fade show active"  id="pills-kasus" role="tabpanel" aria-labelledby="pills-home-kasus">
                 @include('lapor/tabKasus')
@@ -57,6 +58,4 @@
         </div>
     </div>
 </body>
-
-
 </html>

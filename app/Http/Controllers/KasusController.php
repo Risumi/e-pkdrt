@@ -11,6 +11,8 @@ use App\Models\M_penanganan;
 use App\Models\M_village;
 use App\Models\M_district;
 use Illuminate\Support\Facades\Auth;
+use DB;
+
 class KasusController extends Controller
 {
     public function view() {   
@@ -18,17 +20,20 @@ class KasusController extends Controller
         return view('kasus', compact('kasus'));
     }
     public function viewtambah()
-    {   
-
+    {                                     
         $kecamatan = M_district::where([
             'regency_id'   =>  3573
-        ])->get();
-        $kecamatan1 = $kecamatan[0]->name;        
-
+        ])->get();        
+        if(M_kasus::count()!=0){
+            $noRegist =M_kasus::get()->last()->id_kasus+1;        
+        }else{
+            $noRegist =1;
+        }
+        
         if(Auth::guest()){
-            return view('lapor.formlaporkasus',compact('kecamatan'));
+            return view('lapor.formlaporkasus',compact('kecamatan','noRegist'));
         } else {
-            return view('formkasusnew',compact('kecamatan'));
+            return view('formkasusnew',compact('kecamatan','noRegist'));
         }
     }
     public function tambahKasus(Request $req){
@@ -51,8 +56,8 @@ class KasusController extends Controller
                 'kejadian'         => $req->kejadian,
                 'kategori'         => $req->kategori,
                 'alamat_tkp'       => $req->TKP,
-                'fk_id_district'       => $req->kecamatan,
-                'fk_id_villages'       => $req->kelurahan,
+                'fk_id_district'   => $req->kecamatan,
+                'fk_id_villages'   => $req->kelurahan,
                 'deskripsi'        => $req->deskripsi
             ]);
         } else {
@@ -67,12 +72,22 @@ class KasusController extends Controller
             'no_registrasi'   => 'required',
             'hari'   => 'required',
             'konselor'   => 'required',
-            'deskripsi'   => 'required'
+            'kejadian'   => 'required',
+            'kategori'   => 'required',
+            'TKP'        => 'required',
+            'kecamatan' => 'required',
+            'kelurahan' => 'required',
+            'deskripsi'   => 'required',
         ]);
         M_kasus::where('id_kasus', $req->id_kasus)->update([
             'nomor_registrasi' => $req->no_registrasi,
             'hari'             => $req->hari,
             'konselor'         => $req->konselor,
+            'kejadian'         => $req->kejadian,
+            'kategori'         => $req->kategori,
+            'alamat_tkp'       => $req->TKP,
+            'fk_id_district'   => $req->kecamatan,
+            'fk_id_villages'   => $req->kelurahan,
             'deskripsi'        => $req->deskripsi
         ]);
         return redirect()->back()->with('notification', 'Kasus berhasil diperbaruhi');
@@ -94,7 +109,10 @@ class KasusController extends Controller
         $rujukan = M_rujukan::where([
             'fk_id_kasus'   => $idKasus
         ])->get();
-        return view('formkasus', compact('idKasus', 'kasus', 'korban', 'pelaku','pelayanan','penanganan','rujukan'));
+        $kecamatan = M_district::where([
+            'regency_id'   =>  3573
+        ])->get();   
+        return view('formkasus', compact('kecamatan','idKasus', 'kasus', 'korban', 'pelaku','pelayanan','penanganan','rujukan'));
     }
     public function viewtambahkorban($idKasus) {
         return view('formkorban', compact('idKasus'));
@@ -322,15 +340,16 @@ class KasusController extends Controller
     }
 
     public function pelaporTambahKasus(Request $req){
+        // dd($req);
+        
         $this->validate($req, [
             'no_registrasi'   => 'required',
-            'hari'   => 'required',
-            'konselor'   => 'required',
+            'hari'   => 'required',            
             'kejadian'   => 'required',
             'kategori'   => 'required',
             'TKP'        => 'required',
             'kecamatan' => 'required',
-            'kelurahan' => 'required',
+            // 'kelurahan' => 'required',
             'deskripsi'   => 'required',
         ]);
         $this->validate($req, [
@@ -375,12 +394,10 @@ class KasusController extends Controller
             'hubungan_dengan_korban' => 'required'
         ]);
 
-dd('ye');
         // INSERT KASUS
         $ks = M_kasus::create([
             'nomor_registrasi' => $req->no_registrasi,
-            'hari'             => $req->hari,
-            'konselor'         => $req->konselor,
+            'hari'             => $req->hari,            
             'kejadian'         => $req->kejadian,
             'kategori'         => $req->kategori,
             'alamat_tkp'       => $req->TKP,
@@ -423,9 +440,9 @@ dd('ye');
             'status'        => $req->status_korban,
             'difabel'       => $req->difabel_korban,
             'kdrt'          => $req->kdrt_korban,
-            'tindak_kekerasan' => $tindak_kekerasan_korban,
-            'kategori_trafficking'   => $trafficking_korban,
-            'fk_id_kasus'   => $idKasus
+            'tindak_kekerasan' => $tindak_kekerasan,
+            'kategori_trafficking'   => $trafficking,
+            'fk_id_kasus'   => $id_kasus
         ]);
         //END INSERT KORBAN
 
@@ -443,7 +460,7 @@ dd('ye');
             'status'        => $req->status_pelaku,
             'difabel'       => $req->difabel_pelaku,
             'hubungan_dengan_korban' => $req->hubungan_dengan_korban,
-            'fk_id_kasus'   => $idKasus
+            'fk_id_kasus'   => $id_kasus
         ]);
         //END INSERT PELAKU
 
@@ -451,7 +468,18 @@ dd('ye');
             'fk_id_kasus' => $id_kasus,
             'fk_id_pelapor' => $id_pelapor
         ]);
-
         return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
+    }
+    public function getKelurahan(Request $req)
+    {
+        $kelurahan = M_village::select('villages.name')
+        ->join('districts', 'districts.id',  '=',"villages.district_id")
+        ->where('districts.name','=',$req->id_district)->
+        get();
+        $kelurahanData="";        
+        foreach ($kelurahan as $data ) {
+            $kelurahanData .='<option value="'.$data->name.'">'.$data->name.'</option>';
+        }
+        return response($kelurahanData) ;
     }
 }
