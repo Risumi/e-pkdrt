@@ -12,6 +12,9 @@
 Route::get('/','HomeController@view')->name('home');
 Route::post('/','HomeController@viewFilter')->name('home');
 Route::post('/report','ReportController@report');
+Route::get('/login','AuthController@viewLogin');
+Route::post('/login','AuthController@login');
+Route::get('/logout','AuthController@logout');
 
 Route::group(['prefix' => 'kasus'], function () {
     Route::get('','KasusController@view')->name('kasus');

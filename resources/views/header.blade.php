@@ -33,18 +33,16 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-@php
-$role = 'admin';
-@endphp
+
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('home')}}">Home </a>
                 </li>
                 <li class="nav-item">
-                    @if(Auth::guest())
+                    @guest
                         <a class="nav-link" href="{{route('kasusBaru')}}">Lapor</a>
-                    @elseif($role == 'admin')
+                    @else
                         <a class="nav-link" href="{{route('kasus')}}">Kasus</a>
                     @endif
                 </li>
@@ -53,13 +51,19 @@ $role = 'admin';
                 </li>        
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    User
+                @guest()
+                    <a href="{{ url('login') }}">
+                    Login
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Sign Out</a>                                
-                </li>
+                @else
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url('logout') }}">Sign Out</a>                                
+                    </li>
+                @endif
             </ul>
         </div>
     </nav>

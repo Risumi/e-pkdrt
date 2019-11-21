@@ -4,6 +4,19 @@
 
     <div class="container">
         <br>
+        @if(session('notification'))
+        <div class="alert alert-success alert-dismisable">
+            <a href="#" aria-label="close" class="close" data-dismiss="alert">&times;</a>
+            <strong>{{ session('notification') }}</strong>
+        </div>
+        @endif
+        @if(count($errors) > 0)
+        <div class="alert alert-danger alert-dismisable">
+            <a href="#" aria-label="close" class="close" data-dismiss="alert">&times;</a>
+            <strong>Mohon mengisi semua form</strong>
+        </div>
+        @endif
+
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="pills-kasus-tab" data-toggle="pill" href="#pills-kasus" role="tab" aria-controls="pills-kasus" aria-selected="true">Data Kasus</a>

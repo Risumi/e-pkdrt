@@ -321,7 +321,6 @@ class KasusController extends Controller
     }
 
     public function pelaporTambahKasus(Request $req){
-        dd($req);
         $this->validate($req, [
             'no_registrasi'   => 'required',
             'hari'   => 'required',
@@ -333,20 +332,17 @@ class KasusController extends Controller
             'kelurahan' => 'required',
             'deskripsi'   => 'required',
         ]);
-        $ks = M_kasus::create([
-            'nomor_registrasi' => $req->no_registrasi,
-            'hari'             => $req->hari,
-            'konselor'         => $req->konselor,
-            'kejadian'         => $req->kejadian,
-            'kategori'         => $req->kategori,
-            'alamat_tkp'       => $req->TKP,
-            'fk_id_district'   => $req->kecamatan,
-            // 'fk_id_villages'   => $req->kelurahan,
-            'fk_id_villages'   => "PURWODADI",
-            'deskripsi'        => $req->deskripsi
+        $this->validate($req, [
+            'nama_pelapor'          => 'required',
+            'jenis_kelamin_pelapor' => 'required',
+            'ttl_pelapor'           => 'required',
+            'alamat_pelapor'        => 'required',
+            'telepon_pelapor'       => 'required',
+            'pendidikan_pelapor'    => 'required',
+            'agama_pelapor'         => 'required',
+            'pekerjaan_pelapor'     => 'required',
+            'status_pelapor'        => 'required'
         ]);
-
-        $id_kasus = $ks->id_kasus;
         $this->validate($req, [
             'nama_korban'          => 'required',
             'jenis_kelamin_korban' => 'required',
@@ -363,6 +359,54 @@ class KasusController extends Controller
             'tindak_kekerasan_korban' => 'required',
             'trafficking_korban'   => 'required'
         ]);
+        $this->validate($req, [
+            'nama_pelaku'          => 'required',
+            'jenis_kelamin_pelaku' => 'required',
+            'usia_pelaku'          => 'required',
+            'ttl_pelaku'           => 'required',
+            'alamat_pelaku'        => 'required',
+            'telepon_pelaku'       => 'required',
+            'pendidikan_pelaku'    => 'required',
+            'agama_pelaku'         => 'required',
+            'pekerjaan_pelaku'     => 'required',
+            'status_pelaku'        => 'required',
+            'difabel_pelaku'       => 'required',
+            'hubungan_dengan_korban' => 'required'
+        ]);
+
+dd('ye');
+        // INSERT KASUS
+        $ks = M_kasus::create([
+            'nomor_registrasi' => $req->no_registrasi,
+            'hari'             => $req->hari,
+            'konselor'         => $req->konselor,
+            'kejadian'         => $req->kejadian,
+            'kategori'         => $req->kategori,
+            'alamat_tkp'       => $req->TKP,
+            'fk_id_district'   => $req->kecamatan,
+            // 'fk_id_villages'   => $req->kelurahan,
+            'fk_id_villages'   => "PURWODADI",
+            'deskripsi'        => $req->deskripsi
+        ]);
+        $id_kasus = $ks->id_kasus;
+        //END INSERT KASUS
+
+        //INSERT PELAPOR
+        M_korban::create([
+            'nama'          => $req->nama_pelapor,
+            'jenis_kelamin' => $req->jenis_kelamin_pelapor,
+            'ttl'           => $req->ttl_pelapor,
+            'alamat'        => $req->alamat_pelapor,
+            'telepon'       => $req->telepon_pelapor,
+            'pendidikan'    => $req->pendidikan_pelapor,
+            'agama'         => $req->agama_pelapor,
+            'pekerjaan'     => $req->pekerjaan_pelapor,
+            'status'        => $req->status_pelapor,
+            'fk_id_kasus'   => $idKasus
+        ]);
+        //END INSERT PELAPOR
+
+        //INSERT KORBAN
         $tindak_kekerasan = implode(",",  $req->tindak_kekerasan_korban);
         $trafficking = implode(",",  $req->trafficking_korban);
         M_korban::create([
@@ -382,21 +426,9 @@ class KasusController extends Controller
             'kategori_trafficking'   => $trafficking_korban,
             'fk_id_kasus'   => $idKasus
         ]);
+        //END INSERT KORBAN
 
-        $this->validate($req, [
-            'nama_pelaku'          => 'required',
-            'jenis_kelamin_pelaku' => 'required',
-            'usia_pelaku'          => 'required',
-            'ttl_pelaku'           => 'required',
-            'alamat_pelaku'        => 'required',
-            'telepon_pelaku'       => 'required',
-            'pendidikan_pelaku'    => 'required',
-            'agama_pelaku'         => 'required',
-            'pekerjaan_pelaku'     => 'required',
-            'status_pelaku'        => 'required',
-            'difabel_pelaku'       => 'required',
-            'hubungan_dengan_korban' => 'required'
-        ]);
+        //INSERT PELAKU
         M_pelaku::create([
             'nama'          => $req->nama_pelaku,
             'jenis_kelamin' => $req->jenis_kelamin_pelaku,
@@ -412,5 +444,8 @@ class KasusController extends Controller
             'hubungan_dengan_korban' => $req->hubungan_dengan_korban,
             'fk_id_kasus'   => $idKasus
         ]);
+        //END INSERT PELAKU
+
+        return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
     }
 }

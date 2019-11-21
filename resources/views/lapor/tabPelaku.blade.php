@@ -1,10 +1,3 @@
-@if(session('notification'))
-    <div class="alert alert-success alert-dismisable">
-        <a href="#" aria-label="close" class="close" data-dismiss="alert">&times;</a>
-        <strong>{{ session('notification') }}</strong>
-    </div>            
-<br>            
-@endif
 <div class="card card-default">
     <div class="card-header">Pelaku</div>
     <div class="card-body">

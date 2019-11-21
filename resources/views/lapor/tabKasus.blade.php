@@ -1,10 +1,3 @@
-
-@if(session('notification'))
-<div class="alert alert-success alert-dismisable">
-    <a href="#" aria-label="close" class="close" data-dismiss="alert">&times;</a>
-    <strong>{{ session('notification') }}</strong>
-</div>
-@endif
 <div class="card text-white bg-warning mb-3">
     <div class="card-header">Data Kasus</div>
 </div>
@@ -23,7 +16,7 @@
         <div class="form-group row">
             <label for="inputTglRegist" class="col-sm-2 col-form-label">Tanggal Pelaporan</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="inputTglRegist" name="hari"
+                <input type="date" class="form-control" id="inputTglRegist" name="hari"
                     value="{{ old('hari') }}">
                 @if ($errors->has('hari'))
                 <span style="color: red">{{ $errors->first('hari') }}</span>
@@ -43,7 +36,7 @@
         <div class="form-group row">
             <label for="inputTglKejadian" class="col-sm-2 col-form-label">Tanggal Kejadian</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="inputTglKejadian" name="kejadian"
+                <input type="date" class="form-control" id="inputTglKejadian" name="kejadian"
                     value="{{ old('kejadian') }}">
                 @if ($errors->has('kejadian'))
                 <span style="color: red">{{ $errors->first('kejadian') }}</span>

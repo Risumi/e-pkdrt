@@ -1,9 +1,3 @@
-@if(session('notification'))
-    <div class="alert alert-success alert-dismisable">
-        <a href="#" aria-label="close" class="close" data-dismiss="alert">&times;</a>
-        <strong>{{ session('notification') }}</strong>
-    </div>
-@endif
 <div class="card-header">Pelapor</div>
 <div class="card-body">
 
@@ -31,15 +25,6 @@
                 </div>
                 @if ($errors->has('jenis_kelamin_pelapor'))
                     <span style="color: red">{{ $errors->first('jenis_kelamin_pelapor') }}</span>
-                @endif
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputUsia" class="col-sm-2 col-form-label">Usia</label>
-            <div class="col-sm-2">
-                <input type="number" class="form-control" id="inputUsia" name="usia_pelapor">
-                @if ($errors->has('usia_pelapor'))
-                    <span style="color: red">{{ $errors->first('usia_pelapor') }}</span>
                 @endif
             </div>
         </div>

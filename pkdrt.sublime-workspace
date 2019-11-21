@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"for",
+				"form\tTag"
+			],
+			[
+				"ha",
+				"hari"
+			],
+			[
+				"da",
+				"date"
+			],
+			[
+				"fk",
+				"fk_id_district"
+			],
+			[
 				"jenis",
 				"jenis_report"
 			],
@@ -36,10 +52,6 @@
 				"result"
 			],
 			[
-				"da",
-				"dataJenis4"
-			],
-			[
 				"data",
 				"data-"
 			],
@@ -50,10 +62,6 @@
 			[
 				"va",
 				"valueKekerasan"
-			],
-			[
-				"for",
-				"for\tfor …"
 			],
 			[
 				"val",
@@ -506,14 +514,6 @@
 			[
 				"ta",
 				"tablesWoHead"
-			],
-			[
-				"tab",
-				"tablesWoHead"
-			],
-			[
-				"arra",
-				"array"
 			]
 		]
 	},
@@ -523,16 +523,61 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 3595,
+				"buffer_size": 2963,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "resources/views/formkasus.blade.php",
+			"file": "app/Http/Controllers/AuthController.php",
 			"settings":
 			{
-				"buffer_size": 13934,
+				"buffer_size": 749,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/header.blade.php",
+			"settings":
+			{
+				"buffer_size": 3723,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/login.blade.php",
+			"settings":
+			{
+				"buffer_size": 1635,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/User.php",
+			"settings":
+			{
+				"buffer_size": 767,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/views/lapor/formlaporkasus.blade.php",
+			"settings":
+			{
+				"buffer_size": 2812,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/Http/Controllers/KasusController.php",
+			"settings":
+			{
+				"buffer_size": 18825,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -541,7 +586,7 @@
 			"file": "app/Http/Controllers/ReportController.php",
 			"settings":
 			{
-				"buffer_size": 18729,
+				"buffer_size": 18818,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -551,24 +596,6 @@
 			"settings":
 			{
 				"buffer_size": 8761,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/modal/modalReport.blade.php",
-			"settings":
-			{
-				"buffer_size": 8985,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/KasusController.php",
-			"settings":
-			{
-				"buffer_size": 12508,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -692,25 +719,37 @@
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/lapor",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/modal",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/report",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/routes"
 	],
 	"file_history":
 	[
-		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/HomeController.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkasusnew.blade.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkorban.blade.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/header.blade.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/kppa.sql",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/lapor/tabKasus.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/home.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/header.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/lapor/tabPelapor.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/lapor/tabPelaku.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/lapor/tabKorban.blade.php",
+		"/E/Andri Wijaya/htdocs/sr.com/resources/views/login.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_pelapor.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_kasus.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkasusnew.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/routes/web.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formpelakuedit.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formpelaku.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkasus.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkorban.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/config/app.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/modal/modalReport.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/HomeController.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/kppa.sql",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formpelayanan.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/database/seeds/DatabaseSeeder.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/database/seeds/KasusSeeder.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/config/app.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/config/database.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/.env",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/database/seeds/RujukanSeeder.php",
@@ -725,16 +764,13 @@
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/modal/modalTambahKorban.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/modal/modalTambahPelaku.blade.php",
 		"/C/Users/Wijaya Kusuma/AppData/Local/Temp/fz3temp-2/api.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formpelaku.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formpenanganan.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkorbanedit.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_penanganan.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_pelayanan.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_pelaku.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_kasus.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_korban.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Models/M_rujukan.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/formkasus.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/Controller.php",
 		"/E/Andri Wijaya/htdocs/skripsi/app/Models/M_pengguna.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/env",
@@ -819,16 +855,7 @@
 		"/E/Andri Wijaya/htdocs/skripsi/config/filesystems.php",
 		"/E/Andri Wijaya/htdocs/skripsi/config/hashing.php",
 		"/E/Andri Wijaya/htdocs/skripsi/config/logging.php",
-		"/E/Andri Wijaya/htdocs/skripsi/config/mail.php",
-		"/E/Andri Wijaya/htdocs/skripsi/config/queue.php",
-		"/E/Andri Wijaya/htdocs/skripsi/config/services.php",
-		"/E/Andri Wijaya/htdocs/skripsi/config/session.php",
-		"/E/Andri Wijaya/htdocs/skripsi/config/view.php",
-		"/E/Andri Wijaya/htdocs/skripsi/config/auth.php",
-		"/E/Andri Wijaya/htdocs/skripsi/config/cache.php",
-		"/E/Andri Wijaya/htdocs/pkm/config/database.php",
-		"/E/Andri Wijaya/htdocs/skripsi/.env.example",
-		"/E/Andri Wijaya/htdocs/skripsi/config/app.php"
+		"/E/Andri Wijaya/htdocs/skripsi/config/mail.php"
 	],
 	"find":
 	{
@@ -893,7 +920,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -902,15 +929,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3595,
+						"buffer_size": 2963,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								550,
-								550
+								638,
+								643
 							]
 						],
 						"settings":
@@ -923,24 +950,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "resources/views/formkasus.blade.php",
+					"file": "app/Http/Controllers/AuthController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 13934,
+						"buffer_size": 749,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13934,
-								13934
+								354,
+								354
 							]
 						],
 						"settings":
@@ -950,27 +977,148 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 254.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "resources/views/header.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3723,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3351,
+								3351
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 436.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "resources/views/login.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1635,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								538,
+								538
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 14.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/User.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 767,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								532,
+								546
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "app/Http/Controllers/ReportController.php",
+					"buffer": 5,
+					"file": "resources/views/lapor/formlaporkasus.blade.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18729,
+						"buffer_size": 2812,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								3738
+								394,
+								128
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/Http/Controllers/KasusController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18825,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16344,
+								16344
 							]
 						],
 						"settings":
@@ -980,14 +1128,44 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1142.0,
+						"translation.y": 5303.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 7,
+					"file": "app/Http/Controllers/ReportController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18818,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								781,
+								781
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "resources/views/report/report.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -999,8 +1177,8 @@
 						"selection":
 						[
 							[
-								0,
-								277
+								6915,
+								6915
 							]
 						],
 						"settings":
@@ -1009,74 +1187,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1.0,
+						"translation.y": 2083.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "resources/views/modal/modalReport.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8985,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								341
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 3.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "app/Http/Controllers/KasusController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12508,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								223,
-								66
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 527.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
+					"buffer": 9,
 					"file": "resources/views/formkorbanedit.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1102,11 +1220,11 @@
 						"translation.y": 864.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 10,
 					"semi_transient": false,
 					"settings":
 					{
@@ -1131,11 +1249,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 11,
 					"file": "resources/views/formpenanganan.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1161,11 +1279,11 @@
 						"translation.y": 85.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 12,
 					"file": "app/Models/M_penanganan.php",
 					"semi_transient": false,
 					"settings":
@@ -1191,11 +1309,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 13,
 					"file": "resources/views/formrujukan.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1221,11 +1339,11 @@
 						"translation.y": 281.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 14,
 					"file": "app/Models/M_rujukan.php",
 					"semi_transient": false,
 					"settings":
@@ -1251,11 +1369,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 15,
 					"file": "resources/views/kasus.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1281,11 +1399,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 16,
 					"semi_transient": false,
 					"settings":
 					{
@@ -1310,7 +1428,7 @@
 						"translation.y": 2679.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 14,
 					"type": "text"
 				}
 			]
