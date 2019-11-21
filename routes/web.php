@@ -53,9 +53,3 @@ Route::group(['prefix' => 'kasus'], function () {
         });
     });
 });
-// korban/1
-// korban/1/pelayanan/new
-// korban/1/rujukan/new
-// korban/new
-// pelaku/1
-// pelaku/1/penanganan/new

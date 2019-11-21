@@ -5,6 +5,7 @@ use App\Models\M_kasus;
 use App\Models\M_korban;
 use App\Models\M_pelayanan;
 use App\Models\M_rujukan;
+use App\Models\M_pelapor;
 use App\Models\M_pelaku;
 use App\Models\M_penanganan;
 use App\Models\M_village;
@@ -392,7 +393,7 @@ dd('ye');
         //END INSERT KASUS
 
         //INSERT PELAPOR
-        M_korban::create([
+        $pelapor = M_pelapor::create([
             'nama'          => $req->nama_pelapor,
             'jenis_kelamin' => $req->jenis_kelamin_pelapor,
             'ttl'           => $req->ttl_pelapor,
@@ -401,9 +402,9 @@ dd('ye');
             'pendidikan'    => $req->pendidikan_pelapor,
             'agama'         => $req->agama_pelapor,
             'pekerjaan'     => $req->pekerjaan_pelapor,
-            'status'        => $req->status_pelapor,
-            'fk_id_kasus'   => $idKasus
+            'status'        => $req->status_pelapor
         ]);
+        $id_pelapor = $pelapor->id_pelapor;
         //END INSERT PELAPOR
 
         //INSERT KORBAN
@@ -445,6 +446,11 @@ dd('ye');
             'fk_id_kasus'   => $idKasus
         ]);
         //END INSERT PELAKU
+
+        DB::table('laporan_publik')->insert([
+            'fk_id_kasus' => $id_kasus,
+            'fk_id_pelapor' => $id_pelapor
+        ]);
 
         return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
     }

@@ -523,25 +523,7 @@
 			"file": "routes/web.php",
 			"settings":
 			{
-				"buffer_size": 2963,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/Http/Controllers/AuthController.php",
-			"settings":
-			{
-				"buffer_size": 749,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "resources/views/header.blade.php",
-			"settings":
-			{
-				"buffer_size": 3723,
+				"buffer_size": 3010,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -551,15 +533,6 @@
 			"settings":
 			{
 				"buffer_size": 1635,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "app/User.php",
-			"settings":
-			{
-				"buffer_size": 767,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -728,9 +701,12 @@
 	],
 	"file_history":
 	[
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/Http/Controllers/AuthController.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/header.blade.php",
+		"/E/Andri Wijaya/htdocs/e-pkdrt/app/User.php",
+		"/C/Users/Wijaya Kusuma/Downloads/admin.sql",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/lapor/tabKasus.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/home.blade.php",
-		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/header.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/lapor/tabPelapor.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/lapor/tabPelaku.blade.php",
 		"/E/Andri Wijaya/htdocs/e-pkdrt/resources/views/lapor/tabKorban.blade.php",
@@ -852,10 +828,7 @@
 		"/E/Andri Wijaya/htdocs/skripsi/scrum.sql",
 		"/E/Andri Wijaya/htdocs/skripsi/vendor/laravel/framework/src/Illuminate/Database/Connection.php",
 		"/E/Andri Wijaya/htdocs/skripsi/.editorconfig",
-		"/E/Andri Wijaya/htdocs/skripsi/config/filesystems.php",
-		"/E/Andri Wijaya/htdocs/skripsi/config/hashing.php",
-		"/E/Andri Wijaya/htdocs/skripsi/config/logging.php",
-		"/E/Andri Wijaya/htdocs/skripsi/config/mail.php"
+		"/E/Andri Wijaya/htdocs/skripsi/config/filesystems.php"
 	],
 	"find":
 	{
@@ -920,7 +893,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -929,15 +902,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2963,
+						"buffer_size": 3010,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								638,
-								643
+								690,
+								690
 							]
 						],
 						"settings":
@@ -947,74 +920,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/Http/Controllers/AuthController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 749,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								354,
-								354
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 28.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "resources/views/header.blade.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3723,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3351,
-								3351
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 436.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
+					"buffer": 1,
 					"file": "resources/views/login.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1044,37 +957,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "app/User.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 767,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								532,
-								546
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 2,
 					"file": "resources/views/lapor/formlaporkasus.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1101,11 +984,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 3,
 					"file": "app/Http/Controllers/KasusController.php",
 					"semi_transient": false,
 					"settings":
@@ -1117,8 +1000,8 @@
 						"selection":
 						[
 							[
-								16344,
-								16344
+								16244,
+								16244
 							]
 						],
 						"settings":
@@ -1128,14 +1011,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5303.0,
+						"translation.y": 5163.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 4,
 					"file": "app/Http/Controllers/ReportController.php",
 					"semi_transient": false,
 					"settings":
@@ -1161,11 +1044,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 5,
 					"file": "resources/views/report/report.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1190,11 +1073,11 @@
 						"translation.y": 2083.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 6,
 					"file": "resources/views/formkorbanedit.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1220,11 +1103,11 @@
 						"translation.y": 864.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 7,
 					"semi_transient": false,
 					"settings":
 					{
@@ -1249,11 +1132,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 8,
 					"file": "resources/views/formpenanganan.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1279,11 +1162,11 @@
 						"translation.y": 85.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 16,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 9,
 					"file": "app/Models/M_penanganan.php",
 					"semi_transient": false,
 					"settings":
@@ -1309,11 +1192,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 10,
 					"file": "resources/views/formrujukan.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1339,11 +1222,11 @@
 						"translation.y": 281.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 11,
 					"file": "app/Models/M_rujukan.php",
 					"semi_transient": false,
 					"settings":
@@ -1369,11 +1252,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 12,
 					"file": "resources/views/kasus.blade.php",
 					"semi_transient": false,
 					"settings":
@@ -1399,11 +1282,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 16,
+					"buffer": 13,
 					"semi_transient": false,
 					"settings":
 					{
@@ -1428,7 +1311,7 @@
 						"translation.y": 2679.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 11,
 					"type": "text"
 				}
 			]
