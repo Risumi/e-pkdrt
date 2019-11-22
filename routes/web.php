@@ -11,45 +11,50 @@
 */
 Route::get('/','HomeController@view')->name('home');
 Route::post('/','HomeController@viewFilter')->name('home');
-Route::post('/report','ReportController@report');
 Route::get('/login','AuthController@viewLogin');
 Route::post('/login','AuthController@login');
-Route::get('/logout','AuthController@logout');
-Route::post('/kelurahan','KasusController@getKelurahan');
-Route::group(['prefix' => 'kasus'], function () {
-    Route::get('','KasusController@view')->name('kasus');
-    Route::get('new','KasusController@viewtambah')->name('kasusBaru');
-    Route::post('new','KasusController@tambahKasus');
 
-    // Route::get('lapor','KasusController@lapor')->name('kasusBaru');
+Route::get('kasus/new','KasusController@viewtambah')->name('kasusBaru');
+Route::post('kasus/new','KasusController@tambahKasus');
+Route::group(['middleware' => 'App\Http\Middleware\IsLogin'], function(){
+    Route::post('/report','ReportController@report');
+    Route::get('/logout','AuthController@logout');
+    Route::post('/kelurahan','KasusController@getKelurahan');
+    Route::group(['prefix' => 'kasus'], function () {
+        Route::get('','KasusController@view')->name('kasus');
+        // Route::get('new','KasusController@viewtambah')->name('kasusBaru');
+        // Route::post('new','KasusController@tambahKasus');
 
-    Route::group(['prefix' => 'edit'], function () {
-        Route::group(['prefix' => '{idKasus}'], function () {
-            Route::get('','KasusController@viewedit')->name('kasusEdit');                 
-            Route::post('','KasusController@editKasus');
-            Route::get('/print','KasusController@printkasus');
-            Route::group(['prefix' => 'korban'], function () {
-                Route::get('new','KasusController@viewtambahkorban');
-                Route::post('new','KasusController@tambahKorban');
-                Route::group(['prefix' => '{idKorban}'], function () {
-                    Route::get('','KasusController@vieweditkorban')->name('korbanEdit');
-                    Route::post('','KasusController@editkorban');
-                    Route::get('pelayanan/new','KasusController@viewtambahpelayanan');
-                    Route::post('pelayanan/new','KasusController@tambahPelayanan');
-                    Route::get('rujukan/new','KasusController@viewtambahrujukan');
-                    Route::post('rujukan/new','KasusController@tambahRujukan');
-                });
-            });    
-            Route::group(['prefix' => 'pelaku'], function () {                
-                Route::get('new','KasusController@viewtambahpelaku')->name('pelakuBaru');
-                Route::post('new','KasusController@tambahPelaku');
-                Route::group(['prefix' => '{idPelaku}'], function () {
-                    Route::post('','KasusController@editPelaku');
-                    Route::get('','KasusController@vieweditpelaku')->name('pelakuEdit');                
-                    Route::get('penanganan/new','KasusController@viewtambahpenanganan')->name('penangananBaru');                
-                    Route::post('penanganan/new','KasusController@tambahPenanganan');
-                });            
-            });    
+        // Route::get('lapor','KasusController@lapor')->name('kasusBaru');
+
+        Route::group(['prefix' => 'edit'], function () {
+            Route::group(['prefix' => '{idKasus}'], function () {
+                Route::get('','KasusController@viewedit')->name('kasusEdit');                 
+                Route::post('','KasusController@editKasus');
+                Route::get('/print','KasusController@printkasus');
+                Route::group(['prefix' => 'korban'], function () {
+                    Route::get('new','KasusController@viewtambahkorban');
+                    Route::post('new','KasusController@tambahKorban');
+                    Route::group(['prefix' => '{idKorban}'], function () {
+                        Route::get('','KasusController@vieweditkorban')->name('korbanEdit');
+                        Route::post('','KasusController@editkorban');
+                        Route::get('pelayanan/new','KasusController@viewtambahpelayanan');
+                        Route::post('pelayanan/new','KasusController@tambahPelayanan');
+                        Route::get('rujukan/new','KasusController@viewtambahrujukan');
+                        Route::post('rujukan/new','KasusController@tambahRujukan');
+                    });
+                });    
+                Route::group(['prefix' => 'pelaku'], function () {                
+                    Route::get('new','KasusController@viewtambahpelaku')->name('pelakuBaru');
+                    Route::post('new','KasusController@tambahPelaku');
+                    Route::group(['prefix' => '{idPelaku}'], function () {
+                        Route::post('','KasusController@editPelaku');
+                        Route::get('','KasusController@vieweditpelaku')->name('pelakuEdit');                
+                        Route::get('penanganan/new','KasusController@viewtambahpenanganan')->name('penangananBaru');                
+                        Route::post('penanganan/new','KasusController@tambahPenanganan');
+                    });            
+                });    
+            });
         });
     });
 });
