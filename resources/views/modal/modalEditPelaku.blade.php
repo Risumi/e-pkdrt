@@ -108,6 +108,7 @@
                                     @endif
                                 </div>
                             </div>
+                            <input type="hidden" name="modal" value="#btnModalEditPelaku{{$data->id_pelaku}}">
                             <div class="form-group row">
                                 <label for="inputAgama" class="col-sm-2 col-form-label">Agama</label>
                                 <div class="input-group col-sm-5">

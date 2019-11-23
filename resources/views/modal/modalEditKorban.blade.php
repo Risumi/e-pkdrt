@@ -27,7 +27,7 @@
                                     <input type="text" class="form-control" id="inputNama" name="nama"
                                         value="{{ $data->nama }}">
                                     @if ($errors->has('nama'))
-                                    <span style="color: red">{{ $errors->first('nama') }}</span>
+                                    <span style="color: red">{{ 'Kolom nama harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                         <label class="form-check-label" for="RadioJKP">Perempuan</label>
                                     </div>
                                     @if ($errors->has('jenis_kelamin'))
-                                    <span style="color: red">{{ $errors->first('jenis_kelamin') }}</span>
+                                    <span style="color: red">{{ 'Kolom jenis kelamin harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -55,9 +55,9 @@
                                 <label for="inputUsia" class="col-sm-2 col-form-label">Usia</label>
                                 <div class="col-sm-2">
                                     <input type="number" class="form-control" id="inputUsia" name="usia"
-                                        value="{{ $data->usia }}">
+                                        value="{{ $data->usia }}" min="0">
                                     @if ($errors->has('usia'))
-                                    <span style="color: red">{{ $errors->first('usia') }}</span>
+                                    <span style="color: red">{{ 'Kolom usia harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -67,7 +67,7 @@
                                     <input type="text" class="form-control" id="inputTTL" name="ttl"
                                         value="{{ $data->ttl }}">
                                     @if ($errors->has('ttl'))
-                                    <span style="color: red">{{ $errors->first('ttl') }}</span>
+                                    <span style="color: red">{{ 'Kolom TTL harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -77,17 +77,17 @@
                                     <textarea type="text" class="form-control" id="inputAlamat" rows="3"
                                         name="alamat">{{ $data->alamat }}</textarea>
                                     @if ($errors->has('alamat'))
-                                    <span style="color: red">{{ $errors->first('alamat') }}</span>
+                                    <span style="color: red">{{ 'Kolom alamat harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputNO" class="col-sm-2 col-form-label">No. Telp/HP</label>
                                 <div class="col-sm-5">
-                                    <input type="tel" class="form-control" id="inputNO" name="telepon"
+                                    <input type="number" class="form-control" id="inputNO" name="telepon"
                                         value="{{ $data->telepon }}">
                                     @if ($errors->has('telepon'))
-                                    <span style="color: red">{{ $errors->first('telepon') }}</span>
+                                    <span style="color: red">{{ 'Kolom No.Telp/HP harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                             {{("S1/S2/S3" == $data->pendidikan) ? 'selected' : '' }}>S1/S2/S3</option>
                                     </select>
                                     @if ($errors->has('pendidikan'))
-                                    <span style="color: red">{{ $errors->first('pendidikan') }}</span>
+                                    <span style="color: red">{{ 'Kolom pendidikan harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                                             Konghucu</option>
                                     </select>
                                     @if ($errors->has('agama'))
-                                    <span style="color: red">{{ $errors->first('agama') }}</span>
+                                    <span style="color: red">{{ 'Kolom agama harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -156,7 +156,7 @@
                                         </option>
                                     </select>
                                     @if ($errors->has('pekerjaan'))
-                                    <span style="color: red">{{ $errors->first('pekerjaan') }}</span>
+                                    <span style="color: red">{{ 'Kolom pekerjaan harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -175,7 +175,7 @@
                                         </option>
                                     </select>
                                     @if ($errors->has('status'))
-                                    <span style="color: red">{{ $errors->first('status') }}</span>
+                                    <span style="color: red">{{ 'Kolom status harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -193,7 +193,7 @@
                                         <label class="form-check-label" for="RadioDifabelT">Tidak</label>
                                     </div>
                                     @if ($errors->has('difabel'))
-                                    <span style="color: red">{{ $errors->first('difabel') }}</span>
+                                    <span style="color: red">{{ 'Kolom difabel harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -211,13 +211,14 @@
                                         <label class="form-check-label" for="RadioKDRTT">Tidak</label>
                                     </div>
                                     @if ($errors->has('kdrt'))
-                                    <span style="color: red">{{ $errors->first('kdrt') }}</span>
+                                    <span style="color: red">{{ 'Kolom kdrt harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
                             @php
                             $kekerasan = explode(",",($data->tindak_kekerasan));
                             @endphp
+                            <input type="hidden" name="modal" value="#btnModalEditKorban{{$data->id_korban}}">
                             <div class="form-group row">
                                 <label for="inputKekerasan" class="col-sm-2 col-form-label">Tindak Kekerasan Yang
                                     Dialami
@@ -273,14 +274,14 @@
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="Lainnya"
-                                            id="checkKekerasan7" name="tindak_kekerasan[]">
-                                        <label class="form-check-label" for="checkKekerasan7"
+                                            id="checkKekerasan7" name="tindak_kekerasan[]"
                                             {{ cekComboBox($kekerasan, 'Lainnya') }}>
+                                        <label class="form-check-label" for="checkKekerasan7">
                                             Lainnya
                                         </label>
                                     </div>
                                     @if ($errors->has('tindak_kekerasan'))
-                                    <span style="color: red">{{ $errors->first('tindak_kekerasan') }}</span>
+                                    <span style="color: red">{{ 'Kolom kekerasan harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>
@@ -325,7 +326,7 @@
                                         </label>
                                     </div>
                                     @if ($errors->has('trafficking'))
-                                    <span style="color: red">{{ $errors->first('trafficking') }}</span>
+                                    <span style="color: red">{{ 'Kolom trafficking harus berisi nilai' }}</span>
                                     @endif
                                 </div>
                             </div>

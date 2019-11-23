@@ -37,11 +37,10 @@ class KasusController extends Controller
         }
     }
     public function tambahKasus(Request $req){
-        if(!Auth::guest()){
+        if(Auth::user()->id){
             $this->validate($req, [
                 'no_registrasi'   => 'required',
                 'hari'   => 'required',
-                'konselor'   => 'required',
                 'kejadian'   => 'required',
                 'kategori'   => 'required',
                 'TKP'        => 'required',
@@ -52,7 +51,6 @@ class KasusController extends Controller
             M_kasus::create([
                 'nomor_registrasi' => $req->no_registrasi,
                 'hari'             => $req->hari,
-                'konselor'         => $req->konselor,
                 'kejadian'         => $req->kejadian,
                 'kategori'         => $req->kategori,
                 'alamat_tkp'       => $req->TKP,
@@ -60,29 +58,27 @@ class KasusController extends Controller
                 'fk_id_villages'   => $req->kelurahan,
                 'deskripsi'        => $req->deskripsi
             ]);
+            return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
         } else {
             $this->pelaporTambahKasus($req);
         }
 
-        return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
     }
 
     public function editKasus(Request $req){
         $this->validate($req, [
             'no_registrasi'   => 'required',
-            'hari'   => 'required',
-            'konselor'   => 'required',
-            'kejadian'   => 'required',
-            'kategori'   => 'required',
-            'TKP'        => 'required',
+            'hari'      => 'required',
+            'kejadian'  => 'required',
+            'kategori'  => 'required',
+            'TKP'       => 'required',
             'kecamatan' => 'required',
             'kelurahan' => 'required',
-            'deskripsi'   => 'required',
+            'deskripsi' => 'required',
         ]);
         M_kasus::where('id_kasus', $req->id_kasus)->update([
             'nomor_registrasi' => $req->no_registrasi,
             'hari'             => $req->hari,
-            'konselor'         => $req->konselor,
             'kejadian'         => $req->kejadian,
             'kategori'         => $req->kategori,
             'alamat_tkp'       => $req->TKP,
@@ -121,10 +117,10 @@ class KasusController extends Controller
         $this->validate($req, [
             'nama'          => 'required',
             'jenis_kelamin' => 'required',
-            'usia'          => 'required',
+            'usia'          => 'required|numeric|min:0',
             'ttl'           => 'required',
             'alamat'        => 'required',
-            'telepon'       => 'required',
+            'telepon'       => 'required|numeric|digits_between:0,12',
             'pendidikan'    => 'required',
             'agama'         => 'required',
             'pekerjaan'     => 'required',
@@ -165,10 +161,10 @@ class KasusController extends Controller
         $this->validate($req, [
             'nama'          => 'required',
             'jenis_kelamin' => 'required',
-            'usia'          => 'required',
+            'usia'          => 'required|numeric|min:0',
             'ttl'           => 'required',
             'alamat'        => 'required',
-            'telepon'       => 'required',
+            'telepon'       => 'required|numeric|digits_between:0,12',
             'pendidikan'    => 'required',
             'agama'         => 'required',
             'pekerjaan'     => 'required',
@@ -253,10 +249,10 @@ class KasusController extends Controller
         $this->validate($req, [
             'nama'          => 'required',
             'jenis_kelamin' => 'required',
-            'usia'          => 'required',
+            'usia'          => 'required|numeric|min:0',
             'ttl'           => 'required',
             'alamat'        => 'required',
-            'telepon'       => 'required',
+            'telepon'       => 'required|numeric|digits_between:0,12',
             'pendidikan'    => 'required',
             'agama'         => 'required',
             'pekerjaan'     => 'required',
@@ -281,25 +277,27 @@ class KasusController extends Controller
         ]);
         return redirect()->back()->with('notification', 'Pelaku berhasil ditambahkan');
     }
+
     public function vieweditpelaku($idKasus,$idPelaku) {
         $pelaku = M_pelaku::where('id_pelaku', $idPelaku)->where('fk_id_kasus', $idKasus)->first();            
         return view('formpelakuedit',compact('idKasus', 'idPelaku'),compact('pelaku'));
     }
+
     public function editpelaku($idKasus,$idPelaku, Request $req) {
         $this->validate($req, [
             'nama'          => 'required',
             'jenis_kelamin' => 'required',
-            'usia'          => 'required',
+            'usia'          => 'required|numeric|min:0',
             'ttl'           => 'required',
             'alamat'        => 'required',
-            'telepon'       => 'required',
+            'telepon'       => 'required|numeric|digits_between:0,12',
             'pendidikan'    => 'required',
             'agama'         => 'required',
             'pekerjaan'     => 'required',
             'status'        => 'required',
             'difabel'       => 'required',
             'hubungan_dengan_korban' => 'required'
-        ]);
+        ], ['required' => 'Kolom :attribute harus berisi nilai']);
         M_pelaku::where('id_pelaku', $idPelaku)->where('fk_id_kasus', $idKasus)->update([
             'nama'          => $req->nama,
             'jenis_kelamin' => $req->jenis_kelamin,

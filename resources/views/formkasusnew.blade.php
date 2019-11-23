@@ -31,30 +31,20 @@
                     <div class="form-group row">
                         <label for="inputTglRegist" class="col-sm-2 col-form-label">Tanggal Pelaporan</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputTglRegist" name="hari"
+                            <input type="date" class="form-control" id="inputTglRegist" name="hari"
                                 value="{{ old('hari') }}">
                             @if ($errors->has('hari'))
-                            <span style="color: red">{{ $errors->first('hari') }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputKonselor" class="col-sm-2 col-form-label">Konselor</label>
-                        <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputKonselor" name="konselor"
-                                value="{{ old('konselor') }}">
-                            @if ($errors->has('konselor'))
-                            <span style="color: red">{{ $errors->first('konselor') }}</span>
+                            <span style="color: red">{{ 'Kolom tanggal pelaporan harus berisi nilai' }}</span>
                             @endif
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputTglKejadian" class="col-sm-2 col-form-label">Tanggal Kejadian</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputTglKejadian" name="kejadian"
+                            <input type="date" class="form-control" id="inputTglKejadian" name="kejadian"
                                 value="{{ old('kejadian') }}">
                             @if ($errors->has('kejadian'))
-                            <span style="color: red">{{ $errors->first('kejadian') }}</span>
+                            <span style="color: red">{{ 'Kolom tanggal kejadian harus berisi nilai' }}</span>
                             @endif
                         </div>
                     </div>
@@ -64,7 +54,7 @@
                             <textarea type="text" class="form-control" id="inputDeskripsi" rows="5"
                                 name="deskripsi">{{ old('deskripsi') }}</textarea>
                             @if ($errors->has('deskripsi'))
-                            <span style="color: red">{{ $errors->first('deskripsi') }}</span>
+                            <span style="color: red">{{ 'Kolom deskripsi harus berisi nilai' }}</span>
                             @endif
                         </div>
                     </div>
@@ -79,7 +69,7 @@
                                 <option value="Lainnya">Lainnya</option>
                             </select>
                             @if ($errors->has('kategori'))
-                            <span style="color: red">{{ $errors->first('kategori') }}</span>
+                            <span style="color: red">{{ 'Kolom kategori lokasi harus berisi nilai' }}</span>
                             @endif
                         </div>
                     </div>
@@ -89,7 +79,7 @@
                             <textarea type="text" class="form-control" id="inputTKP" rows="5"
                                 name="TKP">{{ old('TKP') }}</textarea>
                             @if ($errors->has('TKP'))
-                            <span style="color: red">{{ $errors->first('TKP') }}</span>
+                            <span style="color: red">{{ 'Kolom TKP harus berisi nilai' }}</span>
                             @endif
                         </div>
                     </div>
@@ -102,7 +92,7 @@
                                 @endforeach
                             </select>
                             @if ($errors->has('kecamatan'))
-                            <span style="color: red">{{ $errors->first('kecamatan') }}</span>
+                            <span style="color: red">{{ 'Kolom kecamatan harus berisi nilai' }}</span>
                             @endif
                         </div>
                     </div>
@@ -113,7 +103,7 @@
                                 <option value=></option>                                
                             </select>
                             @if ($errors->has('kelurahan'))
-                            <span style="color: red">{{ $errors->first('kelurahan') }}</span>
+                            <span style="color: red">{{ 'Kolom kelurahan harus berisi nilai' }}</span>
                             @endif
                         </div>
                     </div>
