@@ -65,8 +65,8 @@ $(document).ready(function () {
 
     //saat pilihan kecamatan di pilih, maka akan mengambil data kelurahan
     //di data-wilayah.php menggunakan ajax
+    getAjaxKecamatan();
     $("#inputKecamatan").change(getAjaxKecamatan);
-
     function getAjaxKecamatan() {     
         var id_district = $("#inputKecamatan").val();
         $.ajax({

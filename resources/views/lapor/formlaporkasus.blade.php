@@ -17,7 +17,7 @@
         </div>
         @endif
 
-        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+        <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" id="pills-kasus-tab" data-toggle="pill" href="#pills-kasus" role="tab" aria-controls="pills-kasus" aria-selected="true">Data Kasus</a>
             </li>
@@ -30,7 +30,7 @@
             <li class="nav-item">
                 <a class="nav-link" id="pills-pelaku-tab" data-toggle="pill" href="#pills-pelaku" role="tab" aria-controls="pills-pelaku" aria-selected="false">Data Pelaku</a>
             </li>
-        </ul>
+        </ul> -->
         <form action="{{ url('/kasus/new') }}" method="post">
         @csrf
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -49,13 +49,7 @@
             </div>
         </div>
         <br>
-
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label"></label>
-            <div class="col-sm-5">
-                <button class="btn btn-primary">Tambah Data</button>
-            </div>
-        </div>
+        </form>
     </div>
 </body>
 </html>

@@ -349,27 +349,26 @@ class KasusController extends Controller
             'kategori'   => 'required',
             'TKP'        => 'required',
             'kecamatan' => 'required',
-            // 'kelurahan' => 'required',
+            'kelurahan' => 'required',
             'deskripsi'   => 'required',
-        ]);
-        $this->validate($req, [
+
             'nama_pelapor'          => 'required',
             'jenis_kelamin_pelapor' => 'required',
             'ttl_pelapor'           => 'required',
+            'usia_pelapor'          => 'required|numeric|min:0',
             'alamat_pelapor'        => 'required',
-            'telepon_pelapor'       => 'required',
+            'telepon_pelapor'       => 'required|numeric|digits_between:0,12',
             'pendidikan_pelapor'    => 'required',
             'agama_pelapor'         => 'required',
             'pekerjaan_pelapor'     => 'required',
-            'status_pelapor'        => 'required'
-        ]);
-        $this->validate($req, [
+            'status_pelapor'        => 'required',
+
             'nama_korban'          => 'required',
             'jenis_kelamin_korban' => 'required',
             'usia_korban'          => 'required',
             'ttl_korban'           => 'required',
             'alamat_korban'        => 'required',
-            'telepon_korban'       => 'required',
+            'telepon_korban'       => 'required|numeric|digits_between:0,12',
             'pendidikan_korban'    => 'required',
             'agama_korban'         => 'required',
             'pekerjaan_korban'     => 'required',
@@ -377,15 +376,14 @@ class KasusController extends Controller
             'difabel_korban'       => 'required',
             'kdrt_korban'          => 'required',
             'tindak_kekerasan_korban' => 'required',
-            'trafficking_korban'   => 'required'
-        ]);
-        $this->validate($req, [
+            'trafficking_korban'   => 'required',
+
             'nama_pelaku'          => 'required',
             'jenis_kelamin_pelaku' => 'required',
             'usia_pelaku'          => 'required',
             'ttl_pelaku'           => 'required',
             'alamat_pelaku'        => 'required',
-            'telepon_pelaku'       => 'required',
+            'telepon_pelaku'       => 'required|numeric|digits_between:0,12',
             'pendidikan_pelaku'    => 'required',
             'agama_pelaku'         => 'required',
             'pekerjaan_pelaku'     => 'required',
@@ -402,8 +400,7 @@ class KasusController extends Controller
             'kategori'         => $req->kategori,
             'alamat_tkp'       => $req->TKP,
             'fk_id_district'   => $req->kecamatan,
-            // 'fk_id_villages'   => $req->kelurahan,
-            'fk_id_villages'   => "PURWODADI",
+            'fk_id_villages'   => $req->kelurahan,
             'deskripsi'        => $req->deskripsi
         ]);
         $id_kasus = $ks->id_kasus;
@@ -413,6 +410,7 @@ class KasusController extends Controller
         $pelapor = M_pelapor::create([
             'nama'          => $req->nama_pelapor,
             'jenis_kelamin' => $req->jenis_kelamin_pelapor,
+            'usia'          => $req->usia_pelapor,
             'ttl'           => $req->ttl_pelapor,
             'alamat'        => $req->alamat_pelapor,
             'telepon'       => $req->telepon_pelapor,

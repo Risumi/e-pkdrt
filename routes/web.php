@@ -14,12 +14,11 @@ Route::post('/','HomeController@viewFilter')->name('home');
 Route::get('/login','AuthController@viewLogin');
 Route::post('/login','AuthController@login');
 
-Route::get('kasus/new','KasusController@viewtambah')->name('kasusBaru');
 Route::post('kasus/new','KasusController@tambahKasus');
+Route::post('/kelurahan','KasusController@getKelurahan');
 Route::group(['middleware' => 'App\Http\Middleware\IsLogin'], function(){
     Route::post('/report','ReportController@report');
     Route::get('/logout','AuthController@logout');
-    Route::post('/kelurahan','KasusController@getKelurahan');
     Route::group(['prefix' => 'kasus'], function () {
         Route::get('','KasusController@view')->name('kasus');
         // Route::get('new','KasusController@viewtambah')->name('kasusBaru');
@@ -58,3 +57,4 @@ Route::group(['middleware' => 'App\Http\Middleware\IsLogin'], function(){
         });
     });
 });
+Route::get('kasus/new','KasusController@viewtambah')->name('kasusBaru');

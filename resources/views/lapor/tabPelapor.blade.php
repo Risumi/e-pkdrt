@@ -4,9 +4,9 @@
         <div class="form-group row">
             <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="inputNama" name="nama_pelapor">
+                <input type="text" class="form-control" id="inputNama" name="nama_pelapor" value="{{ old('nama_pelapor') }}">
                 @if ($errors->has('nama_pelapor'))
-                    <span style="color: red">{{ $errors->first('nama_pelapor') }}</span>
+                    <span style="color: red">{{ 'Kolom nama harus berisi nilai' }}</span>
                 @endif
             </div>
         </div>
@@ -15,43 +15,52 @@
             <div class="col-sm-5">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="jenis_kelamin_pelapor" id="RadioJKL"
-                        value="Laki laki">
+                        value="Laki-laki" <?= ('Laki-laki' == old('jenis_kelamin_pelapor') ? 'checked' : ''); ?>>
                     <label class="form-check-label" for="RadioJKL">Laki-laki</label>
                 </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="jenis_kelamin_pelapor" id="RadioJKLP"
-                        value="Perempuan">
+                        value="Perempuan"  <?= ('Perempuan' == old('jenis_kelamin_pelapor') ? 'checked' : ''); ?>>
                     <label class="form-check-label" for="RadioJKP">Perempuan</label>
                 </div>
                 @if ($errors->has('jenis_kelamin_pelapor'))
-                    <span style="color: red">{{ $errors->first('jenis_kelamin_pelapor') }}</span>
+                    <span style="color: red">{{ 'Kolom jenis kelamin harus berisi nilai' }}</span>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputUsia" class="col-sm-2 col-form-label">Usia</label>
+            <div class="col-sm-2">
+                <input type="number" class="form-control" id="inputUsia" name="usia_pelapor" min="0" value="{{ old('usia_pelapor') }}">
+                @if ($errors->has('usia_pelapor'))
+                    <span style="color: red">{{ 'Kolom usia pelapor harus berisi nilai minimal 0' }}</span>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="inputTTL" class="col-sm-2 col-form-label">Tempat Tanggal Lahir</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="inputTTL" name="ttl_pelapor">
+                <input type="text" class="form-control" id="inputTTL" name="ttl_pelapor" value="{{ old('ttl_pelapor') }}">
                 @if ($errors->has('ttl_pelapor'))
-                    <span style="color: red">{{ $errors->first('ttl_pelapor') }}</span>
+                    <span style="color: red">{{ 'Kolom TTL harus berisi nilai' }}</span>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="inputAlamat" class="col-sm-2 col-form-label">Alamat</label>
             <div class="col-sm-5">
-                <textarea type="text" class="form-control" id="inputAlamat" rows="3" name="alamat_pelapor"></textarea>
+                <textarea type="text" class="form-control" id="inputAlamat" rows="3" name="alamat_pelapor">{{ old('alamat_pelapor') }}</textarea>
                 @if ($errors->has('alamat_pelapor'))
-                    <span style="color: red">{{ $errors->first('alamat_pelapor') }}</span>
+                    <span style="color: red">{{ 'Kolom alamat harus berisi nilai' }}</span>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="inputNO" class="col-sm-2 col-form-label">No. Telp/HP</label>
             <div class="col-sm-5">
-                <input type="tel" class="form-control" id="inputNO" name="telepon_pelapor">
+                <input type="number" class="form-control" id="inputNO" name="telepon_pelapor" value="{{ old('telepon_pelapor') }}">
                 @if ($errors->has('telepon_pelapor'))
-                    <span style="color: red">{{ $errors->first('telepon_pelapor') }}</span>
+                    <span style="color: red">{{ 'Kolom No. Telp/HP harus berisi angka maksimal 12 digit' }}</span>
                 @endif
             </div>
         </div>
@@ -66,7 +75,7 @@
                     <option value="S1/S2/S3">S1/S2/S3</option>
                 </select>
                 @if ($errors->has('pendidikan_pelapor'))
-                    <span style="color: red">{{ $errors->first('pendidikan_pelapor') }}</span>
+                    <span style="color: red">{{ 'Kolom pendidikan harus berisi nilai' }}</span>
                 @endif
             </div>
         </div>
@@ -82,7 +91,7 @@
                     <option value="Konghucu">Konghucu</option>
                 </select>
                 @if ($errors->has('agama_pelapor'))
-                    <span style="color: red">{{ $errors->first('agama_pelapor') }}</span>
+                    <span style="color: red">{{ 'Kolom agama harus berisi nilai' }}</span>
                 @endif
             </div>
         </div>
@@ -98,7 +107,7 @@
                     <option value="Tidak Bekerja">Tidak Bekerja</option>
                 </select>
                 @if ($errors->has('pekerjaan_pelapor'))
-                    <span style="color: red">{{ $errors->first('pekerjaan_pelapor') }}</span>
+                    <span style="color: red">{{ 'Kolom pekerjaan harus berisi nilai' }}</span>
                 @endif
             </div>
         </div>
@@ -112,9 +121,27 @@
                     <option value="Sirri">Sirri</option>
                 </select>
                 @if ($errors->has('status_pelapor'))
-                    <span style="color: red">{{ $errors->first('status_pelapor') }}</span>
+                    <span style="color: red">{{ 'Kolom status harus berisi nilai' }}</span>
                 @endif
             </div>
         </div>
-        
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <a class="btn btn-warning" id="btBackPelapor">Back</a>
+            </div>
+            <div class="col-sm-2">
+                <a class="btn btn-success" id="btNextPelapor">Next</a>
+            </div>
+        </div>
 </div>
+
+<script type="text/javascript">
+    $('#btNextPelapor').click(function() {
+        $('#pills-pelapor').attr('class', 'tab-pane fade');
+        $('#pills-korban').attr('class', 'tab-pane fade show active');
+    });
+    $('#btBackPelapor').click(function() {
+        $('#pills-pelapor').attr('class', 'tab-pane fade');
+        $('#pills-kasus').attr('class', 'tab-pane fade show active');
+    });
+</script>
