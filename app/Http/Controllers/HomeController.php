@@ -78,6 +78,11 @@ class HomeController extends Controller
                 ->where('fk_id_district','=',$data->fk_id_district)
                 ->groupBy('hubungan_dengan_korban')
                 ->get()->toArray();
+            $kekerasanKel = DB::table('kekerasan')->select('jenis_kekerasan', DB::raw('count(*) as total'))
+                ->join('kasus', 'kasus.id_kasus', '=', 'kekerasan.fk_id_kasus')
+                ->where('fk_id_district','=',$data->fk_id_district)
+                ->groupBy('jenis_kekerasan')
+                ->get()->toArray();
             array_push($temp,$data->fk_id_district);			
             array_push($temp,$datas);			            
             array_push($temp,$totJnsKelamin);	
@@ -89,6 +94,7 @@ class HomeController extends Controller
             array_push($temp,$pendidikanKel);
             array_push($temp,$jnsKelaminKel);
             array_push($temp,$hubPelakuKel);
+            array_push($temp,$kekerasanKel);
             array_push($kasusKelurahan,$temp);			            
         }
         // dd($kasusKelurahan);
@@ -291,8 +297,7 @@ class HomeController extends Controller
         $kekerasan = DB::table('kekerasan')->select('jenis_kekerasan', DB::raw('count(*) as total'))
             ->join('kasus', 'kasus.id_kasus', '=', 'kekerasan.fk_id_kasus')
             ->groupBy('jenis_kekerasan')
-            ->get(); 
-        dd($kekerasan);
+            ->get();         
         $filterJenis = "";
         $filterTahun = "";
         return view('home',compact('filterJenis','filterTahun','tempatLaki','tempatPerempuan','pendidikanLaki','pendidikanPerempuan','pekerjaanLaki','pekerjaanPerempuan'
@@ -396,6 +401,12 @@ class HomeController extends Controller
                     ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
                     ->groupBy('hubungan_dengan_korban')
                     ->get()->toArray();
+                $kekerasanKel = DB::table('kekerasan')->select('jenis_kekerasan', DB::raw('count(*) as total'))
+                    ->join('kasus', 'kasus.id_kasus', '=', 'kekerasan.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
+                    ->groupBy('jenis_kekerasan')
+                    ->get()->toArray();
                 array_push($temp,$data->fk_id_district);			
                 array_push($temp,$datas);			            
                 array_push($temp,$totJnsKelamin);	
@@ -407,6 +418,7 @@ class HomeController extends Controller
                 array_push($temp,$pendidikanKel);
                 array_push($temp,$jnsKelaminKel);
                 array_push($temp,$hubPelakuKel);
+                array_push($temp,$kekerasanKel);
                 array_push($kasusKelurahan,$temp);    
             }  
             $totKasusKec = M_kasus::select('fk_id_district', DB::raw('count(*) as total'))->where(DB::raw('year(hari)'),'=',$req->FilterTahun)->groupBy('fk_id_district')->get()->sortBy('total');
@@ -621,6 +633,11 @@ class HomeController extends Controller
             ->get();
             $jmlPelayanan = M_pelayanan::select('fk_id_korban', DB::raw('count(*) as total'))->groupBy('fk_id_korban')
             ->get();
+            $kekerasan = DB::table('kekerasan')->select('jenis_kekerasan', DB::raw('count(*) as total'))
+                ->join('kasus', 'kasus.id_kasus', '=', 'kekerasan.fk_id_kasus')
+                ->where(DB::raw('year(kasus.hari)'),'=',$req->FilterTahun)
+                ->groupBy('jenis_kekerasan')
+                ->get();         
             // dd($jmlPelayanan);            
         }else{
             $kasusKecamatan = M_kasus::select('fk_id_district', DB::raw('count(*) as total'))->where(DB::raw('year(kejadian)'),'=',$req->FilterTahun)->groupBy('fk_id_district')
@@ -705,6 +722,12 @@ class HomeController extends Controller
                     ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
                     ->groupBy('hubungan_dengan_korban')
                     ->get()->toArray();
+                $kekerasanKel = DB::table('kekerasan')->select('jenis_kekerasan', DB::raw('count(*) as total'))
+                    ->join('kasus', 'kasus.id_kasus', '=', 'kekerasan.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
+                    ->groupBy('jenis_kekerasan')
+                    ->get()->toArray();
                 array_push($temp,$data->fk_id_district);			
                 array_push($temp,$datas);			            
                 array_push($temp,$totJnsKelamin);	
@@ -716,6 +739,7 @@ class HomeController extends Controller
                 array_push($temp,$pendidikanKel);
                 array_push($temp,$jnsKelaminKel);
                 array_push($temp,$hubPelakuKel);
+                array_push($temp,$kekerasanKel);
                 array_push($kasusKelurahan,$temp);
             }
             $totKasusKec = M_kasus::select('fk_id_district', DB::raw('count(*) as total'))->where(DB::raw('year(kejadian)'),'=',$req->FilterTahun)->groupBy('fk_id_district')->get()->sortBy('total');
@@ -940,11 +964,16 @@ class HomeController extends Controller
             $jmlPelayanan = M_pelayanan::select('fk_id_korban', DB::raw('count(*) as total'))->groupBy('fk_id_korban')
             ->get();
             // dd($jmlPelayanan);            
+            $kekerasan = DB::table('kekerasan')->select('jenis_kekerasan', DB::raw('count(*) as total'))
+            ->join('kasus', 'kasus.id_kasus', '=', 'kekerasan.fk_id_kasus')
+            ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
+            ->groupBy('jenis_kekerasan')
+            ->get();         
         }        
         return view('home',compact('filterJenis','filterTahun','tempatLaki','tempatPerempuan','pendidikanLaki','pendidikanPerempuan','pekerjaanLaki','pekerjaanPerempuan'
         ,'kasusKecamatan','totKasus','totLaki','totPerempuan','kasusKelurahan','kategoriLok'
         ,'kategoriLokKrbn','jenisLayanan','rentangUsia','rentangUsiaPelaku','korbanJnsKelamin'
-        ,'pelakuJnsKelamin','rentangUsiaAnak','rentangUsiaPerempuan','pendidikan','jnsKelamin'
+        ,'pelakuJnsKelamin','rentangUsiaAnak','rentangUsiaPerempuan','pendidikan','jnsKelamin','kekerasan'
         ,'hubPelaku','statusUsiaKorban','statusUsiaPelaku','rentangUsiaLaki','rentangUsiaPerem','dataWarna'));
     }
 }

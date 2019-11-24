@@ -26,9 +26,9 @@ class KasusSeeder extends Seeder
             ])->get();
             $random2 = rand (0, (M_village::where([
                 'district_id'   =>  $district[$random]->id])->count()-1));
-            $kategori = ['Tempat Kerja','Rumah Tangga','Fasilitas Umum','Sekolah','Lainnya'];            
-            DB::table('kasus')->where('id_kasus' ,"=",$i ,)                
-            ->update([                
+            $kategori = ['Tempat Kerja','Rumah Tangga','Fasilitas Umum','Sekolah','Lainnya'];
+            DB::table('kasus')->insert([
+                'id_kasus' => $i ,
                 'nomor_registrasi' => $faker->randomNumber($nbDigits = 9, $strict = true).('/MALANG/').$faker->month().('/').$faker->year($max = 'now'),
                 'hari' =>   $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now', $timezone = 'Asia/Jakarta')  ,                
                 'konselor' =>  $faker->name,
@@ -38,7 +38,6 @@ class KasusSeeder extends Seeder
                 'alamat_tkp' =>$faker->address,
                 'fk_id_district' =>$district[$random]->name,
                 'fk_id_villages' =>$village[$random2]->name
-                
             ]);
         }       
     }

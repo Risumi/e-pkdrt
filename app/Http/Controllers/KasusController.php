@@ -56,7 +56,8 @@ class KasusController extends Controller
                 'alamat_tkp'       => $req->TKP,
                 'fk_id_district'   => $req->kecamatan,
                 'fk_id_villages'   => $req->kelurahan,
-                'deskripsi'        => $req->deskripsi
+                'deskripsi'        => $req->deskripsi,
+                'status'           => "Belum Diproses"
             ]);
             return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
         } else {
@@ -75,6 +76,7 @@ class KasusController extends Controller
             'kecamatan' => 'required',
             'kelurahan' => 'required',
             'deskripsi' => 'required',
+            'status'    => 'required',
         ]);
         M_kasus::where('id_kasus', $req->id_kasus)->update([
             'nomor_registrasi' => $req->no_registrasi,
@@ -84,7 +86,8 @@ class KasusController extends Controller
             'alamat_tkp'       => $req->TKP,
             'fk_id_district'   => $req->kecamatan,
             'fk_id_villages'   => $req->kelurahan,
-            'deskripsi'        => $req->deskripsi
+            'deskripsi'        => $req->deskripsi,
+            'status'           => $req->status
         ]);
         return redirect()->back()->with('notification', 'Kasus berhasil diperbaruhi');
     }
@@ -132,7 +135,7 @@ class KasusController extends Controller
         ]);
         $tindak_kekerasan = implode(",",  $req->tindak_kekerasan);
         $trafficking = implode(",",  $req->trafficking);
-        M_korban::create([
+        $krbn = M_korban::create([
             'nama'          => $req->nama,
             'jenis_kelamin' => $req->jenis_kelamin,
             'usia'          => $req->usia,
@@ -149,6 +152,13 @@ class KasusController extends Controller
             'kategori_trafficking'   => $trafficking,
             'fk_id_kasus'   => $idKasus
         ]);
+        for ($i = 0; $i < count($req->tindak_kekerasan); $i++) { 
+            DB::table('kekerasan')->insert([
+                'jenis_kekerasan' => $req->tindak_kekerasan[$i],
+                'fk_id_korban' => $krbn->id_korban,
+                'fk_id_kasus' => $idKasus
+            ]);
+        }
         return redirect()->back()->with('notification', 'Korban berhasil ditambahkan');
     }
     public function vieweditkorban($idKorban,$idKasus)
@@ -177,7 +187,7 @@ class KasusController extends Controller
         $tindak_kekerasan = implode(",",  $req->tindak_kekerasan);
         $trafficking = implode(",",  $req->trafficking);
         
-        M_korban::where('id_korban', $idKorban)->where('fk_id_kasus', $idKasus)->update([
+        $krbn = M_korban::where('id_korban', $idKorban)->where('fk_id_kasus', $idKasus)->update([
             'nama'          => $req->nama,
             'jenis_kelamin' => $req->jenis_kelamin,
             'usia'          => $req->usia,
@@ -192,7 +202,15 @@ class KasusController extends Controller
             'kdrt'          => $req->kdrt,
             'tindak_kekerasan' => $tindak_kekerasan,
             'kategori_trafficking'   => $trafficking
-        ]);        
+        ]);
+        DB::table('kekerasan')->where('fk_id_korban', '=', $idKorban)->delete();
+        for ($i = 0; $i < count($req->tindak_kekerasan); $i++) { 
+            DB::table('kekerasan')->insert([
+                'jenis_kekerasan' => $req->tindak_kekerasan[$i],
+                'fk_id_korban' => $idKorban,
+                'fk_id_kasus' => $idKasus
+            ]);
+        }
         return redirect()->back()->with('notification', 'Korban berhasil diperbaruhi');
     }
     public function viewtambahpelayanan($idKorban, $idKasus) {
@@ -423,7 +441,7 @@ class KasusController extends Controller
         //INSERT KORBAN
         $tindak_kekerasan = implode(",",  $req->tindak_kekerasan_korban);
         $trafficking = implode(",",  $req->trafficking_korban);
-        M_korban::create([
+        $krbn = M_korban::create([
             'nama'          => $req->nama_korban,
             'jenis_kelamin' => $req->jenis_kelamin_korban,
             'usia'          => $req->usia_korban,
@@ -440,6 +458,13 @@ class KasusController extends Controller
             'kategori_trafficking'   => $trafficking,
             'fk_id_kasus'   => $id_kasus
         ]);
+        for ($i = 0; $i < count($req->tindak_kekerasan_korban); $i++) { 
+            DB::table('kekerasan')->insert([
+                'jenis_kekerasan' => $req->tindak_kekerasan_korban[$i],
+                'fk_id_korban' => $krbn->id_korban,
+                'fk_id_kasus' => $id_kasus
+            ]);
+        }
         //END INSERT KORBAN
 
         //INSERT PELAKU
@@ -473,8 +498,14 @@ class KasusController extends Controller
         ->where('districts.name','=',$req->id_district)->
         get();
         $kelurahanData="";        
-        foreach ($kelurahan as $data ) {
-            $kelurahanData .='<option value="'.$data->name.'">'.$data->name.'</option>';
+        $kasus = M_kasus::where("id_kasus","=",$req->id_kasus)->first();                
+        foreach ($kelurahan as $data ) {            
+            if($kasus->fk_id_villages == $data->name){
+                $kelurahanData .='<option selected value="'.$data->name.'">'.$data->name.'</option>';
+            }else{
+                $kelurahanData .='<option value="'.$data->name.'">'.$data->name.'</option>';
+            }    
+            
         }
         return response($kelurahanData) ;
     }

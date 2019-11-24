@@ -54,19 +54,19 @@
 				<div class="row">
 					<div class="col-sm">
 						<div class="d-flex justify-content-center">
-							<div align="center" id="{{$data[0]}}" style="height: 370px; width: 100%;"></div>
-						</div>
+							<div align="center" id="kssKategoriLok{{$data[0]}}" style="height: 370px; width: 100%;"></div>
+						</div>						
 					</div>
 					<div class="col-sm">
 						<div class="d-flex justify-content-center">
-							<div align="center" id="kssKategoriLok{{$data[0]}}" style="height: 370px; width: 100%;"></div>
+							<div align="center" id="krbnKategoriLok{{$data[0]}}" style="height: 400px; width: 100%;"></div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm">
 						<div class="d-flex justify-content-center">
-							<div align="center" id="krbnKategoriLok{{$data[0]}}" style="height: 400px; width: 100%;"></div>
+							<div align="center" id="jnsKekerasan{{$data[0]}}" style="height: 370px; width: 100%;"></div>
 						</div>
 					</div>
 					<div class="col-sm">
@@ -247,6 +247,56 @@
 							echo('data:[').$datas->total."]},";													
 					}	
 				?>				
+			]
+		});
+	});
+</script>
+<script type="text/javascript">
+	$(function () {
+		var chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'jnsKekerasan{{$data[0]}}',
+				type: 'column',
+			},
+			title: {
+				text: 'Jumlah kasus per kelurahan '
+			},
+			tooltip:{
+				headerFormat: '',
+			},
+			xAxis: {
+				enabled: false,
+				visible: false				
+			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: null,
+					align: 'high'
+				},
+				labels: {
+					overflow: 'justify'
+				}
+			},
+			plotOptions: {
+				column: {
+					dataLabels: {
+						enabled: true
+					}
+				}
+			},
+
+			credits: {
+				enabled: false
+			},
+			series: [
+				<?php					
+					foreach ($data[11] as $datas ) {							
+							echo('{name:').'"'.$datas->jenis_kekerasan.'",';
+							echo('data:[').$datas->total."]},";													
+					}	
+				?>
+				
 			]
 		});
 	});

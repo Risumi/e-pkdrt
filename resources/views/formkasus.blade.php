@@ -104,7 +104,7 @@
                         <label for="inputKelurahan" class="col-sm-2 col-form-label">Kelurahan</label>
                         <div class="input-group col-sm-5">
                             <select class="custom-select" id="inputKelurahan" name="kelurahan">
-                                <option value=></option>                                 
+                                <option value=>{{$kasus->fk_id_villages}}</option>
                             </select>
                             @if ($errors->has('kelurahan'))
                             <span style="color: red">{{ 'Kolom kelurahan harus berisi nilai' }}</span>
@@ -112,10 +112,23 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="inputStatus" class="col-sm-2 col-form-label">Kelurahan</label>
+                        <div class="input-group col-sm-5">
+                            <select class="custom-select" id="inputStatus" name="status">
+                                <option value="Belum Diproses" {{("Belum Diproses" == $kasus->status) ? 'selected' : '' }}>Belum Diproses</option>                                 
+                                <option value="Sedang Diproses" {{("Sedang Diproses" == $kasus->status) ? 'selected' : '' }}>Sedang Diproses</option>                                 
+                                <option value="Sudah Diproses" {{("Sudah Diproses" == $kasus->status) ? 'selected' : '' }}>Sudah Diproses</option>                                 
+                            </select>
+                            @if ($errors->has('status'))
+                            <span style="color: red">{{ 'Kolom status harus berisi nilai' }}</span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-5">
                             <button class="btn btn-primary" type="submit">Update Data</button>
-                            <input type="hidden" name="id_kasus" value="{{ $kasus->id_kasus }}">
+                            <input type="hidden" name="id_kasus" id='id_kasus' value="{{ $kasus->id_kasus }}">
                         </div>
                     </div>
                 </form>

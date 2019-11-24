@@ -146,20 +146,20 @@
 			<div class="row">
 				<div class="col-sm">
 					<div class="d-flex justify-content-center">
-	            		<div align="center" id="pieUmurPerempuan" style="height: 400px; width: 100%;"></div>
-	        		</div>
+	            		<div align="center" id="kssKategoriLok" style="height: 400px; width: 100%;"></div>
+	        		</div>					
 				</div>
 				<div class="col-sm">
 					<div class="d-flex justify-content-center">
-	            		<div align="center" id="kssKategoriLok" style="height: 400px; width: 100%;"></div>
-	        		</div>
+						<div align="center" id="krbnKategoriLok" style="height: 400px; width: 100%;"></div>
+					</div>
 				</div>
 			</div>				        
 			<div class="row">
 				<div class="col-sm">
 					<div class="d-flex justify-content-center">
-						<div align="center" id="krbnKategoriLok" style="height: 400px; width: 100%;"></div>
-					</div>
+	            		<div align="center" id="jnsKekerasan" style="height: 400px; width: 100%;"></div>
+	        		</div>					
 				</div>
 				<div class="col-sm">
 					<div class="d-flex justify-content-center">
@@ -434,6 +434,51 @@
 	    $(function () {
 				var chart = new Highcharts.Chart({
 					chart: {
+						renderTo: 'jnsKekerasan',
+						type: 'column',
+					},
+					title: {
+						text: 'Jenis kekerasan yang dialami korban'
+					},
+					tooltip:{
+						headerFormat: '',
+					},
+					xAxis: {
+						enabled: false,
+						visible: false	
+					},
+					yAxis: {
+						min: 0,
+						title: {
+							text: null,
+							align: 'high'
+						},
+						labels: {
+							overflow: 'justify'
+						}
+					},
+					plotOptions: {
+						column: {
+							dataLabels: {
+								enabled: true
+							}
+						}
+					},
+
+					credits: {
+						enabled: false
+					},
+					series: [<?php foreach ($kekerasan as $data ) {				
+							echo('{name:').'"'.$data->jenis_kekerasan.'",';
+							echo('data:[').$data->total."]},";							
+					} ?>]
+				});
+			});        	        	    
+	</script>
+	<script type="text/javascript">
+	    $(function () {
+				var chart = new Highcharts.Chart({
+					chart: {
 						renderTo: 'jnsLayanan',
 						type: 'column',
 					},
@@ -651,7 +696,7 @@
 				});
 			});        	        	    
 	</script>
-	@include('modal.modalFilterTahun')
+	@include('modal.modalFilterTahun')	
 	@foreach($kasusKelurahan as $data)
 		@include('modal.modalKecamatan')
 	@endforeach

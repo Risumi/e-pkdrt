@@ -269,4 +269,12 @@
         $('#pills-korban').attr('class', 'tab-pane fade');
         $('#pills-pelapor').attr('class', 'tab-pane fade show active');
     });
+    // $('#checkKekerasan5').click(function(){
+    //     if( document.getElementById("checkKekerasan5").checked ){
+            // $('#checkTrafficking3').attr('disabled', false);
+        //     document.getElementsByName("trafficking_korban").disabled = false;      
+        // } else {
+            // $('#checkTrafficking3').attr('disabled', true);
+    //     }  
+    // });
 </script>

@@ -69,14 +69,21 @@ $(document).ready(function () {
     $("#inputKecamatan").change(getAjaxKecamatan);
     function getAjaxKecamatan() {     
         var id_district = $("#inputKecamatan").val();
+        var id_kasus = $("#id_kasus").val();
+        // var id_kasus = {{ $kasus->id_kasus }};
         $.ajax({
             type: "POST",
             dataType: "html",
             url: new URL ("kelurahan",window.location.origin),
-            data: "id_district=" + id_district,
+            data: {
+                "id_district": id_district,
+                "id_kasus": id_kasus,
+              },            
             success: function (msg) {
                 $("select#inputKelurahan").html(msg);                
+                // console.log(msg);
             }
         });
     }
+    
 });
