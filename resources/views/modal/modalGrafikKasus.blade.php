@@ -70,7 +70,8 @@
 				dataLabels: {
 					enabled: true,
 					format: '<b>{point.name}</b><br>{point.percentage:.2f}%'
-				}
+				},
+				showInLegend: true
 			}
 		},
 		series: [{
@@ -105,7 +106,8 @@
 				dataLabels: {
 					enabled: true,
 					format: '<b>{point.name}</b><br>{point.percentage:.2f}%'
-				}
+				},
+				showInLegend: true
 			}
 		},
 		series: [{
@@ -140,7 +142,8 @@
 				dataLabels: {
 					enabled: true,
 					format: '<b>{point.name}</b><br>{point.percentage:.2f}%'
-				}
+				},
+				showInLegend: true
 			}
 		},
 		series: [{
@@ -175,7 +178,8 @@
 				dataLabels: {
 					enabled: true,
 					format: '<b>{point.name}</b><br>{point.percentage:.2f}%'
-				}
+				},
+				showInLegend: true
 			}
 		},
 		series: [{
@@ -211,7 +215,8 @@
 					enabled: true,
 					format: '<b>{point.name}</b><br>{point.percentage:.2f}%'
 				}
-			}
+			},
+			showInLegend: true
 		},
 		series: [{
 			name: 'Jumlah kasus',
@@ -245,7 +250,8 @@
 				dataLabels: {
 					enabled: true,
 					format: '<b>{point.name}</b><br>{point.percentage:.2f}%'
-				}
+				},
+				showInLegend: true
 			}
 		},
 		series: [{

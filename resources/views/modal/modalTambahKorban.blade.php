@@ -34,7 +34,7 @@
 		                        <div class="col-sm-10">
 		                            <div class="form-check form-check-inline">
 		                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="RadioJKL"
-		                                    value="Laki-laki" <?= ('Laki-laki' == old('jenis_kelamin') ? 'checked' : ''); ?>>
+		                                    value="Laki-laki">
 		                                <label class="form-check-label" for="RadioJKL">Laki-laki</label>
 		                            </div>
 		                            <div class="form-check form-check-inline">

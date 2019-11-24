@@ -104,7 +104,7 @@
                         <label for="inputKelurahan" class="col-sm-2 col-form-label">Kelurahan</label>
                         <div class="input-group col-sm-5">
                             <select class="custom-select" id="inputKelurahan" name="kelurahan">
-                                <option value=></option>                                
+                                <option value=></option>                                 
                             </select>
                             @if ($errors->has('kelurahan'))
                             <span style="color: red">{{ 'Kolom kelurahan harus berisi nilai' }}</span>

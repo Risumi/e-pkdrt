@@ -67,7 +67,7 @@
 	            stroke: #002868 !important;
 	            stroke-width: 2px;
 	            stroke-linejoin: round;
-	            fill: #fffb8d !important;
+	            fill: yellow !important;
 	            cursor: pointer;
 	        }
 			.container{
@@ -141,12 +141,7 @@
 					<div class="d-flex justify-content-center">
 						<div align="center" id="jmlKasusKec" style="height: 400px; width: 100%;"></div>
 					</div>	
-				</div>
-				<div class="col-sm">
-					<div class="d-flex justify-content-center">
-						<div align="center" id="pieUmurAnak" style="height: 400px; width: 100%;"></div>
-					</div>	
-				</div>
+				</div>				
 			</div>
 			<div class="row">
 				<div class="col-sm">
@@ -195,8 +190,7 @@
 	            		<div align="center" id="hubPelaku" style="height: 400px; width: 100%;"></div>
 	        		</div>		
 				</div>
-			</div>											
-
+			</div>
 	    </div>
 
 	</body>
@@ -292,6 +286,7 @@
 					}
 				}
 			},
+			
 			series: [{
 				name: 'Jumlah kasus',
 				colorByPoint: true,
@@ -327,9 +322,13 @@
 					dataLabels: {
 						enabled: true,
 						format: '<b>{point.name} tahun</b><br>{point.y} kasus'
-					}
+					},
+					showInLegend: true
 				}
 			},
+			credits: {
+	                enabled: false
+	            },
 			series: [{
 				name: 'Jumlah kasus',
 				colorByPoint: true,
@@ -659,5 +658,6 @@
 	@include('modal.modalGrafikKasus')
 	@include('modal.modalGrafikLaki')
 	@include('modal.modalGrafikPerempuan')
+	<br>	
 </html>
 

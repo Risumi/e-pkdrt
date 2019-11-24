@@ -19,13 +19,8 @@ class HomeController extends Controller
     public function view()
     {   
         $kasusKecamatan = M_kasus::select('fk_id_district', DB::raw('count(*) as total'))->groupBy('fk_id_district')
-        ->get();    
-        $totKasus =  M_kasus::count();    
-        $totLaki =  M_korban::where('jenis_kelamin','=','Laki-laki')->count();    
-        $totPerempuan =  M_korban::where('jenis_kelamin','=','Perempuan')->count();    
-        $korbanJnsKelamin =  M_korban::select('jenis_kelamin', DB::raw('count(*) as total'))->groupBy('jenis_kelamin')->get();
-        $pelakuJnsKelamin =  M_pelaku::select('jenis_kelamin', DB::raw('count(*) as total'))->groupBy('jenis_kelamin')->get();
-        $kasusKelurahan=array();
+        ->get();            
+        $kasusKelurahan=array();            
         foreach ($kasusKecamatan as $data ) {
             $temp =array();            
             $datas = M_kasus::select('fk_id_villages', DB::raw('count(*) as total'))->where('fk_id_district','=',$data->fk_id_district)->groupBy('fk_id_villages')
@@ -37,14 +32,105 @@ class HomeController extends Controller
                 ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')                                          
                 ->where('kasus.fk_id_district','=',$data->fk_id_district)
                 ->groupBy('korban.jenis_kelamin')                                
-                ->get()->toArray(); ;
+                ->get()->toArray(); 
+            $kategoriLokKel = M_kasus::select('kategori', DB::raw('count(*) as total'))
+                ->where('fk_id_district','=',$data->fk_id_district)
+                ->groupBy('kategori')
+                ->get()->toArray();
+            $kategoriLokKrbnKel = DB::table('korban')
+                ->select( DB::raw('count(*) as total'),'kasus.kategori'  )    
+                ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')            
+                ->where('fk_id_district','=',$data->fk_id_district)
+                ->groupBy('kasus.kategori')
+                ->get()->toArray();   
+            $jenisLayananKel = M_pelayanan::select('pelayanan', DB::raw('count(*) as total'))
+                ->join('kasus', 'kasus.id_kasus', '=', 'pelayanan.fk_id_kasus')
+                ->where('fk_id_district','=',$data->fk_id_district)
+                ->groupBy('pelayanan.pelayanan')
+                ->get()->toArray();
+            $rentangUsiaKel = M_korban::
+                select( DB::raw('CASE
+                    WHEN usia BETWEEN 0 and 5 THEN "0 - 5"
+                    WHEN usia BETWEEN 6 and 12 THEN "06 - 12"
+                    WHEN usia BETWEEN 13 and 17 THEN "13 - 17"
+                    WHEN usia BETWEEN 18 and 24 THEN "18 - 24"
+                    WHEN usia BETWEEN 25 and 44 THEN "25 - 44"
+                    WHEN usia BETWEEN 45 and 59 THEN "45 - 59"
+                    WHEN usia >= 60 THEN "60+"                    
+                    END as range_umur'),DB::raw('count(*) as total'))                
+                ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')
+                ->where('fk_id_district','=',$data->fk_id_district)
+                ->groupBy('range_umur')
+                ->orderBy('range_umur')
+                ->get()->toArray();
+            $pendidikanKel = M_korban::select('pendidikan', DB::raw('count(*) as total'))
+                ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')
+                ->where('fk_id_district','=',$data->fk_id_district)
+                ->groupBy('pendidikan')
+                ->get()->toArray();
+            $jnsKelaminKel = M_pelaku::select('jenis_kelamin', DB::raw('count(*) as total'))
+                ->join('kasus', 'kasus.id_kasus', '=', 'pelaku.fk_id_kasus')
+                ->where('fk_id_district','=',$data->fk_id_district)
+                ->groupBy('jenis_kelamin')
+                ->get()->toArray();
+            $hubPelakuKel = M_pelaku::select('hubungan_dengan_korban', DB::raw('count(*) as total'))
+                ->join('kasus', 'kasus.id_kasus', '=', 'pelaku.fk_id_kasus')
+                ->where('fk_id_district','=',$data->fk_id_district)
+                ->groupBy('hubungan_dengan_korban')
+                ->get()->toArray();
             array_push($temp,$data->fk_id_district);			
             array_push($temp,$datas);			            
             array_push($temp,$totJnsKelamin);	
             array_push($temp,$totKasusKec);
-            array_push($kasusKelurahan,$temp);			
+            array_push($temp,$kategoriLokKel);
+            array_push($temp,$kategoriLokKrbnKel);
+            array_push($temp,$jenisLayananKel);
+            array_push($temp,$rentangUsiaKel);
+            array_push($temp,$pendidikanKel);
+            array_push($temp,$jnsKelaminKel);
+            array_push($temp,$hubPelakuKel);
+            array_push($kasusKelurahan,$temp);			            
         }
         // dd($kasusKelurahan);
+
+        $totKasus =  M_kasus::count();    
+        $totLaki =  M_korban::where('jenis_kelamin','=','Laki-laki')->count();    
+        $totPerempuan =  M_korban::where('jenis_kelamin','=','Perempuan')->count();    
+        $korbanJnsKelamin =  M_korban::select('jenis_kelamin', DB::raw('count(*) as total'))->groupBy('jenis_kelamin')->get();
+        $pelakuJnsKelamin =  M_pelaku::select('jenis_kelamin', DB::raw('count(*) as total'))->groupBy('jenis_kelamin')->get();
+
+        $dataWarna = array();
+        $kecamatan = M_district::where([
+            'regency_id'   =>  3573
+        ])->get(); 
+        foreach($kecamatan as $data){
+            $dataWarna[$data->name]="#FFEF81";
+        }
+        $totKasusKec = M_kasus::select('fk_id_district', DB::raw('count(*) as total'))->groupBy('fk_id_district')->get()->sortBy('total');
+        $warna= array("#FFEF81","#FFDB6D","#FF9F31","#FF8331","#ff4e00");                
+        $i = 0;
+        $j = 0;
+        foreach ($totKasusKec as $data) {
+            if($i==0){
+                $temp = $data;    
+                $dataWarna[$data->fk_id_district] = $warna[$j];
+            }else{
+                if ($data->total > $temp->total){
+                    $dataWarna[$data->fk_id_district] = $warna[++$j];                
+                }else{
+                    $dataWarna[$data->fk_id_district] = $warna[$j];
+                }             
+            }                      
+            $temp = $data;
+            $i++;            
+        }
+        //1. rgb(255, 239, 129) #FFEF81
+        //2. rgb(255, 219, 109) #FFDB6D
+        //3. rgb(255, 159, 49) #FF9F31
+        //4. rgb(255, 131, 21) #FF8331
+        //5. rgb(210, 105, 12) #D29F31
+        // dd($dataWarna);
+        // dd($totKasusKec);
         $kategoriLok = M_kasus::select('kategori', DB::raw('count(*) as total'))->groupBy('kategori')
         ->get();
         $kategoriLokKrbn = DB::table('korban')
@@ -110,6 +196,7 @@ class HomeController extends Controller
                 WHEN usia BETWEEN 45 and 59 THEN "45 - 59"
                 WHEN usia >= 60 THEN "60+"                    
                 END as range_umur'),DB::raw('count(*) as total'))                
+            ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')
             ->groupBy('range_umur')
             ->orderBy('range_umur')
             ->get();               
@@ -187,21 +274,32 @@ class HomeController extends Controller
             ->where('jenis_kelamin','=','Perempuan')
             ->groupBy('pendidikan')
             ->get();
-        $pendidikan = M_korban::select('pendidikan', DB::raw('count(*) as total'))->groupBy('pendidikan')
-        ->get();
-        $jnsKelamin = M_pelaku::select('jenis_kelamin', DB::raw('count(*) as total'))->groupBy('jenis_kelamin')
-        ->get();
-        $hubPelaku = M_pelaku::select('hubungan_dengan_korban', DB::raw('count(*) as total'))->groupBy('hubungan_dengan_korban')
-        ->get();
+        $pendidikan = M_korban::select('pendidikan', DB::raw('count(*) as total'))
+            ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')
+            ->groupBy('pendidikan')
+            ->get();
+        $jnsKelamin = M_pelaku::select('jenis_kelamin', DB::raw('count(*) as total'))
+            ->join('kasus', 'kasus.id_kasus', '=', 'pelaku.fk_id_kasus')
+            ->groupBy('jenis_kelamin')
+            ->get();
+        $hubPelaku = M_pelaku::select('hubungan_dengan_korban', DB::raw('count(*) as total'))
+            ->join('kasus', 'kasus.id_kasus', '=', 'pelaku.fk_id_kasus')
+            ->groupBy('hubungan_dengan_korban')
+            ->get();
         $jmlPelayanan = M_pelayanan::select('fk_id_korban', DB::raw('count(*) as total'))->groupBy('fk_id_korban')
-        ->get();
+            ->get();
+        $kekerasan = DB::table('kekerasan')->select('jenis_kekerasan', DB::raw('count(*) as total'))
+            ->join('kasus', 'kasus.id_kasus', '=', 'kekerasan.fk_id_kasus')
+            ->groupBy('jenis_kekerasan')
+            ->get(); 
+        dd($kekerasan);
         $filterJenis = "";
         $filterTahun = "";
         return view('home',compact('filterJenis','filterTahun','tempatLaki','tempatPerempuan','pendidikanLaki','pendidikanPerempuan','pekerjaanLaki','pekerjaanPerempuan'
         ,'kasusKecamatan','totKasus','totLaki','totPerempuan','kasusKelurahan','kategoriLok'
         ,'kategoriLokKrbn','jenisLayanan','rentangUsia','rentangUsiaPelaku','korbanJnsKelamin'
-        ,'pelakuJnsKelamin','rentangUsiaAnak','rentangUsiaPerempuan','pendidikan','jnsKelamin'
-        ,'hubPelaku','statusUsiaKorban','statusUsiaPelaku','rentangUsiaLaki','rentangUsiaPerem'));
+        ,'pelakuJnsKelamin','rentangUsiaAnak','rentangUsiaPerempuan','pendidikan','jnsKelamin','kekerasan'
+        ,'hubPelaku','statusUsiaKorban','statusUsiaPelaku','rentangUsiaLaki','rentangUsiaPerem','dataWarna'));
     }
 
     public function viewFilter(Request $req)
@@ -224,7 +322,14 @@ class HomeController extends Controller
             $pelakuJnsKelamin =  DB::table('pelaku')->select('pelaku.jenis_kelamin', DB::raw('count(*) as total'))
                                 ->join('kasus', 'kasus.id_kasus', '=', 'pelaku.fk_id_kasus')
                                 ->where(DB::raw('year(kasus.hari)'),'=',$req->FilterTahun)->groupBy('pelaku.jenis_kelamin')->get();
-            $kasusKelurahan=array();
+            $kasusKelurahan=array();            
+            $dataWarna= array();        
+            $kecamatan = M_district::where([
+                'regency_id'   =>  3573
+            ])->get(); 
+            foreach($kecamatan as $data){
+                $dataWarna[$data->name]="#FFEF81";
+            }            
             foreach ($kasusKecamatan as $data ) {
                 $temp =array();
                 $datas = M_kasus::select('fk_id_villages', DB::raw('count(*) as total'))->where(DB::raw('year(hari)'),'=',$req->FilterTahun)->where('fk_id_district','=',$data->fk_id_district)->groupBy('fk_id_villages')
@@ -239,13 +344,91 @@ class HomeController extends Controller
                     ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
                     ->groupBy('korban.jenis_kelamin')                                
                     ->get()->toArray(); 
+                $kategoriLokKel = M_kasus::select('kategori', DB::raw('count(*) as total'))
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
+                    ->groupBy('kategori')
+                    ->get()->toArray();
+                $kategoriLokKrbnKel = DB::table('korban')
+                    ->select( DB::raw('count(*) as total'),'kasus.kategori'  )    
+                    ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')            
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
+                    ->groupBy('kasus.kategori')
+                    ->get()->toArray();   
+                $jenisLayananKel = M_pelayanan::select('pelayanan', DB::raw('count(*) as total'))
+                    ->join('kasus', 'kasus.id_kasus', '=', 'pelayanan.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
+                    ->groupBy('pelayanan.pelayanan')
+                    ->get()->toArray();
+                $rentangUsiaKel = M_korban::
+                    select( DB::raw('CASE
+                        WHEN usia BETWEEN 0 and 5 THEN "0 - 5"
+                        WHEN usia BETWEEN 6 and 12 THEN "06 - 12"
+                        WHEN usia BETWEEN 13 and 17 THEN "13 - 17"
+                        WHEN usia BETWEEN 18 and 24 THEN "18 - 24"
+                        WHEN usia BETWEEN 25 and 44 THEN "25 - 44"
+                        WHEN usia BETWEEN 45 and 59 THEN "45 - 59"
+                        WHEN usia >= 60 THEN "60+"                    
+                        END as range_umur'),DB::raw('count(*) as total'))                
+                    ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
+                    ->groupBy('range_umur')
+                    ->orderBy('range_umur')
+                    ->get()->toArray();
+                $pendidikanKel = M_korban::select('pendidikan', DB::raw('count(*) as total'))
+                    ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
+                    ->groupBy('pendidikan')
+                    ->get()->toArray();
+                $jnsKelaminKel = M_pelaku::select('jenis_kelamin', DB::raw('count(*) as total'))
+                    ->join('kasus', 'kasus.id_kasus', '=', 'pelaku.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
+                    ->groupBy('jenis_kelamin')
+                    ->get()->toArray();
+                $hubPelakuKel = M_pelaku::select('hubungan_dengan_korban', DB::raw('count(*) as total'))
+                    ->join('kasus', 'kasus.id_kasus', '=', 'pelaku.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
+                    ->groupBy('hubungan_dengan_korban')
+                    ->get()->toArray();
                 array_push($temp,$data->fk_id_district);			
-                array_push($temp,$datas);			
-                array_push($temp,$totJnsKelamin);			
-                array_push($temp,$totKasusKec);			                
-
-                array_push($kasusKelurahan,$temp);			
+                array_push($temp,$datas);			            
+                array_push($temp,$totJnsKelamin);	
+                array_push($temp,$totKasusKec);
+                array_push($temp,$kategoriLokKel);
+                array_push($temp,$kategoriLokKrbnKel);
+                array_push($temp,$jenisLayananKel);
+                array_push($temp,$rentangUsiaKel);
+                array_push($temp,$pendidikanKel);
+                array_push($temp,$jnsKelaminKel);
+                array_push($temp,$hubPelakuKel);
+                array_push($kasusKelurahan,$temp);    
             }  
+            $totKasusKec = M_kasus::select('fk_id_district', DB::raw('count(*) as total'))->where(DB::raw('year(hari)'),'=',$req->FilterTahun)->groupBy('fk_id_district')->get()->sortBy('total');
+            $warna= array("#FFEF81","#FFDB6D","#FF9F31","#FF8331","#ff4e00");
+            
+            $i = 0;
+            $j = 0;
+            foreach ($totKasusKec as $data) {
+                if($i==0){
+                    $temp = $data;    
+                    $dataWarna[$data->fk_id_district] = $warna[$j];
+                }else{
+                    if ($data->total > $temp->total){
+                        $dataWarna[$data->fk_id_district] = $warna[++$j];                
+                    }else{
+                        $dataWarna[$data->fk_id_district] = $warna[$j];
+                    }             
+                }                      
+                $temp = $data;
+                $i++;            
+            }
+            
             $kategoriLok = M_kasus::select('kategori', DB::raw('count(*) as total'))
             ->where(DB::raw('year(hari)'),'=',$req->FilterTahun)
             ->groupBy('kategori')
@@ -469,13 +652,97 @@ class HomeController extends Controller
                     ->where('kasus.fk_id_district','=',$data->fk_id_district)
                     ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
                     ->groupBy('korban.jenis_kelamin')                                
-                    ->get()->toArray();    
+                    ->get()->toArray();   
+                $kategoriLokKel = M_kasus::select('kategori', DB::raw('count(*) as total'))
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
+                    ->groupBy('kategori')
+                    ->get()->toArray();
+                $kategoriLokKrbnKel = DB::table('korban')
+                    ->select( DB::raw('count(*) as total'),'kasus.kategori'  )    
+                    ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')            
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
+                    ->groupBy('kasus.kategori')
+                    ->get()->toArray();   
+                $jenisLayananKel = M_pelayanan::select('pelayanan', DB::raw('count(*) as total'))
+                    ->join('kasus', 'kasus.id_kasus', '=', 'pelayanan.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
+                    ->groupBy('pelayanan.pelayanan')
+                    ->get()->toArray();
+                $rentangUsiaKel = M_korban::
+                    select( DB::raw('CASE
+                        WHEN usia BETWEEN 0 and 5 THEN "0 - 5"
+                        WHEN usia BETWEEN 6 and 12 THEN "06 - 12"
+                        WHEN usia BETWEEN 13 and 17 THEN "13 - 17"
+                        WHEN usia BETWEEN 18 and 24 THEN "18 - 24"
+                        WHEN usia BETWEEN 25 and 44 THEN "25 - 44"
+                        WHEN usia BETWEEN 45 and 59 THEN "45 - 59"
+                        WHEN usia >= 60 THEN "60+"                    
+                        END as range_umur'),DB::raw('count(*) as total'))                
+                    ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
+                    ->groupBy('range_umur')
+                    ->orderBy('range_umur')
+                    ->get()->toArray();
+                $pendidikanKel = M_korban::select('pendidikan', DB::raw('count(*) as total'))
+                    ->join('kasus', 'kasus.id_kasus', '=', 'korban.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
+                    ->groupBy('pendidikan')
+                    ->get()->toArray();
+                $jnsKelaminKel = M_pelaku::select('jenis_kelamin', DB::raw('count(*) as total'))
+                    ->join('kasus', 'kasus.id_kasus', '=', 'pelaku.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
+                    ->groupBy('jenis_kelamin')
+                    ->get()->toArray();
+                $hubPelakuKel = M_pelaku::select('hubungan_dengan_korban', DB::raw('count(*) as total'))
+                    ->join('kasus', 'kasus.id_kasus', '=', 'pelaku.fk_id_kasus')
+                    ->where('fk_id_district','=',$data->fk_id_district)
+                    ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
+                    ->groupBy('hubungan_dengan_korban')
+                    ->get()->toArray();
                 array_push($temp,$data->fk_id_district);			
-                array_push($temp,$datas);			
-                array_push($temp,$totJnsKelamin);			
-                array_push($temp,$totKasusKec);			
-                array_push($kasusKelurahan,$temp);			
-            }               
+                array_push($temp,$datas);			            
+                array_push($temp,$totJnsKelamin);	
+                array_push($temp,$totKasusKec);
+                array_push($temp,$kategoriLokKel);
+                array_push($temp,$kategoriLokKrbnKel);
+                array_push($temp,$jenisLayananKel);
+                array_push($temp,$rentangUsiaKel);
+                array_push($temp,$pendidikanKel);
+                array_push($temp,$jnsKelaminKel);
+                array_push($temp,$hubPelakuKel);
+                array_push($kasusKelurahan,$temp);
+            }
+            $totKasusKec = M_kasus::select('fk_id_district', DB::raw('count(*) as total'))->where(DB::raw('year(kejadian)'),'=',$req->FilterTahun)->groupBy('fk_id_district')->get()->sortBy('total');
+            $warna= array("#FFEF81","#FFDB6D","#FF9F31","#FF8331","#ff4e00");
+            $dataWarna= array();        
+            $kecamatan = M_district::where([
+                'regency_id'   =>  3573
+            ])->get(); 
+            foreach($kecamatan as $data){
+                $dataWarna[$data->name]="#FFEF81";
+            }
+            $i = 0;
+            $j = 0;
+            foreach ($totKasusKec as $data) {
+                if($i==0){
+                    $temp = $data;    
+                    $dataWarna[$data->fk_id_district] = $warna[$j];
+                }else{
+                    if ($data->total > $temp->total){
+                        $dataWarna[$data->fk_id_district] = $warna[++$j];                
+                    }else{
+                        $dataWarna[$data->fk_id_district] = $warna[$j];
+                    }             
+                }                      
+                $temp = $data;
+                $i++;            
+            }                  
             $kategoriLok = M_kasus::
             select('kategori', DB::raw('count(*) as total'))
             ->where(DB::raw('year(kasus.kejadian)'),'=',$req->FilterTahun)
@@ -678,6 +945,6 @@ class HomeController extends Controller
         ,'kasusKecamatan','totKasus','totLaki','totPerempuan','kasusKelurahan','kategoriLok'
         ,'kategoriLokKrbn','jenisLayanan','rentangUsia','rentangUsiaPelaku','korbanJnsKelamin'
         ,'pelakuJnsKelamin','rentangUsiaAnak','rentangUsiaPerempuan','pendidikan','jnsKelamin'
-        ,'hubPelaku','statusUsiaKorban','statusUsiaPelaku','rentangUsiaLaki','rentangUsiaPerem'));
+        ,'hubPelaku','statusUsiaKorban','statusUsiaPelaku','rentangUsiaLaki','rentangUsiaPerem','dataWarna'));
     }
 }

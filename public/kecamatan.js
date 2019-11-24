@@ -75,9 +75,7 @@ $(document).ready(function () {
             url: new URL ("kelurahan",window.location.origin),
             data: "id_district=" + id_district,
             success: function (msg) {
-                $("select#inputKelurahan").html(msg);
-                console.log(msg);
-                console.log(id_district);
+                $("select#inputKelurahan").html(msg);                
             }
         });
     }

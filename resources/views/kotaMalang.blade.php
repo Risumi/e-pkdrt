@@ -3,7 +3,7 @@
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="Kabupaten">
         <g id="Kecamatan">
-            <path data-info="<div>Kecamatan: Blimbing</div>" data-toggle="modal" data-target="#modalFilterBLIMBING" clip-path="url(#SVG_CP_1)" class="kecamatan" fill="#FEFEE9"
+            <path data-info="<div>Kecamatan: Blimbing</div>" data-toggle="modal" data-target="#modalFilterBLIMBING" clip-path="url(#SVG_CP_1)" class="kecamatan" fill={{$dataWarna["BLIMBING"]}}
                 fill-rule="evenodd" stroke="none"
                 d="M588.41482,87.83256L588.41482,88.31252
 					L588.17484,90.71232L588.17484,91.43226L587.69489,93.3521L587.21495,95.75189L586.25505,97.67173L586.01508,98.63165L586.01508,98.87163
@@ -396,7 +396,7 @@
 					L574.01641,95.75189L576.89609,89.03246L578.57591,89.7524L579.05585,89.99238L580.49569,88.5525L582.41548,89.27244L583.61535,87.59258
 					L586.25505,88.07254L586.49503,85.91273L585.53513,82.55301L586.49503,82.79299L587.69489,86.15271L588.41482,87.83256" />
             <path data-info="<div>Kecamatan: Kedungkandang</div>" data-toggle="modal" data-target="#modalFilterKEDUNGKANDANG" clip-path="url(#SVG_CP_1)" class="kecamatan"
-                fill="#FEFEE9" fill-rule="evenodd" stroke="none" d="M669.52583,407.24552L669.7658,407.4855
+                fill={{$dataWarna["KEDUNGKANDANG"]}} fill-rule="evenodd" stroke="none" d="M669.52583,407.24552L669.7658,407.4855
 					L670.7257,407.72548L671.68559,408.20544L674.80524,409.64531L675.28519,409.88529L676.48506,410.36525L677.68493,410.84521L
 					678.16487,411.08519L678.40485,411.08519L678.88479,411.32517L679.36474,411.56515L679.60471,411.56515L681.04455,412.28509L
 					682.72437,413.00503L683.92423,413.72497L684.40418,413.72497L685.60405,414.44491L689.44362,416.36474L691.84336,417.32466L
@@ -740,7 +740,7 @@
 					L652.24774,403.8858L653.44761,403.40584L654.88745,401.72598L656.08732,399.32619L656.32729,399.32619L657.04721,399.80615L
 					658.967,401.24602L661.60671,402.44592L663.76647,403.64582L666.64615,404.36576L667.36607,404.36576L668.32596,404.60574L670.96567,405.56566
 					L669.52583,407.24552" />
-            <path data-info="<div>Kecamatan: Klojen</div>" data-toggle="modal" data-target="#modalFilterKLOJEN" clip-path="url(#SVG_CP_1)" class="kecamatan" fill="#FEFEE9"
+            <path data-info="<div>Kecamatan: Klojen</div>" data-toggle="modal" data-target="#modalFilterKLOJEN" clip-path="url(#SVG_CP_1)" class="kecamatan" fill={{$dataWarna["KLOJEN"]}}
                 fill-rule="evenodd" stroke="#646464" stroke-width="0.47995" stroke-miterlimit="10"
                 stroke-linecap="round" stroke-linejoin="round" d="
 					M448.03037,344.13086L450.19013,344.61082L451.38999,344.37084L451.86994,344.37084L452.10992,344.37084L453.30978,344.13086
@@ -883,7 +883,7 @@
 					L434.35188,332.13188L436.27167,333.57176L436.51164,333.57176L438.43143,335.01163L438.6714,335.25161L440.59119,336.21153L
 					443.95082,338.61133L444.43077,339.33127L444.67074,339.81123L444.91071,340.05121L445.15069,340.29119L446.11058,341.73106L
 					447.79039,343.89088L448.03037,344.13086z" />
-            <path data-info="<div>Kecamatan: Sukun</div>" data-toggle="modal" data-target="#modalFilterSUKUN" clip-path="url(#SVG_CP_1)"  class="kecamatan" fill="#FEFEE9"
+            <path data-info="<div>Kecamatan: Sukun</div>" data-toggle="modal" data-target="#modalFilterSUKUN" clip-path="url(#SVG_CP_1)"  class="kecamatan" fill={{$dataWarna["SUKUN"]}}
                 fill-rule="evenodd" stroke="none"
                 d="M489.78574,67.19431L491.22558,69.11415
 					L490.74564,71.51394L490.74564,71.75392L490.98561,71.75392L496.02505,74.15372L496.26502,74.15372L497.22492,74.3937L514.02306,90.47234
@@ -1345,7 +1345,7 @@
 					L466.26835,77.9934L466.98827,76.7935L467.94816,76.07356L470.10792,73.67376L473.46755,69.83409L473.46755,69.35413L473.22758,68.63419
 					L472.9876,68.63419L473.22758,68.63419L473.9475,68.63419L483.06649,67.67427L488.58587,67.67427L489.78574,67.19431" />
             <path data-info="<div>Kecamatan: Lowokwaru</div>" data-toggle="modal" data-target="#modalFilterLOWOKWARU" clip-path="url(#SVG_CP_1)" class="kecamatan"
-                fill="#FEFEE9" fill-rule="evenodd" stroke="none" d="M287.00821,306.21407L288.68802,306.93401
+                fill={{$dataWarna["LOWOKWARU"]}} fill-rule="evenodd" stroke="none" d="M287.00821,306.21407L288.68802,306.93401
 					L289.64791,307.65395L293.48749,308.13391L299.7268,306.93401L300.68669,306.69403L301.64658,305.97409L302.84645,305.49413L
 					303.56637,305.25415L304.04632,305.25415L304.76624,305.25415L305.24618,305.25415L305.96611,305.25415L307.16597,306.45405L
 					307.16597,306.93401L307.64592,307.89393L307.64592,308.13391L308.12587,309.09383L308.12587,309.33381L308.84579,310.53371L

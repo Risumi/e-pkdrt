@@ -37,7 +37,7 @@ class KasusController extends Controller
         }
     }
     public function tambahKasus(Request $req){
-        if(Auth::user()->id){
+        if(!Auth::guest()){
             $this->validate($req, [
                 'no_registrasi'   => 'required',
                 'hari'   => 'required',
