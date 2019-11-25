@@ -66,7 +66,7 @@ $(document).ready(function () {
     //saat pilihan kecamatan di pilih, maka akan mengambil data kelurahan
     //di data-wilayah.php menggunakan ajax
     getAjaxKecamatan();
-    $("#inputKecamatan").change(getAjaxKecamatan);
+    $("#inputKecamatan").change(getAjaxKecamatan);    
     function getAjaxKecamatan() {     
         var id_district = $("#inputKecamatan").val();
         var id_kasus = $("#id_kasus").val();
@@ -81,9 +81,25 @@ $(document).ready(function () {
               },            
             success: function (msg) {
                 $("select#inputKelurahan").html(msg);                
-                // console.log(msg);
+                console.log(id_kasus);
             }
         });
     }
-    
+
+    getAjaxKecamatanNew()
+    $("#inputKecamatanNew").change(getAjaxKecamatanNew);    
+    function getAjaxKecamatanNew() {     
+        var id_district = $("#inputKecamatanNew").val();                
+        $.ajax({
+            type: "POST",
+            dataType: "html",
+            url: new URL ("kelurahannew",window.location.origin),
+            data: {
+                "id_district": id_district,                
+              },            
+            success: function (msg) {
+                $("select#inputKelurahan").html(msg);                                
+            }
+        });
+    }
 });

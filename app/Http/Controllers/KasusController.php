@@ -417,7 +417,8 @@ class KasusController extends Controller
             'alamat_tkp'       => $req->TKP,
             'fk_id_district'   => $req->kecamatan,
             'fk_id_villages'   => $req->kelurahan,
-            'deskripsi'        => $req->deskripsi
+            'deskripsi'        => $req->deskripsi,
+            'status'           => "Belum Diproses"
         ]);
         $id_kasus = $ks->id_kasus;
         //END INSERT KASUS
@@ -498,14 +499,26 @@ class KasusController extends Controller
         ->where('districts.name','=',$req->id_district)->
         get();
         $kelurahanData="";        
-        $kasus = M_kasus::where("id_kasus","=",$req->id_kasus)->first();                
+        $kasus = M_kasus::where("id_kasus","=",$req->id_kasus)->first();
         foreach ($kelurahan as $data ) {            
             if($kasus->fk_id_villages == $data->name){
                 $kelurahanData .='<option selected value="'.$data->name.'">'.$data->name.'</option>';
             }else{
                 $kelurahanData .='<option value="'.$data->name.'">'.$data->name.'</option>';
-            }    
-            
+            }                
+        }
+        return response($kelurahanData) ;
+    }
+
+    public function getKelurahanData(Request $req)
+    {
+        $kelurahan = M_village::select('villages.name')
+        ->join('districts', 'districts.id',  '=',"villages.district_id")
+        ->where('districts.name','=',$req->id_district)->
+        get();
+        $kelurahanData="";             
+        foreach ($kelurahan as $data ) {                        
+            $kelurahanData .='<option value="'.$data->name.'">'.$data->name.'</option>';                        
         }
         return response($kelurahanData) ;
     }

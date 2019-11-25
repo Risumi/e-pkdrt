@@ -16,6 +16,7 @@ Route::post('/login','AuthController@login');
 
 Route::post('kasus/new','KasusController@tambahKasus');
 Route::post('/kelurahan','KasusController@getKelurahan');
+Route::post('/kelurahannew','KasusController@getKelurahanData');
 Route::group(['middleware' => 'App\Http\Middleware\IsLogin'], function(){
     Route::post('/report','ReportController@report');
     Route::get('/logout','AuthController@logout');
