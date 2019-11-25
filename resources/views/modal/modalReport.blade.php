@@ -124,6 +124,19 @@
                                 </div>
                             </div>
                             <div class="form-group row">
+                                <label for="inputKecamatanFilter" class="col-sm-3 col-form-label">Kecamatan</label>
+                                <div class="col-sm-7">
+                                    <select class="form-control custom-select" id="inputKecamatanFilter" name="kecamatan">
+                                        <option value="">Pilih Kecamatan</option>
+                                        <option value="LOWOKWARU">LOWOKWARU</option>
+                                        <option value="BLIMBING">BLIMBING</option>
+                                        <option value="KLOJEN">KLOJEN</option>
+                                        <option value="SUKUN">SUKUN</option>
+                                        <option value="KEDUNGKANDANG">KEDUNGKANDANG</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-sm-3 col-form-label"></label>
                                 <div class="col-sm-3">
                                     <button type="submit" class="btn btn-primary">Tampilkan</button>
@@ -134,9 +147,9 @@
                 </div>
             </div>
             <!-- <div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			</div> -->
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div> -->
         </div>
     </div>
 </div>

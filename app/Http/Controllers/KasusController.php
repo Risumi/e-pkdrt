@@ -62,6 +62,7 @@ class KasusController extends Controller
             return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
         } else {
             $this->pelaporTambahKasus($req);
+            return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
         }
 
     }
@@ -356,62 +357,69 @@ class KasusController extends Controller
     }
 
     public function pelaporTambahKasus(Request $req){
-        // dd($req);
-        
         $this->validate($req, [
             'no_registrasi'   => 'required',
-            'hari'   => 'required',            
-            'kejadian'   => 'required',
-            'kategori'   => 'required',
+            'nik'   => 'required|numeric|digits_between:0,16',         
+            'kejadian'   => 'required|date',
+            'kategori'   => 'required|between:0,50',
             'TKP'        => 'required',
-            'kecamatan' => 'required',
-            'kelurahan' => 'required',
+            'kecamatan' => 'required|between:0,50',
+            'kelurahan' => 'required|between:0,50',
             'deskripsi'   => 'required',
 
-            'nama_pelapor'          => 'required',
-            'jenis_kelamin_pelapor' => 'required',
-            'ttl_pelapor'           => 'required',
-            'usia_pelapor'          => 'required|numeric|min:0',
-            'alamat_pelapor'        => 'required',
+            'nama_pelapor'          => 'required|between:0,255',
+            'jenis_kelamin_pelapor' => 'required|between:0,20',
+            'ttl_pelapor'           => 'required|between:0,50',
+            'usia_pelapor'          => 'required|numeric|min:0|digits_between:0,10',
+            'alamat_pelapor'        => 'required|between:0,255',
             'telepon_pelapor'       => 'required|numeric|digits_between:0,12',
-            'pendidikan_pelapor'    => 'required',
-            'agama_pelapor'         => 'required',
-            'pekerjaan_pelapor'     => 'required',
-            'status_pelapor'        => 'required',
+            'pendidikan_pelapor'    => 'required|between:0,20',
+            'agama_pelapor'         => 'required|between:0,20',
+            'pekerjaan_pelapor'     => 'required|between:0,50',
+            'status_pelapor'        => 'required|between:0,25',
 
-            'nama_korban'          => 'required',
-            'jenis_kelamin_korban' => 'required',
-            'usia_korban'          => 'required',
-            'ttl_korban'           => 'required',
-            'alamat_korban'        => 'required',
+            'nama_korban'          => 'required|between:0,255',
+            'jenis_kelamin_korban' => 'required|between:0,20',
+            'usia_korban'          => 'required|numeric|min:0|digits_between:0,10',
+            'ttl_korban'           => 'required|between:0,100',
+            'alamat_korban'        => 'required|between:0,255',
             'telepon_korban'       => 'required|numeric|digits_between:0,12',
-            'pendidikan_korban'    => 'required',
-            'agama_korban'         => 'required',
-            'pekerjaan_korban'     => 'required',
-            'status_korban'        => 'required',
-            'difabel_korban'       => 'required',
-            'kdrt_korban'          => 'required',
-            'tindak_kekerasan_korban' => 'required',
-            'trafficking_korban'   => 'required',
+            'pendidikan_korban'    => 'required|between:0,20',
+            'agama_korban'         => 'required|between:0,20',
+            'pekerjaan_korban'     => 'required|between:0,30',
+            'status_korban'        => 'required|between:0,30',
+            'difabel_korban'       => 'required|between:0,10',
+            'kdrt_korban'          => 'required|between:0,10',
+            'tindak_kekerasan_korban' => 'required|between:0,100',
+            'trafficking_korban'   => 'required|between:0,100',
 
-            'nama_pelaku'          => 'required',
-            'jenis_kelamin_pelaku' => 'required',
-            'usia_pelaku'          => 'required',
-            'ttl_pelaku'           => 'required',
-            'alamat_pelaku'        => 'required',
+            'nama_pelaku'          => 'required|between:0,255',
+            'jenis_kelamin_pelaku' => 'required|between:0,20',
+            'usia_pelaku'          => 'required|numeric|min:0|digits_between:0,10',
+            'ttl_pelaku'           => 'required|between:0,100',
+            'alamat_pelaku'        => 'required|between:0,255',
             'telepon_pelaku'       => 'required|numeric|digits_between:0,12',
-            'pendidikan_pelaku'    => 'required',
-            'agama_pelaku'         => 'required',
-            'pekerjaan_pelaku'     => 'required',
-            'status_pelaku'        => 'required',
-            'difabel_pelaku'       => 'required',
-            'hubungan_dengan_korban' => 'required'
+            'pendidikan_pelaku'    => 'required|between:0,20',
+            'agama_pelaku'         => 'required|between:0,20',
+            'pekerjaan_pelaku'     => 'required|between:0,30',
+            'status_pelaku'        => 'required|between:0,30',
+            'difabel_pelaku'       => 'required|between:0,10',
+            'hubungan_dengan_korban' => 'required|between:0,90'
+        ], [
+            'required'       => 'Kolom :attribute harus berisi nilai',
+            'numeric'        => 'Kolom :attribute harus berupa angka',
+            'min'            => 'Kolom :attribute minimal :min',
+            'digits_between' => 'Kolom :attribute maksimal :max digit',
+            'between'        => 'Kolom :attribute maksimal :max karakter',
+            'date'           => 'Pastikan format tanggal benar',
+            // 'digits_between' => 'Pastikan NIK benar',
         ]);
 
         // INSERT KASUS
+        date_default_timezone_set('Asia/Jakarta');
         $ks = M_kasus::create([
             'nomor_registrasi' => $req->no_registrasi,
-            'hari'             => $req->hari,            
+            'hari'             => date('Y-m-d'),
             'kejadian'         => $req->kejadian,
             'kategori'         => $req->kategori,
             'alamat_tkp'       => $req->TKP,
@@ -490,7 +498,8 @@ class KasusController extends Controller
             'fk_id_kasus' => $id_kasus,
             'fk_id_pelapor' => $id_pelapor
         ]);
-        return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
+        // return back()->with('notification', 'Kasus berhasil ditambahkan');
+        // return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
     }
     public function getKelurahan(Request $req)
     {

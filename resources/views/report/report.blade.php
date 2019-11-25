@@ -51,41 +51,55 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php 
+		$arrKecamatan = ['LOWOKWARU', 'BLIMBING', 'KLOJEN', 'SUKUN', 'KEDUNGKANDANG'];
+			for ($i = 0; $i < count($arrKecamatan); $i++) {
+				if($kecamatan == null)
+					$key1 = $arrKecamatan[$i];
+				else{
+					$key1 = $kecamatan;
+				}
+		?>
 		<tr>
-			<td>1.</td>
-			<td></td>
-			<td></td>
-			<td>{{ $data['usia_0-5'] }}</td>
-			<td>{{ $data['usia_6-12'] }}</td>
-			<td>{{ $data['usia_13-17'] }}</td>
-			<td>{{ $data['usia_18-24'] }}</td>
-			<td>{{ $data['usia_25-44'] }}</td>
-			<td>{{ $data['usia_45-59'] }}</td>
-			<td>{{ $data['usia_60'] }}</td>
-			<td>{{ $data['usia_anak'] }}</td>
-			<td>{{ $data['usia_dewasa'] }}</td>
+			<td>{{ ($i + 1) }}</td>
+			<td>{{ $kecamatan == null ? $arrKecamatan[$i] : $kecamatan }}</td>
+			<td>{{ $dataKorban["$key1"][0]->totalKasus }}</td>
 
-			<td>{{ $data['pendidikan_tk'] }}</td>
-			<td>{{ $data['pendidikan_sd'] }}</td>
-			<td>{{ $data['pendidikan_smp'] }}</td>
-			<td>{{ $data['pendidikan_sma'] }}</td>
-			<td>{{ $data['pendidikan_sarjana'] }}</td>			
+			<td>{{ $dataKorban["$key1"][0]->usia0_5 }}</td>
+			<td>{{ $dataKorban["$key1"][0]->usia6_12 }}</td>
+			<td>{{ $dataKorban["$key1"][0]->usia13_17 }}</td>
+			<td>{{ $dataKorban["$key1"][0]->usia18_24 }}</td>
+			<td>{{ $dataKorban["$key1"][0]->usia25_44 }}</td>
+			<td>{{ $dataKorban["$key1"][0]->usia45_59 }}</td>
+			<td>{{ $dataKorban["$key1"][0]->usia60 }}</td>
+			<td>{{ $dataKorban["$key1"][0]->usiaanak }}</td>
+			<td>{{ $dataKorban["$key1"][0]->usiadewasa }}</td>
 
-			<td>{{ $data['pekerjaan_ptn'] }}</td>
-			<td>{{ $data['pekerjaan_swasta'] }}</td>
-			<td>{{ $data['pekerjaan_pns'] }}</td>
-			<td>{{ $data['pekerjaan_pelajar'] }}</td>
-			<td>{{ $data['pekerjaan_irt'] }}</td>
-			<td>{{ $data['pekerjaan_tidakbekerja'] }}</td>
+			<td>{{ $dataKorban["$key1"][0]->pendidikan_tk }}</td>
+			<td>{{ $dataKorban["$key1"][0]->pendidikan_sd }}</td>
+			<td>{{ $dataKorban["$key1"][0]->pendidikan_smp }}</td>
+			<td>{{ $dataKorban["$key1"][0]->pendidikan_sma }}</td>
+			<td>{{ $dataKorban["$key1"][0]->pendidikan_sarjana }}</td>		
 
-			<td>{{ $data['pernikahan_belum'] }}</td>
-			<td>{{ $data['pernikahan_menikah'] }}</td>
-			<td>{{ $data['pernikahan_dudajanda'] }}</td>
-			<td>{{ $data['pernikahan_sirri'] }}</td>
+			<td>{{ $dataKorban["$key1"][0]->pekerjaan_ptn }}</td>		
+			<td>{{ $dataKorban["$key1"][0]->pekerjaan_swasta }}</td>		
+			<td>{{ $dataKorban["$key1"][0]->pekerjaan_pns }}</td>		
+			<td>{{ $dataKorban["$key1"][0]->pekerjaan_pelajar }}</td>		
+			<td>{{ $dataKorban["$key1"][0]->pekerjaan_irt }}</td>		
+			<td>{{ $dataKorban["$key1"][0]->pekerjaan_tidak }}</td>
 
-			<td>{{ $data['difabel'] }}</td>
-			<td>{{ $data['kdrt'] }}</td>
+			<td>{{ $dataKorban["$key1"][0]->status_belum }}</td>
+			<td>{{ $dataKorban["$key1"][0]->status_menikah }}</td>
+			<td>{{ $dataKorban["$key1"][0]->status_dj }}</td>
+			<td>{{ $dataKorban["$key1"][0]->status_sirri }}</td>
+
+			<td>{{ $dataKorban["$key1"][0]->difabel }}</td>
+			<td>{{ $dataKorban["$key1"][0]->kdrt }}</td>
 		</tr>
+		<?php 
+			if($kecamatan != null)
+				$i = 4;
+		} ?>
 	</tbody>
 </table>
 

@@ -86,7 +86,7 @@
                     <div class="form-group row">
                         <label for="inputKecamatan" class="col-sm-2 col-form-label">Kecamatan</label>
                         <div class="input-group col-sm-5">
-                            <select class="custom-select" id="inputKecamatan" name="kecamatan">
+                            <select class="custom-select" id="inputKecamatanNew" name="kecamatan">
                                 @foreach($kecamatan as $data)
                                 <option value="{{$data->name}}">{{$data->name}}</option>
                                 @endforeach

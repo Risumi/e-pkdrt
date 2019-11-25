@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\M_kasus;
 use App\Models\M_korban;
 use App\Models\M_pelayanan;
 use App\Models\M_rujukan;
 use App\Models\M_pelaku;
 use App\Models\M_penanganan;
+// use DB;
 
 class ReportController extends Controller {
     public function report(Request $req) {
@@ -45,8 +47,10 @@ $dataPelaku=null;
 $dataKekerasan=null;
 $dataTerlayani=null;
 $dataJenis4=null;
+$kecamatan = $req->kecamatan;
+
         if($req->jenis_report == 'Ciri Korban & Pelaku'){
-            $data = $this->getCiriKorban($tgl_mulai, $tgl_selesai, $req->jenis_kelamin, $req->status_usia);
+            $dataKorban = $this->getCiriKorban($tgl_mulai, $tgl_selesai, $req->jenis_kelamin, $req->status_usia, $req->kecamatan);
             $dataPelaku = $this->getCiriPelaku($tgl_mulai, $tgl_selesai, $req->jenis_kelamin, $req->status_usia);
 
         } else if($req->jenis_report == 'Bentuk Kekerasan, Tempat Kejadian & Pelayanan'){
@@ -62,110 +66,56 @@ $dataJenis4=null;
 
 
         $jenis_report = $req->jenis_report;
-        return view('report.report', compact('data', 'dataPelaku', 'dataKekerasan', 'dataTerlayani', 'dataJenis4', 'jenis_report'));
+        return view('report.report', compact('dataKorban', 'kecamatan', 'dataPelaku', 'dataKekerasan', 'dataTerlayani', 'dataJenis4', 'jenis_report'));
     }
 
-    public function getCiriKorban($tgl_mulai, $tgl_selesai, $jenis_kelamin, $status_usia) {
+    public function getCiriKorban($tgl_mulai, $tgl_selesai, $jenis_kelamin, $status_usia, $kecamatan) {
         $where = array();
         if($tgl_mulai != null && $tgl_selesai != null){
-            $where[] = ['kasus.hari', '>=', $tgl_mulai];
-            $where[] = ['kasus.hari', '<=', $tgl_selesai];
+            $where[] = "kasus.hari >= '$tgl_mulai'";
+            $where[] = "kasus.hari <= '$tgl_selesai'";
         }
         if($jenis_kelamin != null) {
-            $where[] = ['korban.jenis_kelamin', '=', $jenis_kelamin];
+            $where[] = "korban.jenis_kelamin = '$jenis_kelamin'";
         }
-
-        if($status_usia != null) {
+        if($status_usia != null) {  
             if($status_usia == 'Anak') {
-                $where[] = ['korban.usia', '<=', 20];
+                $where[] = "korban.usia <= 18";
             } else
-                $where[] = ['korban.usia', '>', 20];
+                $where[] = "korban.usia > 18";
         }
+        $arrKecamatan = ['LOWOKWARU', 'BLIMBING', 'KLOJEN', 'SUKUN', 'KEDUNGKANDANG'];
 
-        $result = M_kasus::where(
-            $where
-        )->join('korban', 'korban.fk_id_kasus', '=', 'kasus.id_kasus')
-        ->get()
-        ;
+        if($kecamatan == null){
+            for ($i = 0; $i < count($arrKecamatan); $i++) {
+                $kecamatan = $arrKecamatan[$i];
 
-        $data = [];
-        $data['usia_0-5'] = 0;
-        $data['usia_6-12'] = 0;
-        $data['usia_13-17'] = 0;
-        $data['usia_18-24'] = 0;
-        $data['usia_25-44'] = 0;
-        $data['usia_45-59'] = 0;
-        $data['usia_60'] = 0;
-        $data['usia_anak'] = 0;
-        $data['usia_dewasa'] = 0;
+                $sqlWhere = "SELECT COUNT(*) FROM kasus right JOIN korban on kasus.id_kasus = korban.fk_id_kasus ". 
+                    (count($where) > 0 ? ' where ' : '').
+                    implode(' and ', $where).
+                    (count($where) > 0 ? ' and ' : '').
+                    ( (count($where) == 0 && $kecamatan != '') ? ' where ' : '').
+                    ($kecamatan != '' ? " kasus.fk_id_district = '$kecamatan' " : '');
 
-        $keyPendidikan = ['pendidikan_tk', 'pendidikan_sd', 'pendidikan_smp', 'pendidikan_sma', 'pendidikan_sarjana'];
-        $valuePendidikan = ['TK', 'SD', 'SMP', 'SMA', 'S1/S2/S3'];
-        for ($i = 0; $i < count($keyPendidikan); $i++) { 
-            $data[$keyPendidikan[$i]] = 0;
+
+                $sql = "SELECT ($sqlWhere AND (korban.usia BETWEEN 0 and 5)) as usia0_5, ($sqlWhere AND (korban.usia BETWEEN 6 and 12)) as usia6_12, ($sqlWhere AND (korban.usia BETWEEN 13 and 17)) as usia13_17, ($sqlWhere AND (korban.usia BETWEEN 18 and 24)) as usia18_24, ($sqlWhere AND (korban.usia BETWEEN 25 and 44)) as usia25_44, ($sqlWhere AND (korban.usia BETWEEN 45 and 59)) as usia45_59, ($sqlWhere AND (korban.usia >= 60)) as usia60, ($sqlWhere AND (korban.usia <= 18)) as usiaanak, ($sqlWhere AND (korban.usia > 18)) as usiadewasa, ($sqlWhere AND korban.pendidikan = 'TK') as pendidikan_tk, ($sqlWhere AND korban.pendidikan = 'SD') as pendidikan_sd, ($sqlWhere AND korban.pendidikan = 'SMP') as pendidikan_smp, ($sqlWhere AND korban.pendidikan = 'SMA') as pendidikan_sma, ($sqlWhere AND korban.pendidikan = 'S1/S2/S3') as pendidikan_sarjana, ($sqlWhere AND korban.pekerjaan = 'Pedagang/Tani/Nelayan') as pekerjaan_ptn, ($sqlWhere AND korban.pekerjaan = 'Pelajar') as pekerjaan_pelajar, ($sqlWhere AND korban.pekerjaan = 'Swasta/Buruh') as pekerjaan_swasta, ($sqlWhere AND korban.pekerjaan = 'Ibu Rumah Tangga') as pekerjaan_irt, ($sqlWhere AND korban.pekerjaan = 'Tidak bekerja') as pekerjaan_tidak, ($sqlWhere AND korban.pekerjaan = 'PNS/TNI/Polri') as pekerjaan_pns, ($sqlWhere AND korban.status = 'Menikah') as status_menikah, ($sqlWhere AND korban.status = 'Duda/Janda') as status_dj, ($sqlWhere AND korban.status = 'Belum menikah') as status_belum, ($sqlWhere AND korban.status = 'Sirri') as status_sirri, ($sqlWhere AND korban.difabel = 'Ya') as difabel, ($sqlWhere AND korban.kdrt = 'Ya') as kdrt, (SELECT COUNT(*) FROM kasus where kasus.fk_id_district = '$kecamatan') as totalKasus ";
+                // dd($sql);
+                $hasil[$kecamatan] = DB::select($sql);
+            }
+        } else {
+            $sqlWhere = "SELECT COUNT(*) FROM kasus right JOIN korban on kasus.id_kasus = korban.fk_id_kasus ". 
+                        (count($where) > 0 ? ' where ' : '').
+                        implode(' and ', $where).
+                        (count($where) > 0 ? ' and ' : '').
+                        ( (count($where) == 0 && $kecamatan != null) ? ' where ' : '').
+                        ($kecamatan != null ? " kasus.fk_id_district = '$kecamatan' " : '');
+
+            $sql = "SELECT ($sqlWhere AND (korban.usia BETWEEN 0 and 5)) as usia0_5, ($sqlWhere AND (korban.usia BETWEEN 6 and 12)) as usia6_12, ($sqlWhere AND (korban.usia BETWEEN 13 and 17)) as usia13_17, ($sqlWhere AND (korban.usia BETWEEN 18 and 24)) as usia18_24, ($sqlWhere AND (korban.usia BETWEEN 25 and 44)) as usia25_44, ($sqlWhere AND (korban.usia BETWEEN 45 and 59)) as usia45_59, ($sqlWhere AND (korban.usia >= 60)) as usia60, ($sqlWhere AND (korban.usia <= 18)) as usiaanak, ($sqlWhere AND (korban.usia > 18)) as usiadewasa, ($sqlWhere AND korban.pendidikan = 'TK') as pendidikan_tk, ($sqlWhere AND korban.pendidikan = 'SD') as pendidikan_sd, ($sqlWhere AND korban.pendidikan = 'SMP') as pendidikan_smp, ($sqlWhere AND korban.pendidikan = 'SMA') as pendidikan_sma, ($sqlWhere AND korban.pendidikan = 'S1/S2/S3') as pendidikan_sarjana, ($sqlWhere AND korban.pekerjaan = 'Pedagang/Tani/Nelayan') as pekerjaan_ptn, ($sqlWhere AND korban.pekerjaan = 'Pelajar') as pekerjaan_pelajar, ($sqlWhere AND korban.pekerjaan = 'Swasta/Buruh') as pekerjaan_swasta, ($sqlWhere AND korban.pekerjaan = 'Ibu Rumah Tangga') as pekerjaan_irt, ($sqlWhere AND korban.pekerjaan = 'Tidak bekerja') as pekerjaan_tidak, ($sqlWhere AND korban.pekerjaan = 'PNS/TNI/Polri') as pekerjaan_pns, ($sqlWhere AND korban.status = 'Menikah') as status_menikah, ($sqlWhere AND korban.status = 'Duda/Janda') as status_dj, ($sqlWhere AND korban.status = 'Belum menikah') as status_belum, ($sqlWhere AND korban.status = 'Sirri') as status_sirri, ($sqlWhere AND korban.difabel = 'Ya') as difabel, ($sqlWhere AND korban.kdrt = 'Ya') as kdrt, (SELECT COUNT(*) FROM kasus where kasus.fk_id_district = '$kecamatan') as totalKasus ";
+            
+            $hasil[$kecamatan] = DB::select($sql);
         }
-
-        $keyPekerjaan = ['pekerjaan_ptn', 'pekerjaan_swasta', 'pekerjaan_pns', 'pekerjaan_pelajar', 'pekerjaan_irt', 'pekerjaan_tidakbekerja'];
-        $valuePekerjaan = ['Pedagang/Tani/Nelayan', 'Swasta/Buruh', 'PNS/TNI/Polri', 'Pelajar', 'Ibu Rumah Tangga', 'Tidak Bekerja'];
-        for ($i = 0; $i < count($keyPekerjaan); $i++) { 
-            $data[$keyPekerjaan[$i]] = 0;
-        }
-
-        $keyPernikahan = ['pernikahan_belum', 'pernikahan_menikah', 'pernikahan_dudajanda', 'pernikahan_sirri'];
-        $valuePernikahan = ['Belum Menikah', 'Menikah', 'Duda/Janda', 'Sirri'];
-        for ($i = 0; $i < count($keyPernikahan); $i++) { 
-            $data[$keyPernikahan[$i]] = 0;
-        }
-
-        $data['difabel'] = 0;
-        $data['kdrt'] = 0;
-
-        foreach ($result as $dt) {
-            if ($dt->usia <= 5) {
-                $data['usia_0-5']++;
-            } else if ($dt->usia >= 6 && $dt->usia <= 12) {
-                $data['usia_6-12']++;
-            } else if ($dt->usia >= 13 && $dt->usia <= 17) {
-                $data['usia_13-17']++;
-            } else if ($dt->usia >= 18 && $dt->usia <= 24) {
-                $data['usia_18-24']++;
-            } else if ($dt->usia >= 25 && $dt->usia <= 44) {
-                $data['usia_25-44']++;
-            } else if ($dt->usia >= 45 && $dt->usia <= 59) {
-                $data['usia_45-59']++;
-            } else if ($dt->usia >= 60) {
-                $data['usia_60']++;
-            }
-            if ($dt->usia <= 20) {
-                $data['usia_anak']++;
-            } else if ($dt->usia > 20) {
-                $data['usia_dewasa']++;
-            }
-
-            for ($i = 0; $i < count($keyPendidikan); $i++) { 
-                if($dt->pendidikan == $valuePendidikan[$i]){
-                    $data[$keyPendidikan[$i]]++;
-                }
-            }
-            for ($i = 0; $i < count($keyPekerjaan); $i++) { 
-                if($dt->pekerjaan == $valuePekerjaan[$i]){
-                    $data[$keyPekerjaan[$i]]++;
-                }
-            }
-            for ($i = 0; $i < count($keyPernikahan); $i++) { 
-                if($dt->pekerjaan == $valuePernikahan[$i]){
-                    $data[$keyPernikahan[$i]]++;
-                }
-            }
-
-            if ($dt->difabel == 'Ya') {
-                $data['difabel']++;
-            } 
-            if ($dt->kdrt == 'Ya') {
-                $data['kdrt']++;
-            } 
-        }
-        return $data;
+        // dd($hasil);
+        return $hasil;
     }
 
     public function getCiriPelaku($tgl_mulai, $tgl_selesai, $jenis_kelamin, $status_usia) {
