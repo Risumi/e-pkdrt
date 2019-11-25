@@ -132,7 +132,7 @@
                 <button type="submit" data-toggle="modal" data-target="#modalFilterTahun" class="btn btn-primary">Filter</button>
             </div>
 	        <div class="row">
-	            <div class="col" align="center">					
+	            <div class="col-sm" align="center">					
 	                @include('kotaMalang')
 	            </div>
 			</div>

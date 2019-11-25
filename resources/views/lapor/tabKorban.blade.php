@@ -31,7 +31,7 @@
         <div class="form-group row">
             <label for="inputUsia" class="col-sm-2 col-form-label">Usia</label>
             <div class="col-sm-2">
-                <input type="number" class="form-control" id="inputUsia" name="usia_korban" min="0" value="{{ old('usia_korban') }}">
+                <input type="text" class="form-control" id="inputUsia" name="usia_korban" min="0" value="{{ old('usia_korban') }}">
                 @if ($errors->has('usia_korban'))
                     <span style="color: red">{{ $errors->first('usia_korban') }}</span>
                 @endif
@@ -241,8 +241,8 @@
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="Perdagangan Narkoba"
-                        id="checkTrafficking3" name="trafficking_korban[]">
-                    <label class="form-check-label" for="checkTrafficking3">
+                        id="checkTrafficking4" name="trafficking_korban[]">
+                    <label class="form-check-label" for="checkTrafficking4">
                         Perdagangan Narkoba
                     </label>
                 </div>

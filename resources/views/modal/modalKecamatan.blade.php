@@ -24,7 +24,7 @@
 					<div class="col-lg-4 col-xs-12">
 						<div class="small-box bg-green">
 							<div class="inner">
-								<h3>{{$data[2][0]["total"]}}</h3>
+								<h3>{{isset($data[2][0]) ? $data[2][0]["total"]:0}}</h3>
 								<p>Korban Laki-laki</p>
 							</div>
 							<div class="icon">
@@ -35,7 +35,7 @@
 						<div class="col-lg-4 col-xs-12">				
 							<div class="small-box bg-yellow">
 								<div class="inner">
-									<h3>{{$data[2][1]["total"]}}</h3>
+									<h3>{{isset($data[2][1]) ? $data[2][1]["total"]:0}}</h3>
 								<p>Korban Perempuan</p>
 							</div>
 						<div class="icon">

@@ -31,7 +31,7 @@
         <div class="form-group row">
             <label for="inputUsia" class="col-sm-2 col-form-label">Usia</label>
             <div class="col-sm-2">
-                <input type="number" class="form-control" id="inputUsia" name="usia_pelapor" min="0" value="{{ old('usia_pelapor') }}">
+                <input type="text" class="form-control" id="inputUsia" name="usia_pelapor" min="0" value="{{ old('usia_pelapor') }}">
                 @if ($errors->has('usia_pelapor'))
                     <span style="color: red">{{ $errors->first('usia_pelapor') }}</span>
                 @endif

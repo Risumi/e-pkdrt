@@ -359,7 +359,7 @@ class KasusController extends Controller
     public function pelaporTambahKasus(Request $req){
         $this->validate($req, [
             'no_registrasi'   => 'required',
-            'nik'   => 'required|numeric|digits_between:0,16',         
+            'nik'   => 'required|numeric|digits:16',         
             'kejadian'   => 'required|date',
             'kategori'   => 'required|between:0,50',
             'TKP'        => 'required',
@@ -370,7 +370,7 @@ class KasusController extends Controller
             'nama_pelapor'          => 'required|between:0,255',
             'jenis_kelamin_pelapor' => 'required|between:0,20',
             'ttl_pelapor'           => 'required|between:0,50',
-            'usia_pelapor'          => 'required|numeric|min:0|digits_between:0,10',
+            'usia_pelapor'          => 'required|numeric|min:0|digits_between:0,9',
             'alamat_pelapor'        => 'required|between:0,255',
             'telepon_pelapor'       => 'required|numeric|digits_between:0,12',
             'pendidikan_pelapor'    => 'required|between:0,20',
@@ -380,7 +380,7 @@ class KasusController extends Controller
 
             'nama_korban'          => 'required|between:0,255',
             'jenis_kelamin_korban' => 'required|between:0,20',
-            'usia_korban'          => 'required|numeric|min:0|digits_between:0,10',
+            'usia_korban'          => 'required|numeric|min:0|digits_between:0,9',
             'ttl_korban'           => 'required|between:0,100',
             'alamat_korban'        => 'required|between:0,255',
             'telepon_korban'       => 'required|numeric|digits_between:0,12',
@@ -395,7 +395,7 @@ class KasusController extends Controller
 
             'nama_pelaku'          => 'required|between:0,255',
             'jenis_kelamin_pelaku' => 'required|between:0,20',
-            'usia_pelaku'          => 'required|numeric|min:0|digits_between:0,10',
+            'usia_pelaku'          => 'required|numeric|min:0|digits_between:0,9',
             'ttl_pelaku'           => 'required|between:0,100',
             'alamat_pelaku'        => 'required|between:0,255',
             'telepon_pelaku'       => 'required|numeric|digits_between:0,12',
@@ -410,6 +410,7 @@ class KasusController extends Controller
             'numeric'        => 'Kolom :attribute harus berupa angka',
             'min'            => 'Kolom :attribute minimal :min',
             'digits_between' => 'Kolom :attribute maksimal :max digit',
+            'digits'         => 'Pastikan NIK benar sesuai format',
             'between'        => 'Kolom :attribute maksimal :max karakter',
             'date'           => 'Pastikan format tanggal benar',
             // 'digits_between' => 'Pastikan NIK benar',
