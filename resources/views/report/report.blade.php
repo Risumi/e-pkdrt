@@ -1,4 +1,5 @@
 @if($jenis_report == 'Ciri Korban & Pelaku')
+<h3>REPORT CIRI KORBAN DAN PELAKU</h3><br>
 <h3>KORBAN</h3>
 <table cellpadding="5" cellspacing="0" border="1">
 	<thead>
@@ -153,53 +154,65 @@
 			<th>Guru</th>
 			<th>Majikan</th>
 			<th>Rekan/<br>Kerja</th>
-
-			<th></th>
 		</tr>
 	</thead>
 	<tbody>
+		<?php 
+		$arrKecamatan = ['LOWOKWARU', 'BLIMBING', 'KLOJEN', 'SUKUN', 'KEDUNGKANDANG'];
+			for ($i = 0; $i < count($arrKecamatan); $i++) {
+				if($kecamatan == null)
+					$key1 = $arrKecamatan[$i];
+				else{
+					$key1 = $kecamatan;
+				}
+		?>
 		<tr>
-			<td>1.</td>
-			<td></td>
-			<td></td>
-			<td>{{ $dataPelaku['usia_0-17'] }}</td>
-			<td>{{ $dataPelaku['usia_18-24'] }}</td>
-			<td>{{ $dataPelaku['usia_25-59'] }}</td>
-			<td>{{ $dataPelaku['usia_60'] }}</td>
+			<td>{{ ($i + 1) }}</td>
+			<td>{{ $kecamatan == null ? $arrKecamatan[$i] : $kecamatan }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->totalKasus }}</td>
 
-			<td>{{ $dataPelaku['pendidikan_tk'] }}</td>
-			<td>{{ $dataPelaku['pendidikan_sd'] }}</td>
-			<td>{{ $dataPelaku['pendidikan_smp'] }}</td>
-			<td>{{ $dataPelaku['pendidikan_sma'] }}</td>
-			<td>{{ $dataPelaku['pendidikan_sarjana'] }}</td>			
+			<td>{{ $dataPelaku["$key1"][0]->usia0_17 }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->usia18_24 }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->usia25_59 }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->usia60 }}</td>
 
-			<td>{{ $dataPelaku['pekerjaan_ptn'] }}</td>
-			<td>{{ $dataPelaku['pekerjaan_swasta'] }}</td>
-			<td>{{ $dataPelaku['pekerjaan_pns'] }}</td>
-			<td>{{ $dataPelaku['pekerjaan_pelajar'] }}</td>
-			<td>{{ $dataPelaku['pekerjaan_irt'] }}</td>
-			<td>{{ $dataPelaku['pekerjaan_tidakbekerja'] }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->pendidikan_tk }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->pendidikan_sd }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->pendidikan_smp }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->pendidikan_sma }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->pendidikan_sarjana }}</td>		
 
-			<td>{{ $dataPelaku['pernikahan_belum'] }}</td>
-			<td>{{ $dataPelaku['pernikahan_menikah'] }}</td>
-			<td>{{ $dataPelaku['pernikahan_dudajanda'] }}</td>
-			<td>{{ $dataPelaku['pernikahan_sirri'] }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->pekerjaan_ptn }}</td>		
+			<td>{{ $dataPelaku["$key1"][0]->pekerjaan_swasta }}</td>		
+			<td>{{ $dataPelaku["$key1"][0]->pekerjaan_pns }}</td>		
+			<td>{{ $dataPelaku["$key1"][0]->pekerjaan_pelajar }}</td>		
+			<td>{{ $dataPelaku["$key1"][0]->pekerjaan_irt }}</td>		
+			<td>{{ $dataPelaku["$key1"][0]->pekerjaan_tidak }}</td>
 
-			<td>{{ $dataPelaku['hubungan_ortu'] }}</td>
-			<td>{{ $dataPelaku['hubungan_keluarga'] }}</td>
-			<td>{{ $dataPelaku['hubungan_sutri'] }}</td>
-			<td>{{ $dataPelaku['hubungan_lainnya'] }}</td>
-			<td>{{ $dataPelaku['hubungan_tetangga'] }}</td>
-			<td>{{ $dataPelaku['hubungan_pacarteman'] }}</td>
-			<td>{{ $dataPelaku['hubungan_guru'] }}</td>
-			<td>{{ $dataPelaku['hubungan_majikan'] }}</td>
-			<td>{{ $dataPelaku['hubungan_rekankerja'] }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->status_belum }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->status_menikah }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->status_dj }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->status_sirri }}</td>
+
+			<td>{{ $dataPelaku["$key1"][0]->hubungan_ortu }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->hubungan_keluarga }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->hubungan_sutri }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->hubungan_lainnya }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->hubungan_tetangga }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->hubungan_pacarteman }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->hubungan_guru }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->hubungan_majikan }}</td>
+			<td>{{ $dataPelaku["$key1"][0]->hubungan_rekankerja }}</td>
 		</tr>
+		<?php 
+			if($kecamatan != null)
+				$i = 4;
+		} ?>
 	</tbody>
 </table>
 @endif
 @if($jenis_report == 'Bentuk Kekerasan, Tempat Kejadian & Pelayanan')
-<h3>REPORT ke 2</h3>
+<h3>REPORT BENTUK KEKERASAN, TEMPAT KEJADIAN & PELAYANAN</h3>
 <table cellpadding="5" cellspacing="0" border="1">
 	<thead>
 		<tr>
@@ -228,7 +241,6 @@
 			<th>Lainnya</th>
 			<th>Sekolah</th>
 			<th>Fasilitas<br>Umum</th>
-			<th>Lembaga<br>Pendidikan<br>Kilat</th>
 
 			<th>Pengaduan</th>
 			<th>Kesehatan</th>
@@ -241,39 +253,52 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php 
+		$arrKecamatan = ['LOWOKWARU', 'BLIMBING', 'KLOJEN', 'SUKUN', 'KEDUNGKANDANG'];
+			for ($i = 0; $i < count($arrKecamatan); $i++) {
+				if($kecamatan == null)
+					$key1 = $arrKecamatan[$i];
+				else{
+					$key1 = $kecamatan;
+				}
+		?>
 		<tr>
-			<td>1.</td>
-			<td></td>
-			<td></td>
-			<td>{{ $dataKekerasan['kekerasan_fisik'] }}</td>
-			<td>{{ $dataKekerasan['kekerasan_psikis'] }}</td>
-			<td>{{ $dataKekerasan['kekerasan_seksual'] }}</td>
-			<td>{{ $dataKekerasan['kekerasan_eksploitasi'] }}</td>
-			<td>{{ $dataKekerasan['kekerasan_trafficking'] }}</td>
-			<td>{{ $dataKekerasan['kekerasan_penelantaran'] }}</td>
-			<td>{{ $dataKekerasan['kekerasan_lainnya'] }}</td>
+			<td>{{ ($i + 1) }}</td>
+			<td>{{ $kecamatan == null ? $arrKecamatan[$i] : $kecamatan }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->totalKasus }}</td>
 
-			<td>{{ $dataKekerasan['tempat_rumah'] }}</td>
-			<td>{{ $dataKekerasan['tempat_kerja'] }}</td>
-			<td>{{ $dataKekerasan['tempat_lainnya'] }}</td>
-			<td>{{ $dataKekerasan['tempat_sekolah'] }}</td>
-			<td>{{ $dataKekerasan['tempat_fasilitasumum'] }}</td>			
-			<td>{{ $dataKekerasan['tempat_lembagapendidikan'] }}</td>			
+			<td>{{ $dataKekerasan["$key1"][0]->kekerasan_fisik }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->kekerasan_psikis }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->kekerasan_seksual }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->kekerasan_eksploitasi }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->kekerasan_trafficking }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->kekerasan_penelantaran }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->kekerasan_lainnya }}</td>
 
-			<td>{{ $dataKekerasan['pelayanan_pengaduan'] }}</td>
-			<td>{{ $dataKekerasan['pelayanan_kesehatan'] }}</td>
-			<td>{{ $dataKekerasan['pelayanan_bantuanhukum'] }}</td>
-			<td>{{ $dataKekerasan['pelayanan_penegakanhukum'] }}</td>
-			<td>{{ $dataKekerasan['pelayanan_rehabilitasisosial'] }}</td>
-			<td>{{ $dataKekerasan['pelayanan_reintegrasisosial'] }}</td>
-			<td>{{ $dataKekerasan['pelayanan_pemulangan'] }}</td>
-			<td>{{ $dataKekerasan['pelayanan_pendampingantokohagama'] }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->tempat_rumah }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->tempat_kerja }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->tempat_lainnya }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->tempat_sekolah }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->tempat_fasilitasumum }}</td>			
+
+			<td>{{ $dataKekerasan["$key1"][0]->pelayanan_pengaduan }}</td>		
+			<td>{{ $dataKekerasan["$key1"][0]->pelayanan_kesehatan }}</td>		
+			<td>{{ $dataKekerasan["$key1"][0]->pelayanan_bantuanhukum }}</td>		
+			<td>{{ $dataKekerasan["$key1"][0]->pelayanan_penegakanhukum }}</td>		
+			<td>{{ $dataKekerasan["$key1"][0]->pelayanan_rehabilitasisosial }}</td>		
+			<td>{{ $dataKekerasan["$key1"][0]->pelayanan_reintegrasisosial }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->pelayanan_pemulangan }}</td>
+			<td>{{ $dataKekerasan["$key1"][0]->pelayanan_pendampingantokohagama }}</td>
 		</tr>
+		<?php 
+			if($kecamatan != null)
+				$i = 4;
+		} ?>
 	</tbody>
 </table>
 @endif
 @if($jenis_report == 'Kasus & Korban Anak/Dewasa Terlayani')
-<h3>REPORT ke 3</h3>
+<h3>REPORT KASUS & KORBAN ANAK DEWASA TERLAYANI</h3>
 <table cellpadding="5" cellspacing="0" border="1">
 	<thead>
 		<tr>
@@ -298,23 +323,46 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php 
+		$arrKecamatan = ['LOWOKWARU', 'BLIMBING', 'KLOJEN', 'SUKUN', 'KEDUNGKANDANG'];
+			for ($i = 0; $i < count($arrKecamatan); $i++) {
+				if($kecamatan == null)
+					$key1 = $arrKecamatan[$i];
+				else{
+					$key1 = $kecamatan;
+				}
+		?>
 		<tr>
-			<td>1.</td>
-			<td></td>
-			<td></td>
-			<td>{{ $dataTerlayani['korban_n'] }}</td>
-			<td>{{ $dataTerlayani['korban_anak'] }}</td>
-			<td>{{ $dataTerlayani['korban_dewasa'] }}</td>
+			<td>{{ ($i + 1) }}</td>
+			<td>{{ $kecamatan == null ? $arrKecamatan[$i] : $kecamatan }}</td>
+			<td>{{ $dataTerlayani["$key1"][0]->totalKasus }}</td>
 
-			<td>{{ $dataTerlayani['terlayani_n'] }}</td>
-			<td>{{ $dataTerlayani['terlayani_anak'] }}</td>
-			<td>{{ $dataTerlayani['terlayani_dewasa'] }}</td>
+			<td>0</td>
+			<td>{{ $dataTerlayani["$key1"][0]->usiaanak }}</td>
+			<td>{{ $dataTerlayani["$key1"][0]->usiadewasa }}</td>
+
+			<td>-</td>
+			@if($dataTerlayani["$key1"][0]->usiaanak > 0)
+				<td>{{ round(($dataTerlayani["$key1"][0]->terlayani_anak / $dataTerlayani["$key1"][0]->usiaanak) * 100, 2) }}</td>
+			@else
+				<td>0</td>
+			@endif
+			@if($dataTerlayani["$key1"][0]->usiadewasa > 0)
+				<td>{{ round(($dataTerlayani["$key1"][0]->terlayani_dewasa / $dataTerlayani["$key1"][0]->usiadewasa) * 100, 2) }}</td>
+			@else
+				<td>0</td>
+			@endif
 		</tr>
+		<?php 
+			if($kecamatan != null)
+				$i = 4;
+		} ?>
 	</tbody>
 </table>
 @endif
 @if($jenis_report == 'Kasus & Korban Laki-Laki/Perempuan Terlayani')
-<h3>REPORT ke 4</h3>
+<h3>REPORT KASUS & KORBAN TERLAYANI BY DATE
+</h3>
 <table cellpadding="5" cellspacing="0" border="1">
 	<thead>
 		<tr>
@@ -340,19 +388,48 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php 
+		$arrKecamatan = ['LOWOKWARU', 'BLIMBING', 'KLOJEN', 'SUKUN', 'KEDUNGKANDANG'];
+			for ($i = 0; $i < count($arrKecamatan); $i++) {
+				if($kecamatan == null)
+					$key1 = $arrKecamatan[$i];
+				else{
+					$key1 = $kecamatan;
+				}
+		?>
 		<tr>
-			<td>1.</td>
-			<td></td>
-			<td></td>
-			<td>{{ $dataJenis4['korban_lakilaki'] }}</td>
-			<td>{{ $dataJenis4['korban_perempuan'] }}</td>
+			<td>{{ ($i + 1) }}</td>
+			<td>{{ $kecamatan == null ? $arrKecamatan[$i] : $kecamatan }}</td>
+			<td>{{ $dataJenisKelamin["$key1"][0]->totalKasus }}</td>
 
-			<td>{{ $dataJenis4['terlayani_lakilaki'] }}</td>
-			<td>{{ $dataJenis4['terlayani_perempuan'] }}</td>
-			<td>{{ $dataJenis4['terlayani_persenlakilaki'] }}</td>
-			<td>{{ $dataJenis4['terlayani_persenperempuan'] }}</td>
-			<td>{{ $dataJenis4['terlayani_persentotal'] }}</td>
+			<td>{{ $dataJenisKelamin["$key1"][0]->jenis_laki }}</td>
+			<td>{{ $dataJenisKelamin["$key1"][0]->jenis_perempuan }}</td>
+
+			<td>{{ $dataJenisKelamin["$key1"][0]->terlayani_laki }}</td>
+			<td>{{ $dataJenisKelamin["$key1"][0]->terlayani_perempuan }}
+
+			@if($dataJenisKelamin["$key1"][0]->jenis_laki > 0)
+				<td>{{ round(($dataJenisKelamin["$key1"][0]->terlayani_laki / $dataJenisKelamin["$key1"][0]->jenis_laki) * 100, 2) }}</td>
+			@else
+				<td>0</td>
+			@endif
+
+			@if($dataJenisKelamin["$key1"][0]->jenis_perempuan > 0)
+				<td>{{ round(($dataJenisKelamin["$key1"][0]->terlayani_perempuan / $dataJenisKelamin["$key1"][0]->jenis_perempuan) * 100, 2) }}</td>
+			@else
+				<td>0</td>
+			@endif
+
+			@if($dataJenisKelamin["$key1"][0]->jenis_laki + $dataJenisKelamin["$key1"][0]->jenis_perempuan > 0)
+				<td>{{ round((($dataJenisKelamin["$key1"][0]->terlayani_laki + $dataJenisKelamin["$key1"][0]->terlayani_perempuan) / ($dataJenisKelamin["$key1"][0]->jenis_laki + $dataJenisKelamin["$key1"][0]->jenis_perempuan)) * 100, 2) }}</td>
+			@else
+				<td>0</td>
+			@endif
 		</tr>
+		<?php 
+			if($kecamatan != null)
+				$i = 4;
+		} ?>
 	</tbody>
 </table>
 @endif
