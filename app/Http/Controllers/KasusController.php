@@ -418,12 +418,12 @@ class KasusController extends Controller
         //     // 'digits_between' => 'Pastikan NIK benar',
         // ]);
 
-        dd($req);
-        // $this->validate($req, [
+        // dd($req->nama_korban[0]);
+        $this->validate($req, [
 
-        //         "nama_korban.*"          => "required|between:0,255"
+                "nama_korban.*"          => "required|between:0,255"
 
-        //     ]);
+            ]);
 
         // for ($i = 0; $i < count($req->nama_korban); $i++) { 
         //     $this->validate($req, [
