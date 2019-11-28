@@ -57,7 +57,17 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @guest()
-                    <a href="{{ url('login') }}">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Download
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a href="{{ url('download-pdf') }}" class="dropdown-item">Download PDF Panduan</a>
+
+                            <a href="{{ url('download-apk') }}" class="dropdown-item">Download APK</a>
+                        </div>
+                    </li>
+                    <a href="{{ url('login') }}" class="nav-link">
                     Login
                     </a>
                 @else

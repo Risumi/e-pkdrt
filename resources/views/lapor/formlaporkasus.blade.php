@@ -17,17 +17,17 @@
         </div>
         @endif
 
-        <form action="{{ url('/kasus/new') }}" method="post">
+        <form action="{{ url('/kasus/new') }}" method="post" id="formLapor">
         @csrf
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <div class="tab-content" id="pills-tabContent">
-            <div class="card card-default tab-pane fade show active"  id="pills-kasus" role="tabpanel" aria-labelledby="pills-home-kasus">
+            <div class="card card-default tab-pane fade"  id="pills-kasus" role="tabpanel" aria-labelledby="pills-home-kasus">
                 @include('lapor/tabKasus')
             </div>
             <div class="tab-pane fade" id="pills-pelapor" role="tabpanel" aria-labelledby="pills-pelapor-tab">
                 @include('lapor/tabPelapor')
             </div>
-            <div class="tab-pane fade" id="pills-korban" role="tabpanel" aria-labelledby="pills-korban-tab">
+            <div class="tab-pane fade  show active" id="pills-korban" role="tabpanel" aria-labelledby="pills-korban-tab">
                 @include('lapor/tabKorban')
             </div>
             <div class="tab-pane fade" id="pills-pelaku" role="tabpanel" aria-labelledby="pills-pelaku-tab">

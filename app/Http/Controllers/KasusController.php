@@ -357,64 +357,94 @@ class KasusController extends Controller
     }
 
     public function pelaporTambahKasus(Request $req){
-        $this->validate($req, [
-            'no_registrasi'   => 'required',
-            'nik'   => 'required|numeric|digits:16',         
-            'kejadian'   => 'required|date',
-            'kategori'   => 'required|between:0,50',
-            'TKP'        => 'required',
-            'kecamatan' => 'required|between:0,50',
-            'kelurahan' => 'required|between:0,50',
-            'deskripsi'   => 'required',
+        // dd($req->tindak_kekerasan_korban);
 
-            'nama_pelapor'          => 'required|between:0,255',
-            'jenis_kelamin_pelapor' => 'required|between:0,20',
-            'ttl_pelapor'           => 'required|between:0,50',
-            'usia_pelapor'          => 'required|numeric|min:0|digits_between:0,9',
-            'alamat_pelapor'        => 'required|between:0,255',
-            'telepon_pelapor'       => 'required|numeric|digits_between:0,12',
-            'pendidikan_pelapor'    => 'required|between:0,20',
-            'agama_pelapor'         => 'required|between:0,20',
-            'pekerjaan_pelapor'     => 'required|between:0,50',
-            'status_pelapor'        => 'required|between:0,25',
+        // $this->validate($req, [
+        //     'no_registrasi'   => 'required',
+        //     'nik'   => 'required|numeric|digits:16',         
+        //     'kejadian'   => 'required|date',
+        //     'kategori'   => 'required|between:0,50',
+        //     'TKP'        => 'required',
+        //     'kecamatan' => 'required|between:0,50',
+        //     'kelurahan' => 'required|between:0,50',
+        //     'deskripsi'   => 'required',
 
-            'nama_korban'          => 'required|between:0,255',
-            'jenis_kelamin_korban' => 'required|between:0,20',
-            'usia_korban'          => 'required|numeric|min:0|digits_between:0,9',
-            'ttl_korban'           => 'required|between:0,100',
-            'alamat_korban'        => 'required|between:0,255',
-            'telepon_korban'       => 'required|numeric|digits_between:0,12',
-            'pendidikan_korban'    => 'required|between:0,20',
-            'agama_korban'         => 'required|between:0,20',
-            'pekerjaan_korban'     => 'required|between:0,30',
-            'status_korban'        => 'required|between:0,30',
-            'difabel_korban'       => 'required|between:0,10',
-            'kdrt_korban'          => 'required|between:0,10',
-            'tindak_kekerasan_korban' => 'required|between:0,100',
-            'trafficking_korban'   => 'required|between:0,100',
+        //     'nama_pelapor'          => 'required|between:0,255',
+        //     'jenis_kelamin_pelapor' => 'required|between:0,20',
+        //     'ttl_pelapor'           => 'required|between:0,50',
+        //     'usia_pelapor'          => 'required|numeric|min:0|digits_between:0,9',
+        //     'alamat_pelapor'        => 'required|between:0,255',
+        //     'telepon_pelapor'       => 'required|numeric|digits_between:0,12',
+        //     'pendidikan_pelapor'    => 'required|between:0,20',
+        //     'agama_pelapor'         => 'required|between:0,20',
+        //     'pekerjaan_pelapor'     => 'required|between:0,50',
+        //     'status_pelapor'        => 'required|between:0,25',
 
-            'nama_pelaku'          => 'required|between:0,255',
-            'jenis_kelamin_pelaku' => 'required|between:0,20',
-            'usia_pelaku'          => 'required|numeric|min:0|digits_between:0,9',
-            'ttl_pelaku'           => 'required|between:0,100',
-            'alamat_pelaku'        => 'required|between:0,255',
-            'telepon_pelaku'       => 'required|numeric|digits_between:0,12',
-            'pendidikan_pelaku'    => 'required|between:0,20',
-            'agama_pelaku'         => 'required|between:0,20',
-            'pekerjaan_pelaku'     => 'required|between:0,30',
-            'status_pelaku'        => 'required|between:0,30',
-            'difabel_pelaku'       => 'required|between:0,10',
-            'hubungan_dengan_korban' => 'required|between:0,90'
-        ], [
-            'required'       => 'Kolom :attribute harus berisi nilai',
-            'numeric'        => 'Kolom :attribute harus berupa angka',
-            'min'            => 'Kolom :attribute minimal :min',
-            'digits_between' => 'Kolom :attribute maksimal :max digit',
-            'digits'         => 'Pastikan NIK benar sesuai format',
-            'between'        => 'Kolom :attribute maksimal :max karakter',
-            'date'           => 'Pastikan format tanggal benar',
-            // 'digits_between' => 'Pastikan NIK benar',
-        ]);
+        //     'nama_korban'          => 'required|between:0,255',
+        //     'jenis_kelamin_korban' => 'required|between:0,20',
+        //     'usia_korban'          => 'required|numeric|min:0|digits_between:0,9',
+        //     'ttl_korban'           => 'required|between:0,100',
+        //     'alamat_korban'        => 'required|between:0,255',
+        //     'telepon_korban'       => 'required|numeric|digits_between:0,12',
+        //     'pendidikan_korban'    => 'required|between:0,20',
+        //     'agama_korban'         => 'required|between:0,20',
+        //     'pekerjaan_korban'     => 'required|between:0,30',
+        //     'status_korban'        => 'required|between:0,30',
+        //     'difabel_korban'       => 'required|between:0,10',
+        //     'kdrt_korban'          => 'required|between:0,10',
+        //     'tindak_kekerasan_korban' => 'required|between:0,100',
+        //     'trafficking_korban'   => 'required|between:0,100',
+
+        //     'nama_pelaku'          => 'required|between:0,255',
+        //     'jenis_kelamin_pelaku' => 'required|between:0,20',
+        //     'usia_pelaku'          => 'required|numeric|min:0|digits_between:0,9',
+        //     'ttl_pelaku'           => 'required|between:0,100',
+        //     'alamat_pelaku'        => 'required|between:0,255',
+        //     'telepon_pelaku'       => 'required|numeric|digits_between:0,12',
+        //     'pendidikan_pelaku'    => 'required|between:0,20',
+        //     'agama_pelaku'         => 'required|between:0,20',
+        //     'pekerjaan_pelaku'     => 'required|between:0,30',
+        //     'status_pelaku'        => 'required|between:0,30',
+        //     'difabel_pelaku'       => 'required|between:0,10',
+        //     'hubungan_dengan_korban' => 'required|between:0,90'
+        // ], [
+        //     'required'       => 'Kolom :attribute harus berisi nilai',
+        //     'numeric'        => 'Kolom :attribute harus berupa angka',
+        //     'min'            => 'Kolom :attribute minimal :min',
+        //     'digits_between' => 'Kolom :attribute maksimal :max digit',
+        //     'digits'         => 'Pastikan NIK benar sesuai format',
+        //     'between'        => 'Kolom :attribute maksimal :max karakter',
+        //     'date'           => 'Pastikan format tanggal benar',
+        //     // 'digits_between' => 'Pastikan NIK benar',
+        // ]);
+
+        dd($req);
+        // $this->validate($req, [
+
+        //         "nama_korban.*"          => "required|between:0,255"
+
+        //     ]);
+
+        // for ($i = 0; $i < count($req->nama_korban); $i++) { 
+        //     $this->validate($req, [
+
+        //         "nama_korban.*"          => "required|between:0,255",
+                // "jenis_kelamin_korban[$i]" => "required|between:0,20",
+                // "usia_korban[$i]"          => "required|numeric|min:0|digits_between:0,9",
+                // "ttl_korban[$i]"           => "required|between:0,100",
+                // "alamat_korban[$i]"        => "required|between:0,255",
+                // "telepon_korban[$i]"       => "required|numeric|digits_between:0,12",
+                // "pendidikan_korban[$i]"    => "required|between:0,20",
+                // "agama_korban[$i]"         => "required|between:0,20",
+                // "pekerjaan_korban[$i]"     => "required|between:0,30",
+                // "status_korban[$i]"        => "required|between:0,30",
+                // "difabel_korban[$i]"       => "required|between:0,10",
+                // "kdrt_korban[$i]"          => "required|between:0,10",
+                // "tindak_kekerasan_korban[$i]" => "required|between:0,100",
+                // "trafficking_korban[$i]"   => "required|between:0,100"
+
+            // ]);
+        // }
 
         // INSERT KASUS
         date_default_timezone_set('Asia/Jakarta');

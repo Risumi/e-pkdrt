@@ -81,10 +81,10 @@
                 @endif
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" id="kelurahan">
             <label for="inputKelurahan" class="col-sm-2 col-form-label">Kelurahan</label>
             <div class="input-group col-sm-5">
-                <select class="custom-select" id="inputKelurahan" name="kelurahan">
+                <select class="custom-select" id="inputKelurahan" name="kelurahan[]">
                     <option value=></option>                                
                 </select>
                 @if ($errors->has('kelurahan'))

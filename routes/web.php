@@ -13,6 +13,8 @@ Route::get('/','HomeController@view')->name('home');
 Route::post('/','HomeController@viewFilter')->name('home');
 Route::get('/login','AuthController@viewLogin');
 Route::post('/login','AuthController@login');
+Route::get('/download-pdf','AuthController@downloadPdf');
+Route::get('/download-apk','AuthController@downloadApk');
 
 Route::post('kasus/new','KasusController@tambahKasus');
 Route::post('/kelurahan','KasusController@getKelurahan');
