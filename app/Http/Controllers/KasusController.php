@@ -11,6 +11,7 @@ use App\Models\M_penanganan;
 use App\Models\M_village;
 use App\Models\M_district;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use DB;
 
 class KasusController extends Controller
@@ -357,7 +358,51 @@ class KasusController extends Controller
     }
 
     public function pelaporTambahKasus(Request $req){
-        // dd($req->tindak_kekerasan_korban);
+        $validator = Validator::make($req->all(), [
+            "nama_korban.*"          => "required|between:0,255",
+            "jenis_kelamin_korban.*" => "required|between:0,20",
+            "usia_korban.*"          => "required|numeric|min:0|digits_between:0,9",
+            "ttl_korban.*"           => "required|between:0,100",
+            "alamat_korban.*"        => "required|between:0,255",
+            "telepon_korban.*"       => "required|numeric|digits_between:0,12",
+            "pendidikan_korban.*"    => "required|between:0,20",
+            "agama_korban.*"         => "required|between:0,20",
+            "pekerjaan_korban.*"     => "required|between:0,30",
+            "status_korban.*"        => "required|between:0,30",
+            "difabel_korban.*"       => "required|between:0,10",
+            "kdrt_korban.*"          => "required|between:0,10"
+        ], [
+            'required'       => 'Kolom :attribute harus berisi nilai',
+            'numeric'        => 'Kolom :attribute harus berupa angka',
+            'min'            => 'Kolom :attribute minimal :min',
+            'digits_between' => 'Kolom :attribute maksimal :max digit',
+            'digits'         => 'Pastikan NIK benar sesuai format',
+            'between'        => 'Kolom :attribute maksimal :max karakter',
+            'date'           => 'Pastikan format tanggal benar',
+            // 'digits_between' => 'Pastikan NIK benar',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with('totKorban', count($req->nama_korban));;
+        }
+
+            // $this->validate($req, [
+            //     "nama_korban.*"          => "required|between:0,255",
+            //     "jenis_kelamin_korban.*" => "required|between:0,20",
+            //     "usia_korban.*"          => "required|numeric|min:0|digits_between:0,9",
+            //     "ttl_korban.*"           => "required|between:0,100",
+            //     "alamat_korban.*"        => "required|between:0,255",
+            //     "telepon_korban.*"       => "required|numeric|digits_between:0,12",
+            //     "pendidikan_korban.*"    => "required|between:0,20",
+            //     "agama_korban.*"         => "required|between:0,20",
+            //     "pekerjaan_korban.*"     => "required|between:0,30",
+            //     "status_korban.*"        => "required|between:0,30",
+            //     "difabel_korban.*"       => "required|between:0,10",
+            //     "kdrt_korban.*"          => "required|between:0,10",
+                // "tindak_kekerasan_korban[$i]" => "required|between:0,100",
+                // "trafficking_korban[$i]"   => "required|between:0,100"
+            // ]);
+        dd($req->tindak_kekerasan_korban);
 
         // $this->validate($req, [
         //     'no_registrasi'   => 'required',
@@ -419,32 +464,6 @@ class KasusController extends Controller
         // ]);
 
         // dd($req->nama_korban[0]);
-        $this->validate($req, [
-
-                "nama_korban.*"          => "required|between:0,255"
-
-            ]);
-
-        // for ($i = 0; $i < count($req->nama_korban); $i++) { 
-        //     $this->validate($req, [
-
-        //         "nama_korban.*"          => "required|between:0,255",
-                // "jenis_kelamin_korban[$i]" => "required|between:0,20",
-                // "usia_korban[$i]"          => "required|numeric|min:0|digits_between:0,9",
-                // "ttl_korban[$i]"           => "required|between:0,100",
-                // "alamat_korban[$i]"        => "required|between:0,255",
-                // "telepon_korban[$i]"       => "required|numeric|digits_between:0,12",
-                // "pendidikan_korban[$i]"    => "required|between:0,20",
-                // "agama_korban[$i]"         => "required|between:0,20",
-                // "pekerjaan_korban[$i]"     => "required|between:0,30",
-                // "status_korban[$i]"        => "required|between:0,30",
-                // "difabel_korban[$i]"       => "required|between:0,10",
-                // "kdrt_korban[$i]"          => "required|between:0,10",
-                // "tindak_kekerasan_korban[$i]" => "required|between:0,100",
-                // "trafficking_korban[$i]"   => "required|between:0,100"
-
-            // ]);
-        // }
 
         // INSERT KASUS
         date_default_timezone_set('Asia/Jakarta');

@@ -16,7 +16,7 @@
             <strong>Mohon mengisi semua form dengan benar</strong>
         </div>
         @endif
-
+<strong>{{ session('totKorban') }}</strong>
         <form action="{{ url('/kasus/new') }}" method="post" id="formLapor">
         @csrf
         <meta name="csrf-token" content="{{ csrf_token() }}">

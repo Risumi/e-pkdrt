@@ -6,9 +6,9 @@
     <div class="form-group row">
         <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputNama" name="nama_korban[]" value="{{ old('nama_korban') }}">
-            @if ($errors->has('nama_korban'))
-                <span style="color: red">{{ $errors->first('nama_korban') }}</span>
+            <input type="text" class="form-control" id="inputNama" name="nama_korban[]" value="{{ old('nama_korban.*') }}">
+            @if ($errors->has('nama_korban.*'))
+                <span style="color: red">{{ $errors->first('nama_korban.*') }}</span>
             @endif
         </div>
     </div>
@@ -33,36 +33,36 @@
     <div class="form-group row">
         <label for="inputUsia" class="col-sm-2 col-form-label">Usia</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control" id="inputUsia" name="usia_korban[]" min="0" value="{{ old('usia_korban') }}">
-            @if ($errors->has('usia_korban'))
-                <span style="color: red">{{ $errors->first('usia_korban') }}</span>
+            <input type="text" class="form-control" id="inputUsia" name="usia_korban[]" min="0" value="{{ old('usia_korban[]') }}">
+            @if ($errors->has('usia_korban[]'))
+                <span style="color: red">{{ $errors->first('usia_korban[]') }}</span>
             @endif
         </div>
     </div>
     <div class="form-group row">
         <label for="inputTTL" class="col-sm-2 col-form-label">Tempat Tanggal Lahir</label>
         <div class="col-sm-5">
-            <input type="text" class="form-control" id="inputTTL" name="ttl_korban[]" value="{{ old('ttl_korban') }}">
-            @if ($errors->has('ttl_korban'))
-                <span style="color: red">{{ $errors->first('ttl_korban') }}</span>
+            <input type="text" class="form-control" id="inputTTL" name="ttl_korban[]" value="{{ old('ttl_korban[]') }}">
+            @if ($errors->has('ttl_korban[]'))
+                <span style="color: red">{{ $errors->first('ttl_korban[]') }}</span>
             @endif
         </div>
     </div>
     <div class="form-group row">
         <label for="inputAlamat" class="col-sm-2 col-form-label">Alamat</label>
         <div class="col-sm-5">
-            <textarea type="text" class="form-control" id="inputAlamat" rows="3" name="alamat_korban[]">{{ old('alamat_korban') }}</textarea>
-            @if ($errors->has('alamat_korban'))
-                <span style="color: red">{{ $errors->first('alamat_korban') }}</span>
+            <textarea type="text" class="form-control" id="inputAlamat" rows="3" name="alamat_korban[]">{{ old('alamat_korban[]') }}</textarea>
+            @if ($errors->has('alamat_korban[]'))
+                <span style="color: red">{{ $errors->first('alamat_korban[]') }}</span>
             @endif
         </div>
     </div>
     <div class="form-group row">
         <label for="inputNO" class="col-sm-2 col-form-label">No. Telp/HP</label>
         <div class="col-sm-5">
-            <input type="number" class="form-control" id="inputNO" name="telepon_korban[]" value="{{ old('telepon_korban') }}">
-            @if ($errors->has('telepon_korban'))
-                <span style="color: red">{{ $errors->first('telepon_korban') }}</span>
+            <input type="number" class="form-control" id="inputNO" name="telepon_korban[]" value="{{ old('telepon_korban[]') }}">
+            @if ($errors->has('telepon_korban[]'))
+                <span style="color: red">{{ $errors->first('telepon_korban[]') }}</span>
             @endif
         </div>
     </div>
@@ -263,6 +263,9 @@
                 <a class="btn btn-success" id="btNextKorban">Next</a>
             </div>
         </div>        
+        <?php echo '<pre>';print_r($errors); echo '</pre>';
+    echo $errors->nama_korban;
+?>
 <script type="text/javascript">
     $(function() {
         $('#btNextKorban').click(function() {
@@ -320,5 +323,16 @@
 
             counter++;
         })
-    });  
+
+        var id = ['#inputNama', '#inputUsia', '#inputTTL', '#inputAlamat', '#inputNO'];
+        for (var i = 0; i < "{{ (session('totKorban')-1) }}"; i++) {
+            var $clone = $( "#formTabKorban" ).clone().appendTo( "#formTabKorbanMain" );
+            $clone.find('[id]').each(function(){
+                this.id += (i+1);
+            });
+            for (var j = 0; j < id.length; j++) {
+                $(id[j]).val("{{ old('nama_korban.j') }}");
+            }
+        }
+    });
 </script>
