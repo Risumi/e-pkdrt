@@ -110,7 +110,7 @@ class HomeController extends Controller
             'regency_id'   =>  3573
         ])->get(); 
         foreach($kecamatan as $data){
-            $dataWarna[$data->name]="#FFEF81";
+            $dataWarna[$data->name]="#f8f9fa";
         }
         $totKasusKec = M_kasus::select('fk_id_district', DB::raw('count(*) as total'))->groupBy('fk_id_district')->get()->sortBy('total');
         $warna= array("#FFEF81","#FFDB6D","#FF9F31","#FF8331","#ff4e00");                
@@ -121,15 +121,19 @@ class HomeController extends Controller
                 $temp = $data;    
                 $dataWarna[$data->fk_id_district] = $warna[$j];
             }else{
-                if ($data->total > $temp->total){
+                if ($data->total == 0){
+                    $dataWarna[$data->fk_id_district] = "";                
+                }
+                else if ($data->total > $temp->total){
                     $dataWarna[$data->fk_id_district] = $warna[++$j];                
                 }else{
                     $dataWarna[$data->fk_id_district] = $warna[$j];
                 }             
             }                      
             $temp = $data;
-            $i++;            
+            $i++;                      
         }
+        // dd($dataWarna);
         //1. rgb(255, 239, 129) #FFEF81
         //2. rgb(255, 219, 109) #FFDB6D
         //3. rgb(255, 159, 49) #FF9F31
@@ -333,7 +337,7 @@ class HomeController extends Controller
                 'regency_id'   =>  3573
             ])->get(); 
             foreach($kecamatan as $data){
-                $dataWarna[$data->name]="#FFEF81";
+                $dataWarna[$data->name]="#f8f9fa";
             }            
             foreach ($kasusKecamatan as $data ) {
                 $temp =array();
@@ -749,7 +753,7 @@ class HomeController extends Controller
                 'regency_id'   =>  3573
             ])->get(); 
             foreach($kecamatan as $data){
-                $dataWarna[$data->name]="#FFEF81";
+                $dataWarna[$data->name]="#f8f9fa";
             }
             $i = 0;
             $j = 0;
