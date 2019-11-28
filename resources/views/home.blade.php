@@ -128,11 +128,20 @@
 					</div>
 				</div>
 			</div>
-			<div class="d-flex float-right">
-                <button type="submit" data-toggle="modal" data-target="#modalFilterTahun" class="btn btn-primary">Filter</button>
-            </div>
+			<div class="row">				
+				<div class="col-sm">					
+					<div class="d-flex float-right">
+                		<button type="submit" data-toggle="modal" data-target="#modalFilterTahun" class="btn btn-primary">Filter</button>
+            		</div>
+				</div>
+			</div>
+			<div class="row">				
+				<div class="col-sm">					
+					<h4 align="center">Peta Sebaran Jumlah Kasus Kekerasan<br>Kota Malang</h4>
+				</div>
+			</div>
 	        <div class="row">
-	            <div class="col-sm" align="center">					
+	            <div class="col-md" align="center">					
 	                @include('kotaMalang')
 	            </div>
 			</div>

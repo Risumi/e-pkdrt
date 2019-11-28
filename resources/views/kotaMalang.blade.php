@@ -883,7 +883,7 @@
 					L434.35188,332.13188L436.27167,333.57176L436.51164,333.57176L438.43143,335.01163L438.6714,335.25161L440.59119,336.21153L
 					443.95082,338.61133L444.43077,339.33127L444.67074,339.81123L444.91071,340.05121L445.15069,340.29119L446.11058,341.73106L
 					447.79039,343.89088L448.03037,344.13086z" />
-            <path data-info="<div>Kecamatan: Sukun</div>" data-toggle="modal" data-target="#modalFilterSUKUN" clip-path="url(#SVG_CP_1)"  class="kecamatan" fill={{$dataWarna["SUKUN"]}}
+            <path data-info="<div>Kecamatan: Lowokwaru</div>" data-toggle="modal" data-target="#modalFilterLOWOKWARU" clip-path="url(#SVG_CP_1)"  class="kecamatan" fill={{$dataWarna["LOWOKWARU"]}}
                 fill-rule="evenodd" stroke="none"
                 d="M489.78574,67.19431L491.22558,69.11415
 					L490.74564,71.51394L490.74564,71.75392L490.98561,71.75392L496.02505,74.15372L496.26502,74.15372L497.22492,74.3937L514.02306,90.47234
@@ -1344,8 +1344,8 @@
 					L462.66875,81.83307L463.14869,81.35311L463.38867,80.63317L463.86861,80.39319L464.34856,79.91323L465.30845,78.71334L466.02837,78.23338
 					L466.26835,77.9934L466.98827,76.7935L467.94816,76.07356L470.10792,73.67376L473.46755,69.83409L473.46755,69.35413L473.22758,68.63419
 					L472.9876,68.63419L473.22758,68.63419L473.9475,68.63419L483.06649,67.67427L488.58587,67.67427L489.78574,67.19431" />
-            <path data-info="<div>Kecamatan: Lowokwaru</div>" data-toggle="modal" data-target="#modalFilterLOWOKWARU" clip-path="url(#SVG_CP_1)" class="kecamatan"
-                fill={{$dataWarna["LOWOKWARU"]}} fill-rule="evenodd" stroke="none" d="M287.00821,306.21407L288.68802,306.93401
+            <path data-info="<div>Kecamatan: Sukun</div>" data-toggle="modal" data-target="#modalFilterSUKUN" clip-path="url(#SVG_CP_1)" class="kecamatan"
+                fill={{$dataWarna["SUKUN"]}} fill-rule="evenodd" stroke="none" d="M287.00821,306.21407L288.68802,306.93401
 					L289.64791,307.65395L293.48749,308.13391L299.7268,306.93401L300.68669,306.69403L301.64658,305.97409L302.84645,305.49413L
 					303.56637,305.25415L304.04632,305.25415L304.76624,305.25415L305.24618,305.25415L305.96611,305.25415L307.16597,306.45405L
 					307.16597,306.93401L307.64592,307.89393L307.64592,308.13391L308.12587,309.09383L308.12587,309.33381L308.84579,310.53371L
@@ -1823,9 +1823,9 @@
 					L261.33105,295.65497L267.57036,298.29474L271.40993,299.73462L280.52892,303.5743L284.12852,305.01417L287.00821,306.21407" />
         </g>
     </g>
-    <text font-size="20" transform="matrix(1 0 0 1 370 230)" class="st6 st7 st8">Sukun</text>
+    <text font-size="20" transform="matrix(1 0 0 1 370 230)" class="st6 st7 st8">Lowokwaru</text>
     <text font-size="20" transform="matrix(1 0 0 1 580 310)" class="st6 st7 st8">Blimbing</text>
     <text font-size="20" transform="matrix(1 0 0 1 435 475)" class="st6 st7 st8">Klojen</text>
     <text font-size="20" transform="matrix(1 0 0 1 570 665)" class="st6 st7 st8">Kedungkandang</text>
-    <text font-size="20" transform="matrix(1 0 0 1 325 620)" class="st6 st7 st8">Lowokwaru</text>
+    <text font-size="20" transform="matrix(1 0 0 1 325 620)" class="st6 st7 st8">Sukun</text>
 </svg>

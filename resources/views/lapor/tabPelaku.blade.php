@@ -163,16 +163,12 @@
                 </div>
             </div>
             <div class="form-group row">
-            <div class="col-sm-12">
-                <a class="btn btn-warning" id="btBackPelaku">Back</a>
-            </div>
-            <div class="col-sm-3"></div>
-            <br>
-            <div class="form-group row">
-                <div class="col-sm-5 offset-sm-4">
-                    <button class="btn btn-primary">Tambah Data</button>
-                </div>
-            </div> 
+                <div class="col-sm-3 text-left">
+                    <a class="btn btn-warning" id="btBackPelaku">Back</a>
+                </div>                
+                <div class="col-sm-3 ">
+                    <button class="btn btn-primary float-right">Tambah Data</button>
+                </div>                       
         </div>        
     </div>
 </div>
