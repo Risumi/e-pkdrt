@@ -16,17 +16,21 @@ use DB;
 
 class KasusController extends Controller
 {
-    public function view() {   
-        $kasus = M_kasus::all();
+    public function view() {
+        if(empty(Auth::user()->fk_id_villages)){
+            $kasus = M_kasus::all();
+        }else{
+            $kasus = M_kasus::where('fk_id_villages','=',Auth::user()->fk_id_villages)->get();
+        }        
         return view('kasus', compact('kasus'));
     }
     public function viewtambah()
-    {                                     
+    {
         $kecamatan = M_district::where([
             'regency_id'   =>  3573
-        ])->get();        
+        ])->get();
         if(M_kasus::count()!=0){
-            $noRegist =M_kasus::get()->last()->id_kasus+1;        
+            $noRegist =M_kasus::get()->last()->id_kasus+1;
         }else{
             $noRegist =1;
         }
@@ -402,7 +406,7 @@ class KasusController extends Controller
                 // "tindak_kekerasan_korban[$i]" => "required|between:0,100",
                 // "trafficking_korban[$i]"   => "required|between:0,100"
             // ]);
-        dd($req->tindak_kekerasan_korban);
+        // dd($req->tindak_kekerasan_korban);
 
         // $this->validate($req, [
         //     'no_registrasi'   => 'required',

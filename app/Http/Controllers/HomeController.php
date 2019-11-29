@@ -22,9 +22,16 @@ class HomeController extends Controller
         ->get();            
         $kasusKelurahan=array();            
         foreach ($kasusKecamatan as $data ) {
-            $temp =array();            
-            $datas = M_kasus::select('fk_id_villages', DB::raw('count(*) as total'))->where('fk_id_district','=',$data->fk_id_district)->groupBy('fk_id_villages')
-            ->get()->toArray();
+            $temp =array();       
+            $kecamatan = M_district::select('name')->where([
+                'regency_id'   =>  3573
+            ]);        
+            $datas = M_kasus::
+                select('fk_id_villages', DB::raw('count(*) as total'))
+                    ->where('fk_id_district','=',$data->fk_id_district)                    
+                    ->groupBy('fk_id_villages')                    
+                    ->get()->toArray();
+        
             $totKasusKec = M_kasus::where('fk_id_district','=',$data->fk_id_district)
                  ->count();
             $totJnsKelamin = M_korban::
