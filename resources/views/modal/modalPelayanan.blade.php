@@ -22,7 +22,7 @@
                     <form action='{{ url("kasus/edit/$idKasus/korban/$data->id_korban/pelayanan/new") }}' method="post">
                     @csrf
                     <div class="form-group row">
-                        <label for="inputInstansi" class="col-sm-2 col-form-label">Instansi</label>
+                        <label for="inputInstansi" class="col-sm-3 col-form-label">Instansi</label>
                         <div class="col-sm-5">
                             <select class="custom-select" id="inputInstansi" name="instansi">
                                 <option value="Bapas">Bapas</option>
@@ -38,25 +38,40 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputPelayanan" class="col-sm-2 col-form-label">Pelayanan yang Diberikan</label>
+                        <label for="inputPelayanan" class="col-sm-3 col-form-label">Pelayanan yang Diberikan</label>
                         <div class="col-sm-5">
-                            <input type="text" class="form-control" id="inputPelayanan" name="pelayanan">
+                            <select class="custom-select" id="inputPelayanan" name="pelayanan">
+                                <option value="Bantuan hukum">Bantuan hukum</option>
+                                <option value="Kesehatan">Kesehatan</option>
+                                <option value="Pemulangan">Pemulangan</option>
+                                <option value="Pendampingan tokoh agama">Pendampingan tokoh agama</option>
+                                <option value="Penegakan hukum">Penegakan hukum</option>
+                                <option value="Pengaduan">Pengaduan</option>
+                                <option value="Rehabilitasi sosial">Rehabilitasi sosial</option>
+                                <option value="Reintegrasi sosial">Reintegrasi sosial</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputDetail" class="col-sm-2 col-form-label">Detail Pelayanan</label>
+                        <label for="inputTgl" class="col-sm-3 col-form-label">Tanggal Pelayanan</label>
+                        <div class="col-sm-5">
+                            <input type="date" class="form-control" id="inputTgl" name="tglPelayanan">                            
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputDetail" class="col-sm-3 col-form-label">Detail Pelayanan</label>
                         <div class="col-sm-5">
                             <textarea type="text" class="form-control" id="inputDetail" name="detail_pelayanan" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi Pelayanan</label>
+                        <label for="inputDeskripsi" class="col-sm-3 col-form-label">Deskripsi Pelayanan</label>
                         <div class="col-sm-5">
                             <textarea type="text" class="form-control" id="inputDeskripsi" name="deskripsi_pelayanan" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-2 col-form-label"></label>
+                        <label class="col-sm-3 col-form-label"></label>
                         <div class="col-sm-5">
                             <button type="submit" class="btn btn-primary">Tambah Data</button>
                         </div>

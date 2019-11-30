@@ -230,12 +230,14 @@ class KasusController extends Controller
      public function tambahPelayanan($idKasus, $idKorban, Request $req) {
         $this->validate($req, [
             'instansi'          => 'required',
+            'tglPelayanan'      => 'required',
             'pelayanan'         => 'required',
             'detail_pelayanan'  => 'required',
             'deskripsi_pelayanan' => 'required'
         ]);
         M_pelayanan::create([
             'instansi'          => $req->instansi,
+            'tglPelayanan'      => $req->tglPelayanan,
             'pelayanan'         => $req->pelayanan,
             'detail_pelayanan'  => $req->detail_pelayanan,
             'deskripsi_pelayanan' => $req->deskripsi_pelayanan,
@@ -596,5 +598,31 @@ class KasusController extends Controller
             $kelurahanData .='<option value="'.$data->name.'">'.$data->name.'</option>';                        
         }
         return response($kelurahanData) ;
+    }
+
+    public function nyoba()
+    {
+        $kecamatan = M_district::where([
+            'regency_id'   =>  3573
+        ])->get();
+        if(M_kasus::count()!=0){
+            $noRegist =M_kasus::get()->last()->id_kasus+1;
+        }else{
+            $noRegist =1;
+        }
+        return view('nyoba',compact('kecamatan','noRegist'));
+    }
+
+    public function nyobaNew()
+    {
+        $kecamatan = M_district::where([
+            'regency_id'   =>  3573
+        ])->get();
+        if(M_kasus::count()!=0){
+            $noRegist =M_kasus::get()->last()->id_kasus+1;
+        }else{
+            $noRegist =1;
+        }
+        return view('nyoba',compact('kecamatan','noRegist'));
     }
 }

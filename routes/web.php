@@ -16,6 +16,9 @@ Route::post('/login','AuthController@login');
 Route::get('/download-pdf','AuthController@downloadPdf');
 Route::get('/download-apk','AuthController@downloadApk');
 
+// Route::get('nyoba','KasusController@nyoba');
+// Route::post('nyoba','KasusController@nyobaNew');
+
 Route::post('kasus/new','KasusController@tambahKasus');
 Route::post('/kelurahan','KasusController@getKelurahan');
 Route::post('/kelurahannew','KasusController@getKelurahanData');

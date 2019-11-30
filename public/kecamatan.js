@@ -86,7 +86,7 @@ $(document).ready(function () {
         });
     }
 
-    getAjaxKecamatanNew()
+    // getAjaxKecamatanNew()
     $("#inputKecamatanNew").change(getAjaxKecamatanNew);    
     function getAjaxKecamatanNew() {     
         var id_district = $("#inputKecamatanNew").val();                

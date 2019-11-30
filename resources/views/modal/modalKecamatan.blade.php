@@ -259,7 +259,7 @@
 				type: 'column',
 			},
 			title: {
-				text: 'Jumlah kasus per kelurahan '
+				text: 'Jenis kekerasan yang dialami korban '
 			},
 			tooltip:{
 				headerFormat: '',
@@ -390,8 +390,8 @@
 			series: [
 				<?php					
 					foreach ($data[7] as $datas ) {							
-							echo('{name:').'"'.$datas["range_umur"].'",';
-							echo('data:[').$datas["total"]."]},";													
+							echo('{name:').'"'.$datas->range_umur.'",';
+							echo('data:[').$datas->total."]},";													
 					}	
 				?>				
 			]
