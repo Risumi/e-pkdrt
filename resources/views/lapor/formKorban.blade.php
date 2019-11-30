@@ -162,11 +162,11 @@
     <?php
         $valueKekerasan2 = old("tindak_kekerasan_korban.$x");
         $valueTrafficking2 = old("trafficking_korban.$x");
+        $idSectionTrafficking = "sectionTrafficking$x";
 
         $listTrafficking2 = '';
         if ($valueKekerasan2 != null){
             $listTrafficking2 = implode(" ",  $valueKekerasan2);
-            $idSectionTrafficking = "sectionTrafficking$x";
         }
     ?>
     <div class="form-group row">
