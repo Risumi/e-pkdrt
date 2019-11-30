@@ -164,57 +164,65 @@
             @endif
         </div>
     </div>
+    <?php
+        $valueKekerasan = old("tindak_kekerasan_korban.0");
+        $valueTrafficking = old("trafficking_korban.0");
+
+        $listTrafficking = '';
+        if ($valueKekerasan != null)
+            $listTrafficking = implode(" ",  $valueKekerasan);
+    ?>
     <div class="form-group row">
         <label for="inputKekerasan" class="col-sm-2 col-form-label">Tindak Kekerasan Yang Dialami
             Korban</label>
         <div class="col-sm-5">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Fisik" id="checkKekerasan1" name="tindak_kekerasan_korban[0][]">
+                <input class="form-check-input" type="checkbox" value="Fisik" id="checkKekerasan1" name="tindak_kekerasan_korban[0][]" <?= ($valueKekerasan != null) ? cekComboBox($valueKekerasan, 'Fisik') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan1">
                     Fisik
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Psikis" id="checkKekerasan2" name="tindak_kekerasan_korban[0][]">
+                <input class="form-check-input" type="checkbox" value="Psikis" id="checkKekerasan2" name="tindak_kekerasan_korban[0][]" <?= ($valueKekerasan != null) ? cekComboBox($valueKekerasan, 'Psikis') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan2">
                     Psikis
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Seksual" id="checkKekerasan3" name="tindak_kekerasan_korban[0][]">
+                <input class="form-check-input" type="checkbox" value="Seksual" id="checkKekerasan3" name="tindak_kekerasan_korban[0][]" <?= ($valueKekerasan != null) ? cekComboBox($valueKekerasan, 'Seksual') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan3">
                     Seksual
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Penelantaran"
-                    id="checkKekerasan4" name="tindak_kekerasan_korban[0][]">
+                    id="checkKekerasan4" name="tindak_kekerasan_korban[0][]" <?= ($valueKekerasan != null) ? cekComboBox($valueKekerasan, 'Penelantaran') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan4">
                     Penelantaran
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Trafficking"
-                    id="checkKekerasan5" name="tindak_kekerasan_korban[0][]"/>
+                    id="checkKekerasan5" name="tindak_kekerasan_korban[0][]" <?= ($valueKekerasan != null) ? cekComboBox($valueKekerasan, 'Trafficking') : ''; ?>/>
                 <label class="form-check-label" for="checkKekerasan5">
                     Trafficking
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Eksploitasi"
-                    id="checkKekerasan6" name="tindak_kekerasan_korban[0][]">
+                    id="checkKekerasan6" name="tindak_kekerasan_korban[0][]" <?= ($valueKekerasan != null) ? cekComboBox($valueKekerasan, 'Eksploitasi') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan6">
                     Eksploitasi
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Lainnya" id="checkKekerasan7" name="tindak_kekerasan_korban[0][]">
+                <input class="form-check-input" type="checkbox" value="Lainnya" id="checkKekerasan7" name="tindak_kekerasan_korban[0][]" <?= ($valueKekerasan != null) ? cekComboBox($valueKekerasan, 'Lainnya') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan7">
                     Lainnya
                 </label>
             </div>
-            @if ($errors->has('tindak_kekerasan_korban'))
-                <span style="color: red">{{ $errors->first('tindak_kekerasan_korban') }}</span>
+            @if ($errors->has('tindak_kekerasan_korban.0.0'))
+                <span style="color: red">{{ $errors->first('tindak_kekerasan_korban.0.0') }}</span>
             @endif
         </div>
     </div>
@@ -223,34 +231,34 @@
         <div class="col-sm-5">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Eksploitasi Seksual"
-                    id="checkTrafficking1" name="trafficking_korban[0][]">
+                    id="checkTrafficking1" name="trafficking_korban[0][]" <?= ($valueTrafficking != null) ? cekComboBox($valueTrafficking, 'Eksploitasi Seksual') : ''; ?>>
                 <label class="form-check-label" for="checkTrafficking1">
                     Eksploitasi Seksual
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Perbudakan"
-                    id="checkTrafficking2" name="trafficking_korban[0][]">
+                    id="checkTrafficking2" name="trafficking_korban[0][]" <?= ($valueTrafficking != null) ? cekComboBox($valueTrafficking, 'Perbudakan') : ''; ?>>
                 <label class="form-check-label" for="checkTrafficking2">
                     Perbudakan
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Perdagangan Organ Tubuh"
-                    id="checkTrafficking3" name="trafficking_korban[0][]">
+                    id="checkTrafficking3" name="trafficking_korban[0][]" <?= ($valueTrafficking != null) ? cekComboBox($valueTrafficking, 'Perdagangan Organ Tubuh') : ''; ?>>
                 <label class="form-check-label" for="checkTrafficking3">
                     Perdagangan Organ Tubuh
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Perdagangan Narkoba"
-                    id="checkTrafficking4" name="trafficking_korban[0][]">
+                    id="checkTrafficking4" name="trafficking_korban[0][]" <?= ($valueTrafficking != null) ? cekComboBox($valueTrafficking, 'Perdagangan Narkoba') : ''; ?>>
                 <label class="form-check-label" for="checkTrafficking4">
                     Perdagangan Narkoba
                 </label>
             </div>
-            @if ($errors->has('trafficking_korban'))
-                <span style="color: red">{{ $errors->first('trafficking_korban') }}</span>
+            @if ($errors->has('trafficking_korban.0.0'))
+                <span style="color: red">{{ $errors->first('trafficking_korban.0.0') }}</span>
             @endif
         </div>
     </div>
@@ -258,6 +266,13 @@
     for ($x = 1; $x < session('totKorban'); $x++) { ?>
         @include('lapor/formKorban')
 <?php
+    }
+    function cekComboBox($array, $value) {
+        for ($i = 0; $i < count($array); $i++) { 
+            if($array[$i] == $value)
+                return "checked";
+        }
+        return "";
     }
 ?>
 </div>
@@ -333,6 +348,9 @@
             counterKorban++;
         })
 
+        var trafficking0 = "{{ $listTrafficking }}";
+        if(trafficking0.indexOf('Trafficking') !== -1)
+            $('#sectionTrafficking').css('display', '');
         // var id = ['#inputNama', '#inputUsia', '#inputTTL', '#inputAlamat', '#inputNO'];
         // for (var i = 0; i < "{{ (session('totKorban')-1) }}"; i++) {
         //     var $clone = $( "#formTabKorban" ).clone().appendTo( "#formTabKorbanMain" );

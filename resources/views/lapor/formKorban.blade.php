@@ -159,57 +159,67 @@
             @endif
         </div>
     </div>
+    <?php
+        $valueKekerasan2 = old("tindak_kekerasan_korban.$x");
+        $valueTrafficking2 = old("trafficking_korban.$x");
+
+        $listTrafficking2 = '';
+        if ($valueKekerasan2 != null){
+            $listTrafficking2 = implode(" ",  $valueKekerasan2);
+            $idSectionTrafficking = "sectionTrafficking$x";
+        }
+    ?>
     <div class="form-group row">
         <label for="inputKekerasan" class="col-sm-2 col-form-label">Tindak Kekerasan Yang Dialami
             Korban</label>
         <div class="col-sm-5">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Fisik" id="checkKekerasan1" name="tindak_kekerasan_korban[{{ $x }}][]">
+                <input class="form-check-input" type="checkbox" value="Fisik" id="checkKekerasan1" name="tindak_kekerasan_korban[{{ $x }}][]" <?= ($valueKekerasan2 != null) ? cekComboBox($valueKekerasan2, 'Fisik') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan1">
                     Fisik
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Psikis" id="checkKekerasan2" name="tindak_kekerasan_korban[{{ $x }}][]">
+                <input class="form-check-input" type="checkbox" value="Psikis" id="checkKekerasan2" name="tindak_kekerasan_korban[{{ $x }}][]" <?= ($valueKekerasan2 != null) ? cekComboBox($valueKekerasan2, 'Psikis') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan2">
                     Psikis
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Seksual" id="checkKekerasan3" name="tindak_kekerasan_korban[{{ $x }}][]">
+                <input class="form-check-input" type="checkbox" value="Seksual" id="checkKekerasan3" name="tindak_kekerasan_korban[{{ $x }}][]" <?= ($valueKekerasan2 != null) ? cekComboBox($valueKekerasan2, 'Seksual') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan3">
                     Seksual
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Penelantaran"
-                    id="checkKekerasan4" name="tindak_kekerasan_korban[{{ $x }}][]">
+                    id="checkKekerasan4" name="tindak_kekerasan_korban[{{ $x }}][]" <?= ($valueKekerasan2 != null) ? cekComboBox($valueKekerasan2, 'Penelantaran') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan4">
                     Penelantaran
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Trafficking"
-                    id="checkKekerasan5{{ $x }}" name="tindak_kekerasan_korban[{{ $x }}][]"/>
+                    id="checkKekerasan5{{ $x }}" name="tindak_kekerasan_korban[{{ $x }}][]" <?= ($valueKekerasan2 != null) ? cekComboBox($valueKekerasan2, 'Trafficking') : ''; ?>/>
                 <label class="form-check-label" for="checkKekerasan5">
                     Trafficking
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Eksploitasi"
-                    id="checkKekerasan6" name="tindak_kekerasan_korban[{{ $x }}][]">
+                    id="checkKekerasan6" name="tindak_kekerasan_korban[{{ $x }}][]" <?= ($valueKekerasan2 != null) ? cekComboBox($valueKekerasan2, 'Eksploitasi') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan6">
                     Eksploitasi
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Lainnya" id="checkKekerasan7" name="tindak_kekerasan_korban[{{ $x }}][]">
+                <input class="form-check-input" type="checkbox" value="Lainnya" id="checkKekerasan7" name="tindak_kekerasan_korban[{{ $x }}][]" <?= ($valueKekerasan2 != null) ? cekComboBox($valueKekerasan2, 'Lainnya') : ''; ?>>
                 <label class="form-check-label" for="checkKekerasan7">
                     Lainnya
                 </label>
             </div>
-            @if ($errors->has("tindak_kekerasan_korban.$x"))
-                <span style="color: red">{{ $errors->first("tindak_kekerasan_korban.$x") }}</span>
+            @if ($errors->has("tindak_kekerasan_korban.$x.0"))
+                <span style="color: red">{{ $errors->first("tindak_kekerasan_korban.$x.0") }}</span>
             @endif
         </div>
     </div>
@@ -218,46 +228,51 @@
         <div class="col-sm-5">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Eksploitasi Seksual"
-                    id="checkTrafficking1" name="trafficking_korban[{{ $x }}][]">
+                    id="checkTrafficking1" name="trafficking_korban[{{ $x }}][]" <?= ($valueTrafficking2 != null) ? cekComboBox($valueTrafficking2, 'Eksploitasi Seksual') : ''; ?>>
                 <label class="form-check-label" for="checkTrafficking1">
                     Eksploitasi Seksual
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Perbudakan"
-                    id="checkTrafficking2" name="trafficking_korban[{{ $x }}][]">
+                    id="checkTrafficking2" name="trafficking_korban[{{ $x }}][]" <?= ($valueTrafficking2 != null) ? cekComboBox($valueTrafficking2, 'Perbudakan') : ''; ?>>
                 <label class="form-check-label" for="checkTrafficking2">
                     Perbudakan
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Perdagangan Organ Tubuh"
-                    id="checkTrafficking3" name="trafficking_korban[{{ $x }}][]">
+                    id="checkTrafficking3" name="trafficking_korban[{{ $x }}][]" <?= ($valueTrafficking2 != null) ? cekComboBox($valueTrafficking2, 'Perdagangan Organ Tubuh') : ''; ?>>
                 <label class="form-check-label" for="checkTrafficking3">
                     Perdagangan Organ Tubuh
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="Perdagangan Narkoba"
-                    id="checkTrafficking4" name="trafficking_korban[{{ $x }}][]">
+                    id="checkTrafficking4" name="trafficking_korban[{{ $x }}][]" <?= ($valueTrafficking2 != null) ? cekComboBox($valueTrafficking2, 'Perdagangan Narkoba') : ''; ?>>
                 <label class="form-check-label" for="checkTrafficking4">
                     Perdagangan Narkoba
                 </label>
             </div>
-            @if ($errors->has("trafficking_korban.$x"))
-                <span style="color: red">{{ $errors->first("trafficking_korban.$x") }}</span>
+            @if ($errors->has("trafficking_korban.$x.0"))
+                <span style="color: red">{{ $errors->first("trafficking_korban.$x.0") }}</span>
             @endif
         </div>
     </div>
 <script type="text/javascript">
-    const checkbox = $("#checkKekerasan5"+ {{ $x }});
-    var secTrafic = $("#sectionTrafficking"+ {{ $x }});
-    checkbox.change(function(event) {
-        var checkbox = event.target;
-        if (checkbox.checked) {
-            secTrafic.css('display', '');
-        } else {
-            secTrafic.css('display', 'none');
-        }
+    $(function() {
+        const checkbox = $("#checkKekerasan5"+ {{ $x }});
+        var secTrafic = $("#sectionTrafficking"+ {{ $x }});
+        checkbox.change(function(event) {
+            var checkbox = event.target;
+            if (checkbox.checked) {
+                secTrafic.css('display', '');
+            } else {
+                secTrafic.css('display', 'none');
+            }
+        });
+        var trafficking2 = "{{ $listTrafficking2 }}";
+            if(trafficking2.indexOf('Trafficking') !== -1)
+                $('#'+"{{ $idSectionTrafficking }}").css('display', '');
     });
 </script>
