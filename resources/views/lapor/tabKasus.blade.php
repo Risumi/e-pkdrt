@@ -6,40 +6,39 @@
         <div class="form-group row">
             <label for="inputRegistrasi" class="col-sm-2 col-form-label">No. Registrasi</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="inputRegistrasi" name="no_registrasi"
+                <input type="text" class="form-control {{ $errors->has('no_registrasi')? 'is-invalid':'' }}" id="inputRegistrasi" name="no_registrasi"
                     value="{{ $noRegist }}" readonly>
                 @if ($errors->has('no_registrasi'))
-                <span style="color: red">{{ $errors->first('no_registrasi') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('no_registrasi') }}</div>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="inputNik" class="col-sm-2 col-form-label">NIK</label>
             <div class="col-sm-5">
-                <input type="number" class="form-control" id="inputNik" name="nik"
+                <input type="number" class="form-control {{ $errors->has('nik')? 'is-invalid':'' }}" id="inputNik" name="nik"
                     value="{{ old('nik') }}">
                 @if ($errors->has('nik'))
-                <span style="color: red">{{ $errors->first('nik') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('nik') }}</div>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="inputTglKejadian" class="col-sm-2 col-form-label">Tanggal Kejadian</label>
             <div class="col-sm-5">
-                <input type="date" class="form-control" id="inputTglKejadian" name="kejadian"
+                <input type="date" class="form-control {{ $errors->has('kejadian')? 'is-invalid':'' }}" id="inputTglKejadian" name="kejadian"
                     value="{{ old('kejadian') }}">
                 @if ($errors->has('kejadian'))
-                <span style="color: red">{{ $errors->first('kejadian') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('kejadian') }}</div>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="inputDeskripsi" class="col-sm-2 col-form-label">Deskripsi Kasus</label>
             <div class="col-sm-5">
-                <textarea type="text" class="form-control" id="inputDeskripsi" rows="5"
-                    name="deskripsi">{{ old('deskripsi') }}</textarea>
+                <textarea type="text" class="form-control {{ $errors->has('deskripsi')? 'is-invalid':'' }}" id="inputDeskripsi" rows="5" name="deskripsi">{{ old('deskripsi') }}</textarea>
                 @if ($errors->has('deskripsi'))
-                <span style="color: red">{{ $errors->first('deskripsi') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('deskripsi') }}</div>
                 @endif
             </div>
         </div>
@@ -61,10 +60,10 @@
         <div class="form-group row">
             <label for="inputTKP" class="col-sm-2 col-form-label">Alamat TKP</label>
             <div class="col-sm-5">
-                <textarea type="text" class="form-control" id="inputTKP" rows="5"
+                <textarea type="text" class="form-control {{ $errors->has('TKP')? 'is-invalid':'' }}" id="inputTKP" rows="5"
                     name="TKP">{{ old('TKP') }}</textarea>
                 @if ($errors->has('TKP'))
-                <span style="color: red">{{ $errors->first('TKP') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('TKP') }}</div>
                 @endif
             </div>
         </div>
@@ -77,18 +76,18 @@
                     @endforeach
                 </select>
                 @if ($errors->has('kecamatan'))
-                <span style="color: red">{{ $errors->first('kecamatan') }}</span>
+                    <span style="color: red">{{ $errors->first('kecamatan') }}</span>
                 @endif
             </div>
         </div>
         <div class="form-group row" id="kelurahan">
             <label for="inputKelurahan" class="col-sm-2 col-form-label">Kelurahan</label>
             <div class="input-group col-sm-5">
-                <select class="custom-select" id="inputKelurahan" name="kelurahan[]">
+                <select class="custom-select" id="inputKelurahan" name="kelurahan">
                     <option value=></option>                                
                 </select>
                 @if ($errors->has('kelurahan'))
-                <span style="color: red">{{ $errors->first('kelurahan') }}</span>
+                    <span style="color: red">{{ $errors->first('kelurahan') }}</span>
                 @endif
             </div>
         </div>

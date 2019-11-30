@@ -4,9 +4,9 @@
         <div class="form-group row">
             <label for="inputNama" class="col-sm-2 col-form-label">Nama</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="inputNama" name="nama_pelapor" value="{{ old('nama_pelapor') }}">
+                <input type="text" class="form-control {{ $errors->has('nama_pelapor')? 'is-invalid':'' }}" id="inputNama" name="nama_pelapor" value="{{ old('nama_pelapor') }}">
                 @if ($errors->has('nama_pelapor'))
-                    <span style="color: red">{{ $errors->first('nama_pelapor') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('nama_pelapor') }}</div>
                 @endif
             </div>
         </div>
@@ -24,43 +24,43 @@
                     <label class="form-check-label" for="RadioJKP">Perempuan</label>
                 </div>
                 @if ($errors->has('jenis_kelamin_pelapor'))
-                    <span style="color: red">{{ $errors->first('jenis_kelamin_pelapor') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('jenis_kelamin_pelapor') }}</div>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="inputUsia" class="col-sm-2 col-form-label">Usia</label>
             <div class="col-sm-2">
-                <input type="text" class="form-control" id="inputUsia" name="usia_pelapor" min="0" value="{{ old('usia_pelapor') }}">
+                <input type="text" class="form-control {{ $errors->has('usia_pelapor')? 'is-invalid':'' }}" id="inputUsia" name="usia_pelapor" min="0" value="{{ old('usia_pelapor') }}">
                 @if ($errors->has('usia_pelapor'))
-                    <span style="color: red">{{ $errors->first('usia_pelapor') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('usia_pelapor') }}</div>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="inputTTL" class="col-sm-2 col-form-label">Tempat Tanggal Lahir</label>
             <div class="col-sm-5">
-                <input type="text" class="form-control" id="inputTTL" name="ttl_pelapor" value="{{ old('ttl_pelapor') }}">
+                <input type="text" class="form-control {{ $errors->has('ttl_pelapor')? 'is-invalid':'' }}" id="inputTTL" name="ttl_pelapor" value="{{ old('ttl_pelapor') }}">
                 @if ($errors->has('ttl_pelapor'))
-                    <span style="color: red">{{ $errors->first('ttl_pelapor') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('ttl_pelapor') }}</div>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="inputAlamat" class="col-sm-2 col-form-label">Alamat</label>
             <div class="col-sm-5">
-                <textarea type="text" class="form-control" id="inputAlamat" rows="3" name="alamat_pelapor">{{ old('alamat_pelapor') }}</textarea>
+                <textarea type="text" class="form-control {{ $errors->has('alamat_pelapor')? 'is-invalid':'' }}" id="inputAlamat" rows="3" name="alamat_pelapor">{{ old('alamat_pelapor') }}</textarea>
                 @if ($errors->has('alamat_pelapor'))
-                    <span style="color: red">{{ $errors->first('alamat_pelapor') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('alamat_pelapor') }}</div>
                 @endif
             </div>
         </div>
         <div class="form-group row">
             <label for="inputNO" class="col-sm-2 col-form-label">No. Telp/HP</label>
             <div class="col-sm-5">
-                <input type="number" class="form-control" id="inputNO" name="telepon_pelapor" value="{{ old('telepon_pelapor') }}">
+                <input type="number" class="form-control {{ $errors->has('telepon_pelapor')? 'is-invalid':'' }}" id="inputNO" name="telepon_pelapor" value="{{ old('telepon_pelapor') }}">
                 @if ($errors->has('telepon_pelapor'))
-                    <span style="color: red">{{ $errors->first('telepon_pelapor') }}</span>
+                    <div class="invalid-feedback">{{ $errors->first('telepon_pelapor') }}</div>
                 @endif
             </div>
         </div>

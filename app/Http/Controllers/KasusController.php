@@ -16,21 +16,17 @@ use DB;
 
 class KasusController extends Controller
 {
-    public function view() {
-        if(empty(Auth::user()->fk_id_villages)){
-            $kasus = M_kasus::all();
-        }else{
-            $kasus = M_kasus::where('fk_id_villages','=',Auth::user()->fk_id_villages)->get();
-        }        
+    public function view() {   
+        $kasus = M_kasus::all();
         return view('kasus', compact('kasus'));
     }
     public function viewtambah()
-    {
+    {                                     
         $kecamatan = M_district::where([
             'regency_id'   =>  3573
-        ])->get();
+        ])->get();        
         if(M_kasus::count()!=0){
-            $noRegist =M_kasus::get()->last()->id_kasus+1;
+            $noRegist =M_kasus::get()->last()->id_kasus+1;        
         }else{
             $noRegist =1;
         }
@@ -67,9 +63,11 @@ class KasusController extends Controller
             return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
         } else {
             $this->pelaporTambahKasus($req);
-            return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
+            if(session('totKorban') == null)
+                return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
+            else
+                return redirect()->back()->withInput();
         }
-
     }
 
     public function editKasus(Request $req){
@@ -362,9 +360,29 @@ class KasusController extends Controller
     }
 
     public function pelaporTambahKasus(Request $req){
-        $validator = Validator::make($req->all(), [
+        $rules = [
+            'no_registrasi' => 'required',
+            'nik'           => 'required|numeric|digits:16',
+            'kejadian'      => 'required|date',
+            'kategori'      => 'required|between:0,50',
+            'TKP'           => 'required',
+            'kecamatan'     => 'required|between:0,50',
+            'kelurahan'     => 'required|between:0,50',
+            'deskripsi'     => 'required',
+
+            'nama_pelapor'          => 'required|between:0,255',
+            'jenis_kelamin_pelapor' => 'required|between:0,20',
+            'ttl_pelapor'           => 'required|between:0,50',
+            'usia_pelapor'          => 'required|numeric|min:0|digits_between:0,9',
+            'alamat_pelapor'        => 'required|between:0,255',
+            'telepon_pelapor'       => 'required|numeric|digits_between:0,12',
+            'pendidikan_pelapor'    => 'required|between:0,20',
+            'agama_pelapor'         => 'required|between:0,20',
+            'pekerjaan_pelapor'     => 'required|between:0,50',
+            'status_pelapor'        => 'required|between:0,25',
+
             "nama_korban.*"          => "required|between:0,255",
-            "jenis_kelamin_korban.*" => "required|between:0,20",
+            "jenis_kelamin_korban" => "required|between:0,20",
             "usia_korban.*"          => "required|numeric|min:0|digits_between:0,9",
             "ttl_korban.*"           => "required|between:0,100",
             "alamat_korban.*"        => "required|between:0,255",
@@ -373,101 +391,64 @@ class KasusController extends Controller
             "agama_korban.*"         => "required|between:0,20",
             "pekerjaan_korban.*"     => "required|between:0,30",
             "status_korban.*"        => "required|between:0,30",
-            "difabel_korban.*"       => "required|between:0,10",
-            "kdrt_korban.*"          => "required|between:0,10"
-        ], [
+            "difabel_korban"       => "required|between:0,10",
+            "kdrt_korban"          => "required|between:0,10",
+            "tindak_kekerasan_korban.0.0" => "required|between:0,100",
+
+            'nama_pelaku.*'          => 'required|between:0,255',
+            'jenis_kelamin_pelaku' => 'required|between:0,20',
+            'usia_pelaku.*'          => 'required|numeric|min:0|digits_between:0,9',
+            'ttl_pelaku.*'           => 'required|between:0,100',
+            'alamat_pelaku.*'        => 'required|between:0,255',
+            'telepon_pelaku.*'       => 'required|numeric|digits_between:0,12',
+            'pendidikan_pelaku.*'    => 'required|between:0,20',
+            'agama_pelaku.*'         => 'required|between:0,20',
+            'pekerjaan_pelaku.*'     => 'required|between:0,30',
+            'status_pelaku.*'        => 'required|between:0,30',
+            'difabel_pelaku'       => 'required|between:0,10',
+            'hubungan_dengan_korban.*' => 'required|between:0,90'
+        ];
+        if(isset($req->tindak_kekerasan_korban[0]) && $req->tindak_kekerasan_korban[0] != null){
+            $dataKekerasan = implode(",",  $req->tindak_kekerasan_korban[0]);
+            if(strpos($dataKekerasan, 'Trafficking') !== false){
+                $rules["trafficking_korban.0.0"] = 'required';
+            }
+        }
+
+        for ($i = 1; $i < count($req->nama_korban); $i++) { 
+            $rules["jenis_kelamin_korban$i"] = 'required';
+            $rules["difabel_korban$i"] = 'required';
+            $rules["kdrt_korban$i"] = 'required';
+            $rules["tindak_kekerasan_korban.".$i.'.0'] = 'required';
+
+            if(isset($req->tindak_kekerasan_korban[$i]) && $req->tindak_kekerasan_korban[$i] != null){
+                $dataKekerasan = implode(",",  $req->tindak_kekerasan_korban[$i]);
+                if(strpos($dataKekerasan, 'Trafficking') !== false){
+                    $rules["trafficking_korban.".$i.".0"] = 'required';
+                }
+            }
+        }
+        for ($i = 1; $i < count($req->nama_pelaku); $i++) { 
+            $rules["jenis_kelamin_pelaku$i"] = 'required';
+            $rules["difabel_pelaku$i"] = 'required';
+        }
+
+        $validator = Validator::make($req->all(), $rules, [
             'required'       => 'Kolom :attribute harus berisi nilai',
             'numeric'        => 'Kolom :attribute harus berupa angka',
             'min'            => 'Kolom :attribute minimal :min',
             'digits_between' => 'Kolom :attribute maksimal :max digit',
             'digits'         => 'Pastikan NIK benar sesuai format',
             'between'        => 'Kolom :attribute maksimal :max karakter',
-            'date'           => 'Pastikan format tanggal benar',
-            // 'digits_between' => 'Pastikan NIK benar',
+            'date'           => 'Pastikan format tanggal benar'
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('totKorban', count($req->nama_korban));;
+            return redirect()->back()->withErrors($validator)->withInput()->with([
+                'totKorban' => count($req->nama_korban),
+                'totPelaku' => count($req->nama_pelaku)
+            ]);
         }
-
-            // $this->validate($req, [
-            //     "nama_korban.*"          => "required|between:0,255",
-            //     "jenis_kelamin_korban.*" => "required|between:0,20",
-            //     "usia_korban.*"          => "required|numeric|min:0|digits_between:0,9",
-            //     "ttl_korban.*"           => "required|between:0,100",
-            //     "alamat_korban.*"        => "required|between:0,255",
-            //     "telepon_korban.*"       => "required|numeric|digits_between:0,12",
-            //     "pendidikan_korban.*"    => "required|between:0,20",
-            //     "agama_korban.*"         => "required|between:0,20",
-            //     "pekerjaan_korban.*"     => "required|between:0,30",
-            //     "status_korban.*"        => "required|between:0,30",
-            //     "difabel_korban.*"       => "required|between:0,10",
-            //     "kdrt_korban.*"          => "required|between:0,10",
-                // "tindak_kekerasan_korban[$i]" => "required|between:0,100",
-                // "trafficking_korban[$i]"   => "required|between:0,100"
-            // ]);
-        // dd($req->tindak_kekerasan_korban);
-
-        // $this->validate($req, [
-        //     'no_registrasi'   => 'required',
-        //     'nik'   => 'required|numeric|digits:16',         
-        //     'kejadian'   => 'required|date',
-        //     'kategori'   => 'required|between:0,50',
-        //     'TKP'        => 'required',
-        //     'kecamatan' => 'required|between:0,50',
-        //     'kelurahan' => 'required|between:0,50',
-        //     'deskripsi'   => 'required',
-
-        //     'nama_pelapor'          => 'required|between:0,255',
-        //     'jenis_kelamin_pelapor' => 'required|between:0,20',
-        //     'ttl_pelapor'           => 'required|between:0,50',
-        //     'usia_pelapor'          => 'required|numeric|min:0|digits_between:0,9',
-        //     'alamat_pelapor'        => 'required|between:0,255',
-        //     'telepon_pelapor'       => 'required|numeric|digits_between:0,12',
-        //     'pendidikan_pelapor'    => 'required|between:0,20',
-        //     'agama_pelapor'         => 'required|between:0,20',
-        //     'pekerjaan_pelapor'     => 'required|between:0,50',
-        //     'status_pelapor'        => 'required|between:0,25',
-
-        //     'nama_korban'          => 'required|between:0,255',
-        //     'jenis_kelamin_korban' => 'required|between:0,20',
-        //     'usia_korban'          => 'required|numeric|min:0|digits_between:0,9',
-        //     'ttl_korban'           => 'required|between:0,100',
-        //     'alamat_korban'        => 'required|between:0,255',
-        //     'telepon_korban'       => 'required|numeric|digits_between:0,12',
-        //     'pendidikan_korban'    => 'required|between:0,20',
-        //     'agama_korban'         => 'required|between:0,20',
-        //     'pekerjaan_korban'     => 'required|between:0,30',
-        //     'status_korban'        => 'required|between:0,30',
-        //     'difabel_korban'       => 'required|between:0,10',
-        //     'kdrt_korban'          => 'required|between:0,10',
-        //     'tindak_kekerasan_korban' => 'required|between:0,100',
-        //     'trafficking_korban'   => 'required|between:0,100',
-
-        //     'nama_pelaku'          => 'required|between:0,255',
-        //     'jenis_kelamin_pelaku' => 'required|between:0,20',
-        //     'usia_pelaku'          => 'required|numeric|min:0|digits_between:0,9',
-        //     'ttl_pelaku'           => 'required|between:0,100',
-        //     'alamat_pelaku'        => 'required|between:0,255',
-        //     'telepon_pelaku'       => 'required|numeric|digits_between:0,12',
-        //     'pendidikan_pelaku'    => 'required|between:0,20',
-        //     'agama_pelaku'         => 'required|between:0,20',
-        //     'pekerjaan_pelaku'     => 'required|between:0,30',
-        //     'status_pelaku'        => 'required|between:0,30',
-        //     'difabel_pelaku'       => 'required|between:0,10',
-        //     'hubungan_dengan_korban' => 'required|between:0,90'
-        // ], [
-        //     'required'       => 'Kolom :attribute harus berisi nilai',
-        //     'numeric'        => 'Kolom :attribute harus berupa angka',
-        //     'min'            => 'Kolom :attribute minimal :min',
-        //     'digits_between' => 'Kolom :attribute maksimal :max digit',
-        //     'digits'         => 'Pastikan NIK benar sesuai format',
-        //     'between'        => 'Kolom :attribute maksimal :max karakter',
-        //     'date'           => 'Pastikan format tanggal benar',
-        //     // 'digits_between' => 'Pastikan NIK benar',
-        // ]);
-
-        // dd($req->nama_korban[0]);
 
         // INSERT KASUS
         date_default_timezone_set('Asia/Jakarta');
@@ -484,6 +465,8 @@ class KasusController extends Controller
         ]);
         $id_kasus = $ks->id_kasus;
         //END INSERT KASUS
+        // dd($req);
+        // dd($rules);
 
         //INSERT PELAPOR
         $pelapor = M_pelapor::create([
@@ -502,59 +485,88 @@ class KasusController extends Controller
         //END INSERT PELAPOR
 
         //INSERT KORBAN
-        $tindak_kekerasan = implode(",",  $req->tindak_kekerasan_korban);
-        $trafficking = implode(",",  $req->trafficking_korban);
-        $krbn = M_korban::create([
-            'nama'          => $req->nama_korban,
-            'jenis_kelamin' => $req->jenis_kelamin_korban,
-            'usia'          => $req->usia_korban,
-            'ttl'           => $req->ttl_korban,
-            'alamat'        => $req->alamat_korban,
-            'telepon'       => $req->telepon_korban,
-            'pendidikan'    => $req->pendidikan_korban,
-            'agama'         => $req->agama_korban,
-            'pekerjaan'     => $req->pekerjaan_korban,
-            'status'        => $req->status_korban,
-            'difabel'       => $req->difabel_korban,
-            'kdrt'          => $req->kdrt_korban,
-            'tindak_kekerasan' => $tindak_kekerasan,
-            'kategori_trafficking'   => $trafficking,
-            'fk_id_kasus'   => $id_kasus
-        ]);
-        for ($i = 0; $i < count($req->tindak_kekerasan_korban); $i++) { 
-            DB::table('kekerasan')->insert([
-                'jenis_kekerasan' => $req->tindak_kekerasan_korban[$i],
-                'fk_id_korban' => $krbn->id_korban,
-                'fk_id_kasus' => $id_kasus
-            ]);
+        for ($i = 0; $i < count($req->nama_korban); $i++) { 
+            $tindak_kekerasan = implode(",",  $req->tindak_kekerasan_korban[$i]);
+
+            $dataKorban = [
+                'nama'          => $req->nama_korban[$i],
+                'usia'          => $req->usia_korban[$i],
+                'ttl'           => $req->ttl_korban[$i],
+                'alamat'        => $req->alamat_korban[$i],
+                'telepon'       => $req->telepon_korban[$i],
+                'pendidikan'    => $req->pendidikan_korban[$i],
+                'agama'         => $req->agama_korban[$i],
+                'pekerjaan'     => $req->pekerjaan_korban[$i],
+                'status'        => $req->status_korban[$i],
+                'tindak_kekerasan' => $tindak_kekerasan,
+                // 'kategori_trafficking'   => $trafficking,
+                'fk_id_kasus'   => $id_kasus
+            ];
+            $dataKekerasan = implode(",",  $req->tindak_kekerasan_korban[$i]);
+            if(strpos($dataKekerasan, 'Trafficking') !== false){
+                $dataKorban['kategori_trafficking'] = implode(",",  $req->trafficking_korban[$i]);
+            }
+            if($i == 0){
+                $dataKorban['jenis_kelamin'] = $req->jenis_kelamin_korban;
+                $dataKorban['difabel']       = $req->difabel_korban;
+                $dataKorban['kdrt']          = $req->kdrt_korban;
+            } else {
+                $keyJK = "jenis_kelamin_korban" . $i;
+                $keyDifabel = "difabel_korban" . $i;
+                $keyKdrt = "kdrt_korban" . $i;
+
+                $dataKorban['jenis_kelamin'] = $req->$keyJK;
+                $dataKorban['difabel']  = $req->$keyDifabel;
+                $dataKorban['kdrt']     = $req->$keyKdrt;
+            }
+
+            $krbn = M_korban::create($dataKorban);
+            $id_korban = $krbn->id_korban;
+            for ($j = 0; $j < count($req->tindak_kekerasan_korban[$i]); $j++) { 
+                DB::table('kekerasan')->insert([
+                    'jenis_kekerasan' => $req->tindak_kekerasan_korban[$i][$j],
+                    'fk_id_korban' => $id_korban,
+                    'fk_id_kasus' => $id_kasus
+                ]);
+            }
         }
         //END INSERT KORBAN
 
         //INSERT PELAKU
-        M_pelaku::create([
-            'nama'          => $req->nama_pelaku,
-            'jenis_kelamin' => $req->jenis_kelamin_pelaku,
-            'usia'          => $req->usia_pelaku,
-            'ttl'           => $req->ttl_pelaku,
-            'alamat'        => $req->alamat_pelaku,
-            'telepon'       => $req->telepon_pelaku,
-            'pendidikan'    => $req->pendidikan_pelaku,
-            'agama'         => $req->agama_pelaku,
-            'pekerjaan'     => $req->pekerjaan_pelaku,
-            'status'        => $req->status_pelaku,
-            'difabel'       => $req->difabel_pelaku,
-            'hubungan_dengan_korban' => $req->hubungan_dengan_korban,
-            'fk_id_kasus'   => $id_kasus
-        ]);
+        for ($j = 0; $j < count($req->nama_pelaku); $j++) { 
+            $dataPelaku = [
+                'nama'          => $req->nama_pelaku[$j],
+                'usia'          => $req->usia_pelaku[$j],
+                'ttl'           => $req->ttl_pelaku[$j],
+                'alamat'        => $req->alamat_pelaku[$j],
+                'telepon'       => $req->telepon_pelaku[$j],
+                'pendidikan'    => $req->pendidikan_pelaku[$j],
+                'agama'         => $req->agama_pelaku[$j],
+                'pekerjaan'     => $req->pekerjaan_pelaku[$j],
+                'status'        => $req->status_pelaku[$j],
+                'hubungan_dengan_korban' => $req->hubungan_dengan_korban[$j],
+                'fk_id_kasus'   => $id_kasus
+            ];
+            if($j == 0){
+                $dataPelaku['jenis_kelamin'] = $req->jenis_kelamin_pelaku;
+                $dataPelaku['difabel']       = $req->difabel_pelaku;
+            } else {
+                $keyJK = "jenis_kelamin_pelaku" . $j;
+                $keyDifabel = "difabel_pelaku" . $j;
+
+                $dataPelaku['jenis_kelamin'] = $req->$keyJK;
+                $dataPelaku['difabel']       = $req->$keyDifabel;
+            }
+            M_pelaku::create($dataPelaku);
+        }
         //END INSERT PELAKU
 
         DB::table('laporan_publik')->insert([
             'fk_id_kasus' => $id_kasus,
             'fk_id_pelapor' => $id_pelapor
         ]);
-        // return back()->with('notification', 'Kasus berhasil ditambahkan');
-        // return redirect()->back()->with('notification', 'Kasus berhasil ditambahkan');
     }
+
     public function getKelurahan(Request $req)
     {
         $kelurahan = M_village::select('villages.name')
