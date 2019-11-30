@@ -72,7 +72,7 @@
             <div class="input-group col-sm-5">
                 <select class="custom-select" id="inputKecamatanNew" name="kecamatan">
                     @foreach($kecamatan as $data)
-                    <option value="{{$data->name}}">{{$data->name}}</option>
+                    <option value="{{$data->name}}" <?= (old('kecamatan') == $data->name) ? 'selected': ''; ?>>{{$data->name}}</option>
                     @endforeach
                 </select>
                 @if ($errors->has('kecamatan'))
