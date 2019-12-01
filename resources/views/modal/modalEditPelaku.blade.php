@@ -213,6 +213,16 @@
                                 </div>
                             </div>
                         </form>
+                        <form action="{{  route('pelakuDelete',[$kasus->id_kasus, $data->id_pelaku])}}" method="post">
+                        <div class="form-group row">
+                        @method('DELETE')
+                        @csrf
+                            <label class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-3">                            
+                                <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')"  type="submit">Hapus Data</button>
+                            </div>
+                        </div>        
+                        </form>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 @include('header')
-<script src="{{ asset('kecamatan.js') }}"></script>
+<script src="{{ asset('kecamatannew.js') }}"></script>
 <body>
 
     <div class="container">

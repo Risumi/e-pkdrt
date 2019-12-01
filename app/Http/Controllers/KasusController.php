@@ -138,11 +138,16 @@ class KasusController extends Controller
             'status'        => 'required',
             'difabel'       => 'required',
             'kdrt'          => 'required',
-            'tindak_kekerasan' => 'required',
-            'trafficking'   => 'required'
+            'tindak_kekerasan' => 'required',        
         ]);
         $tindak_kekerasan = implode(",",  $req->tindak_kekerasan);
-        $trafficking = implode(",",  $req->trafficking);
+        if(isset($req->$req->trafficking)){
+            $trafficking = implode(",",  $req->trafficking);
+        }else{
+            $trafficking = null;
+        }
+
+        
         $krbn = M_korban::create([
             'nama'          => $req->nama,
             'jenis_kelamin' => $req->jenis_kelamin,
@@ -642,5 +647,27 @@ class KasusController extends Controller
         DB::table('penanganan')->where('fk_id_kasus', '=', $idKasus)->delete();
         DB::table('rujukan')->where('fk_id_kasus', '=', $idKasus)->delete();
         return redirect()->action('KasusController@view');
+    }
+
+    public function deleteKorban($idKasus,$idKorban)
+    {
+        DB::table('korban')->where('fk_id_kasus', '=', $idKasus)
+            ->where('id_korban', '=', $idKorban)->delete();
+        DB::table('kekerasan')->where('fk_id_kasus', '=', $idKasus)
+            ->where('fk_id_korban', '=', $idKorban)->delete();
+        DB::table('pelayanan')->where('fk_id_kasus', '=', $idKasus)
+            ->where('fk_id_korban', '=', $idKorban)->delete();
+        DB::table('rujukan')->where('fk_id_kasus', '=', $idKasus)
+            ->where('fk_id_korban', '=', $idKorban)->delete();
+        return redirect()->action('KasusController@editKasus',$idKasus);
+    }
+
+    public function deletePelaku($idKasus,$idPelaku)
+    {
+        DB::table('pelaku')->where('fk_id_kasus', '=', $idKasus)
+            ->where('id_pelaku', '=', $idPelaku)->delete();
+        DB::table('penanganan')->where('fk_id_kasus', '=', $idKasus)
+            ->where('fk_id_pelaku', '=', $idPelaku)->delete();        
+        return redirect()->action('KasusController@editKasus',$idKasus);
     }
 }

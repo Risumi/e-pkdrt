@@ -37,7 +37,7 @@
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="jenis_kelamin" id="RadioJKL"
                                             value="Laki laki"
-                                            {{("Laki laki" == $data->jenis_kelamin) ? 'checked' : '' }}>
+                                            {{("Laki-laki" == $data->jenis_kelamin) ? 'checked' : '' }}>
                                         <label class="form-check-label" for="RadioJKL">Laki-laki</label>
                                     </div>
                                     <div class="form-check form-check-inline">
@@ -337,6 +337,16 @@
                                 </div>
                             </div>
                         </form>
+                        <form action="{{  route('korbanDelete',[$kasus->id_kasus, $data->id_korban])}}" method="post">
+                        <div class="form-group row">
+                        @method('DELETE')
+                        @csrf
+                            <label class="col-sm-2 col-form-label"></label>
+                            <div class="col-sm-3">                            
+                                <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')"  type="submit">Hapus Data</button>
+                            </div>
+                        </div>        
+                        </form>                        
                     </div>
                 </div>
             </div>

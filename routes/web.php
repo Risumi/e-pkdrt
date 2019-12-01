@@ -42,6 +42,7 @@ Route::group(['middleware' => 'App\Http\Middleware\IsLogin'], function(){
                     Route::post('new','KasusController@tambahKorban');
                     Route::group(['prefix' => '{idKorban}'], function () {
                         Route::get('','KasusController@vieweditkorban')->name('korbanEdit');
+                        Route::delete('','KasusController@deleteKorban')->name('korbanDelete');
                         Route::post('','KasusController@editkorban');
                         Route::get('pelayanan/new','KasusController@viewtambahpelayanan');
                         Route::post('pelayanan/new','KasusController@tambahPelayanan');
@@ -54,7 +55,8 @@ Route::group(['middleware' => 'App\Http\Middleware\IsLogin'], function(){
                     Route::post('new','KasusController@tambahPelaku');
                     Route::group(['prefix' => '{idPelaku}'], function () {
                         Route::post('','KasusController@editPelaku');
-                        Route::get('','KasusController@vieweditpelaku')->name('pelakuEdit');                
+                        Route::get('','KasusController@vieweditpelaku')->name('pelakuEdit');  
+                        Route::delete('','KasusController@deletePelaku')->name('pelakuDelete');              
                         Route::get('penanganan/new','KasusController@viewtambahpenanganan')->name('penangananBaru');                
                         Route::post('penanganan/new','KasusController@tambahPenanganan');
                     });            
