@@ -17,7 +17,11 @@ use DB;
 class KasusController extends Controller
 {
     public function view() {   
-        $kasus = M_kasus::all();
+        if(empty(Auth::user()->fk_id_villages)){
+            $kasus = M_kasus::all();
+        }else{
+            $kasus = M_kasus::where('fk_id_villages','=',Auth::user()->fk_id_villages)->get();
+        }        
         return view('kasus', compact('kasus'));
     }
     public function viewtambah()
@@ -624,5 +628,19 @@ class KasusController extends Controller
             $noRegist =1;
         }
         return view('nyoba',compact('kecamatan','noRegist'));
+    }
+
+    public function deleteKasus($idKasus)
+    {
+        DB::table('kasus')->where('id_kasus', '=', $idKasus)->delete();
+        DB::table('korban')->where('fk_id_kasus', '=', $idKasus)->delete();
+        DB::table('pelaku')->where('fk_id_kasus', '=', $idKasus)->delete();
+        DB::table('pelapor')->where('fk_id_kasus', '=', $idKasus)->delete();
+        DB::table('laporan_publik')->where('fk_id_kasus', '=', $idKasus)->delete();
+        DB::table('kekerasan')->where('fk_id_kasus', '=', $idKasus)->delete();
+        DB::table('pelayanan')->where('fk_id_kasus', '=', $idKasus)->delete();
+        DB::table('penanganan')->where('fk_id_kasus', '=', $idKasus)->delete();
+        DB::table('rujukan')->where('fk_id_kasus', '=', $idKasus)->delete();
+        return redirect()->action('KasusController@view');
     }
 }

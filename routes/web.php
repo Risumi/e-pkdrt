@@ -31,11 +31,11 @@ Route::group(['middleware' => 'App\Http\Middleware\IsLogin'], function(){
         // Route::post('new','KasusController@tambahKasus');
 
         // Route::get('lapor','KasusController@lapor')->name('kasusBaru');
-
+        Route::delete('delete/{idKasus}', 'KasusController@deleteKasus')->name('kasusDelete');
         Route::group(['prefix' => 'edit'], function () {
             Route::group(['prefix' => '{idKasus}'], function () {
                 Route::get('','KasusController@viewedit')->name('kasusEdit');                 
-                Route::post('','KasusController@editKasus');
+                Route::post('','KasusController@editKasus');            
                 Route::get('/print','KasusController@printkasus');
                 Route::group(['prefix' => 'korban'], function () {
                     Route::get('new','KasusController@viewtambahkorban');

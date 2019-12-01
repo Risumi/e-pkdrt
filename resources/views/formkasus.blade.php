@@ -1,5 +1,7 @@
 @include('header')
 <script src="{{ asset('kecamatan.js') }}"></script>
+<link href="{{ asset('admin.css') }}" rel="stylesheet" type="text/css">
+
 <body>
     <div class="container">
         <br>
@@ -126,11 +128,22 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label"></label>
-                        <div class="col-sm-5">
+                        <div class="col-sm-2">
                             <button class="btn btn-primary" type="submit">Update Data</button>
                             <input type="hidden" name="id_kasus" id='id_kasus' value="{{ $kasus->id_kasus }}">
                         </div>
+                        
                     </div>
+                </form>
+                <form action="{{  route('kasusDelete', $kasus->id_kasus)}}" method="post">
+                <div class="form-group row">
+                @method('DELETE')
+                @csrf
+                    <label class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-2">                            
+                        <button class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ini ?')"  type="submit">Hapus Data</button>
+                    </div>
+                </div>        
                 </form>
             </div>
         </div>
