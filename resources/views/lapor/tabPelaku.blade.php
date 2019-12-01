@@ -1,4 +1,8 @@
-<div class="card-header">Pelaku<a class="float-right" id="addPelaku">+</a></div>
+<div class="card-header">Pelaku
+     @if(session('totPelaku') === null)
+    <a class="float-right" id="addPelaku" title="Tambah Pelaku">+</a>
+    @endif
+</div>
 <div>
 <span id="formTabPelakuMain">
     <div class="card-body" id="formTabPelaku">
